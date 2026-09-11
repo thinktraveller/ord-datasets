@@ -1,0 +1,32 @@
+# Local build staging and disposable scratch space.
+.staging/
+.tmp/
+.cache/
+
+# Python environments and runtime caches.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Local credentials and environment files.
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+id_rsa
+id_rsa.pub
+credentials.json
+credentials.local.json
+token.json
+token.local.json
+
+# Editor and operating-system noise.
+.DS_Store
+Thumbs.db
+*.swp
+*~
