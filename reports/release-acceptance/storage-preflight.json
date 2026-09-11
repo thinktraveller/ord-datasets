@@ -1,0 +1,401 @@
+{
+  "cost_estimates_usd": {
+    "assumptions": "One immutable core version, exact-hash deduplication, no existing account usage, plan subscription and request charges excluded.",
+    "github_lfs_free_plan_after_required_sharding": {
+      "core_unique_gib": 27.285463,
+      "each_additional_full_download": 2.3875,
+      "first_full_download_in_billing_cycle": 1.5125,
+      "monthly_storage": 1.21,
+      "monthly_storage_overage_gib": 17.285463
+    },
+    "huggingface_public": {
+      "best_effort_free": 0,
+      "note": "The free value is not guaranteed capacity; paid plan subscription is excluded and an add-on is only needed if account allowance is insufficient.",
+      "paid_public_storage_add_on_minimum": 12
+    },
+    "representative_s3_standard_storage_only": {
+      "core_monthly_storage": 0.6738,
+      "core_unique_decimal_gb": 29.297543,
+      "potential_monthly_storage": 0.7121,
+      "potential_unique_decimal_gb": 30.961331
+    }
+  },
+  "decision_proposal": {
+    "control_plane": "GitHub regular Git for code, docs, schemas, configs, compact catalogs, checksums and immutable data-plane references only.",
+    "fallback_data_plane_candidate": "Versioned S3-compatible object storage with content-addressed keys and a GitHub-tracked release manifest.",
+    "github_lfs_primary": "rejected",
+    "github_lfs_rejection_reason": "Two core objects exceed every GitHub LFS per-file plan limit before sharding, while version history and downloads accrue owner-side usage.",
+    "primary_data_plane_candidate": "A public Hugging Face dataset repository using its large-file backend, subject to account-capacity confirmation and step-25 pilot.",
+    "quarantine_rule": "Storage feasibility never promotes quarantined objects; only later license, secret, relevance and duplication audits may change their disposition.",
+    "regular_git_payload_policy": {
+      "maximum_bytes": 10485760,
+      "must_remain_external_even_if_smaller": [
+        "datasets/**/reactions.csv",
+        "datasets/**/dataset.csv",
+        "intermediate/01-physical-csv/**/*.csv",
+        "row-level audit and source-evidence payloads"
+      ]
+    }
+  },
+  "download_and_readback": {
+    "default_clone": "Clone only the GitHub control plane; resolve data through a release manifest pinned to an immutable Hugging Face commit or object-store version.",
+    "full_release": "Download all unique objects into a clean cache, reconstruct logical paths without duplicate bytes, and verify the release hash tree.",
+    "pilot": "Step 25 must test at least one >5 GB logical file or its shards, a small target package and manifest-only clone; no pilot is authorized by this step.",
+    "selective_download": "Fetch one semantic dataset or target by manifest allow-list, then verify size and SHA-256 before use."
+  },
+  "generated_at": "2026-09-11T15:04:12.173052+00:00",
+  "inputs": {
+    "artifact_inventory": "provenance/artifact-inventory.csv",
+    "artifact_inventory_sha256": "5f12f84351a860121a4ad191cece809de01f992dac00cee453d155655cdb9dcc",
+    "snapshot_files": 4349,
+    "snapshot_logical_bytes": 44375572307
+  },
+  "largest_core_objects": [
+    {
+      "bytes": 10297606246,
+      "gib": 9.590393,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_1158e351757f315b93cbcbe7bc55f38e/reactions.csv",
+      "planned_path": "datasets/corpus/_pending-semantic-name/physical_1158e351757f315b93cbcbe7bc55f38e/reactions.csv",
+      "sha256": "1812168fa69646d992efc36075a5a3da9c5ab4ae3a3b1883dc790c896320d359"
+    },
+    {
+      "bytes": 10096819666,
+      "gib": 9.403396,
+      "old_path": "standardized/csv-data/11/ord_dataset-1158e351757f315b93cbcbe7bc55f38e.csv",
+      "planned_path": "intermediate/01-physical-csv/11/ord_dataset-1158e351757f315b93cbcbe7bc55f38e.csv",
+      "sha256": "60099d9164d6794f7a61b87a73b414dcebe30891757f2a85e98b0ee22112633a"
+    },
+    {
+      "bytes": 1541933724,
+      "gib": 1.436038,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=upstream_rexgen_direct_c8sc04228d/reactions.csv",
+      "planned_path": "datasets/corpus/_pending-semantic-name/upstream_rexgen_direct_c8sc04228d/reactions.csv",
+      "sha256": "472486392b0381d3cbbd6f3419757f66e1c271606cc795f0dcf799882fc6a04a"
+    },
+    {
+      "bytes": 1425933595,
+      "gib": 1.328004,
+      "old_path": "processing/derived/csv/manifests/source_evidence.csv",
+      "planned_path": "intermediate/02-source-evidence/source_evidence.csv",
+      "sha256": "c659cbab662fe972208f6d988831fd8e6c81b200e7f4e2aaf14d9bd122099656"
+    },
+    {
+      "bytes": 1270272656,
+      "gib": 1.183034,
+      "old_path": "standardized/csv-data/e7/ord_dataset-e7830cd6b11158b43994ccfb5ee9acb3.csv",
+      "planned_path": "intermediate/01-physical-csv/e7/ord_dataset-e7830cd6b11158b43994ccfb5ee9acb3.csv",
+      "sha256": "0a405b6b46e807cab7d8009f82891a6cfbbd0185c7a8047f480682ede817cd81"
+    },
+    {
+      "bytes": 589463310,
+      "gib": 0.54898,
+      "old_path": "processing/derived/yonod/datasets/physical_805ad863feef48579d95d86a728035f4/row_audit.jsonl",
+      "planned_path": "intermediate/06-target-adaptation/physical_805ad863feef48579d95d86a728035f4/row_audit.jsonl",
+      "sha256": "76f1598b5e8166aeda3968d0e982ade575e55ef00a6f088b7ff8745e94fbc3ee"
+    },
+    {
+      "bytes": 512748962,
+      "gib": 0.477535,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_805ad863feef48579d95d86a728035f4/reactions.csv",
+      "planned_path": "datasets/corpus/_pending-semantic-name/physical_805ad863feef48579d95d86a728035f4/reactions.csv",
+      "sha256": "d680b26d4dbc9cc788effb4ddf63c4fbe23b1aef0635bc1bff1afac939e15154"
+    },
+    {
+      "bytes": 507082974,
+      "gib": 0.472258,
+      "old_path": "standardized/csv-data/80/ord_dataset-805ad863feef48579d95d86a728035f4.csv",
+      "planned_path": "intermediate/01-physical-csv/80/ord_dataset-805ad863feef48579d95d86a728035f4.csv",
+      "sha256": "91295b46b65299cbce9abe1a27d0ab96dc7f3feba4221737c13f036589b99f47"
+    },
+    {
+      "bytes": 502031529,
+      "gib": 0.467553,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_47eaacc46c3a4487bbdf99adb1a15e41/reactions.csv",
+      "planned_path": "datasets/corpus/_pending-semantic-name/physical_47eaacc46c3a4487bbdf99adb1a15e41/reactions.csv",
+      "sha256": "176f123a6a4848845ab30c9489fcc2f52a40ca5b581976a2b904c7b777f9ca02"
+    },
+    {
+      "bytes": 496776917,
+      "gib": 0.46266,
+      "old_path": "standardized/csv-data/47/ord_dataset-47eaacc46c3a4487bbdf99adb1a15e41.csv",
+      "planned_path": "intermediate/01-physical-csv/47/ord_dataset-47eaacc46c3a4487bbdf99adb1a15e41.csv",
+      "sha256": "b6bc0de9b5e4f876982606e095adac0693daf397bab2b1f32b40cb1032de6335"
+    },
+    {
+      "bytes": 235549819,
+      "gib": 0.219373,
+      "old_path": "processing/derived/yonod/datasets/physical_d92976309c3a48a3a64a4cf5e7048086/row_audit.jsonl",
+      "planned_path": "intermediate/06-target-adaptation/physical_d92976309c3a48a3a64a4cf5e7048086/row_audit.jsonl",
+      "sha256": "66799f0d583a00c3767fb6ee340f2367293102f461c687e5279fe6d72c96f7dd"
+    },
+    {
+      "bytes": 227896584,
+      "gib": 0.212245,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_d92976309c3a48a3a64a4cf5e7048086/reactions.csv",
+      "planned_path": "datasets/corpus/_pending-semantic-name/physical_d92976309c3a48a3a64a4cf5e7048086/reactions.csv",
+      "sha256": "35255c19c1a20d5c59875d4b50348ae298dbe850906d56aceb4bd052c366ae81"
+    },
+    {
+      "bytes": 223500788,
+      "gib": 0.208151,
+      "old_path": "standardized/csv-data/d9/ord_dataset-d92976309c3a48a3a64a4cf5e7048086.csv",
+      "planned_path": "intermediate/01-physical-csv/d9/ord_dataset-d92976309c3a48a3a64a4cf5e7048086.csv",
+      "sha256": "84e8c96a27e45f228ce2f3c88b6e8e6d07636f88c4b71a6c22f95d657cdfc7dc"
+    },
+    {
+      "bytes": 124524792,
+      "gib": 0.115973,
+      "old_path": "standardized/csv-data/48/ord_dataset-488402f6ec0d441ca2f7d6fabea7c220.csv",
+      "planned_path": "intermediate/01-physical-csv/48/ord_dataset-488402f6ec0d441ca2f7d6fabea7c220.csv",
+      "sha256": "b341f21ef56fc63ce26d11aa633ccec24f19483ca021388ed48ecc795966884f"
+    },
+    {
+      "bytes": 93659501,
+      "gib": 0.087227,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_5c9a10329a8a48968d18879a48bb8ab2/reactions.csv",
+      "planned_path": "datasets/corpus/_pending-semantic-name/physical_5c9a10329a8a48968d18879a48bb8ab2/reactions.csv",
+      "sha256": "c04ed95c9f5157f9a8a8b926d804ec633c6da01bd1007d36f043dbc2c5c06d91"
+    },
+    {
+      "bytes": 93208663,
+      "gib": 0.086807,
+      "old_path": "standardized/csv-data/54/ord_dataset-5481550056a14935b76e031fb94b88be.csv",
+      "planned_path": "intermediate/01-physical-csv/54/ord_dataset-5481550056a14935b76e031fb94b88be.csv",
+      "sha256": "6d5af86841196efc504ea5d81b911b61031185e4ef3c84eaa3092ee3f4032827"
+    },
+    {
+      "bytes": 92591417,
+      "gib": 0.086232,
+      "old_path": "standardized/csv-data/5c/ord_dataset-5c9a10329a8a48968d18879a48bb8ab2.csv",
+      "planned_path": "intermediate/01-physical-csv/5c/ord_dataset-5c9a10329a8a48968d18879a48bb8ab2.csv",
+      "sha256": "89422ee286ac7deab0a6b0943d2574e1c219b0d31f21fd0a375b52ec3bbb363f"
+    },
+    {
+      "bytes": 55383602,
+      "gib": 0.05158,
+      "old_path": "processing/derived/yonod/datasets/physical_5c9a10329a8a48968d18879a48bb8ab2/row_audit.jsonl",
+      "planned_path": "intermediate/06-target-adaptation/physical_5c9a10329a8a48968d18879a48bb8ab2/row_audit.jsonl",
+      "sha256": "a1cddf03faf31c2e61c8e2203b8b9437c089408a68becddf223b78131f86dbeb"
+    },
+    {
+      "bytes": 54055777,
+      "gib": 0.050343,
+      "old_path": "processing/derived/yonod/datasets/physical_d92976309c3a48a3a64a4cf5e7048086/targets/pfizer_lcms_area_percent/target_audit.jsonl",
+      "planned_path": "datasets/model-ready/_pending-semantic-name/pfizer_lcms_area_percent/audit.jsonl",
+      "sha256": "fce81ca14d751160006f0334d7403a909dbdd2b091535d03bb5d1fbd7aea06f0"
+    },
+    {
+      "bytes": 49221280,
+      "gib": 0.045841,
+      "old_path": "processing/derived/yonod/datasets/physical_68cb8b4b2b384e3d85b5b1efae58b203/row_audit.jsonl",
+      "planned_path": "intermediate/06-target-adaptation/physical_68cb8b4b2b384e3d85b5b1efae58b203/row_audit.jsonl",
+      "sha256": "832d29bf5a4f6beab6455964b44bd17dfb2b0a6b818a574325d36571a25c7ac5"
+    }
+  ],
+  "platform_constraints_checked_2026_09_11": {
+    "github_lfs": {
+      "estimated_overage_rates_from_calculator": {
+        "download_usd_per_gib": 0.0875,
+        "storage_usd_per_gib_month": 0.07
+      },
+      "included_free_or_pro_storage_and_bandwidth": "10 GiB each",
+      "included_team_or_enterprise_storage_and_bandwidth": "250 GiB each",
+      "maximum_file_size_by_plan": {
+        "Enterprise Cloud": "5 GB",
+        "Free": "2 GB",
+        "Pro": "2 GB",
+        "Team": "4 GB"
+      }
+    },
+    "github_regular_git": {
+      "blocked_file_size": "100 MiB",
+      "enforced_push_size": "2 GB",
+      "recommended_on_disk_git_directory": "10 GB",
+      "recommended_repository": "ideally <1 GB; <5 GB strongly recommended",
+      "warning_file_size": "50 MiB"
+    },
+    "huggingface_git_backed_dataset_repo": {
+      "free_private_storage": "100 GB",
+      "free_public_storage": "best-effort",
+      "hard_single_file_limit": "500 GB",
+      "maximum_entries_per_folder": "<10,000",
+      "public_storage_add_on": "$12/TB/month starting at 1 TB",
+      "recommended_file_size": "<200 GB",
+      "recommended_files_per_repo": "<100,000",
+      "recommended_http_commit_size": "<100 files"
+    },
+    "representative_versioned_object_storage": {
+      "caveat": "Request, version retention, region and egress prices vary.",
+      "internet_egress_free_tier": "first 100 GB/month aggregated across AWS services and regions, excluding China and GovCloud",
+      "provider_example": "Amazon S3 Standard, US East (N. Virginia)",
+      "storage_usd_per_decimal_gb_month_first_50tb": 0.023
+    }
+  },
+  "repository_shape": {
+    "all_unique_objects": 3578,
+    "maximum_planned_files_in_one_folder": 32,
+    "maximum_planned_folder": "intermediate/90-legacy-needs-review/pending-audit/reports/derived/yonod/reports",
+    "potential_files": 4337,
+    "potential_unique_objects": 3566
+  },
+  "schema_version": "storage-preflight-v1",
+  "scope": {
+    "all_frozen_files": {
+      "exact_duplicate_savings_bytes": 13413961046,
+      "files": 4349,
+      "largest_object": {
+        "bytes": 10297606246,
+        "disposition": "quarantined",
+        "gib": 9.590393,
+        "old_path": "processing/_needs_review/derived/csv-smoke/tables/logical_dataset_id=physical_1158e351757f315b93cbcbe7bc55f38e/reactions.csv",
+        "planned_path": "intermediate/90-legacy-needs-review/source-tree/derived/csv-smoke/tables/logical_dataset_id=physical_1158e351757f315b93cbcbe7bc55f38e/reactions.csv",
+        "sha256": "1812168fa69646d992efc36075a5a3da9c5ab4ae3a3b1883dc790c896320d359"
+      },
+      "logical_bytes": 44375572307,
+      "logical_gib": 41.327972,
+      "threshold_counts": {
+        "over_100_mib": 16,
+        "over_10_mib": 62,
+        "over_1_gib": 5,
+        "over_50_mib": 23,
+        "over_github_lfs_enterprise_5gb": 2,
+        "over_github_lfs_free_2gb": 2,
+        "over_github_lfs_team_4gb": 2,
+        "over_huggingface_recommended_200gb": 0
+      },
+      "unique_bytes": 30961611261,
+      "unique_gib": 28.835248,
+      "unique_objects": 3578
+    },
+    "core_release": {
+      "exact_duplicate_savings_bytes": 56122,
+      "files": 482,
+      "included_dispositions": [
+        "authoritative",
+        "intermediate"
+      ],
+      "largest_object": {
+        "bytes": 10297606246,
+        "disposition": "authoritative",
+        "gib": 9.590393,
+        "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_1158e351757f315b93cbcbe7bc55f38e/reactions.csv",
+        "planned_path": "datasets/corpus/_pending-semantic-name/physical_1158e351757f315b93cbcbe7bc55f38e/reactions.csv",
+        "sha256": "1812168fa69646d992efc36075a5a3da9c5ab4ae3a3b1883dc790c896320d359"
+      },
+      "logical_bytes": 29297599140,
+      "logical_gib": 27.285515,
+      "threshold_counts": {
+        "over_100_mib": 14,
+        "over_10_mib": 48,
+        "over_1_gib": 5,
+        "over_50_mib": 19,
+        "over_github_lfs_enterprise_5gb": 2,
+        "over_github_lfs_free_2gb": 2,
+        "over_github_lfs_team_4gb": 2,
+        "over_huggingface_recommended_200gb": 0
+      },
+      "unique_bytes": 29297543018,
+      "unique_gib": 27.285463,
+      "unique_objects": 442
+    },
+    "disposition_bytes": {
+      "authoritative": 13613033941,
+      "excluded": 271614,
+      "intermediate": 15684565199,
+      "quarantined": 15077692931,
+      "superseded": 8622
+    },
+    "disposition_file_counts": {
+      "authoritative": 216,
+      "excluded": 11,
+      "intermediate": 266,
+      "quarantined": 3855,
+      "superseded": 1
+    },
+    "potential_after_audit": {
+      "exact_duplicate_savings_bytes": 13413961046,
+      "files": 4337,
+      "included_dispositions": [
+        "authoritative",
+        "intermediate",
+        "quarantined"
+      ],
+      "largest_object": {
+        "bytes": 10297606246,
+        "disposition": "quarantined",
+        "gib": 9.590393,
+        "old_path": "processing/_needs_review/derived/csv-smoke/tables/logical_dataset_id=physical_1158e351757f315b93cbcbe7bc55f38e/reactions.csv",
+        "planned_path": "intermediate/90-legacy-needs-review/source-tree/derived/csv-smoke/tables/logical_dataset_id=physical_1158e351757f315b93cbcbe7bc55f38e/reactions.csv",
+        "sha256": "1812168fa69646d992efc36075a5a3da9c5ab4ae3a3b1883dc790c896320d359"
+      },
+      "logical_bytes": 44375292071,
+      "logical_gib": 41.327711,
+      "threshold_counts": {
+        "over_100_mib": 16,
+        "over_10_mib": 62,
+        "over_1_gib": 5,
+        "over_50_mib": 23,
+        "over_github_lfs_enterprise_5gb": 2,
+        "over_github_lfs_free_2gb": 2,
+        "over_github_lfs_team_4gb": 2,
+        "over_huggingface_recommended_200gb": 0
+      },
+      "unique_bytes": 30961331025,
+      "unique_gib": 28.834987,
+      "unique_objects": 3566
+    }
+  },
+  "sharding_proposal": {
+    "additional_shards": 21,
+    "core_unique_objects_after_sharding": 463,
+    "core_unique_objects_before_sharding": 442,
+    "core_unique_objects_requiring_sharding": 5,
+    "format": "Row-boundary CSV shards with a repeated header where semantic tables are split; content-addressed byte shards only for lossless bundle transport.",
+    "maximum_shard_bytes": 1073741824,
+    "maximum_shard_gib": 1,
+    "reconstruction": "A versioned shard manifest records order, byte count and SHA-256; clean-room rebuild must reproduce the logical file hash."
+  },
+  "source_documents": [
+    {
+      "checked_at": "2026-09-11",
+      "title": "github_large_files",
+      "url": "https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github"
+    },
+    {
+      "checked_at": "2026-09-11",
+      "title": "github_repository_limits",
+      "url": "https://docs.github.com/en/repositories/creating-and-managing-repositories/repository-limits"
+    },
+    {
+      "checked_at": "2026-09-11",
+      "title": "github_lfs_limits",
+      "url": "https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage"
+    },
+    {
+      "checked_at": "2026-09-11",
+      "title": "github_lfs_billing",
+      "url": "https://docs.github.com/en/billing/concepts/product-billing/git-lfs"
+    },
+    {
+      "checked_at": "2026-09-11",
+      "title": "github_lfs_calculator",
+      "url": "https://github.com/pricing/calculator?feature=lfs"
+    },
+    {
+      "checked_at": "2026-09-11",
+      "title": "huggingface_storage_limits",
+      "url": "https://huggingface.co/docs/hub/storage-limits"
+    },
+    {
+      "checked_at": "2026-09-11",
+      "title": "aws_s3_pricing",
+      "url": "https://aws.amazon.com/s3/pricing/"
+    },
+    {
+      "checked_at": "2026-09-11",
+      "title": "aws_calculator_assumptions",
+      "url": "https://aws.amazon.com/calculator/calculator-assumptions/"
+    }
+  ],
+  "status": "proposal_only_no_upload"
+}
