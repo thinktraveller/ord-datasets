@@ -257,3 +257,30 @@
 - 状态：`complete`
 - 本步只新增命名 metadata、政策和审阅报告；未复制 payload、未改写源文件、未创建远端资源或上传内容。
 - 下一步：步骤 09——为 19 个 model-ready target 固化语义名称、标签单位、source set 与真实完成状态。
+
+## [2026-09-12 00:03 CST] 步骤 09 完成：定义 model-ready target 语义与状态契约
+
+### 本步目标
+
+为 15 个 package 的 19 个 target 建立唯一语义名称、标签字段/类型/单位、logical/physical 来源集合、included/excluded 计数和不会误报完成状态的双层 status contract。
+
+### 已完成内容
+
+- 新增 `provenance/semantic-target-map.csv`，逐 target 固定 semantic slug、中英文显示名、alias、corpus slug、source physical/source file 集、label contract、行数、manifest/schema hash 与规划目录。
+- 分离 `artifact_status`（文件是否已生成）和 `readiness_status`（能否支撑宣称的 campaign/benchmark 用途）；所有 target 的 artifact 均为 `generated`，但 readiness 保留 active、pending、partial、source caveat、domain blocker 和 adapter blocker 的真实区别。
+- 明确 6 类标签：reaction yield、conversion、relative LC area ratio、HPLC response、LC/UV area percent、signed S-minus-R ee；禁止在目录、catalog、评估或文档中把它们互称产率。
+- 新增 `pipeline/policies/target-status-contract.md` 与两份命名/状态审阅报告；不复制任何 normalized dataset、config、row map 或 audit payload。
+
+### 验证证据
+
+- 15 个 package、19 个 target 全覆盖；slug 大小写唯一且全部符合 kebab-case；每个 logical ID 与步骤 08 corpus slug 一致。
+- 每个 target 均满足 `included_count + excluded_count = source_count = audit_count`，并存在标准化 schema、normalized dataset、YONOD config、row map、exclusions 与 audit 的只读输入证据。
+- readiness 分布：7 `active_generated_pending_release_validation`、6 `generated_pending_campaign_evaluation`、1 `partial_scope_generated`、3 `research_only_benchmark_blocked`、1 `generated_adapter_blocked`、1 `generated_with_source_caveat`。
+- partial 的 Science target、3 个 catechol research target、asymmetric-alkylation adapter blocker 和 NiCOlit source caveat 均保留显著状态，未被写成 accepted/complete。
+- semantic target map、JSON review、Markdown review、status policy 的 SHA-256 分别为 `df3028a5e68fdf1a244868a812291d64651286f9d22ce268262d72bb98f6fb8a`、`3d0223bcb0eda6576b429f9647c2e2cb5bbbab7271dc04026e5a73cea4a71d04`、`05d0037f911b147ad8504e2b4eac8c9fe2e24a58a3f851dbde1d153a3d28e876`、`1d566d8af47c327459ef8a30224d47f697ad33ec3e0d2c1fb12d4a0edcdb567f`。
+
+### 产物状态
+
+- 状态：`complete`
+- 本步只新增 mapping、policy 与报告；未复制 payload、未改写源文件、未创建远端资源或上传内容。
+- 下一步：步骤 10——冻结 catalog、dataset metadata、source links、artifact、row map、transformation 与 release manifest 的 schema 契约和 fixture。

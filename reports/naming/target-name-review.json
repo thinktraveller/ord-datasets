@@ -1,0 +1,54 @@
+{
+  "contract": {
+    "artifact_status": "Whether target files exist and were generated.",
+    "label_rule": "Yield, conversion, relative LC area ratio, HPLC response, LC/UV area percent and signed ee remain distinct types and units.",
+    "readiness_status": "Whether target semantics support the claimed campaign or benchmark use; it never upgrades partial or blocked packages."
+  },
+  "counts": {
+    "artifact_status": {
+      "generated": 19
+    },
+    "label_type": {
+      "conversion_percent": 3,
+      "hplc_response_percent": 3,
+      "lc_uv_area_percent": 1,
+      "reaction_yield_percent": 10,
+      "relative_lc_area_ratio": 1,
+      "signed_enantiomeric_excess_s_minus_r_percent": 1
+    },
+    "packages": 15,
+    "readiness_status": {
+      "active_generated_pending_release_validation": 7,
+      "generated_adapter_blocked": 1,
+      "generated_pending_campaign_evaluation": 6,
+      "generated_with_source_caveat": 1,
+      "partial_scope_generated": 1,
+      "research_only_benchmark_blocked": 3
+    },
+    "target_slug_collisions": 0,
+    "targets": 19
+  },
+  "inputs": {
+    "corpus_semantic_map_sha256": "72cc994b7f7c3f79c9647894250527258d0c424f2e769af80b083815ecd233f6",
+    "package_manifest_sha256_by_logical_id": {
+      "lit_10_1038_s41586_021_03213_y": "57a823ea69d5c90c858784fc9ddd78196a4bdc3a31d473c23fd04b00e164d6a7",
+      "lit_10_1038_s44160_023_00351_1": "6e1e6e3d405f8cc2fcdfdf3fb6842b656599812112117ca978773b2f2d04cd4d",
+      "lit_10_1126_science_1259203": "63a92f8850377b25306728451088f8d36c34e263154e81fddb59e30ecbafd20c",
+      "physical_1ec2807f02fa4beda27d2a81b86eb843": "b8a006df4168bdcc4670eb1ef95cb3583fca5a615317e8c72d24db3027a6a195",
+      "physical_46ff9a32d9e04016b9380b1b1ef949c3": "e9224b2a9a913c7c2fd6e2e9448a39168821be61ec84c64a90b91a6da61c2651",
+      "physical_5c9a10329a8a48968d18879a48bb8ab2": "8c19e9d72a464467944af03f76ec4f09aba7b601665cb64a747818186bc5d69a",
+      "physical_68cb8b4b2b384e3d85b5b1efae58b203": "8c05ef3fa4ca83ad25f9176d264b3a6cbb2c88cdcceed7a257fb10bace703e14",
+      "physical_805ad863feef48579d95d86a728035f4": "89e856774fa3bf42a002cbcb17a0ac66de2d68e19ac8759eb695616a3af486cf",
+      "physical_99c23cf435dc42f1af884053bc8b11c7": "ba577877b48cd9f81d9e36afa52049696e6d440ac1abd86f0353c6cf6083a1fd",
+      "physical_9b8aa9a7835143ef8ce3f70abfab7545": "25d08a624efee111cbaa6c16e3bf209d97a3adcb1a5c8490eb0d9c4712ed9e2b",
+      "physical_ac78456835404910b3a4c840248b6ac9": "67ddd371ee9876c0d145660cfe845459120ffb7136f97d1c9e5a030e722c11a6",
+      "physical_b440f8c90b6343189093770060fc4098": "789864750fccc21b2d01d268494ba7418c83646d5a4e18391f13834eba1ab387",
+      "physical_c5b00523487a4211a194160edf45e9ab": "72507946c1b33266cf264fc69ea98c0f778d7902842908d5aae0e4ffd1ccebce",
+      "physical_d92976309c3a48a3a64a4cf5e7048086": "f759d37f438a9365779887fe42d37dd518976cef21a048308c1064e893e8b627",
+      "upstream_chemrxiv_64c7e2e1658ec5f7e5808425": "420195ba16c682c5490f5fd8aafcc38026b20263a350c0283c04a0e72715bb32"
+    },
+    "target_manifest_count": 19
+  },
+  "schema_version": "1.0.0",
+  "status": "target_contracts_frozen"
+}
