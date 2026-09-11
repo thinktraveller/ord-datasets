@@ -1,0 +1,16 @@
+{
+  "schema_family": "ord-datasets-release-contracts",
+  "schema_family_version": "1.0.0",
+  "status": "frozen_for_pre_data_movement",
+  "policy_path": "pipeline/policies/schema-versioning-policy.md",
+  "contracts": [
+    {"name": "catalog record", "file": "catalog-record.schema.json", "format": "json"},
+    {"name": "per-dataset metadata", "file": "dataset-metadata.schema.json", "format": "json"},
+    {"name": "immutable source links", "file": "source-links.schema.json", "format": "json"},
+    {"name": "artifact inventory record", "file": "artifact-record.schema.json", "format": "json"},
+    {"name": "model-ready row-map record", "file": "row-map-record.schema.json", "format": "json"},
+    {"name": "transformation record", "file": "transformation-record.schema.json", "format": "json"},
+    {"name": "release manifest", "file": "release-manifest.schema.json", "format": "json"},
+    {"name": "CSV headers and scalar encodings", "file": "csv-contracts.json", "format": "csv-sidecar"}
+  ]
+}

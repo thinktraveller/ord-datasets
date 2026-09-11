@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-reaction-database.github.io/ord-datasets/schemas/1.0.0/source-links.schema.json",
+  "title": "ord-datasets immutable source links",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "logical_dataset_id", "source_manifest_path", "links"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "logical_dataset_id": {"type": "string", "pattern": "^(?:lit|physical|upstream)_[a-z0-9_]+$"},
+    "source_manifest_path": {"const": "provenance/source-files.initial.csv"},
+    "links": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/link"}}
+  },
+  "$defs": {
+    "link": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["physical_dataset_id", "source_file", "upstream_revision", "source_file_url", "source_sha256", "git_lfs_oid", "size_bytes", "reaction_count", "data_license_id", "verification_status"],
+      "properties": {
+        "physical_dataset_id": {"type": "string", "pattern": "^ord_dataset-[0-9a-f]{32}$"},
+        "source_file": {"type": "string", "pattern": "^data/[0-9a-f]{2}/ord_dataset-[0-9a-f]{32}\\.parquet$"},
+        "upstream_revision": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "source_file_url": {"type": "string", "pattern": "^https://github\\.com/open-reaction-database/ord-data/blob/[0-9a-f]{40}/data/[0-9a-f]{2}/ord_dataset-[0-9a-f]{32}\\.parquet$"},
+        "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "git_lfs_oid": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "size_bytes": {"type": "integer", "minimum": 1},
+        "reaction_count": {"type": "integer", "minimum": 0},
+        "data_license_id": {"const": "CC-BY-SA-4.0"},
+        "verification_status": {"enum": ["verified", "reverified", "pending_reverification"]}
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "encoding": "UTF-8",
+  "line_ending": "LF",
+  "null_encoding": "empty cell only when nullable is true",
+  "contracts": {
+    "corpus_reactions": {
+      "path_pattern": "datasets/corpus/<dataset-slug>/reactions.csv",
+      "header": ["physical_dataset_id", "source_file", "reaction_id", "row_index", "reaction_json"],
+      "columns": {
+        "physical_dataset_id": {"type": "string", "pattern": "^ord_dataset-[0-9a-f]{32}$", "nullable": false},
+        "source_file": {"type": "string", "pattern": "^data/[0-9a-f]{2}/ord_dataset-[0-9a-f]{32}\\.parquet$", "nullable": false},
+        "reaction_id": {"type": "string", "min_length": 1, "nullable": false},
+        "row_index": {"type": "integer", "minimum": 0, "nullable": false},
+        "reaction_json": {"type": "json-object", "nullable": false, "sensitive_data_rule": "sanitized_derivative_only"}
+      },
+      "unique_key": ["physical_dataset_id", "source_file", "reaction_id", "row_index"]
+    },
+    "model_ready_row_map": {
+      "path_pattern": "datasets/model-ready/<target-slug>/row-map.csv",
+      "header": ["csv_row_number", "reaction_key", "physical_dataset_id", "source_row_index", "label_decision_id"],
+      "columns": {
+        "csv_row_number": {"type": "integer", "minimum": 1, "nullable": false},
+        "reaction_key": {"type": "string", "min_length": 1, "nullable": false},
+        "physical_dataset_id": {"type": "string", "pattern": "^ord_dataset-[0-9a-f]{32}$", "nullable": false},
+        "source_row_index": {"type": "integer", "minimum": 0, "nullable": false},
+        "label_decision_id": {"type": "string", "min_length": 1, "nullable": false}
+      },
+      "unique_key": ["csv_row_number"],
+      "foreign_keys": ["reaction_key -> corpus reaction key", "label_decision_id -> audit.jsonl decision"]
+    },
+    "model_ready_exclusions": {
+      "path_pattern": "datasets/model-ready/<target-slug>/exclusions.csv",
+      "header": ["reaction_key", "physical_dataset_id", "source_row_index", "label_decision_id", "exclusion_reason"],
+      "columns": {
+        "reaction_key": {"type": "string", "min_length": 1, "nullable": false},
+        "physical_dataset_id": {"type": "string", "pattern": "^ord_dataset-[0-9a-f]{32}$", "nullable": false},
+        "source_row_index": {"type": "integer", "minimum": 0, "nullable": false},
+        "label_decision_id": {"type": "string", "min_length": 1, "nullable": false},
+        "exclusion_reason": {"type": "string", "min_length": 1, "nullable": false}
+      },
+      "unique_key": ["reaction_key", "label_decision_id"]
+    },
+    "lineage_edges": {
+      "path_pattern": "provenance/lineage-edges.csv",
+      "header": ["edge_id", "from_artifact_id", "to_artifact_id", "transformation_id", "relationship", "status"],
+      "columns": {
+        "edge_id": {"type": "string", "pattern": "^edge-[a-z0-9][a-z0-9-]*$", "nullable": false},
+        "from_artifact_id": {"type": "string", "min_length": 1, "nullable": false},
+        "to_artifact_id": {"type": "string", "min_length": 1, "nullable": false},
+        "transformation_id": {"type": "string", "pattern": "^transform-[a-z0-9][a-z0-9-]*$", "nullable": false},
+        "relationship": {"type": "enum", "values": ["derived_from", "filters", "projects", "documents", "supersedes"], "nullable": false},
+        "status": {"type": "enum", "values": ["complete", "blocked", "failed"], "nullable": false}
+      },
+      "unique_key": ["edge_id"]
+    }
+  }
+}

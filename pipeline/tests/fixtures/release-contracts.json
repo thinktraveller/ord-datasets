@@ -1,0 +1,276 @@
+{
+  "valid": {
+    "catalog-record.schema.json": [
+      {
+        "schema_version": "1.0.0",
+        "record_type": "corpus",
+        "dataset_slug": "shields-bayesian-arylation",
+        "display_name_en": "Shields Bayesian Arylation Optimization",
+        "display_name_zh": "Shields 贝叶斯芳基化优化",
+        "logical_dataset_id": "lit_10_1038_s41586_021_03213_y",
+        "physical_dataset_ids": ["ord_dataset-0c75d67751634f0594b24b9f498b77c2", "ord_dataset-d26118acda314269becc35db5c22dc59"],
+        "physical_source_files": ["data/0c/ord_dataset-0c75d67751634f0594b24b9f498b77c2.parquet", "data/d2/ord_dataset-d26118acda314269becc35db5c22dc59.parquet"],
+        "target_id": null,
+        "label_type": null,
+        "label_unit": null,
+        "readiness_status": "complete_corpus_pending_release_validation",
+        "artifact_status": "planned",
+        "license_id": "CC-BY-SA-4.0",
+        "row_count": 1984,
+        "content_sha256": null,
+        "release_path": "datasets/corpus/shields-bayesian-arylation",
+        "metadata_path": "datasets/corpus/shields-bayesian-arylation/metadata.json",
+        "source_links_path": "datasets/corpus/shields-bayesian-arylation/source-links.json"
+      },
+      {
+        "schema_version": "1.0.0",
+        "record_type": "model-ready",
+        "dataset_slug": "shields-arylation-yield-percent",
+        "display_name_en": "Shields Arylation Yield (%)",
+        "display_name_zh": "Shields 芳基化产率（%）",
+        "logical_dataset_id": "lit_10_1038_s41586_021_03213_y",
+        "physical_dataset_ids": ["ord_dataset-0c75d67751634f0594b24b9f498b77c2", "ord_dataset-d26118acda314269becc35db5c22dc59"],
+        "physical_source_files": ["data/0c/ord_dataset-0c75d67751634f0594b24b9f498b77c2.parquet", "data/d2/ord_dataset-d26118acda314269becc35db5c22dc59.parquet"],
+        "target_id": "shields_yield_percent",
+        "label_type": "reaction_yield_percent",
+        "label_unit": "percent yield as defined by the source measurement",
+        "readiness_status": "active_generated_pending_release_validation",
+        "artifact_status": "planned",
+        "license_id": "CC-BY-SA-4.0",
+        "row_count": 1984,
+        "content_sha256": null,
+        "release_path": "datasets/model-ready/shields-arylation-yield-percent",
+        "metadata_path": "datasets/model-ready/shields-arylation-yield-percent/metadata.json",
+        "source_links_path": "datasets/model-ready/shields-arylation-yield-percent/source-links.json"
+      }
+    ],
+    "dataset-metadata.schema.json": [
+      {
+        "schema_version": "1.0.0",
+        "dataset_kind": "corpus",
+        "dataset_slug": "shields-bayesian-arylation",
+        "display_name_en": "Shields Bayesian Arylation Optimization",
+        "display_name_zh": "Shields 贝叶斯芳基化优化",
+        "logical_dataset_id": "lit_10_1038_s41586_021_03213_y",
+        "physical_dataset_ids": ["ord_dataset-0c75d67751634f0594b24b9f498b77c2", "ord_dataset-d26118acda314269becc35db5c22dc59"],
+        "source_links_path": "datasets/corpus/shields-bayesian-arylation/source-links.json",
+        "license_id": "CC-BY-SA-4.0",
+        "artifact_status": "planned",
+        "readiness_status": "complete_corpus_pending_release_validation",
+        "corpus_row_count": 1984,
+        "target_id": null,
+        "label": null,
+        "included_count": null,
+        "excluded_count": null,
+        "content_artifacts": [{"role": "reactions", "path": "datasets/corpus/shields-bayesian-arylation/reactions.csv", "sha256": null, "size_bytes": 0}],
+        "input_provenance": {"ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066", "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7", "semantic_name_policy_version": "semantic-names-v1", "provenance_schema_version": "1.0.0", "pipeline_commit": "29c475dfb64d62effc808ae112aba3afa95731aa"}
+      },
+      {
+        "schema_version": "1.0.0",
+        "dataset_kind": "model-ready",
+        "dataset_slug": "shields-arylation-yield-percent",
+        "display_name_en": "Shields Arylation Yield (%)",
+        "display_name_zh": "Shields 芳基化产率（%）",
+        "logical_dataset_id": "lit_10_1038_s41586_021_03213_y",
+        "physical_dataset_ids": ["ord_dataset-0c75d67751634f0594b24b9f498b77c2", "ord_dataset-d26118acda314269becc35db5c22dc59"],
+        "source_links_path": "datasets/model-ready/shields-arylation-yield-percent/source-links.json",
+        "license_id": "CC-BY-SA-4.0",
+        "artifact_status": "planned",
+        "readiness_status": "active_generated_pending_release_validation",
+        "corpus_row_count": 1984,
+        "target_id": "shields_yield_percent",
+        "label": {"column": "yield_percent", "type": "reaction_yield_percent", "unit": "percent yield as defined by the source measurement", "policy": "unique_structured_scalar_no_aggregation"},
+        "included_count": 1984,
+        "excluded_count": 0,
+        "content_artifacts": [{"role": "dataset", "path": "datasets/model-ready/shields-arylation-yield-percent/dataset.csv", "sha256": null, "size_bytes": 0}, {"role": "row-map", "path": "datasets/model-ready/shields-arylation-yield-percent/row-map.csv", "sha256": null, "size_bytes": 0}],
+        "input_provenance": {"ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066", "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7", "semantic_name_policy_version": "semantic-target-names-v1", "provenance_schema_version": "1.0.0", "pipeline_commit": "29c475dfb64d62effc808ae112aba3afa95731aa"}
+      }
+    ],
+    "source-links.schema.json": [
+      {
+        "schema_version": "1.0.0",
+        "logical_dataset_id": "lit_10_1038_s41586_021_03213_y",
+        "source_manifest_path": "provenance/source-files.initial.csv",
+        "links": [
+          {
+            "physical_dataset_id": "ord_dataset-0c75d67751634f0594b24b9f498b77c2",
+            "source_file": "data/0c/ord_dataset-0c75d67751634f0594b24b9f498b77c2.parquet",
+            "upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+            "source_file_url": "https://github.com/open-reaction-database/ord-data/blob/83f971f586f6ad18f358ae4ae99d045e94ed2066/data/0c/ord_dataset-0c75d67751634f0594b24b9f498b77c2.parquet",
+            "source_sha256": "00fe35e881dc9a02feaa9186eaf69a221a44f1a281ea1b01f593953ecd65ede6",
+            "git_lfs_oid": "00fe35e881dc9a02feaa9186eaf69a221a44f1a281ea1b01f593953ecd65ede6",
+            "size_bytes": 29842,
+            "reaction_count": 256,
+            "data_license_id": "CC-BY-SA-4.0",
+            "verification_status": "verified"
+          },
+          {
+            "physical_dataset_id": "ord_dataset-d26118acda314269becc35db5c22dc59",
+            "source_file": "data/d2/ord_dataset-d26118acda314269becc35db5c22dc59.parquet",
+            "upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+            "source_file_url": "https://github.com/open-reaction-database/ord-data/blob/83f971f586f6ad18f358ae4ae99d045e94ed2066/data/d2/ord_dataset-d26118acda314269becc35db5c22dc59.parquet",
+            "source_sha256": "0a600968a24eff0a440e30685b2cb7b62030693605574105eb57b7f07329700b",
+            "git_lfs_oid": "0a600968a24eff0a440e30685b2cb7b62030693605574105eb57b7f07329700b",
+            "size_bytes": 130893,
+            "reaction_count": 1728,
+            "data_license_id": "CC-BY-SA-4.0",
+            "verification_status": "verified"
+          }
+        ]
+      }
+    ],
+    "artifact-record.schema.json": [
+      {
+        "schema_version": "1.0.0",
+        "artifact_id": "release-artifact-corpus-shields",
+        "artifact_path": "datasets/corpus/shields-bayesian-arylation/reactions.csv",
+        "object_type": "file",
+        "size_bytes": 0,
+        "sha256": null,
+        "artifact_class": "corpus",
+        "disposition": "staged",
+        "license_id": "CC-BY-SA-4.0",
+        "redistribution_status": "pending",
+        "origin": "logical-corpus-assembly",
+        "source_artifact_ids": ["dataset-artifact-source-0c75d677"]
+      }
+    ],
+    "row-map-record.schema.json": [
+      {
+        "schema_version": "1.0.0",
+        "decision": "included",
+        "target_id": "shields_yield_percent",
+        "reaction_key": "ord_dataset-0c75d67751634f0594b24b9f498b77c2:0",
+        "physical_dataset_id": "ord_dataset-0c75d67751634f0594b24b9f498b77c2",
+        "source_file": "data/0c/ord_dataset-0c75d67751634f0594b24b9f498b77c2.parquet",
+        "source_row_index": 0,
+        "label_decision_id": "label-decision-000000",
+        "csv_row_number": 1,
+        "reason": "label is a unique structured scalar"
+      },
+      {
+        "schema_version": "1.0.0",
+        "decision": "excluded",
+        "target_id": "shields_yield_percent",
+        "reaction_key": "ord_dataset-0c75d67751634f0594b24b9f498b77c2:1",
+        "physical_dataset_id": "ord_dataset-0c75d67751634f0594b24b9f498b77c2",
+        "source_file": "data/0c/ord_dataset-0c75d67751634f0594b24b9f498b77c2.parquet",
+        "source_row_index": 1,
+        "label_decision_id": "label-decision-000001",
+        "csv_row_number": null,
+        "reason": "example exclusion requires a recorded decision"
+      }
+    ],
+    "transformation-record.schema.json": [
+      {
+        "schema_version": "1.0.0",
+        "transformation_id": "transform-sanitize-physical-csv",
+        "step_id": "step-11",
+        "tool": "sanitize_reaction_json_csv.py",
+        "pipeline_commit": "29c475dfb64d62effc808ae112aba3afa95731aa",
+        "command": "python pipeline/scripts/sanitize_reaction_json_csv.py INPUT OUTPUT --audit-json AUDIT",
+        "config_sha256": "abcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcd",
+        "input_artifact_ids": ["dataset-artifact-physical-csv"],
+        "output_artifact_ids": ["release-artifact-sanitized-corpus"],
+        "started_at": "2026-09-11T16:00:00Z",
+        "ended_at": "2026-09-11T16:00:01Z",
+        "status": "complete",
+        "error_code": null
+      }
+    ],
+    "release-manifest.schema.json": [
+      {
+        "schema_version": "1.0.0",
+        "release_id": "v0.1.0-rc.1",
+        "release_status": "release-candidate",
+        "project_commit": "29c475dfb64d62effc808ae112aba3afa95731aa",
+        "ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+        "source_manifest_path": "provenance/source-files.initial.csv",
+        "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7",
+        "contract_versions": {"catalog": "1.0.0", "metadata": "1.0.0", "source_links": "1.0.0", "artifact_inventory": "1.0.0", "row_map": "1.0.0", "transformation": "1.0.0", "release_manifest": "1.0.0", "csv_contracts": "1.0.0"},
+        "counts": {"physical_sources": 53, "logical_corpora": 41, "model_ready_targets": 19, "release_files": 0, "total_bytes": 0},
+        "license": {"data_license_id": "CC-BY-SA-4.0", "code_license_id": "Apache-2.0", "notice_path": "NOTICE"},
+        "artifact_inventory_path": "provenance/artifact-inventory.csv",
+        "transformations_path": "provenance/transformations.jsonl",
+        "lineage_edges_path": "provenance/lineage-edges.csv",
+        "root_sha256": "fedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321"
+      }
+    ]
+  },
+  "invalid": {
+    "catalog-record.schema.json": [
+      {
+        "schema_version": "1.0.0",
+        "record_type": "model-ready",
+        "dataset_slug": "invalid-target-without-label",
+        "display_name_en": "Invalid target",
+        "logical_dataset_id": "lit_10_1038_s41586_021_03213_y",
+        "physical_dataset_ids": ["ord_dataset-0c75d67751634f0594b24b9f498b77c2"],
+        "physical_source_files": ["data/0c/ord_dataset-0c75d67751634f0594b24b9f498b77c2.parquet"],
+        "target_id": "invalid_target",
+        "label_type": null,
+        "label_unit": null,
+        "readiness_status": "release_blocked",
+        "artifact_status": "blocked",
+        "license_id": "CC-BY-SA-4.0",
+        "row_count": 0,
+        "content_sha256": null,
+        "release_path": "datasets/model-ready/invalid-target-without-label",
+        "metadata_path": "datasets/model-ready/invalid-target-without-label/metadata.json",
+        "source_links_path": "datasets/model-ready/invalid-target-without-label/source-links.json"
+      }
+    ],
+    "source-links.schema.json": [
+      {
+        "schema_version": "1.0.0",
+        "logical_dataset_id": "lit_10_1038_s41586_021_03213_y",
+        "source_manifest_path": "provenance/source-files.initial.csv",
+        "links": [
+          {
+            "physical_dataset_id": "ord_dataset-0c75d67751634f0594b24b9f498b77c2",
+            "source_file": "data/0c/ord_dataset-0c75d67751634f0594b24b9f498b77c2.parquet",
+            "upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+            "source_file_url": "https://github.com/open-reaction-database/ord-data/blob/main/data/0c/ord_dataset-0c75d67751634f0594b24b9f498b77c2.parquet",
+            "source_sha256": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+            "git_lfs_oid": "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+            "size_bytes": 274285,
+            "reaction_count": 1984,
+            "data_license_id": "CC-BY-SA-4.0",
+            "verification_status": "verified"
+          }
+        ]
+      }
+    ],
+    "row-map-record.schema.json": [
+      {
+        "schema_version": "1.0.0",
+        "decision": "excluded",
+        "target_id": "shields_yield_percent",
+        "reaction_key": "ord_dataset-0c75d67751634f0594b24b9f498b77c2:2",
+        "physical_dataset_id": "ord_dataset-0c75d67751634f0594b24b9f498b77c2",
+        "source_file": "data/0c/ord_dataset-0c75d67751634f0594b24b9f498b77c2.parquet",
+        "source_row_index": 2,
+        "label_decision_id": "label-decision-000002",
+        "csv_row_number": 3,
+        "reason": "excluded rows must not claim a target CSV row"
+      }
+    ],
+    "transformation-record.schema.json": [
+      {
+        "schema_version": "1.0.0",
+        "transformation_id": "transform-invalid-local-path",
+        "step_id": "step-11",
+        "tool": "example",
+        "pipeline_commit": "29c475dfb64d62effc808ae112aba3afa95731aa",
+        "command": "python /home/example/build.py",
+        "config_sha256": "abcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcd",
+        "input_artifact_ids": ["dataset-artifact-physical-csv"],
+        "output_artifact_ids": ["release-artifact-sanitized-corpus"],
+        "started_at": "2026-09-11T16:00:00Z",
+        "ended_at": "2026-09-11T16:00:01Z",
+        "status": "complete",
+        "error_code": null
+      }
+    ]
+  }
+}

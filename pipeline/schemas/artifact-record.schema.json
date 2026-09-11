@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-reaction-database.github.io/ord-datasets/schemas/1.0.0/artifact-record.schema.json",
+  "title": "ord-datasets artifact inventory record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "artifact_id", "artifact_path", "object_type", "size_bytes", "sha256", "artifact_class", "disposition", "license_id", "redistribution_status", "origin", "source_artifact_ids"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "artifact_id": {"type": "string", "pattern": "^(?:dataset-artifact|release-artifact)-[a-z0-9-]+$"},
+    "artifact_path": {"type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$"},
+    "object_type": {"enum": ["file", "directory_metadata", "virtual_object"]},
+    "size_bytes": {"type": "integer", "minimum": 0},
+    "sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "artifact_class": {"enum": ["source", "corpus", "model-ready", "intermediate", "pipeline", "provenance", "report", "directory-entry"]},
+    "disposition": {"enum": ["promoted", "staged", "quarantined", "superseded", "excluded", "manifest_only"]},
+    "license_id": {"enum": ["CC-BY-SA-4.0", "Apache-2.0", "NOASSERTION"]},
+    "redistribution_status": {"enum": ["allow_after_gates", "deny", "not_applicable", "pending"]},
+    "origin": {"type": "string", "minLength": 1},
+    "source_artifact_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+  },
+  "allOf": [
+    {"if": {"properties": {"object_type": {"const": "directory_metadata"}}}, "then": {"properties": {"sha256": {"const": null}, "size_bytes": {"const": 0}, "disposition": {"const": "manifest_only"}}}}
+  ]
+}

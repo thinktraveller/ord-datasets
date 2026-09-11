@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-reaction-database.github.io/ord-datasets/schemas/1.0.0/dataset-metadata.schema.json",
+  "title": "ord-datasets per-dataset metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "dataset_kind", "dataset_slug", "display_name_en", "logical_dataset_id", "physical_dataset_ids", "source_links_path", "license_id", "artifact_status", "readiness_status", "corpus_row_count", "target_id", "label", "included_count", "excluded_count", "content_artifacts", "input_provenance"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "dataset_kind": {"enum": ["corpus", "model-ready"]},
+    "dataset_slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "display_name_en": {"type": "string", "minLength": 1},
+    "display_name_zh": {"type": ["string", "null"], "minLength": 1},
+    "logical_dataset_id": {"type": "string", "pattern": "^(?:lit|physical|upstream)_[a-z0-9_]+$"},
+    "physical_dataset_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^ord_dataset-[0-9a-f]{32}$"}},
+    "source_links_path": {"type": "string", "pattern": "^datasets/(?:corpus|model-ready)/[a-z0-9]+(?:-[a-z0-9]+)*/source-links\\.json$"},
+    "license_id": {"const": "CC-BY-SA-4.0"},
+    "artifact_status": {"enum": ["planned", "staged", "validated", "released", "blocked"]},
+    "readiness_status": {"enum": ["complete_corpus_pending_release_validation", "active_generated_pending_release_validation", "generated_pending_campaign_evaluation", "partial_scope_generated", "research_only_benchmark_blocked", "generated_adapter_blocked", "generated_with_source_caveat", "release_blocked", "released"]},
+    "corpus_row_count": {"type": "integer", "minimum": 0},
+    "target_id": {"type": ["string", "null"], "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"},
+    "label": {"type": ["object", "null"], "additionalProperties": false, "required": ["column", "type", "unit", "policy"], "properties": {"column": {"type": "string", "minLength": 1}, "type": {"enum": ["reaction_yield_percent", "conversion_percent", "relative_lc_area_ratio", "hplc_response_percent", "lc_uv_area_percent", "signed_enantiomeric_excess_s_minus_r_percent"]}, "unit": {"type": "string", "minLength": 1}, "policy": {"type": "string", "minLength": 1}}},
+    "included_count": {"type": ["integer", "null"], "minimum": 0},
+    "excluded_count": {"type": ["integer", "null"], "minimum": 0},
+    "content_artifacts": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["role", "path", "sha256", "size_bytes"], "properties": {"role": {"enum": ["reactions", "dataset", "schema", "checksums", "yonod-config", "exclusions", "row-map", "audit"]}, "path": {"type": "string", "pattern": "^datasets/(?:corpus|model-ready)/"}, "sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}, "size_bytes": {"type": "integer", "minimum": 0}}}},
+    "input_provenance": {"type": "object", "additionalProperties": false, "required": ["ord_upstream_revision", "source_manifest_sha256", "semantic_name_policy_version", "provenance_schema_version", "pipeline_commit"], "properties": {"ord_upstream_revision": {"type": "string", "pattern": "^[0-9a-f]{40}$"}, "source_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "semantic_name_policy_version": {"type": "string", "minLength": 1}, "provenance_schema_version": {"const": "1.0.0"}, "pipeline_commit": {"type": ["string", "null"], "pattern": "^[0-9a-f]{40}$"}}}
+  },
+  "allOf": [
+    {"if": {"properties": {"dataset_kind": {"const": "corpus"}}}, "then": {"properties": {"target_id": {"const": null}, "label": {"const": null}, "included_count": {"const": null}, "excluded_count": {"const": null}, "source_links_path": {"pattern": "^datasets/corpus/"}}}},
+    {"if": {"properties": {"dataset_kind": {"const": "model-ready"}}}, "then": {"properties": {"target_id": {"type": "string", "minLength": 1}, "label": {"type": "object"}, "included_count": {"type": "integer"}, "excluded_count": {"type": "integer"}, "source_links_path": {"pattern": "^datasets/model-ready/"}}}}
+  ]
+}

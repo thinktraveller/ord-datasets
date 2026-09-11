@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-reaction-database.github.io/ord-datasets/schemas/1.0.0/row-map-record.schema.json",
+  "title": "ord-datasets model-ready lineage record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "decision", "target_id", "reaction_key", "physical_dataset_id", "source_file", "source_row_index", "label_decision_id", "csv_row_number", "reason"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "decision": {"enum": ["included", "excluded"]},
+    "target_id": {"type": "string", "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"},
+    "reaction_key": {"type": "string", "minLength": 1},
+    "physical_dataset_id": {"type": "string", "pattern": "^ord_dataset-[0-9a-f]{32}$"},
+    "source_file": {"type": "string", "pattern": "^data/[0-9a-f]{2}/ord_dataset-[0-9a-f]{32}\\.parquet$"},
+    "source_row_index": {"type": "integer", "minimum": 0},
+    "label_decision_id": {"type": "string", "minLength": 1},
+    "csv_row_number": {"type": ["integer", "null"], "minimum": 1},
+    "reason": {"type": "string", "minLength": 1}
+  },
+  "allOf": [
+    {"if": {"properties": {"decision": {"const": "included"}}}, "then": {"properties": {"csv_row_number": {"type": "integer", "minimum": 1}}}},
+    {"if": {"properties": {"decision": {"const": "excluded"}}}, "then": {"properties": {"csv_row_number": {"const": null}}}}
+  ]
+}

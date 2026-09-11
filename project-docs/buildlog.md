@@ -284,3 +284,33 @@
 - 状态：`complete`
 - 本步只新增 mapping、policy 与报告；未复制 payload、未改写源文件、未创建远端资源或上传内容。
 - 下一步：步骤 10——冻结 catalog、dataset metadata、source links、artifact、row map、transformation 与 release manifest 的 schema 契约和 fixture。
+
+## [2026-09-12 00:13 CST] 步骤 10 完成：冻结发布元数据契约
+
+### 本步目标
+
+为 catalog、per-dataset metadata、不可变 source links、artifact inventory、target row map、transformation graph 和 release manifest 固定可机器验证的字段、类型、nullable、枚举、路径与版本规则；在数据搬运前阻止无版本的契约漂移。
+
+### 已完成内容
+
+- 新增 `pipeline/schemas/schema-index.json`，冻结 `ord-datasets-release-contracts` family `1.0.0`：7 个 JSON Schema 加 1 个 CSV sidecar contract；`field-dictionary.md` 解释所有发布/溯源字段与三层关系。
+- Catalog 与 metadata schema 分别区分 `corpus` 和 `model-ready`：前者强制 target/label 为 null，后者强制 target ID、label type/unit 与 model-ready 路径；两者都保留 logical ID、一个或多个 physical ID、source links、许可、hash 和发布状态。
+- Source-link schema 只接受 Open Reaction Database GitHub 的 `data/<prefix>/ord_dataset-*.parquet` URL，且 URL 必须含 40 位 commit；拒绝 branch/tag/`main` 链接。fixture 使用 Shields logical dataset 的两个真实冻结 source 条目，并回读比对 source manifest 中的路径、revision、URL、SHA-256/LFS OID、字节数、Reaction 数和 CC-BY-SA-4.0。
+- Row-map contract 让 included 与 excluded 均保留 physical/source/reaction/label-decision 关系，但只允许 included 行拥有 target CSV 行号；CSV sidecar 同时固定 corpus 的四个 lineage 列及 model-ready row-map/exclusions/lineage-edges 的顺序、类型和键。
+- Transformation contract 固定 step、tool、40 位 pipeline commit、参数化 command、config/input/output hash、时间、状态和错误码；release manifest 固定 53 physical、41 corpus、19 target 的预期计数、双许可证、各契约版本、source manifest 和 hash-tree root。
+- 新增 semver 与不可变升级 policy：破坏性变更升 MAJOR；兼容扩展升 MINOR；纯说明升 PATCH；进入数据搬运后不允许原地覆盖已用 schema。
+- 新增 `validate_release_contracts.py` 和 pytest-independent unittest fixture。正例同时表达 multi-physical → logical → target；反例证明 target 缺标签、`/blob/main/`、excluded 行伪造 target 行号、以及本机绝对路径 command 均会被拒绝。
+
+### 验证证据
+
+- `python3 pipeline/scripts/validate_release_contracts.py` 输出：8 个 indexed contracts、10 个正例和 4 个反例；全部符合预期。
+- 验证器使用 Draft 2020-12 对所有 7 个 JSON Schema 自身做 schema check，并检查 CSV header/column 一致性；source-link 正例与 `provenance/source-files.initial.csv` 的两个真实物理源逐字段一致。
+- `python3 -m unittest discover -s pipeline/tests -v`：2/2 通过（release contract 与既有结构化脱敏回归测试）。
+- `git diff --check` 通过；新增正式契约/fixture/验证代码未包含工作站绝对路径或 `file://` URI。反例中的 `/home/example` 仅作为故意拒绝的字符串，未指向实际工作站。
+- 关键 SHA-256：schema index `2b6d529bf1a346f3a9593f4f2e54d243975d2d601344752d28339e6a9c4e1acf`；catalog schema `e6588bdfde1cc7bae0286863a55b5c0b9e19b463e07f0f44a730d9614a8a6b63`；metadata schema `0128b6b7744ff222c295aa13e084f8aed1e5f89dbe93b0e230da517014f24328`；source-links schema `bbaea53bd505c68a2857f9a07fe0d742e98de737dd7167be7a221fbf8ef80712`；CSV contract `13f97763853a1cf93f273c74490e604491618ca5f8175c1564a8fb75f9847a0b`；fixture `b1cc1085cad7c1d0cf846afb07eea60ab935223aab0d2539210a5e5dc33c554b`；validator `6105339eccd6584cbc332e3952ec37c16112ff27e120800cab10416ffbe282d2`。
+
+### 产物状态
+
+- 状态：`complete`
+- 本步只新增 schema、policy、字段字典、fixture、验证器与测试；未复制任何数据 payload、未修改 `../ord-data/` 或 `../dataset/`，未创建远端或上传内容。
+- 阶段 B/M2 契约部分完成；下一步为步骤 11：在 staging 中以结构化脱敏脚本构建 41 个 corpus 包，并在复制后复扫 94 个待脱敏 CSV 衍生版本。
