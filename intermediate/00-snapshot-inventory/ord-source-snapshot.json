@@ -1,0 +1,19 @@
+{
+  "content_hash_matches_lfs_count": 53,
+  "data_license_id": "CC-BY-SA-4.0",
+  "dataset_count": 53,
+  "direct_download_urls_status": "deferred_to_release_provenance_step",
+  "generated_at": "2026-09-11T14:12:32.515505+00:00",
+  "original_parquet_in_release": false,
+  "reaction_count": 2428291,
+  "schema_version": "ord-source-snapshot-v1",
+  "source_data_worktree_clean": true,
+  "source_files_manifest": "provenance/source-files.initial.csv",
+  "source_files_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7",
+  "source_remote_ref": "origin/main",
+  "source_repo_url": "https://github.com/open-reaction-database/ord-data.git",
+  "source_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+  "source_total_bytes": 1256526213,
+  "source_tree_matches_revision": true,
+  "verification_status": "verified"
+}
