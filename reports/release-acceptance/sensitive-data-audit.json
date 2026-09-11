@@ -1,0 +1,895 @@
+{
+  "findings": [
+    {
+      "artifact_id": "dataset-artifact-4a86b75d45c64cc2094a8438",
+      "category": "synthetic_test_fixture_email",
+      "line_number": null,
+      "old_path": "processing/scripts/process_dataset_test.py",
+      "redacted_fingerprint": "",
+      "resolution": "retained only as test-fixture signal; no address value, context or count is stored",
+      "severity": "informational"
+    },
+    {
+      "artifact_id": "dataset-artifact-e65b525b22f91086741c6856",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/00/ord_dataset-00005539a1e04c809a9a78647bea649c.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-a350390d30caf5bbb7033a40",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/03/ord_dataset-0316886541d9435489859c2ad7edc863.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-c481084bbb1de07ad682fcda",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/0c/ord_dataset-0c75d67751634f0594b24b9f498b77c2.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-0add059bb31f54cf8d855445",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/10/ord_dataset-10b940e7982c4622b1e1ac879394aba6.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-4e29820fd7d9e1d573c76a78",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/11/ord_dataset-1158e351757f315b93cbcbe7bc55f38e.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-575409dd81b73abcb74c1655",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/17/ord_dataset-172039a759a440219a68af62d203b79b.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-cc31b4a3fd840b1f67dedd11",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/1d/ord_dataset-1d3a1a6fb70d46c084602d0688967afc.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-1e91903792593e34d4ad6806",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/1e/ord_dataset-1ec2807f02fa4beda27d2a81b86eb843.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-00268978be2b9bb8bae935b1",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/20/ord_dataset-2038a3c967db4a32a8fbce288437e929.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-546e793b5315b0bd1d531c07",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/2b/ord_dataset-2be11f57f3304e678ea8469baf6dd1bc.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-49cda1a6f6225733d574e67f",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/2b/ord_dataset-2be30f5d8dcd471aa6ad410bdee05902.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-8f139aafd2211851146fcfe1",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/31/ord_dataset-31989f1b2b9d4885b1dd2d9982da4517.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-20587cdc7d35904c515b981a",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/35/ord_dataset-35a5a513f1dd44a3a97c88da99f81a00.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-d3201155a79f4f94dc35d09c",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/3b/ord_dataset-3b5db90e337942ea886b8f5bc5e3aa72.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-811a58445ac38495762ba07a",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/3b/ord_dataset-3b8a2ef300e145468579027f206a3ac8.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-2958d5ad756f7e912a250951",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/46/ord_dataset-46ff9a32d9e04016b9380b1b1ef949c3.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-bdedfdf0f1e971da32cf8043",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/47/ord_dataset-47eaacc46c3a4487bbdf99adb1a15e41.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-c7b9f4c89c52bf21c205728d",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/48/ord_dataset-488402f6ec0d441ca2f7d6fabea7c220.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-2de89d7793409a89930497e4",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/4d/ord_dataset-4d431564f3ef4e9c91d8da5836f4eae6.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-ec6825e7df0c04114c8b94e0",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/52/ord_dataset-52bd3b0ec72c443aab113bcea09bf3f4.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-48ee68625c6389abe20a6256",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/54/ord_dataset-5415f83da68e4797856ddd330dda5c61.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-d11a43ad5c00ea16884eb855",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/54/ord_dataset-5481550056a14935b76e031fb94b88be.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-70dcd7ff10bbfe03bc790e07",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/55/ord_dataset-5540e162c09f4c04905ddc8ba9c931c6.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-d9e6b619c654c10a21b49dab",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/55/ord_dataset-55de08a995554f558c25fc43eac62359.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-086a629fa6714ab88838ab03",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/5c/ord_dataset-5c9a10329a8a48968d18879a48bb8ab2.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-6aa795b9872c92e75411ec54",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/5e/ord_dataset-5e8318f0dda04b398c14f4c3adfeb32c.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-66eda98f978534dfd6eccf2d",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/5e/ord_dataset-5eb7f2689f4a42eba63ad9e37e49a5cd.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-eeb772b8bf0f44598616dd53",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/67/ord_dataset-675eddcaa6674ce3ae61e79bbc1e1c08.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-db66d04e607b3f9dc2e231f8",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/68/ord_dataset-68cb8b4b2b384e3d85b5b1efae58b203.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-196d426edfcd9923d3e4aded",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/6a/ord_dataset-6a0bfcdf53a64c07987822162ae591e2.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-37fd9113a1c107a7aa69fb9e",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/7a/ord_dataset-7acd6ad2bf4d4cff841cad008ab726d5.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-76ba358e7e95a42265dc422f",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/7d/ord_dataset-7d8f5fd922d4497d91cb81489b052746.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-1de4870002c7fedaf859130e",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/80/ord_dataset-805ad863feef48579d95d86a728035f4.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-fe3d2216ecf146c793956053",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/89/ord_dataset-89b083710e2d441aa0040c361d63359f.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-0015ee2aed10009bf4c8a648",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/8d/ord_dataset-8d1e28ec1f6b4ee8ad372e0b5ed7a62e.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-07d06e62fa3930ce8507360f",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-68c8f86acb6d324bba4545b8",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/9b/ord_dataset-9b8aa9a7835143ef8ce3f70abfab7545.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-dbfb3c0edf5169993bd22b84",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/a1/ord_dataset-a12fa15d036d489c971b0b514caeae52.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-20f43b5bc886acb0b8c28a7f",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/ac/ord_dataset-ac78456835404910b3a4c840248b6ac9.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-40f6de5a1e241458911d966e",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/b4/ord_dataset-b440f8c90b6343189093770060fc4098.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-3b734cfd6354ba588f1efe4b",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/bc/ord_dataset-bc349c19b4384756a2aee8aa525b6c2a.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-aeeb6cd5779f74d16c062f01",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/c5/ord_dataset-c5b00523487a4211a194160edf45e9ab.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-9a551212853c4b0f46b61735",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/c7/ord_dataset-c703268ea43a4c7e802c6048b6166b34.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-9b7363a87ce650b2c6423fb0",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/cb/ord_dataset-cbcc4048add7468e850b6ec42549c70d.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-3a411c01069c75658b90517b",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/ce/ord_dataset-ce5045aceb214cfc8bfd0ef3031e2737.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-82b80c9c86e77b4f0f213f3d",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/d2/ord_dataset-d26118acda314269becc35db5c22dc59.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-5e0d10be5f2262ad9d5f0a39",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/d3/ord_dataset-d319c2a22ecf4ce59db1a18ae71d529c.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-5136fe3decb7b91f8bbc81fc",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/d9/ord_dataset-d92976309c3a48a3a64a4cf5e7048086.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-9f952c92db3466c2bdb3c8d8",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/dc/ord_dataset-dc0249930af34d17a3c76881a762aebf.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-e88e16fa560f17708f5c3a53",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/e7/ord_dataset-e7830cd6b11158b43994ccfb5ee9acb3.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-2a8c267f4e076559c33a07a0",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/ee/ord_dataset-eeba974d3c284aed86d1c1d442260a1e.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-e32d42ce5f998d02aad7e545",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/fc/ord_dataset-fc83743b978f4deea7d6856deacbfe53.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-a82d25408927fac270c8b12f",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/csv-data/fe/ord_dataset-feaf1b793c6d408aaec1cac7cc3ceadc.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-b74d4e300cad3ee374637c02",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=lit_10_1038_s41586_021_03213_y/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-94e04656cab5ac607196945e",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=lit_10_1038_s44160_023_00351_1/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-da39679b3c0b3dc65c807b25",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=lit_10_1039_c5sc04751j/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-5a3c029be64021d366a0b94e",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=lit_10_1039_c6re00153j/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-c4d7c2ecfe0cf12fef939c12",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=lit_10_1126_science_1259203/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-a7c35490989ac062ad2f91ec",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=lit_10_26434_chemrxiv_15001213/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-ebaa7fd588f9492d82447906",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_00005539a1e04c809a9a78647bea649c/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-e26e3ba6910d559f570731c9",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_0316886541d9435489859c2ad7edc863/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-ccf1dc928f2eaf8057e78396",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_10b940e7982c4622b1e1ac879394aba6/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-bcb006aee57909d3d35536e5",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_1158e351757f315b93cbcbe7bc55f38e/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-54b9efcfcdca4a850aaa56d8",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_1d3a1a6fb70d46c084602d0688967afc/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-c02e10b301e455fbbdca0e6e",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_1ec2807f02fa4beda27d2a81b86eb843/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-5583f8d141c50cbbf2b0d72c",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_35a5a513f1dd44a3a97c88da99f81a00/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-206923f03240dd1bd8e4d5eb",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_3b5db90e337942ea886b8f5bc5e3aa72/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-139385eb80a2c0f596cca19e",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_46ff9a32d9e04016b9380b1b1ef949c3/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-e8a8fc5105967a1c4d2abb64",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_47eaacc46c3a4487bbdf99adb1a15e41/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-33a5a1dbae3eeeec86304507",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_52bd3b0ec72c443aab113bcea09bf3f4/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-30597f5f3af6e58fe71a90f4",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_5415f83da68e4797856ddd330dda5c61/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-c939996510b8841f7b8f362a",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_5540e162c09f4c04905ddc8ba9c931c6/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-4ede9efbbc0272049f939dc2",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_55de08a995554f558c25fc43eac62359/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-b2074dc4d4813dddc045f70c",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_5c9a10329a8a48968d18879a48bb8ab2/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-ba79062a810e3c4c7b214420",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_5e8318f0dda04b398c14f4c3adfeb32c/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-436705f3d6986ffef3cdc2a9",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_5eb7f2689f4a42eba63ad9e37e49a5cd/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-004ce67ba3f35010ea92bb88",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_68cb8b4b2b384e3d85b5b1efae58b203/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-21df4ce9e66736861b09c04d",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_6a0bfcdf53a64c07987822162ae591e2/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-6f3d6649e1951c442584e234",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_805ad863feef48579d95d86a728035f4/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-adbc5c7c3ffd1743bd0ba3d4",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_89b083710e2d441aa0040c361d63359f/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-f2607cca41b8474ad14cabe5",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_8d1e28ec1f6b4ee8ad372e0b5ed7a62e/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-30b89889993c8906dcf2dbdd",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_99c23cf435dc42f1af884053bc8b11c7/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-1fee124e00eca76d14a36303",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_9b8aa9a7835143ef8ce3f70abfab7545/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-5751416fa53b15943d311fd9",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_a12fa15d036d489c971b0b514caeae52/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-c772981760cc4e82398abcd5",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_ac78456835404910b3a4c840248b6ac9/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-f839836e325784d4cffe2106",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_b440f8c90b6343189093770060fc4098/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-cafedf7bf2af55830d631f20",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_c5b00523487a4211a194160edf45e9ab/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-776c5ce65757224d8376526f",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_ce5045aceb214cfc8bfd0ef3031e2737/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-46e4d9ec1c1d9fae6c4dfe61",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_d92976309c3a48a3a64a4cf5e7048086/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-4fa23778e6ef039d2b6ba0ef",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_eeba974d3c284aed86d1c1d442260a1e/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-114129d06b42de492a37d590",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_fc83743b978f4deea7d6856deacbfe53/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-9cf0da9ac172817a4446b96f",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=physical_feaf1b793c6d408aaec1cac7cc3ceadc/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-4892cca29f33cd9565602dfc",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=upstream_chemrxiv_64c7e2e1658ec5f7e5808425/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    },
+    {
+      "artifact_id": "dataset-artifact-e3cceae3a6a2b22a3a0959d5",
+      "category": "potential_personal_email",
+      "line_number": null,
+      "old_path": "standardized/derived/csv/tables/logical_dataset_id=upstream_rexgen_direct_c8sc04228d/reactions.csv",
+      "redacted_fingerprint": "",
+      "resolution": "deny: possible personal email requires minimization or documented attribution necessity",
+      "severity": "blocking"
+    }
+  ],
+  "non_action": "No source file was edited, no credential value was retained, and no remote release or upload was performed.",
+  "outcome_counts": {
+    "blocking_findings": 94,
+    "categories": {
+      "potential_personal_email": 94,
+      "synthetic_test_fixture_email": 1
+    },
+    "credential_or_hash_drift_findings": 0,
+    "files_blocked": 94,
+    "files_passed": 361,
+    "informational_findings": 1,
+    "raw_files_requiring_structural_email_redaction": 94,
+    "source_files_clean_without_email_signal": 361,
+    "source_hashes_verified": 455
+  },
+  "redaction_contract": {
+    "implementation": "pipeline/scripts/sanitize_reaction_json_csv.py",
+    "policy": "pipeline/policies/sensitive-data-redaction-policy.md",
+    "promotion_rule": "A redacted derivative may advance only after preserving row count, CSV fields, reaction identifiers and source linkage; it must have a transformation audit and a clean repeat scan.",
+    "raw_publication_rule": "Every raw email-bearing CSV remains deny_until_sanitized_derivative_verified.",
+    "value_retention": "No email value, source snippet, local source path or per-value count is written by this audit."
+  },
+  "rules": {
+    "chemical_domain_content": "Chemical reaction records are domain data, not credential or personal-data findings. This gate does not classify reaction chemistry as dangerous operational instructions.",
+    "email_scan": "ripgrep PCRE2 path-only scan; test-script email signals are informational and all other email signals block",
+    "high_confidence_credential_scan": "ripgrep PCRE2 path-only scan for private keys, provider token formats, credential URLs and non-placeholder secret assignments",
+    "redaction": "The scanner emits paths only. The report retains no match value, context, line text, email address, token, or count per file."
+  },
+  "schema_version": "1.0.0",
+  "scope": {
+    "candidate_files": 455,
+    "input": "provenance/license-inventory.csv",
+    "input_sha256": "d45457e89d7e6c44db3e9367b0f4a48430e8b60106ef2678358070eab7114de3",
+    "source_hashes_verified": 455
+  },
+  "status": "redaction_required_before_promotion"
+}

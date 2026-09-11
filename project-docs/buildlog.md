@@ -202,3 +202,31 @@
 - 状态：complete
 - 本步未复制数据 payload、未移动源文件、未创建远端资源或上传内容。
 - 下一步：步骤 07——在仅含 pending_step_07 候选的范围内执行凭证、PII 与危险内容扫描；报告不得记录 secret 明文。
+
+## [2026-09-11 23:54 CST] 步骤 07 完成：建立敏感信息扫描与结构化脱敏闸门
+
+### 本步目标
+
+在许可证初审通过的候选中扫描 credential、token、私钥、带凭证 URL、个人邮箱和危险发布内容；不得把命中值、片段或凭证明文写入审计报告，并将发现转化为明确的发布 disposition。
+
+### 已完成内容
+
+- 对 455 个 `pending_step_07` 候选作流式/路径级扫描，并将全部源内容 SHA-256 与冻结 inventory 逐一复核。
+- 扫描未发现 credential/token/private-key/credential URL 模式、credential/key 文件名或 source hash 漂移；JSON 审计只保存相对路径、类别、严重度与裁决，不保存匹配值、邮箱、上下文、行文本或每文件命中次数。
+- 发现 94 个原始 CSV 的邮箱信号，恰为 53 个物理反应导出及其 41 个 logical corpus 表；所有原始对象均保持 `deny_until_sanitized_derivative_verified`，不能因存在上游 CC 许可而被直接上传。
+- 字段级只读判定确认邮箱位于嵌入 `reaction_json` 的 provenance 人员字段（包括值被错误填入 `name` 的情况）；创建结构化 redaction policy 与 Apache-2.0 sanitizer，只删除值本身为邮箱的 JSON dictionary field 或 list item，保留 reaction ID、行顺序、CSV 列、时间戳与非邮箱署名。
+- 新增 sanitizer 回归测试，验证只删除 literal email、保持其他 JSON 内容与行级字段，并确保 audit 不含邮箱值。
+
+### 验证证据
+
+- 候选文件 455/455 的冻结 source hash 均通过；无邮箱信号的文件为 361，原始 CSV 脱敏待处理为 94，测试 fixture 信息性信号为 1。
+- `credential_or_hash_drift_findings=0`；原始邮件 CSV 的发布状态均为 deny，且下一闸门明确为 `step-11-redacted-copy-and-rescan`。
+- `sensitive-disposition.csv` 共 455 行：94 行 `redaction_required_before_promotion`，361 行 `passed_sensitive_gate`；审计 JSON 状态为 `redaction_required_before_promotion`。
+- 正式审计文件不含邮箱字面量或本机绝对路径；sanitizer 单元测试与 Python 编译均通过。
+- `sensitive-disposition.csv`、审计 JSON、审计 Markdown、sanitizer、测试、policy 的 SHA-256 分别为 `3e1272413c426612f9facbb3ba462d28d9300d037593992da23c99b414aa7c1b`、`79c2eadb722cc9a4a73ae474d7118f087fb04d0c1b65ae2efc10a0ed95b89cd9`、`fdee7775f2b7dca56f4d0ee3a4caa495c8b4fe3e778713ea91d7ff652d0d16ce`、`bcffbdf7353b9bbb3eb426fe88327e5fb3417ff0a2d4f426d7f2b1bd819d00fa`、`e70840629ae3c0b2baabaad0d298a21a450254e39a27c85ec5301deeaae11861`、`a60a23f5febf7100ba8593e7cf24d9bedac4b9bf2fa932c8f32aeb9d5e86bddb`。
+
+### 产物状态
+
+- 状态：`complete`
+- 本步只新增脱敏审计、政策、脚本与测试；未复制原始 data payload、未改写源文件、未创建远端资源或上传内容。
+- 下一步：步骤 08——为 41 个 logical corpus 生成唯一、可审阅的语义名称；随后步骤 11 必须通过 sanitizer 构建并复扫 94 个原始邮箱 CSV 的衍生版本。
