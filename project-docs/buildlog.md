@@ -372,3 +372,31 @@
 - 状态：`complete`
 - corpus staging 通过本地全量验收，但仍未提升为正式目录、未创建对象后端、未上传或公开发布。
 - 下一步：步骤 13——按步骤 09 的 19 个 target semantic map 构建 model-ready staging 包，保留 dataset/schema/config/exclusions/row-map/audit/metadata 与真实 readiness status。
+
+## [2026-09-12 00:42 CST] 步骤 13 完成：构建 19 个 model-ready staging 包
+
+### 本步目标
+
+由冻结的 19 个 target mapping、processing target artifacts 与 standardized target artifacts 生成语义化 model-ready staging 包；保留任务级 label、config、row map、included/excluded、audit、状态与回到 immutable ORD source 的路径。
+
+### 已完成内容
+
+- 新增参数化 `build_model_ready_staging.py`，明确读取 processing/standardized target roots，输出只写入指定 staging root。它验证每个 target manifest 与 standardized schema 的冻结 hash，并对 byte-preserving copies 逐文件回算 SHA-256。
+- 为每个 target 输出 `dataset.csv`、`schema.json`、`yonod-config.json`、`row-map.csv`、`audit.jsonl`、`metadata.json`，以及 `source-links.json`、`target-build-provenance.json`、`checksums.csv` 三个发布/溯源支持文件。
+- 将 legacy exclusions 规范化为含 `label_decision_id` 的新 `exclusions.csv`：逐行从 target audit 反查 decision ID，保留 reaction key、physical ID、source row index 与 reason；原 exclusions hash 和新输出 hash 都写入 per-target build provenance。
+- 每个 metadata 保留 semantic target/corpus/logical/physical identity、label type/unit/policy、included/excluded count、真实 readiness status、CC-BY-SA-4.0 与 frozen source-manifest relationship；source links 使用固定 40 位 upstream revision。
+- 生成并提交准备 `intermediate/08-runs-and-reports/step-13-model-ready-staging-manifest.json`，这是不含 payload 的控制面 manifest，记录 19 个 target 的状态、计数与 10 个 staging artifact 的 hash/字节数。
+
+### 验证证据
+
+- staging 目录为 19 个且 slug 唯一；每个目录文件集精确为 10 个指定控制/数据文件，无 partial 目录。
+- 合计 included 为 128,712，excluded 为 499，且 `included + excluded = source_count`；staging package 总字节为 211,008,093，payload 保持在被忽略的 staging root、没有加入 Git。
+- 19 个 `target_manifest.json` 与 semantic target map 的 manifest hash、19 个 standardized schema hash 均逐项匹配；所有 copy 输出 hash 与其受验证输入一致。唯一转换的 enriched exclusions 有显式 input/output hash 与 decision ID join 约束。
+- staging target tree 的 email 与 credential/private-key token pattern 文件命中均为 0（只输出路径、从不记录匹配内容）；`../ord-data/data` 工作树仍无修改；`git diff --check` 通过。
+- SHA-256：staging run manifest `fa27c9cc6bcbcabe5a18422c3efda174867ff575c9988e7674265c34e0a79f86`；可提交 staging manifest `79a2e522c29453a5b974f38a6a5b640d449f8bf97e09ada165c23e3fe13d2578`；builder `e5b7a455ee9f6bca9e184b84bbd4b19a2b2d7b47a57e93de0d5b68282407b8cf`；snapshotter `da8e7a04bfcacdd43381265eb5db712b43b7cca8c80ae82d6775a4bdd4ce4f3b`。
+
+### 产物状态
+
+- 状态：`complete`
+- 所有 target 仅为本地 staging；原 mapping 中的 partial/blocked/pending readiness status 原样保留，未被提升为 benchmark accepted，未执行远端创建或上传。
+- 下一步：步骤 14——独立检查 19 个 target 的 label/schema/config、included/excluded/source/audit 对账、row-map/source index、状态、feature denylist 和无标签泄漏约束。

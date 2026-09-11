@@ -1,0 +1,985 @@
+{
+  "excluded_count": 499,
+  "included_count": 128712,
+  "input_hashes": {
+    "semantic_corpus_map": "72cc994b7f7c3f79c9647894250527258d0c424f2e769af80b083815ecd233f6",
+    "semantic_target_map": "df3028a5e68fdf1a244868a812291d64651286f9d22ce268262d72bb98f6fb8a",
+    "source_files_manifest": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7"
+  },
+  "packages": [
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "51a45a5858b8b5ea0f068388fd2d7af3ace39f76f685e0f10054e368dfb87215",
+          "size_bytes": 3922370
+        },
+        "checksums.csv": {
+          "sha256": "de8629db08b050631733543f3759b5ca3f652eef8bacf64af7ccf91869a10fe8",
+          "size_bytes": 810
+        },
+        "dataset.csv": {
+          "sha256": "6a912585bb987ab698e2502585e1927403c372e10d8e3bcf8ce26f93c4021acf",
+          "size_bytes": 1271230
+        },
+        "exclusions.csv": {
+          "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+          "size_bytes": 85
+        },
+        "metadata.json": {
+          "sha256": "abdbf9a2550426144cdb3841721e9e6682e08ba1b40ffc0e798232420f72d794",
+          "size_bytes": 3019
+        },
+        "row-map.csv": {
+          "sha256": "a1cecd6b5d68702d2153c35c0d6c184f8a72f7b73b486bbc48cc1b07c15e9504",
+          "size_bytes": 868893
+        },
+        "schema.json": {
+          "sha256": "480b2573e565f5fc493a7d4dfb2bbd72e774309a39703f04cafaabf40cd6c943",
+          "size_bytes": 1722
+        },
+        "source-links.json": {
+          "sha256": "5515acdb9b16a877afd0dbd3d9365904165a3cb1cf2e596f372fbb6755dd06e1",
+          "size_bytes": 934
+        },
+        "target-build-provenance.json": {
+          "sha256": "8eee8b8684f76a5ff7fbbded3ea783523155f2bd7efa700fdad5e352eb2f87b2",
+          "size_bytes": 973
+        },
+        "yonod-config.json": {
+          "sha256": "21b996518299c2f494798f7bfd2f85b41f29b82432e300a09b094b95689cc84b",
+          "size_bytes": 3590
+        }
+      },
+      "excluded_count": 0,
+      "included_count": 4312,
+      "logical_dataset_id": "physical_46ff9a32d9e04016b9380b1b1ef949c3",
+      "readiness_status": "active_generated_pending_release_validation",
+      "source_count": 4312,
+      "target_id": "ahneman_yield_percent",
+      "target_slug": "ahneman-c-n-cross-coupling-yield-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "d035af84551d3fbf4e6049b3250cfca72fbd53ea6c672311f74006c9cd349cf5",
+          "size_bytes": 3936179
+        },
+        "checksums.csv": {
+          "sha256": "fa1d524160e6504bdc7ae3c5f8ac8be0aafceeddcaba1f5cca39084c9a7d7626",
+          "size_bytes": 809
+        },
+        "dataset.csv": {
+          "sha256": "a589fdfe1f90e655bd9193983aa92264e0b86bfdb017c04836b5b933edc429c7",
+          "size_bytes": 303418
+        },
+        "exclusions.csv": {
+          "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+          "size_bytes": 85
+        },
+        "metadata.json": {
+          "sha256": "0274e6e2a9c7cbccc7c9699c6d5880c482740ab63857d14aac64b30d26c7fcc0",
+          "size_bytes": 3047
+        },
+        "row-map.csv": {
+          "sha256": "a829c13773734275e8c368cf7a387334ad3e6e241ce45958eb7f6034155e87fb",
+          "size_bytes": 286729
+        },
+        "schema.json": {
+          "sha256": "f362b5227d85a15afa5d25e17c8cb20e393e734ee024477d467379d2eb0e25f5",
+          "size_bytes": 1635
+        },
+        "source-links.json": {
+          "sha256": "3a37a404915dfef6907a70ba432213ebc295d7fc2f69676c15a66437dd5e8ff9",
+          "size_bytes": 934
+        },
+        "target-build-provenance.json": {
+          "sha256": "8206469281a29cafa565d6690b041ff5c85b3641bc3203976378363e51af761b",
+          "size_bytes": 994
+        },
+        "yonod-config.json": {
+          "sha256": "1ee7a5b68495d6057e1dfc16ee1cbb9fcb4c32092966fa82970d250372569412",
+          "size_bytes": 3052
+        }
+      },
+      "excluded_count": 0,
+      "included_count": 1430,
+      "logical_dataset_id": "physical_c5b00523487a4211a194160edf45e9ab",
+      "readiness_status": "generated_adapter_blocked",
+      "source_count": 1430,
+      "target_id": "asymmetric_alkylation_ee_s_minus_r_percent",
+      "target_slug": "asymmetric-alkylation-ee-s-minus-r-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "3f51edd588cfd439ed80b161e8e1607b25cea68faf7769f4104d6495dfa2d4c9",
+          "size_bytes": 1005156
+        },
+        "checksums.csv": {
+          "sha256": "518b4643a2eb7377f7117e4f60a9ee18f3e206284e319812f51cf98961961070",
+          "size_bytes": 809
+        },
+        "dataset.csv": {
+          "sha256": "0d25125e1cf707c839b93106b8131f8a836938b8d416e37698610f5bf8ee965e",
+          "size_bytes": 331171
+        },
+        "exclusions.csv": {
+          "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+          "size_bytes": 85
+        },
+        "metadata.json": {
+          "sha256": "e74bf301c8e36db60c42bf753a05fe2502514e823a97063da48eb95bb08a6e21",
+          "size_bytes": 3035
+        },
+        "row-map.csv": {
+          "sha256": "9201530efa7e16260d50fecf09f53908640de8f91d27bc66ea1f281feebb719e",
+          "size_bytes": 230573
+        },
+        "schema.json": {
+          "sha256": "52c98e6b7842f6f49fcca84728de128dcf27863cbeed03c25bb50c606c4ac2a9",
+          "size_bytes": 1787
+        },
+        "source-links.json": {
+          "sha256": "ecc33970cb821e886f284b90aaf5b23fca288a2406aaef323f9b699546eeed8f",
+          "size_bytes": 923
+        },
+        "target-build-provenance.json": {
+          "sha256": "5ab6da8163eef828b361820c1fafaf1bb2ec31a5919f35d7c8d0f4e1534eae22",
+          "size_bytes": 979
+        },
+        "yonod-config.json": {
+          "sha256": "11008e2953693a252e362fee503f43e7c12afc3016253d79052c9ac454750b45",
+          "size_bytes": 3502
+        }
+      },
+      "excluded_count": 0,
+      "included_count": 1152,
+      "logical_dataset_id": "lit_10_1038_s44160_023_00351_1",
+      "readiness_status": "generated_pending_campaign_evaluation",
+      "source_count": 1152,
+      "target_id": "cernak_member_2be11_conversion_percent",
+      "target_slug": "cernak-reductive-amination-conversion-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "33c223ede6e04718cb342d266fbbb594f95846e2015d35d7847713505204901a",
+          "size_bytes": 1269152
+        },
+        "checksums.csv": {
+          "sha256": "be7a2fc8defa3f475a216699aae7b1fba0fbc011d70bfa4edea60874330b550d",
+          "size_bytes": 812
+        },
+        "dataset.csv": {
+          "sha256": "df6c85864b54120438f2fa0163bb5da00d7cc80ca1082499640b4b1bcae96ca9",
+          "size_bytes": 314179
+        },
+        "exclusions.csv": {
+          "sha256": "5ae11eca84432d9f83fff0aa5599c132241312bb3f0ee6b3044ada48b6ee28ba",
+          "size_bytes": 17959
+        },
+        "metadata.json": {
+          "sha256": "6c1555c298cb451bc760a6c102666c67d2f996b1faecd863f9d4c49c8a0378db",
+          "size_bytes": 3002
+        },
+        "row-map.csv": {
+          "sha256": "dce561fb9a6e632f141ea638e7a078466c8971d6480104b6719be30d6f7a7dfd",
+          "size_bytes": 264635
+        },
+        "schema.json": {
+          "sha256": "9ea36bd8af548d3089666092af5a8eedd1cdddedc917ea3b0a3cb65712591372",
+          "size_bytes": 1922
+        },
+        "source-links.json": {
+          "sha256": "bbfa3b874bdcef00cccc63f4051edf8ca53dbc56fec782333fe9bfe30805077a",
+          "size_bytes": 923
+        },
+        "target-build-provenance.json": {
+          "sha256": "d6dad2986544e3b510b5152a6538b0d44d01fa1f70698e3ced0b30cfb01ef97a",
+          "size_bytes": 980
+        },
+        "yonod-config.json": {
+          "sha256": "122d56918e8a3860692736370509031262ad5bee553e2a81433b4b597649b2d6",
+          "size_bytes": 3601
+        }
+      },
+      "excluded_count": 120,
+      "included_count": 1320,
+      "logical_dataset_id": "lit_10_1038_s44160_023_00351_1",
+      "readiness_status": "generated_pending_campaign_evaluation",
+      "source_count": 1440,
+      "target_id": "cernak_member_3b8a2e_conversion_percent",
+      "target_slug": "cernak-suzuki-coupling-conversion-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "3c3f98eb4f86f6ad7a419fd45582815af45bb6f29f3942f70018557d46820975",
+          "size_bytes": 49015889
+        },
+        "checksums.csv": {
+          "sha256": "36a2cb205fdbe48a8303ed2a798b377252a5e75c1450a421b7cf783fe70611d4",
+          "size_bytes": 816
+        },
+        "dataset.csv": {
+          "sha256": "ba845e82bb3701469aadf172a7457c64354b1e7d6f8e2ab1aad2b96c2445a012",
+          "size_bytes": 12155576
+        },
+        "exclusions.csv": {
+          "sha256": "6aa89bbef99173f5b3b1297227ee2235236900613813655265771dbf3ce4fd33",
+          "size_bytes": 3145
+        },
+        "metadata.json": {
+          "sha256": "236cf2b3ae9f07156740b8c1c5399d0fd3930a4724cb1342317f027e3d667c42",
+          "size_bytes": 2958
+        },
+        "row-map.csv": {
+          "sha256": "13fac23db2bd8b4c6ab4093a7ef70afe80c08aa0ea9c197ccf6b039db55ab0fe",
+          "size_bytes": 10314143
+        },
+        "schema.json": {
+          "sha256": "dc0849c815516496dea3cbb3f3c357199e6b116a05e4266aa1d75e800110fbc0",
+          "size_bytes": 1897
+        },
+        "source-links.json": {
+          "sha256": "cfb56db0ced03c608cc0692464aaf8b54358cb0aabe43602b3ac71930827f432",
+          "size_bytes": 936
+        },
+        "target-build-provenance.json": {
+          "sha256": "4edcc8b8c939509a8a8ee960202df6b27d586405d06f0d93303ca4605fa5278c",
+          "size_bytes": 969
+        },
+        "yonod-config.json": {
+          "sha256": "fb3981a8de911ff01b8cbac32088fe3bd3d56228d3f4792317866ba494caa7ea",
+          "size_bytes": 4416
+        }
+      },
+      "excluded_count": 20,
+      "included_count": 50668,
+      "logical_dataset_id": "physical_805ad863feef48579d95d86a728035f4",
+      "readiness_status": "generated_pending_campaign_evaluation",
+      "source_count": 50688,
+      "target_id": "c_n_yield_percent",
+      "target_slug": "cernak-ultra-hte-c-n-yield-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "8a3a14fb1b89994d3b7414dd1548595419fa4d413c908b6658e703d6ab817261",
+          "size_bytes": 9592789
+        },
+        "checksums.csv": {
+          "sha256": "a7798ee552aad338228d3252080ac6ecb792bdbf66a02f30d10694bdb99c7825",
+          "size_bytes": 813
+        },
+        "dataset.csv": {
+          "sha256": "648de1e73169feca1cc221f1f53858c11918f91c4f959e206f1a8a66ff4b482b",
+          "size_bytes": 1856612
+        },
+        "exclusions.csv": {
+          "sha256": "df62a4deb8d003ef572dafdd1e33705ba6db1e12f3f381516d263d4232ed3548",
+          "size_bytes": 4634
+        },
+        "metadata.json": {
+          "sha256": "8f1acf37b5e935d883325656abfcfec0a5fae2fc2c8764f3dc2489033906133e",
+          "size_bytes": 3048
+        },
+        "row-map.csv": {
+          "sha256": "3c99c78f8e5e02044c4274a9ed94756af60ee597d51efe797cecbadfe4a7f6ef",
+          "size_bytes": 1937484
+        },
+        "schema.json": {
+          "sha256": "e6a61d75fdd4f867c6bd36c893e673c599b275849f19e1dc322b6f1926c43da0",
+          "size_bytes": 1552
+        },
+        "source-links.json": {
+          "sha256": "a1a8933851edb5179acc9b77b9ff40dab0d17749e9a6452d9ddfe98dd25a3da7",
+          "size_bytes": 934
+        },
+        "target-build-provenance.json": {
+          "sha256": "0410366caad1bb9e2d814cdf926b77aaf179cd91b1852ed5dd5d1abcf359e2f7",
+          "size_bytes": 974
+        },
+        "yonod-config.json": {
+          "sha256": "b401147034c6c4d560d8f68a6e6bf46b0b8d23c5457c3a584728698adb48efd1",
+          "size_bytes": 2884
+        }
+      },
+      "excluded_count": 30,
+      "included_count": 9602,
+      "logical_dataset_id": "physical_5c9a10329a8a48968d18879a48bb8ab2",
+      "readiness_status": "generated_pending_campaign_evaluation",
+      "source_count": 9632,
+      "target_id": "chan_lam_yield_percent",
+      "target_slug": "chan-lam-sulfonamide-coupling-yield-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "57db77438a16ba93c2d71c026c82d35eff6e843221a071b3e7731b442a7fc04b",
+          "size_bytes": 962270
+        },
+        "checksums.csv": {
+          "sha256": "65027c2200be4e827c885dd82a1fb488511986fa74b073c6a57357f94ae1b05d",
+          "size_bytes": 809
+        },
+        "dataset.csv": {
+          "sha256": "90c762cff7defe31e7e45d35406df595d094186a0b35b05b0f799cfe66411f72",
+          "size_bytes": 238260
+        },
+        "exclusions.csv": {
+          "sha256": "2cf41e5f67c8f2932bd6acc9c33170f90a492213d26117ef9acb515c2e72528d",
+          "size_bytes": 538
+        },
+        "metadata.json": {
+          "sha256": "7ac3238d573f16d91d9b0f0fb8450092c1ce0b3009c272e31102e9438dd6281c",
+          "size_bytes": 3025
+        },
+        "row-map.csv": {
+          "sha256": "be63107c0184d74c9f9a7ce94a96c4c7aafa3ee21e3ec37c9f73a10e6343a38b",
+          "size_bytes": 191267
+        },
+        "schema.json": {
+          "sha256": "3df9ea65934570a4012966c9eb5bca742ea943bbcdf9fdc743e6b6e306b5af9e",
+          "size_bytes": 1783
+        },
+        "source-links.json": {
+          "sha256": "167357e03f2789fd1f72b52f7413e505323c2d0aaea139ed21577431b564d6ff",
+          "size_bytes": 933
+        },
+        "target-build-provenance.json": {
+          "sha256": "b6b61bcc7285daada8eddd8b1f0064efb5fd41958b476d1004a3aec147ef7bdc",
+          "size_bytes": 981
+        },
+        "yonod-config.json": {
+          "sha256": "6db195daa13f29476cd44ae176ed1a27bfb5d2fd6a1bb43d0d4257b4f6af967b",
+          "size_bytes": 3463
+        }
+      },
+      "excluded_count": 3,
+      "included_count": 957,
+      "logical_dataset_id": "upstream_chemrxiv_64c7e2e1658ec5f7e5808425",
+      "readiness_status": "active_generated_pending_release_validation",
+      "source_count": 960,
+      "target_id": "chemrxiv_amide_yield_percent",
+      "target_slug": "chemrxiv-aniline-amidation-yield-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "45ef40a04b51b0c0b4c55f66e72de3b66852eabb0044c69359f8b52bdbe1b0a6",
+          "size_bytes": 1465133
+        },
+        "checksums.csv": {
+          "sha256": "e9dfbfec3569be5c499f709fe3d2d2b4083275f03464f8c21ed222bf11284be3",
+          "size_bytes": 811
+        },
+        "dataset.csv": {
+          "sha256": "3d11901429869a5875d98ec4feec8239efbfa121c59d750a9bf8c04612906f7d",
+          "size_bytes": 394075
+        },
+        "exclusions.csv": {
+          "sha256": "8f47e75aea68776f95629257185ead1b25f8088098e25f2aa75b73edd8ec4db6",
+          "size_bytes": 1142
+        },
+        "metadata.json": {
+          "sha256": "dfda16e120a7aa737163d3039f1c166926f77610e87f9dc9ea368a8303263502",
+          "size_bytes": 3100
+        },
+        "row-map.csv": {
+          "sha256": "834e743133299f6acac97bd37d9a34ccca5e3ef92fa96e062a31e12c9a12870f",
+          "size_bytes": 306734
+        },
+        "schema.json": {
+          "sha256": "a27995892bdb21300f96b92705aa7807e6908c32e65dce289fc0d5791cb781b7",
+          "size_bytes": 1810
+        },
+        "source-links.json": {
+          "sha256": "c510ebe6765834507cec7200febf04c11045d2dc2f01081b91d98229ff822180",
+          "size_bytes": 935
+        },
+        "target-build-provenance.json": {
+          "sha256": "ac6bbce6c455237b3645b5f201ee3b1b075e3bca2e5fe361b6a9fbf480a874dd",
+          "size_bytes": 988
+        },
+        "yonod-config.json": {
+          "sha256": "fe20a135bbf43e59124b195d58b74780ec6797cbce732393f8338b0777337cad",
+          "size_bytes": 3483
+        }
+      },
+      "excluded_count": 7,
+      "included_count": 1529,
+      "logical_dataset_id": "upstream_chemrxiv_64c7e2e1658ec5f7e5808425",
+      "readiness_status": "active_generated_pending_release_validation",
+      "source_count": 1536,
+      "target_id": "chemrxiv_ch_arylation_yield_percent",
+      "target_slug": "chemrxiv-imidazole-c-h-arylation-yield-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "96f627cda36b99f17be7e4bd8b17177661c84e6f0cd75fcf9d62f09f1f096388",
+          "size_bytes": 2600133
+        },
+        "checksums.csv": {
+          "sha256": "9da5416071cd7d2335dafc4ba4bee8b811989ccdf2e644b15f258f703451a59b",
+          "size_bytes": 809
+        },
+        "dataset.csv": {
+          "sha256": "d1a09d05fb70c93c221438761893f5f71f6390f94c49bef3973a42bcd9308c84",
+          "size_bytes": 218696
+        },
+        "exclusions.csv": {
+          "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+          "size_bytes": 85
+        },
+        "metadata.json": {
+          "sha256": "9314327b9c35692e10666d6c5c0a2e3f654f02f98a254feee9239a06b5dab4e2",
+          "size_bytes": 3047
+        },
+        "row-map.csv": {
+          "sha256": "16d61d8f56d8278be07a447031f8700ec6c5a2c02764c2f0191d86d3a76dc71f",
+          "size_bytes": 245723
+        },
+        "schema.json": {
+          "sha256": "58b5c8b23c33aa98fde3f26de8246df457cf8d45fa4bb1afe2536ca7079dc848",
+          "size_bytes": 1846
+        },
+        "source-links.json": {
+          "sha256": "300b9457933d821feb42f6d2a6560ccf7e707c91cec7d4063608212be76d6aca",
+          "size_bytes": 933
+        },
+        "target-build-provenance.json": {
+          "sha256": "813945da50324fc496589a89b49c81fe66ebe1bd17079184b38f83e21973edce",
+          "size_bytes": 984
+        },
+        "yonod-config.json": {
+          "sha256": "c33097b32043c29bbd788b6323e6732b06d1ae232146d2fb8d79f40016be3e14",
+          "size_bytes": 2268
+        }
+      },
+      "excluded_count": 0,
+      "included_count": 1227,
+      "logical_dataset_id": "physical_1ec2807f02fa4beda27d2a81b86eb843",
+      "readiness_status": "research_only_benchmark_blocked",
+      "source_count": 1227,
+      "target_id": "catechol_product_2_yield_percent",
+      "target_slug": "flow-catechol-product-2-response-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "fb6280e62cda2401ae8d18ad2cd6ff984a973fe40e55ba97cd14e7134ad61a14",
+          "size_bytes": 2600261
+        },
+        "checksums.csv": {
+          "sha256": "cb596191a36e3d2fa00d54f5a3b1521edcb642116a092c0919e6d04b16617ff0",
+          "size_bytes": 809
+        },
+        "dataset.csv": {
+          "sha256": "5cc90e232268be1fc5e15330039927b90a13a4444df2347987d312612ea771d2",
+          "size_bytes": 218760
+        },
+        "exclusions.csv": {
+          "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+          "size_bytes": 85
+        },
+        "metadata.json": {
+          "sha256": "c3c235859d6ee76a44d04d1d626dee84594e59419c8563b14171badd894df11d",
+          "size_bytes": 3047
+        },
+        "row-map.csv": {
+          "sha256": "4089f9b99c44fc7bf8c06a5399a37378c28572da4f9f7bbb414bc51c56f21201",
+          "size_bytes": 245723
+        },
+        "schema.json": {
+          "sha256": "bc0d609c64485e8119ff6efb3030eb9511a4ed086fdb916f1bb054a0c4cdab96",
+          "size_bytes": 1846
+        },
+        "source-links.json": {
+          "sha256": "300b9457933d821feb42f6d2a6560ccf7e707c91cec7d4063608212be76d6aca",
+          "size_bytes": 933
+        },
+        "target-build-provenance.json": {
+          "sha256": "3e6a8e7fd54eb4d9de2aaf5ec7a2647f23a7f6ea8299ebfb62e8711e9106a06c",
+          "size_bytes": 984
+        },
+        "yonod-config.json": {
+          "sha256": "9a3226217523d41d6ca8fe9a4abcc2c10ffa332b4dbbe632a8bfade4237db354",
+          "size_bytes": 2268
+        }
+      },
+      "excluded_count": 0,
+      "included_count": 1227,
+      "logical_dataset_id": "physical_1ec2807f02fa4beda27d2a81b86eb843",
+      "readiness_status": "research_only_benchmark_blocked",
+      "source_count": 1227,
+      "target_id": "catechol_product_3_yield_percent",
+      "target_slug": "flow-catechol-product-3-response-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "41947a72dd087cb585a9268ee7f491e258fba6c869fd96fb812d4ab7608ecc58",
+          "size_bytes": 3415361
+        },
+        "checksums.csv": {
+          "sha256": "6458f62b5e532ca76616f2474b42b361d673e6b0a18e04b7120e2d3e475b5584",
+          "size_bytes": 809
+        },
+        "dataset.csv": {
+          "sha256": "9067b4cdce62de221a83ff15b095aadd6e110c4d143458917c7d6362bdbde397",
+          "size_bytes": 219467
+        },
+        "exclusions.csv": {
+          "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+          "size_bytes": 85
+        },
+        "metadata.json": {
+          "sha256": "4f50311b46acd438292910e54a96bce77652371a13639491d2fbfc5cc3d8b715",
+          "size_bytes": 3096
+        },
+        "row-map.csv": {
+          "sha256": "40d9792859650c359c8306eab46ca5feee06fe0cb97509e5b043c3421660871b",
+          "size_bytes": 245723
+        },
+        "schema.json": {
+          "sha256": "9a660083ccee989ff7c280505e72725aa5d03964090c70d6f31dba9f5e0a4bdc",
+          "size_bytes": 1879
+        },
+        "source-links.json": {
+          "sha256": "300b9457933d821feb42f6d2a6560ccf7e707c91cec7d4063608212be76d6aca",
+          "size_bytes": 933
+        },
+        "target-build-provenance.json": {
+          "sha256": "332493010a799e49730ce6f68ed92d9925b55f2328801dec85ecbbd6f6ad37ce",
+          "size_bytes": 988
+        },
+        "yonod-config.json": {
+          "sha256": "aed9fd8b42827c3deee20fb6a6ed8feec6bd3e8d55cdc89bf962b39c74c6bc68",
+          "size_bytes": 2293
+        }
+      },
+      "excluded_count": 0,
+      "included_count": 1227,
+      "logical_dataset_id": "physical_1ec2807f02fa4beda27d2a81b86eb843",
+      "readiness_status": "research_only_benchmark_blocked",
+      "source_count": 1227,
+      "target_id": "catechol_total_product_yield_percent",
+      "target_slug": "flow-catechol-total-product-response-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "f1068cc97bb89448b35c308d75ea7a382712ebb8f3eace4df2abf435b808a054",
+          "size_bytes": 1665722
+        },
+        "checksums.csv": {
+          "sha256": "d51c2bdec870ccbba1e4fc2fb15feb5ba396c92a1fefc68a1609281446adc904",
+          "size_bytes": 809
+        },
+        "dataset.csv": {
+          "sha256": "21b8072d3587bc8b1290124dafa6fdcdceee501980b6e6a3769aee6ead804d6d",
+          "size_bytes": 370116
+        },
+        "exclusions.csv": {
+          "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+          "size_bytes": 85
+        },
+        "metadata.json": {
+          "sha256": "6da9a585caa8fc2492aa40d4d853363c17bddd163c78307f3f7ef3266d7d19af",
+          "size_bytes": 2981
+        },
+        "row-map.csv": {
+          "sha256": "ffedd123fdc03215c748d8a18d3d86bbc4184b2b9ff44d2b968cc387fb5423d0",
+          "size_bytes": 346925
+        },
+        "schema.json": {
+          "sha256": "07e38d3719447d57e1f3dfb37b5cb0098baa29efd357009f70a5323e86de7087",
+          "size_bytes": 1825
+        },
+        "source-links.json": {
+          "sha256": "2bbe2d8e6acd38581803871b3e8ac4354db06a0a77bed6c3350b2eeecc515586",
+          "size_bytes": 934
+        },
+        "target-build-provenance.json": {
+          "sha256": "93ebb7f4a0206611f73f3e130d2a06339bc20594c42eecbf62718630c5d1991b",
+          "size_bytes": 970
+        },
+        "yonod-config.json": {
+          "sha256": "768f24c389f1b1623f93ec691def234cecb695d691ca962f23d0e43aa3cf5479",
+          "size_bytes": 3530
+        }
+      },
+      "excluded_count": 0,
+      "included_count": 1728,
+      "logical_dataset_id": "physical_ac78456835404910b3a4c840248b6ac9",
+      "readiness_status": "active_generated_pending_release_validation",
+      "source_count": 1728,
+      "target_id": "nano_yield_percent",
+      "target_slug": "nano-c-n-photochemistry-yield-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "59f4a0c49a1a55400330b1bb372247098d02749e7c6a9155c9e4fab13ed44a6c",
+          "size_bytes": 3856916
+        },
+        "checksums.csv": {
+          "sha256": "eb16c51903dda1c2d24e6c24169572ce376669977ee9ec8801f473873e0d256a",
+          "size_bytes": 812
+        },
+        "dataset.csv": {
+          "sha256": "51f705bdfc42ff0432cdb6288cda3ee9cbd6e2294c216fff13e5015e94b3deda",
+          "size_bytes": 160767
+        },
+        "exclusions.csv": {
+          "sha256": "0476f714c7b4f83f797f954722bd7dfbf0c02ca8deb4c4e358abcd1ac4b116ff",
+          "size_bytes": 20593
+        },
+        "metadata.json": {
+          "sha256": "72217590e7322e12583f8e0813875053a41f51646641090447b40e001cf8339c",
+          "size_bytes": 2976
+        },
+        "row-map.csv": {
+          "sha256": "acc6d7300beb9464bdc0ae3d9c5cdf8acf885588fca51460a036bfdef0351f03",
+          "size_bytes": 335061
+        },
+        "schema.json": {
+          "sha256": "638b58bff19c3c9f9def449ad88282b8d098f67875af61b8fbc51fb193b63b5b",
+          "size_bytes": 1470
+        },
+        "source-links.json": {
+          "sha256": "482a40075cfb988ecae8e64ace20558deecbfa77161944666be5a73be261b740",
+          "size_bytes": 934
+        },
+        "target-build-provenance.json": {
+          "sha256": "f6ab1094ca9702204b3f01eb37888a50397a9f4c799e47d98c99022c99eadaaa",
+          "size_bytes": 973
+        },
+        "yonod-config.json": {
+          "sha256": "650f46818eb3a6829e50a00af076e681c22474a5117cd4c1588d3569235ca6c0",
+          "size_bytes": 2257
+        }
+      },
+      "excluded_count": 93,
+      "included_count": 1669,
+      "logical_dataset_id": "physical_9b8aa9a7835143ef8ce3f70abfab7545",
+      "readiness_status": "generated_with_source_caveat",
+      "source_count": 1762,
+      "target_id": "nicolit_yield_percent",
+      "target_slug": "nicolit-nickel-coupling-yield-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "fce81ca14d751160006f0334d7403a909dbdd2b091535d03bb5d1fbd7aea06f0",
+          "size_bytes": 54055777
+        },
+        "checksums.csv": {
+          "sha256": "6cd4213495c63229e9595b89a5b8a966f426aab40e3823d01a34d64002ad5b23",
+          "size_bytes": 812
+        },
+        "dataset.csv": {
+          "sha256": "acc5860363baddd0fc24e87bb66e37d550b4cb8e1accf301f5f2aadb6d25758d",
+          "size_bytes": 7026314
+        },
+        "exclusions.csv": {
+          "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+          "size_bytes": 85
+        },
+        "metadata.json": {
+          "sha256": "2762dce1f2bc8ffba834dcf2764fee1d0e7b4d7734ed898f03b13f59e8adceb2",
+          "size_bytes": 2875
+        },
+        "row-map.csv": {
+          "sha256": "e9105d86594a9816be25a1f5fc5b0ea5c8ca4fad28fcec7a77f70c5dbe4b7c0e",
+          "size_bytes": 8004659
+        },
+        "schema.json": {
+          "sha256": "03e62e5bee4e77e337451f7d6346d3bf6296039d9ec2dfa8967136f772dcf2fa",
+          "size_bytes": 1679
+        },
+        "source-links.json": {
+          "sha256": "2ab0caffa917bbdcebb9056d8171f739ce32752bb63178115187ae916d948e66",
+          "size_bytes": 936
+        },
+        "target-build-provenance.json": {
+          "sha256": "b9f818666009b7c2bdcbcd7fc499241277b79e6959f55f1c0058f9929ac7ed01",
+          "size_bytes": 976
+        },
+        "yonod-config.json": {
+          "sha256": "4cc3205a96a6f4dcc9fd6c4cae8dc8154787fdf4453eb68ffe6d88eeaf18488c",
+          "size_bytes": 3854
+        }
+      },
+      "excluded_count": 0,
+      "included_count": 39347,
+      "logical_dataset_id": "physical_d92976309c3a48a3a64a4cf5e7048086",
+      "readiness_status": "generated_pending_campaign_evaluation",
+      "source_count": 39347,
+      "target_id": "pfizer_lcms_area_percent",
+      "target_slug": "pfizer-hte-lc-area-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "111bbbe137bb48cf53fbacfddbc33b1a4545adaedd9ff7574cbcceb5a3afdad1",
+          "size_bytes": 1012332
+        },
+        "checksums.csv": {
+          "sha256": "9d24750371bfdc7b10c3eff3c933db3aca02b6e5583febe21d393406b94d9827",
+          "size_bytes": 809
+        },
+        "dataset.csv": {
+          "sha256": "427e149d84943bb82adcf3066be751edd2418696bb8b972177e510663a1a2ef3",
+          "size_bytes": 238260
+        },
+        "exclusions.csv": {
+          "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+          "size_bytes": 85
+        },
+        "metadata.json": {
+          "sha256": "5c27016891ffe66bafc9731d65c9c9c3537d2eac0df2ffafd9bafaf74ed4f27e",
+          "size_bytes": 3217
+        },
+        "row-map.csv": {
+          "sha256": "e1c91bfc396d85a7b2fda5f219366b114cdb24908922758445734504ef8bfc0b",
+          "size_bytes": 230573
+        },
+        "schema.json": {
+          "sha256": "701e39c8d386813caa498b191451173872a77eca2b8aa7d962a8aeb667593323",
+          "size_bytes": 1674
+        },
+        "source-links.json": {
+          "sha256": "612be6c6ec62353f2601fea2384c9136943ddfd49c494798cee6f06650c04642",
+          "size_bytes": 934
+        },
+        "target-build-provenance.json": {
+          "sha256": "d9b68e4bf515bb9feff182da934d43eb3e3ffa7ce9118a2ce0d167df21272e5b",
+          "size_bytes": 990
+        },
+        "yonod-config.json": {
+          "sha256": "dccc6c726e14061d898de9d6ff28151fb7ea7c8b3aaf9cdf6dbf569ae7319bad",
+          "size_bytes": 2840
+        }
+      },
+      "excluded_count": 0,
+      "included_count": 1152,
+      "logical_dataset_id": "physical_b440f8c90b6343189093770060fc4098",
+      "readiness_status": "active_generated_pending_release_validation",
+      "source_count": 1152,
+      "target_id": "photodehalogenation_conversion_percent",
+      "target_slug": "photocatalytic-aryl-bromide-dehalogenation-conversion-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "09ac3d6d059b8e137d529a851d3b37f67deefec7c3a46578f7b0d251528c5402",
+          "size_bytes": 997116
+        },
+        "checksums.csv": {
+          "sha256": "24aefeae000fa485b62875ed4e856caa595bca5942782e2e3f4fae8f1c87f7fa",
+          "size_bytes": 811
+        },
+        "dataset.csv": {
+          "sha256": "35b3444917708e5a19956e5f871fd9b83958ad3b2484874b0ba85d21f381e5e8",
+          "size_bytes": 198095
+        },
+        "exclusions.csv": {
+          "sha256": "b873947560cf6be312945177da380d57b56169359e225ed2dcae4e86cc2bc28f",
+          "size_bytes": 34566
+        },
+        "metadata.json": {
+          "sha256": "f92864ff5f947c764e200e1631f42980fbd3687838fe936421004eab6065682c",
+          "size_bytes": 2912
+        },
+        "row-map.csv": {
+          "sha256": "ee49ecdc3cc1f6204501ab73c1b4c6954ef7cc476d646a3ae8c5530007b7ba3b",
+          "size_bytes": 177963
+        },
+        "schema.json": {
+          "sha256": "de9a7f69cc77ccff4893cadc4b40cc0d333b8e78fa30a51dfb662a4a85769fd7",
+          "size_bytes": 1769
+        },
+        "source-links.json": {
+          "sha256": "2927b470ff5214914530529aa140761169d76e43a86a37e881a35bb540ff1d3e",
+          "size_bytes": 934
+        },
+        "target-build-provenance.json": {
+          "sha256": "9e9f587d6f8321f9f0d7ea99a3ff0759cf7ee54bec781ca422682b9ed443d524",
+          "size_bytes": 982
+        },
+        "yonod-config.json": {
+          "sha256": "d8f689b30192b89ace8a1a1cf2ba154329fa2fa4eb34e5d824b8d3dea18a16ee",
+          "size_bytes": 3613
+        }
+      },
+      "excluded_count": 221,
+      "included_count": 890,
+      "logical_dataset_id": "physical_99c23cf435dc42f1af884053bc8b11c7",
+      "readiness_status": "generated_pending_campaign_evaluation",
+      "source_count": 1111,
+      "target_id": "roche_borylation_yield_percent",
+      "target_slug": "roche-borylation-yield-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "20d3cd578b86e0b125ccbe0e3ea3782dd2050c0a48fd2709c2aaa1d4ac6228fe",
+          "size_bytes": 7641386
+        },
+        "checksums.csv": {
+          "sha256": "354ca05ad4e1816f77b6e732705e220c9dd5427689bf0970acb55cae8583f14f",
+          "size_bytes": 811
+        },
+        "dataset.csv": {
+          "sha256": "2d1bfd835869c7263d37d035131981fb4042f9c93671640ea983deb5f417e163",
+          "size_bytes": 340725
+        },
+        "exclusions.csv": {
+          "sha256": "1cbc613a6828a169615d29e6f979431f4a44e2f27b3d3d443be0612a223d3893",
+          "size_bytes": 1268
+        },
+        "metadata.json": {
+          "sha256": "234a8170fd5d90ac75608a702933951a41d0dda6192242783a74fd710097c81e",
+          "size_bytes": 2994
+        },
+        "row-map.csv": {
+          "sha256": "5863de3a012bf0587a435d0487d58f59c50434c1ff45c38cea6ea6d9aedb7a07",
+          "size_bytes": 359199
+        },
+        "schema.json": {
+          "sha256": "dfd7876422cde7d9278c54b9a537d36e8007a5853c769445e4cbf7acb99f6365",
+          "size_bytes": 1796
+        },
+        "source-links.json": {
+          "sha256": "ef38c357f5aa0ca677546468b526a772953f6e982b867fa5df9e5148f31cdcb7",
+          "size_bytes": 920
+        },
+        "target-build-provenance.json": {
+          "sha256": "cd32db47f4098adbd38229e6e93fa7fcb254027287209da076b7a81eb52c10c0",
+          "size_bytes": 992
+        },
+        "yonod-config.json": {
+          "sha256": "e7e2fb5e49d114e192498f4b7b038385f6be3cebce601e5a3a730f0c155bfe21",
+          "size_bytes": 3168
+        }
+      },
+      "excluded_count": 5,
+      "included_count": 1531,
+      "logical_dataset_id": "lit_10_1126_science_1259203",
+      "readiness_status": "partial_scope_generated",
+      "source_count": 1536,
+      "target_id": "science_hte_diverse_nucleophile_relative_lc_area_ratio",
+      "target_slug": "science-hte-relative-lc-area-ratio"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "bd3678420148dd4f9b41942364cb825ca54f5d8895079d3f3610c52147a041dd",
+          "size_bytes": 2035320
+        },
+        "checksums.csv": {
+          "sha256": "3ecbde25762896c33993ea6719246dc635c7121eb31115aeb2bad0a637c6ebb4",
+          "size_bytes": 810
+        },
+        "dataset.csv": {
+          "sha256": "35e1698ae9f8e57ea96ca351008f78770c7cba8343db0c68ac2bd44e1362e61d",
+          "size_bytes": 379410
+        },
+        "exclusions.csv": {
+          "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+          "size_bytes": 85
+        },
+        "metadata.json": {
+          "sha256": "99d46940603d9e350307c20197f983a86407fcfcaf61df91642417877b2e6420",
+          "size_bytes": 2962
+        },
+        "row-map.csv": {
+          "sha256": "50f04d02cfaa44edb71cbbd10d937ef3e37bc7efe4bbcaf7312a2315181a69be",
+          "size_bytes": 398271
+        },
+        "schema.json": {
+          "sha256": "01b7f6266eeae778f5e29e3eeef468cb67b7f8718d0ad72552cbf4f630a1ef52",
+          "size_bytes": 1732
+        },
+        "source-links.json": {
+          "sha256": "3337b2d32c7fcd0973128c728ba4275cc5baa870a3257fc8c1154f01c23c4946",
+          "size_bytes": 1672
+        },
+        "target-build-provenance.json": {
+          "sha256": "97a71292f817ada3a82f2bff509b665921c003f01740d3d9f248a520e9e7741f",
+          "size_bytes": 962
+        },
+        "yonod-config.json": {
+          "sha256": "9333501cc95a89e2594eabe61a444f5e7ae132ef9336104c0baa8d688f7dc5a4",
+          "size_bytes": 3045
+        }
+      },
+      "excluded_count": 0,
+      "included_count": 1984,
+      "logical_dataset_id": "lit_10_1038_s41586_021_03213_y",
+      "readiness_status": "active_generated_pending_release_validation",
+      "source_count": 1984,
+      "target_id": "shields_yield_percent",
+      "target_slug": "shields-arylation-yield-percent"
+    },
+    {
+      "artifacts": {
+        "audit.jsonl": {
+          "sha256": "d96060c7a5a7e8eee55a6b76dba11b5716f8f335c16bc68173aa5fc4da2f2b79",
+          "size_bytes": 5575840
+        },
+        "checksums.csv": {
+          "sha256": "1b2114b76bdfa9e7196faf53b48f688485def7be2dd28c3fb0c1f33023117b6a",
+          "size_bytes": 811
+        },
+        "dataset.csv": {
+          "sha256": "75466f69ef7bcc53a3be76914166b91dd091c57471b62a4d69f5754f030c9f97",
+          "size_bytes": 1706821
+        },
+        "exclusions.csv": {
+          "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+          "size_bytes": 85
+        },
+        "metadata.json": {
+          "sha256": "5dd1a58fa94f83074be4efd60eb86af822ffed775d5642ad8e8c2a964d4352bf",
+          "size_bytes": 3002
+        },
+        "row-map.csv": {
+          "sha256": "175f9d5922e70418d935aa0aea4113151005cefe12a8de714023a8397c224786",
+          "size_bytes": 1161389
+        },
+        "schema.json": {
+          "sha256": "b7be306c738e568aa6e1009857737bf9dcc170ac016498e86afb12229a02ff4f",
+          "size_bytes": 1979
+        },
+        "source-links.json": {
+          "sha256": "80cd70e12545fc71561951538ad2ee65a3ea4bc49400eb45caa6d2b14c9b12ea",
+          "size_bytes": 934
+        },
+        "target-build-provenance.json": {
+          "sha256": "1cdc6103210e8b09b4b89f541238bbde4deffa23852ef3469e5a1582bfb4df49",
+          "size_bytes": 972
+        },
+        "yonod-config.json": {
+          "sha256": "6cde9da49886861767c7dd5526ec4bb61752c07bc1a4dbee955baa4262c1ebb2",
+          "size_bytes": 4058
+        }
+      },
+      "excluded_count": 0,
+      "included_count": 5760,
+      "logical_dataset_id": "physical_68cb8b4b2b384e3d85b5b1efae58b203",
+      "readiness_status": "active_generated_pending_release_validation",
+      "source_count": 5760,
+      "target_id": "suzuki_yield_percent",
+      "target_slug": "suzuki-miyaura-nanoscale-yield-percent"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "staging_run_manifest_sha256": "fa27c9cc6bcbcabe5a18422c3efda174867ff575c9988e7674265c34e0a79f86",
+  "status": "staging_complete_not_released",
+  "step_id": "step-13",
+  "target_count": 19
+}
