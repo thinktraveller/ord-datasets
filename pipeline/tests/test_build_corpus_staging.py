@@ -18,6 +18,12 @@ assert SPEC and SPEC.loader
 MODULE = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = MODULE
 SPEC.loader.exec_module(MODULE)
+VALIDATION_SCRIPT = ROOT / "pipeline" / "scripts" / "validate_corpus_staging.py"
+VALIDATION_SPEC = importlib.util.spec_from_file_location("corpus_validator", VALIDATION_SCRIPT)
+assert VALIDATION_SPEC and VALIDATION_SPEC.loader
+VALIDATOR = importlib.util.module_from_spec(VALIDATION_SPEC)
+sys.modules[VALIDATION_SPEC.name] = VALIDATOR
+VALIDATION_SPEC.loader.exec_module(VALIDATOR)
 
 PHYSICAL_ID = "ord_dataset-00000000000000000000000000000000"
 LOGICAL_ID = "physical_00000000000000000000000000000000"
@@ -70,6 +76,9 @@ class CorpusBuilderTest(unittest.TestCase):
             self.assertEqual(f"https://github.com/open-reaction-database/ord-data/blob/{REVISION}/{SOURCE_FILE}", links["links"][0]["source_file_url"])
             self.assertTrue((staged / "metadata.json").is_file())
             self.assertTrue((staged / "checksums.csv").is_file())
+            validation = VALIDATOR.validate(output_root, semantic_map, members, sources, ROOT / "pipeline" / "schemas", expected_corpus_count=1, expected_physical_count=1, expected_reaction_count=1)
+            self.assertEqual(1, validation["corpus_count"])
+            self.assertEqual(0, validation["remaining_literal_email_values"])
 
 
 if __name__ == "__main__":

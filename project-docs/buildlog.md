@@ -344,3 +344,31 @@
 - 状态：`complete`
 - 41 个 corpus 仍是本地 staging，`artifact_status=staged`，不构成远端发布或 release acceptance。大 CSV 没有提交到 Git；正式对象指针与远端操作仍受后续 object-backend/release gate 约束。
 - 下一步：步骤 12——从 staging 全量校验 CSV、hash、reaction key、source-row 范围、member 唯一性、语义/固定链接与计数守恒，并产出 per-corpus 和总体验收报告。
+
+## [2026-09-12 00:42 CST] 步骤 12 完成：全量验收 corpus staging 层
+
+### 本步目标
+
+独立于步骤 11 构建器重新读取全部 corpus staging payload，验证 CSV/JSON/schema/hash、row-level source range、reaction key、排序、logical membership、固定 source links 与敏感信息清零；产出可提交的 per-corpus 机器报告和简明汇总。
+
+### 已完成内容
+
+- 新增只读 `validate_corpus_staging.py`：不接受写入 staging 的参数；它从 semantic map、logical membership、frozen source manifest 和步骤 11 控制面 manifest 交叉验证每个 package。
+- 为每个 corpus 检查目录文件集、CSV header、local CSV contract、metadata/source-links JSON Schema、checksums、metadata 中的 artifact hash 以及步骤 11 control manifest hash。
+- 为 2,428,291 行创建按 physical source size 分配的紧凑 row-index 位图，验证每个 source row index 非负、范围正确、无重复、无缺失；同时检查 non-empty/unique reaction ID、`source_file,row_index` 确定性排序与 `reaction_json` 可解析性。
+- 再次结构化遍历全部 reaction JSON，仅计数 literal-email value，不保留命中内容；验证每个 source link 与 frozen source manifest 的路径、revision、URL、hash/LFS oid 和 license 一致。
+- 新增 `reports/data-quality/corpus-staging-validation.json`（每 corpus 的行数、source 数、reaction hash/字节数）和 Markdown 摘要。报告仅包含控制面信息，不含 reaction payload、邮箱或匹配上下文。
+
+### 验证证据
+
+- 41/41 corpus 通过；53 个 physical source 全部且仅归属一个 logical corpus；总 Reaction 精确为 2,428,291。
+- orphan physical source = 0；duplicate logical membership = 0；`/blob/main/` URL = 0；remaining literal email value = 0。
+- 每个 corpus 的 `reactions.csv`、`schema.json`、`source-links.json`、`checksums.csv`、`metadata.json` 文件集精确存在，且三层 hash（checksums、metadata、step-11 control manifest）一致。
+- 本步加入的合成 corpus test 通过 builder 后立即调用独立 validator；全套 `python3 -m unittest discover -s pipeline/tests -v` 为 3/3 通过，`git diff --check` 通过。
+- SHA-256：validator `8d8e6e87f2861b49352f2f7be2ce85ab859435977cebc89e78fd52b3b6800d2c`；更新的 corpus staging test `0c48775efc8a83127bbcc1a5bc2f1d679f34b084c030fb90ef30c95bb7277a0f`；JSON report `3c53c7c52845778386b59078dd0b3580f1f1409463cd49959cad5bf9c4cd3941`；Markdown report `b4a8c6b22ac8df4c34951033773aaa38053db48906f939bbd6b07b2a3db7b30d`。
+
+### 产物状态
+
+- 状态：`complete`
+- corpus staging 通过本地全量验收，但仍未提升为正式目录、未创建对象后端、未上传或公开发布。
+- 下一步：步骤 13——按步骤 09 的 19 个 target semantic map 构建 model-ready staging 包，保留 dataset/schema/config/exclusions/row-map/audit/metadata 与真实 readiness status。
