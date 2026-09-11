@@ -172,3 +172,33 @@
 - 状态：`complete`
 - 本步仅新增两份预评估报告；未复制数据 payload、未创建仓库、未配置 LFS、未上传任何文件。
 - 下一步：步骤 06——落实数据、代码、第三方材料的许可证边界、NOTICE 和再分发阻断条件。
+
+
+## [2026-09-11 23:35 CST] 步骤 06 完成：建立许可证边界与逐对象裁决
+
+### 本步目标
+
+以步骤 04 的 6,050 个 artifact 为闭集，落实数据与代码的双许可证边界；对权利不明、第三方或隔离材料保守拒绝进入发布 allowlist，而不是用项目根许可证将其一并授权。
+
+### 已完成内容
+
+- 读取冻结上游 revision 26e17b78d9ab44a46a4b4327aa55c53549ec0596 的 README、LICENSE 与 LICENSE-CODE，确认上游将 data/ 和描述性元数据置于 CC-BY-SA-4.0，将 scripts/ 与 .github/ 置于 Apache-2.0。
+- 新增 6,050 行 provenance/license-inventory.csv，逐项记录审计许可、证据、署名与 share-alike 义务、再分发状态、allowlist 状态、裁决理由和下一闸门。
+- 逐字复制冻结上游许可证为 LICENSE-DATA 与 LICENSE-CODE，并写入 NOTICE 和 LICENSES/README.md，明确双许可证不是对未审计材料的 blanket grant。
+- 对活动候选中的 440 个数据或派生元数据确认 CC-BY-SA-4.0；对 15 个含明确 Open Reaction Database Project Apache-2.0 文件头的脚本确认 Apache-2.0，二者均仅推进至步骤 07 敏感信息审计。
+- 对 27 个缺乏明确文件头、且无法与冻结上游内容逐字匹配的活动工作区脚本执行 withholding：在权利人确认或补充不可变上游 provenance 前拒绝再分发。
+- 3,855 个 quarantined 对象、缓存、目录元数据、superseded 和其他未选对象保持 deny 或不适用；没有隔离对象因本步被提升。
+
+### 验证证据
+
+- license inventory 与 artifact inventory 的 artifact_id 均为 6,050 个且唯一；所有记录都有 origin、audited_license_id、再分发状态和 allowlist 状态。
+- 活动候选为 482 个：455 个 pending_step_07（440 CC-BY-SA-4.0 + 15 Apache-2.0），27 个 deny 且均为 withhold_unverified_workspace_code。
+- 15 个 Apache 通过项均回读验证为同时含 Open Reaction Database Project Authors 版权行和 Apache-2.0 许可行的源文件。
+- LICENSE-DATA、LICENSE-CODE 分别与冻结上游许可证逐字相同；SHA-256 分别为 5e436ff8ffbb77d8607220e9bce20c8915d860010feeb6c1ebef5a85688e9b39 与 c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4。
+- 正式审计产物无本机绝对路径；license-inventory.csv、summary JSON、报告 Markdown、NOTICE 的 SHA-256 分别为 d45457e89d7e6c44db3e9367b0f4a48430e8b60106ef2678358070eab7114de3、611b400f25597be15f74cf8fd1f1da37e181b6d40b820b7a16de776b1d9d50c9、23f62c81cc7550eeefe954e533998ca58ea37e2d02f46b8249cb00fb4b5046b8、cfed44c8cdf9efb720ea0942cbde960c4ab686b4b32f3ac466ac2d3c0c7490e7。
+
+### 产物状态
+
+- 状态：complete
+- 本步未复制数据 payload、未移动源文件、未创建远端资源或上传内容。
+- 下一步：步骤 07——在仅含 pending_step_07 候选的范围内执行凭证、PII 与危险内容扫描；报告不得记录 secret 明文。

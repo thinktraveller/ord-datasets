@@ -1,0 +1,41 @@
+ord-datasets NOTICE
+===================
+
+This repository contains separately licensed material. No repository-wide
+license grants permission to every file.
+
+Data and data-derived metadata
+-------------------------------
+
+The files identified as CC-BY-SA-4.0 in provenance/license-inventory.csv are
+adaptations or processed metadata derived from the Open Reaction Database
+Project (ORD). The frozen source release is:
+https://github.com/open-reaction-database/ord-data/tree/26e17b78d9ab44a46a4b4327aa55c53549ec0596
+
+Those files are offered under Creative Commons Attribution-ShareAlike 4.0
+International. Reuse must provide appropriate attribution to the ORD Project,
+link to the source and license, identify modifications made by this project,
+and comply with the ShareAlike condition. Per-dataset provenance will provide
+the exact source-file links and transformations.
+
+Code
+----
+
+Only files whose license-inventory decision is
+license_confirmed_pending_sensitive_audit may be redistributed as Apache-2.0.
+Retain their copyright notices and the Apache-2.0 license text.
+
+Exclusions
+----------
+
+Files with NOASSERTION, withhold_unverified_workspace_code, quarantined,
+superseded, excluded, or deny status are not licensed for redistribution by
+this NOTICE. They must not be published merely because they appear in a local
+workspace or because LICENSE-DATA and LICENSE-CODE are present.
+
+Release boundary
+----------------
+
+A pending_step_07 status is not an upload authorization. Sensitive-data,
+quality, provenance, platform, and human release gates remain required before
+any remote publication.

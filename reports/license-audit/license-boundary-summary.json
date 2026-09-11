@@ -1,0 +1,49 @@
+{
+  "audit_scope": {
+    "active_candidate_files": 482,
+    "audited_files": 4349,
+    "audited_objects": 6050,
+    "inventory_path": "provenance/artifact-inventory.csv",
+    "inventory_sha256": "5f12f84351a860121a4ad191cece809de01f992dac00cee453d155655cdb9dcc"
+  },
+  "counts": {
+    "active_candidate_decision": {
+      "license_confirmed_pending_sensitive_audit": 455,
+      "withhold_unverified_workspace_code": 27
+    },
+    "audited_license_id": {
+      "Apache-2.0": 16,
+      "CC-BY-SA-4.0": 440,
+      "NOASSERTION": 5594
+    },
+    "decision": {
+      "license_confirmed_pending_sensitive_audit": 455,
+      "not_selected": 1713,
+      "quarantined_no_redistribution": 3855,
+      "withhold_unverified_workspace_code": 27
+    },
+    "release_allowlist_status": {
+      "deny": 5595,
+      "pending_step_07": 455
+    }
+  },
+  "non_action": "No data, code, notice, repository, storage object, or remote release was uploaded or created by this audit.",
+  "release_rule": "Only pending_step_07 rows may proceed to the sensitive-data gate; that status is not upload authorization.",
+  "schema_version": "1.0.0",
+  "status": "license_boundary_complete_pending_step_07",
+  "upstream_evidence": {
+    "code_license": {
+      "id": "Apache-2.0",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "url": "https://github.com/open-reaction-database/ord-data/blob/26e17b78d9ab44a46a4b4327aa55c53549ec0596/LICENSE-CODE"
+    },
+    "data_license": {
+      "id": "CC-BY-SA-4.0",
+      "sha256": "5e436ff8ffbb77d8607220e9bce20c8915d860010feeb6c1ebef5a85688e9b39",
+      "url": "https://github.com/open-reaction-database/ord-data/blob/26e17b78d9ab44a46a4b4327aa55c53549ec0596/LICENSE"
+    },
+    "license_assignment_url": "https://github.com/open-reaction-database/ord-data/blob/26e17b78d9ab44a46a4b4327aa55c53549ec0596/README.md#license",
+    "ord_data_revision": "26e17b78d9ab44a46a4b4327aa55c53549ec0596"
+  },
+  "withheld_code_rule": "Unheadered workspace code is withheld until rightsholder confirmation or immutable upstream provenance is documented."
+}
