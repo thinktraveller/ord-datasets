@@ -50,6 +50,35 @@
 
 <!-- GOAL-QA-R002-END -->
 
+### QA-R003：corpus 与 model-ready 拆分口径澄清
+<!-- GOAL-QA-R003-START -->
+
+- **提问时间**：2026-09-11 17:07
+- **提问目的**：解释为什么目标目录中将 `datasets/corpus/` 与 `datasets/model-ready/` 拆开，并确认这只是逻辑发布口径拆分，不要求重复存储同一大文件。
+- **问题列表**
+  1. `corpus` 和 `model-ready` 为什么要拆开？
+  2. 如果混在一起，会带来哪些具体风险？
+  3. 是否存在可选替代目录结构？
+- **用户回答**
+  1. 用户询问：“corpus和model-ready为什么要拆开？”
+  2. 用户未要求改变当前目标目录契约。
+  3. 用户未要求创建目录、搬运数据或上传远端。
+- **提炼结论**
+  - `corpus/` 是完整权威语料层，面向 ORD 处理后数据的全量发布与溯源：它应覆盖 53 个 physical 数据集、41 个 logical 数据集和 2,428,291 条 Reaction，原则是不因建模资格、标签可用性或某个任务配置而删行。
+  - `model-ready/` 是目标特定的建模投影层，面向可直接训练/评测的数据任务：当前基线为 15 个 package / 19 个 target；它会包含 target 语义、标签字段、特征字段、schema、YONOD/config、included/excluded、row map、audit 和生成状态。该层可能筛选或排除行，也可能让同一条 Reaction 对应多个 target/task，因此不应被误解为全量 ORD 语料。
+  - 两层的行数契约、粒度、用户和验收标准不同。`corpus/` 的核心验收是 2,428,291 条 Reaction 守恒、53 physical 全覆盖、41 logical 一一可审计；`model-ready/` 的核心验收是每个 target 的标签/特征/schema/config/status、included/excluded 与原 package manifest 对账，并能防止任务级标签泄漏或状态误报。
+  - 如果混在同一目录层级，容易产生五类风险：用户把 filtered target 当作完整 ORD 数据；全量行与 included 行计数混淆；同一 Reaction 的多 target 关系被误当重复行或漏行；partial/blocked target 被误称已完成 benchmark；row map、exclusion reason、label schema 与 corpus schema 相互污染，导致溯源和验收边界不清。
+  - 拆分是逻辑信息架构，不等于物理复制。实现时仍应通过 `catalog.csv/json`、`artifact-inventory.csv`、内容哈希、manifest、对象存储或分片 bundle 引用同一底层对象，避免为了两个视图重复保存大文件。
+  - 可选替代结构是按语义数据集聚合，例如 `datasets/<semantic-dataset-slug>/corpus/` 与 `datasets/<semantic-dataset-slug>/tasks/<target-slug>/`。优点是源文献/逻辑数据集视角更集中；缺点是模型用户需要跨多个目录查找 19 个 target，跨 physical/logical 的 package 关系和 target 状态更难做平铺 catalog，也更容易把 source-centric corpus 与 task-centric projection 的验收标准混在一起。当前目标暂不自动改为该结构，除非后续用户明确要求。
+- **影响的目标文档章节**
+  - 当前三层产物口径
+  - 目标目录契约
+  - 中间处理资产的归档规则
+  - 溯源契约
+  - 总体验收标准
+
+<!-- GOAL-QA-R003-END -->
+
 <!-- GOAL-QA-LOG-END -->
 
 ## 一、审计基线
