@@ -314,3 +314,33 @@
 - 状态：`complete`
 - 本步只新增 schema、policy、字段字典、fixture、验证器与测试；未复制任何数据 payload、未修改 `../ord-data/` 或 `../dataset/`，未创建远端或上传内容。
 - 阶段 B/M2 契约部分完成；下一步为步骤 11：在 staging 中以结构化脱敏脚本构建 41 个 corpus 包，并在复制后复扫 94 个待脱敏 CSV 衍生版本。
+
+## [2026-09-12 00:31 CST] 步骤 11 完成：构建并脱敏 41 个 corpus staging 包
+
+### 本步目标
+
+从只读 logical CSV 表逐个创建语义化 corpus staging 包，同时删除嵌入 `reaction_json` 的 literal email 值、保留 corpus 行与 source lineage，并为每个包生成 schema、metadata、固定 source links 和 checksums。
+
+### 已完成内容
+
+- 新增参数化 `build_corpus_staging.py`：所有 source/output root 均从 CLI 显式传入；不会向来源目录写入。它以 `.<slug>.partial` 临时目录构建，只有 CSV、JSON 结构复扫、member 行数、元数据和固定 source links 均通过后才原子提升为 `<slug>/`。
+- 将 sanitizer 的 CSV field limit 安全提升至 Python 可表示的上限，支持 ORD 的超大 `reaction_json` 字段；不改变既有 literal-email 删除规则。首轮在默认 128 KiB 限制处停止，4 个已完整提升的包经 checksum/audit 验证后以 `--resume` 保留，未重写；余下包继续构建。
+- 在 `.staging/ord-datasets-v0/step-11/datasets/corpus/` 形成 41 个 semantic corpus 目录。每个目录恰有 `reactions.csv`、`schema.json`、`source-links.json`、`checksums.csv` 与 `metadata.json`；41 份 redaction audit 位于同一 staging step 的隔离 audit 根。
+- 每个 `source-links.json` 从冻结 `source-files.initial.csv` 生成并经 schema 验证；URL 固定至 40 位 upstream commit，不使用 `/blob/main/`。每个 metadata 记录 logical/physical IDs、CC-BY-SA-4.0、staged 状态、行数、输出 hash 及 source manifest hash。
+- 生成小型、可提交的控制面 manifest `intermediate/08-runs-and-reports/step-11-corpus-staging-manifest.json`（31,839 bytes）；它固定 41 个 staged package 的行数、reaction/metadata/source-links/checksums hash、redaction-audit hash 与输入 manifest hash，不含任何 payload 或个人信息值。
+
+### 验证证据
+
+- 完整 staging run：41 corpus、2,428,291 行、53 个 unique physical source，logical membership 重复为 0；没有 partial 目录。
+- 所有 41 个输出 CSV 均保留 header `physical_dataset_id,source_file,reaction_id,row_index,reaction_json`；每个输出的 logical member 行数与 semantic/member manifest 一致。
+- 结构化复扫得到剩余 literal email value 为 0；共删除 7,693,116 个 literal email 值。审计仅记录聚合 key-path/count、input/output hash 和行数，不记录邮箱或原始行内容。
+- 41 份 audit 均存在，且 audit output hash 与 corresponding `reactions.csv` hash 相同；所有 source-link URL 的 `/blob/main/` 计数为 0。
+- staged reactions 总字节为 13,127,326,230；全部 package metadata/control files 合计后为 13,127,476,889 bytes；audit 合计 27,599 bytes。payload 保持在忽略的 staging tree，未进入 Git。
+- `python3 -m unittest discover -s pipeline/tests -v`：3/3 通过；包括 corpus 的 clean-room 合成测试、release-contract 测试和 sanitizer 回归。`git diff --check` 通过；`../ord-data` 的 `data/` 工作树仍无修改。
+- SHA-256：staging run manifest `eeaed2fecb737b40c05d19e654e409c5bee85319745744129f064c6af529ad85`；可提交 staging manifest `fb0475232ca5666151da9955706057af70bc7f56733b7820f852ce69c80186e6`；corpus builder `a5b9e5df472c49b17bacde283bbb4be7f8dc03afc67f01b8d9b01cb5770a1de9`；sanitizer `bcef389b9337c3af28e272cbe29e74fb04b644b08c40f0f11e0d9b12d837db6f`；manifest snapshotter `ed126af62266ab25785a0bd63edb2adc61b70c1e1d9abab292e89bb6e456a5bb`。
+
+### 产物状态
+
+- 状态：`complete`
+- 41 个 corpus 仍是本地 staging，`artifact_status=staged`，不构成远端发布或 release acceptance。大 CSV 没有提交到 Git；正式对象指针与远端操作仍受后续 object-backend/release gate 约束。
+- 下一步：步骤 12——从 staging 全量校验 CSV、hash、reaction key、source-row 范围、member 唯一性、语义/固定链接与计数守恒，并产出 per-corpus 和总体验收报告。

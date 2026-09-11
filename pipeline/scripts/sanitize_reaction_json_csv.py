@@ -26,12 +26,27 @@ import csv
 import hashlib
 import json
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 from typing import Any
 
 EMAIL = re.compile(r"(?i)^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$")
 DROP = object()
+
+
+def configure_csv_field_limit() -> None:
+    """Raise the conservative stdlib CSV field limit for full ORD reaction JSON."""
+    limit = sys.maxsize
+    while True:
+        try:
+            csv.field_size_limit(limit)
+            return
+        except OverflowError:
+            limit //= 10
+
+
+configure_csv_field_limit()
 
 
 def sha256(path: Path) -> str:
