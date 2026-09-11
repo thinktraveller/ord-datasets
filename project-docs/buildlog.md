@@ -428,3 +428,10 @@
 - 状态：`complete`
 - corpus 与 model-ready 现均通过本地 staging 验收，但尚未生成用户可见的统一 catalog、未提升正式目录、未配置对象后端或远端发布。
 - 下一步：步骤 15——从已验收 metadata 和 semantic maps 确定性生成 `datasets/catalog.csv` 与 `datasets/catalog.json`，使任一 corpus/target 可关联 logical/physical/source/status/path。
+
+## [2026-09-12 00:52 CST] 步骤 15 完成：生成统一数据集 catalog
+
+- 新增 `build_catalog.py`，从已提交的 corpus/model-ready staging control manifest 和两个 semantic map 确定性生成 `datasets/catalog.csv` 与 `datasets/catalog.json`；不读取或复制 payload。
+- JSON 的 60 条 record 全部通过 catalog-record JSON Schema；CSV/JSON 均包含 semantic slug、logical/physical/source file 集、target/label（corpus 为 null）、真实 readiness、staged status、license、行数、content hash 和计划发布路径。
+- 验收：41 corpus + 19 model-ready = 60，两个格式记录数和语义分层一致。SHA-256：CSV `c13e690152896e811ccbd28e3e2f4c2de4989bf88ce9e46861e0b3af84ef4509`，JSON `bb9de21780145197f17b39d1f92a4b3e978748f84554a7346549b61b04ef35ef`，builder `43b142343b5e39e00639a60dd059ae5a493ac20901c713760df3fa2de6ef2bdc`。
+- 状态：`complete`。Catalog 是 staging index，不代表已上传或已发布；下一步为阶段 D 的中间资产归档与 pipeline 抽取。
