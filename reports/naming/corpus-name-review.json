@@ -1,0 +1,39 @@
+{
+  "counts": {
+    "logical_datasets": 41,
+    "manual_review_rows": 0,
+    "physical_datasets": 53,
+    "reaction_count": 2428291,
+    "relationships": {
+      "independent": 33,
+      "same_publication": 6,
+      "same_upstream_source": 2
+    },
+    "slug_collisions": 0
+  },
+  "inputs": {
+    "logical_datasets": {
+      "path": "processing/derived/csv/manifests/logical_datasets.csv",
+      "sha256": "6e21baaae2c37d5d092cf5eb2cf4ee25c34ac67942c749bab7a933a6a716661d"
+    },
+    "logical_members": {
+      "path": "processing/derived/csv/manifests/logical_dataset_members.csv",
+      "sha256": "ca3f2d586bcaaa1d8c821d2db125624cecec52032c51c839a91cb51bc13df366"
+    },
+    "physical_datasets": {
+      "path": "standardized/csv-data/datasets.csv",
+      "sha256": "b7289e8ae564b6750cff880e60910d43d43dca07878c7fc2140b05db64045fd5"
+    },
+    "source_evidence": {
+      "path": "processing/derived/csv/manifests/source_evidence.csv",
+      "sha256": "c659cbab662fe972208f6d988831fd8e6c81b200e7f4e2aaf14d9bd122099656"
+    }
+  },
+  "policy": {
+    "evidence_rule": "Use frozen dataset name/description first, then shared DOI or upstream source for merged logical datasets; do not infer unrecorded chemistry.",
+    "identity_rule": "logical and physical IDs remain metadata identities; directory_slug is a human-facing path label only",
+    "slug_pattern": "lowercase kebab case, 3-80 characters, semantic rather than UUID-only"
+  },
+  "schema_version": "1.0.0",
+  "status": "approved_from_frozen_metadata"
+}

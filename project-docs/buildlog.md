@@ -230,3 +230,30 @@
 - 状态：`complete`
 - 本步只新增脱敏审计、政策、脚本与测试；未复制原始 data payload、未改写源文件、未创建远端资源或上传内容。
 - 下一步：步骤 08——为 41 个 logical corpus 生成唯一、可审阅的语义名称；随后步骤 11 必须通过 sanitizer 构建并复扫 94 个原始邮箱 CSV 的衍生版本。
+
+## [2026-09-11 23:59 CST] 步骤 08 完成：定义 corpus 语义名称
+
+### 本步目标
+
+在不替换 logical/physical 稳定身份的前提下，为 41 个 corpus logical dataset 创建基于冻结名称、描述、成员、DOI 与上游来源证据的可读目录 slug、英文名与中文名。
+
+### 已完成内容
+
+- 新增 `provenance/semantic-name-map.csv`：每行保留 logical ID、所有 physical ID 与固定 source path、DOI/upstream aliases、英文名、中文名、命名证据、状态和规划目录。
+- 为 6 个同文献 logical 组和 2 个同上游组采用共同 publication/campaign 主题；33 个独立 logical dataset 使用冻结物理数据集的反应或来源语义。
+- 新增 `pipeline/policies/semantic-naming-policy.md`，规定 slug 仅为人类目录标签，logical/physical ID 仍是 metadata、hash 与 lineage 的不可变机器身份；不允许根据未记录信息臆测反应类别、测量或 benchmark 状态。
+- 新增 machine-readable 与 Markdown 命名审阅报告，固定四个输入 manifest 的 SHA-256 和所有覆盖/冲突统计。
+
+### 验证证据
+
+- 语义映射为 41 行 logical dataset，一对一且无大小写 slug 冲突；53 个 physical ID 均覆盖一次，Reaction 总数精确为 2,428,291。
+- relationship 分布为 33 `independent`、6 `same_publication`、2 `same_upstream_source`；manual review 行为 0。
+- 所有 slug 满足 `^[a-z][a-z0-9-]{2,79}$`，均非 UUID-only，所有原 logical ID 均保留在 aliases 中，aliases 无重复。
+- 输入固定 hash：logical datasets `6e21baaae2c37d5d092cf5eb2cf4ee25c34ac67942c749bab7a933a6a716661d`、members `ca3f2d586bcaaa1d8c821d2db125624cecec52032c51c839a91cb51bc13df366`、physical datasets `b7289e8ae564b6750cff880e60910d43d43dca07878c7fc2140b05db64045fd5`、source evidence `c659cbab662fe972208f6d988831fd8e6c81b200e7f4e2aaf14d9bd122099656`。
+- semantic map、JSON review、Markdown review、naming policy 的 SHA-256 分别为 `72cc994b7f7c3f79c9647894250527258d0c424f2e769af80b083815ecd233f6`、`ffd0d04fd8f99eca4b9d1a5ac2d1230a6d2ae8bbc5737f18b056d5f82a5899ad`、`52715572c137414eba363097609d0c35c3e35cde9b9788427b591caa5faa2dc3`、`bcc6d0440edca8ccf778cf52b1ec2765cccaaf099065e8d4e86b4d9beb83aaec`。
+
+### 产物状态
+
+- 状态：`complete`
+- 本步只新增命名 metadata、政策和审阅报告；未复制 payload、未改写源文件、未创建远端资源或上传内容。
+- 下一步：步骤 09——为 19 个 model-ready target 固化语义名称、标签单位、source set 与真实完成状态。
