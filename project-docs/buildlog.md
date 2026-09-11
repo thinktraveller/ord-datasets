@@ -107,3 +107,39 @@
 - 新增正式产物：3 个 inventory 文件；未复制任何被清点的数据对象。
 - `../dataset/` 全树只读，所有生成动作均发生在 `ord-datasets/.staging/` 与正式目标目录。
 - 下一步：步骤 04——以这 6,050 个对象为闭集建立逐对象 disposition 与 old→new path map；未裁决项必须进入 `quarantined`，不得静默遗漏。
+
+## [2026-09-11 22:54 CST] 步骤 04 完成：建立零遗漏 disposition 契约
+
+### 本步目标
+
+以步骤 03 的 6,050 个对象为封闭输入集，为每个对象唯一赋予 disposition、目标路径或 manifest-only 位置、分类理由、许可候选和后续 step owner；任何规则未命中的文件必须保守隔离。
+
+### 已完成内容
+
+- 生成 `provenance/artifact-inventory.csv` 与 `provenance/artifact-path-map.csv`，二者均以 snapshot 的稳定 `artifact_id` 为主键，逐项保留 old path、SHA-256、大小、处置、目标位置、理由和许可候选。
+- 建立确定性规则矩阵：41 个逻辑全量表映射为 corpus；19 个 target 的数据、schema、config、exclusions、row map、audit、metadata 映射为 model-ready 七件套；语义名称正式确定前使用 `_pending-semantic-name` 并明确标记，不创建该临时目录。
+- 53 个物理 CSV 加 `datasets.csv` 映射至 `intermediate/01-physical-csv/`；来源 manifest、字段分析、YONOD package 过程证据、验证配置和旧 migration 证据分别映射至 02、04、05、06、07、00 阶段。
+- 42 个有效处理脚本/测试映射到 `pipeline/scripts/` 或 `pipeline/tests/`；11 个 `__pycache__` 文件排除，1 个 `.orig` 标记 `superseded`。
+- 210 个 `_needs_review` 文件全部标记 `quarantined`；3,645 个 run/report 文件在相关性、第三方内容、secret 和许可审计前同样保守隔离。
+- 1,701 个目录条目作为 `manifest_only` 元数据排除独立复制，其子对象仍逐项分类，因此不会借目录级规则隐藏文件。
+- 对全部文件按 SHA-256 建立重复组和 canonical candidate：241 个重复 hash 组、1,012 个文件实例；本步只记录，不提前删除或物理去重。
+
+### 验证证据
+
+- snapshot、artifact inventory 与 path map 均为 6,050 条，三者 artifact ID 集合和 old path 集合完全相等且各自唯一。
+- 记录级 disposition：216 `authoritative`、266 `intermediate`、3,855 `quarantined`、1 `superseded`、1,712 `excluded`；后者由 1,701 个目录和 11 个缓存文件组成。
+- 文件级数量：216 + 266 + 3,855 + 1 + 11 = 4,349。
+- 文件级字节：13,613,033,941 + 15,684,565,199 + 15,077,692,931 + 8,622 + 271,614 = 44,375,572,307，与步骤 03 snapshot 完全守恒。
+- corpus 权威表：41；model-ready target：19，每个目标恰有 `dataset.csv`、`metadata.json`、`schema.json`、`yonod-config.json`、`exclusions.csv`、`row-map.csv`、`audit.jsonl` 七个映射；pipeline 文件：42。
+- `_needs_review` 文件：210/210 均为 `quarantined`；未命中 `R99_UNCLASSIFIED_QUARANTINE` 的文件为 0。
+- 482 个非隔离、非 manifest-only 活动目标路径全部唯一；路径冲突为 0；无绝对路径、`..` 跳转或 `file://` URI。
+- 所有记录的 disposition、reason、new path、license candidate、redistribution status、origin 和 step owner 均非空；许可字段仍是候选，步骤 06 前不构成上传授权。
+- `artifact-inventory.csv` SHA-256：`5f12f84351a860121a4ad191cece809de01f992dac00cee453d155655cdb9dcc`。
+- `artifact-path-map.csv` SHA-256：`42c8662069740887fe9c0477e9b4e2201ac7c10e61118261232ac25be2902a43`。
+
+### 产物状态
+
+- 状态：`complete`
+- 新增正式产物：2 个 provenance 清单；未搬运、删除或上传任何被分类对象。
+- 所有 `pending_step_06_license_audit` 与 `blocked_pending_audit` 状态继续阻止远端发布。
+- 下一步：步骤 05——基于最大文件、重复 hash、分类字节与候选平台限制完成存储预评估；只形成提案，不执行上传。
