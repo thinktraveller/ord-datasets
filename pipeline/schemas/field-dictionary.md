@@ -1,6 +1,6 @@
 # Release-contract field dictionary
 
-Contract version: `1.0.0`. All paths below are repository-relative POSIX
+Contract version: `1.1.0` (the 1.0.0 core remains compatible). All paths below are repository-relative POSIX
 paths. SHA-256 values are lowercase hexadecimal digests of exact bytes.
 
 | Contract | Field | Meaning | Required / nullable |
@@ -18,6 +18,7 @@ paths. SHA-256 values are lowercase hexadecimal digests of exact bytes.
 | artifact record | `redistribution_status` | Separate right-to-redistribute gate; no `allow` record bypasses license or sensitive-data validation. | required / no |
 | row-map record | `csv_row_number` | One-based row in the target `dataset.csv`. | required / no |
 | row-map record | `source_row_index` | Zero-based source row in the corpus/physical conversion. | required / no |
+| model-ready row map | `campaign_id` | Optional stable campaign key; it is retained when the upstream target is campaign-scoped and is never used as a label feature. | optional / no |
 | transformation record | `input_artifact_ids`, `output_artifact_ids` | Hash-addressable graph nodes used to reconstruct the processing DAG. | required / no |
 | transformation record | `pipeline_commit`, `config_sha256` | Exact code revision and configuration that performed the transformation. | required / no |
 | release manifest | `root_sha256` | Deterministically calculated release hash-tree root, never hand-edited. | required / no |

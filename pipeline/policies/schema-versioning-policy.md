@@ -15,7 +15,9 @@ each generated document as `schema_version` (or in a CSV sidecar manifest).
 | Add an optional field, enum value, optional record variant, or non-breaking validation rule | MINOR | Readers of the prior minor version must still parse old records. |
 | Clarify descriptions, examples, or documentation without altering validation or meaning | PATCH | Existing artifacts remain valid without regeneration. |
 
-The current frozen family is `1.0.0`. A future release manifest records the
+The current frozen family is `1.1.0`; `1.0.0` remains valid for artifacts that
+do not use target-specific optional CSV columns. Version 1.1.0 adds the
+optional `campaign_id` row-map field and is backward compatible. A future release manifest records the
 exact contract versions it uses; validation must select the matching version,
 not silently use the newest schema.
 

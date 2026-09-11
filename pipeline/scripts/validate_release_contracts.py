@@ -35,8 +35,8 @@ def load_json(path: Path) -> Any:
 
 def assert_schema_index(index: dict[str, Any]) -> list[str]:
     names: list[str] = []
-    if index["schema_family_version"] != "1.0.0":
-        raise AssertionError("schema family version must be 1.0.0 during this frozen build step")
+    if index["schema_family_version"] not in {"1.0.0", "1.1.0"}:
+        raise AssertionError("schema family version is not a supported frozen release-contract version")
     for contract in index["contracts"]:
         schema_path = SCHEMA_DIR / contract["file"]
         if not schema_path.is_file():
@@ -49,13 +49,14 @@ def assert_schema_index(index: dict[str, Any]) -> list[str]:
 
 
 def assert_csv_contracts(contract: dict[str, Any]) -> None:
-    if contract["schema_version"] != "1.0.0":
+    if contract["schema_version"] not in {"1.0.0", "1.1.0"}:
         raise AssertionError("CSV contract version mismatch")
     for name, definition in contract["contracts"].items():
         header = definition["header"]
         if len(header) != len(set(header)):
             raise AssertionError(f"duplicate CSV header in {name}")
-        if set(header) != set(definition["columns"]):
+        optional = definition.get("optional_columns", {})
+        if set(header) != set(definition["columns"]) or set(definition["columns"]) & set(optional):
             raise AssertionError(f"CSV columns and header disagree in {name}")
     corpus = contract["contracts"]["corpus_reactions"]
     if corpus["header"][:4] != ["physical_dataset_id", "source_file", "reaction_id", "row_index"]:

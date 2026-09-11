@@ -400,3 +400,31 @@
 - 状态：`complete`
 - 所有 target 仅为本地 staging；原 mapping 中的 partial/blocked/pending readiness status 原样保留，未被提升为 benchmark accepted，未执行远端创建或上传。
 - 下一步：步骤 14——独立检查 19 个 target 的 label/schema/config、included/excluded/source/audit 对账、row-map/source index、状态、feature denylist 和无标签泄漏约束。
+
+## [2026-09-12 00:48 CST] 步骤 14 完成：全量验收 model-ready staging 层
+
+### 本步目标
+
+独立验证 19 个 staged target 的 schema/config/label 语义、row map、exclusions、audit、source index、status、hash 与 immutable source link；不能因 artifact 已生成而把 pending/partial/blocked target 误称为 benchmark accepted。
+
+### 已完成内容
+
+- 新增只读 `validate_model_ready_staging.py`，交叉读取 semantic target map、53 source manifest、步骤 13 control manifest 与每个 staged package；它不写入或重建 target payload。
+- 校验每个 package 的 10 个文件、checksums、metadata artifact hash、metadata/source-links JSON Schema、target build provenance、control manifest 和原 mapping 的 target ID/label/status。
+- 对 dataset/row-map/exclusions/audit 执行 count 和 decision 闭合：row map 的 physical ID/source index 均在 frozen source 范围内，included audit decision 与 row-map 的 `label_decision_id` 一致，excluded decision 与 enriched exclusions 一致。
+- 检查 declared schema label column 与 target map 相同，且 label 不在 declared `feature_columns` / `column_roles.features` 中；同时检查 19 个 source-link set 和 fixed URLs。
+- 发现 Science target 合法携带 `campaign_id` 附加 row-map 列。按 schema versioning policy 将 CSV contract 从 1.0.0 兼容升级为 1.1.0：该字段是可选 campaign provenance，不是特征或 label；1.0.0 core artifacts 继续有效。相应更新 schema index、release-manifest schema、字段字典和 contract validator。
+- 生成 `reports/data-quality/model-ready-staging-validation.json` 与 Markdown 摘要；只记录 target hash/计数/状态，不记录训练行、标签值或敏感匹配文本。
+
+### 验证证据
+
+- 19/19 target 通过，included 128,712、excluded 499；每个 target 均满足 `included + excluded = source_count = audit_count`。
+- status mismatch = 0；row-map error = 0；source-index error = 0；declared label leak = 0；unpinned `/blob/main/` URL = 0。
+- `python3 pipeline/scripts/validate_release_contracts.py` 通过 8 个索引契约、10 个正例、4 个反例；全套 `python3 -m unittest discover -s pipeline/tests -v` 为 3/3 通过；`git diff --check` 通过。
+- SHA-256：target validator `37248c7baae5a5b54e2a860a3f5d9d5563808b226b731cfe7ce12c3a06f00d04`；JSON report `38f9243d2fa817a793b5c3fb07f9213b485ebebaf97c0f4c6b4dcdbd30366ea2`；Markdown report `f30ca2633bb5095ed4c5d39431c0da3b53dfa7a1f42af887cef981c6b7ea325c`；CSV contract 1.1.0 `589eef821f868931c5250f7c47f3c3ea32167e1218ba5dda87431d48856f21f5`；schema index `f4317172def51bf5655bd140bc826df3b0d8b8b747a329d74bf15b20d18da464`。
+
+### 产物状态
+
+- 状态：`complete`
+- corpus 与 model-ready 现均通过本地 staging 验收，但尚未生成用户可见的统一 catalog、未提升正式目录、未配置对象后端或远端发布。
+- 下一步：步骤 15——从已验收 metadata 和 semantic maps 确定性生成 `datasets/catalog.csv` 与 `datasets/catalog.json`，使任一 corpus/target 可关联 logical/physical/source/status/path。

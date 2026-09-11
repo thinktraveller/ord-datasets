@@ -1,6 +1,6 @@
 {
   "schema_family": "ord-datasets-release-contracts",
-  "schema_family_version": "1.0.0",
+  "schema_family_version": "1.1.0",
   "status": "frozen_for_pre_data_movement",
   "policy_path": "pipeline/policies/schema-versioning-policy.md",
   "contracts": [
