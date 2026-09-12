@@ -22,3 +22,35 @@ uv --directory pipeline run python ../pipeline/scripts/validate_release_contract
 `archive_intermediate_indices.py`, `archive_model_ready_intermediates.py`, and
 `audit_needs_review.py` create hash indexes only. They intentionally do not
 copy legacy raw payloads into regular Git or promote a quarantined object.
+
+## Public-source clean-room sample
+
+`rebuild_clean_room_sample.py` resolves a revision-pinned Git LFS pointer via
+the public Git LFS batch protocol, verifies the downloaded Parquet hash, then
+builds a physical CSV, logical corpus, generic yield target, and provenance
+under an empty output root. It deliberately has no local source/staging/cache
+input option. Keep the transient `--download-root` outside this repository;
+the Parquet source itself is never promoted into the repository.
+
+From the repository root, a representative invocation is:
+
+```bash
+clean_download_root="$(mktemp -d)"
+clean_output_root="$(pwd)/.staging/clean-room-ahneman"
+
+uv --directory pipeline run python ../pipeline/scripts/rebuild_clean_room_sample.py \
+  --source-manifest "$(pwd)/provenance/source-files.initial.csv" \
+  --semantic-map "$(pwd)/provenance/semantic-name-map.csv" \
+  --members "$(pwd)/provenance/logical-dataset-members.csv" \
+  --target-map "$(pwd)/provenance/semantic-target-map.csv" \
+  --schema-dir "$(pwd)/pipeline/schemas" \
+  --physical-id ord_dataset-46ff9a32d9e04016b9380b1b1ef949c3 \
+  --target-id ahneman_yield_percent \
+  --download-root "$clean_download_root" \
+  --output-root "$clean_output_root" \
+  --report-path "$(pwd)/reports/release-acceptance/step-20-clean-room-rebuild.json"
+```
+
+Supply the optional baseline manifests and physical archive index to enforce
+the committed byte/semantic comparison. The step-20 report names any remaining
+target-contract mismatch explicitly; it is not a release acceptance override.

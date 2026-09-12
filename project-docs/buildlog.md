@@ -527,3 +527,17 @@
 - 新增 `MAINTENANCE.md`，规定 ORD revision 更新、语义版本、schema/naming compatibility、immutable release 与复验流程；`project-docs/release-backlog.md` 为每个 blocking issue 指定 `project-owner` 和可复核 exit evidence。
 - closeout 固定 53/41/2,428,291/15/19/210 的已知基线，16、17、18、21、22、24 为 complete，23 为 draft complete；初始 release 仍未关闭。
 - `reports/release-acceptance/step-31-closeout.json` 确认无未归属 blocking issue；状态：`maintenance_baseline_established_release_not_closed`。
+
+## [2026-09-12] 步骤 19 解除依赖锁阻塞
+
+- 已在可联网环境生成并跟踪 `pipeline/uv.lock`，并将 clean-room 所需的 `ord-schema`、`pyarrow` 固化为运行依赖。
+- `uv sync --group dev --locked`、`uv run pytest -q`（6 项）和 `uv run ruff check scripts tests` 均通过；原 TLS 阻塞记录已改为历史解决说明。
+- 状态：`complete`。不含凭证、本机路径或远端写入。
+
+## [2026-09-12] 步骤 20 部分完成：公开 LFS clean-room 重建
+
+- 新增参数化 `rebuild_clean_room_sample.py`：只接受 source/semantic/member/target map、schema、physical/target ID 及显式 download/output/report root；不接受本地 staging 或 cache 作为输入。原始 Parquet 只下载到仓库外的临时 root。
+- 对 Ahneman 单源 yield sample，通过固定 raw LFS pointer 与公开 Git LFS batch endpoint 下载 `ord_dataset-46ff9a32d9e04016b9380b1b1ef949c3.parquet`，SHA-256 为 `39440ea3e5442dddbb4daccbc48fb53940724085327c0e3b82909e1fd8cc661a`。
+- 物理 CSV（4,312 行）及经 literal-email 结构化清理后的 corpus 均逐字节匹配冻结 staging 基线；独立重复运行的 23 文件 output root hash 均为 `d663773a78fc6dc2c6fdc9fcfdb4faa8b0c86841273102f9ef8070da035f8215`。
+- 通用 yield adapter 已生成 target、row map、exclusions、audit 和 transformations provenance；included/excluded/source 计数为 4,312/0/4,312，符合冻结 target map。但它的 `dataset.csv` SHA-256 为 `433b1ca544cddd823baa482b9f5218c7b1dcb9af064b32ce9d9960eb5929e2a4`，尚未匹配冻结 baseline `6a912585bb987ab698e2502585e1927403c372e10d8e3bcf8ce26f93c4021acf`。
+- 状态：`partial_target_byte_equivalence_unresolved`。未伪造通过、未读取 local staging payload、未写入只读输入或远端；精确剩余工作已转入 B2。
