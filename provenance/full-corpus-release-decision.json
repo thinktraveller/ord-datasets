@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "step_id": "full-corpus-release-decision",
-  "status": "planned_pending_publication_authorization",
+  "status": "local_rc_validated_pending_publication_authorization",
   "go_no_go": "pending",
   "release_track": "corpus-public-release",
   "repository": {
@@ -29,9 +29,21 @@
     "sha256sums_sha256": "4a546010d1aad3badc567a74be149afe53b21606cc518126d41e0b81d22a21af",
     "readback": "205 of 205 payload hashes passed"
   },
+  "completed_before_go": [
+    {
+      "gate": "Build an isolated full corpus release candidate from the frozen payload and control-plane files.",
+      "status": "complete",
+      "evidence": "reports/release-acceptance/step-31-full-corpus-rc-build.json",
+      "root_sha256": "930a9111b6e9f7a85abdff2199c8e7637a08822782cf8ffc5081b93e563bc663"
+    },
+    {
+      "gate": "Pass full-release scope, schema, lineage, license, sensitive-data, count, and root-hash validation.",
+      "status": "complete",
+      "evidence": "reports/release-acceptance/step-32-full-corpus-rc-validation.json",
+      "blocking_check_failures": 0
+    }
+  ],
   "required_before_go": [
-    "Build an isolated full corpus release candidate from the frozen payload and control-plane files.",
-    "Pass full-release scope, schema, lineage, license, sensitive-data, count, and root-hash validation.",
     "Review the rendered HF dataset card and public-license/citation presentation.",
     "Explicitly authorize creation and upload of the public HF Dataset repository.",
     "Perform a fresh post-upload readback and record the immutable revision."

@@ -1,0 +1,19 @@
+{
+  "counts": {
+    "corpus_packages": 41,
+    "corpus_payload_bytes": 13127476889,
+    "corpus_payload_files": 205,
+    "largest_corpus_file_bytes": 10108105821,
+    "physical_sources_referenced": 53,
+    "reactions": 2428291
+  },
+  "private_transport_sha256sums_sha256": "4a546010d1aad3badc567a74be149afe53b21606cc518126d41e0b81d22a21af",
+  "private_transport_snapshot": "corpus-staging-step11-4a546010d1aad3ba",
+  "release_id": "v0.2.0-corpus-preview-1",
+  "release_root": "../release-candidates/v0.2.0-corpus-preview-1",
+  "remote_write_attempted": false,
+  "root_sha256": "930a9111b6e9f7a85abdff2199c8e7637a08822782cf8ffc5081b93e563bc663",
+  "schema_version": "1.0.0",
+  "status": "complete",
+  "step_id": "step-31-full-corpus-rc-build"
+}

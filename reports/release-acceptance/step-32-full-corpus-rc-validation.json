@@ -1,0 +1,24 @@
+{
+  "blocking_check_failures": 0,
+  "blocking_checks": [],
+  "lineage": {
+    "edges": 53,
+    "nodes": 94
+  },
+  "owner_gates": [
+    "F4_explicit_public_HF_dataset_write_authorization"
+  ],
+  "payload": {
+    "directories": 41,
+    "files": 205,
+    "largest_file_bytes": 10108105821,
+    "total_bytes": 13127476889
+  },
+  "release_id": "v0.2.0-corpus-preview-1",
+  "remote_write_attempted": false,
+  "root_sha256": "930a9111b6e9f7a85abdff2199c8e7637a08822782cf8ffc5081b93e563bc663",
+  "schema_version": "1.0.0",
+  "status": "local_validation_passed_pending_publication_authorization",
+  "step_id": "step-32-full-corpus-rc-validation",
+  "warnings": []
+}

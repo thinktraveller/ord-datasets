@@ -580,3 +580,10 @@
 - 选定私有 Hugging Face Storage Bucket/Xet 作为 41-corpus staging 的大对象 transport；上传使用经过审阅的 205-file plan，新增 `13,127,476,889` bytes，删除与覆盖均为 0。payload 位于私有的 content-addressed snapshot prefix `corpus-staging-step11-4a546010d1aad3ba`。
 - Bucket 中同时保存 SHA256SUMS、snapshot manifest 和 corpus validation reports。新建本地目录完成全量回读后，`sha256sum -c` 为 205 OK、0 failed；SHA256SUMS 自身 hash 为 `4a546010d1aad3badc567a74be149afe53b21606cc518126d41e0b81d22a21af`。
 - 此操作是可回读的私有 backup/transport pilot，不改变 GitHub 的 model-ready preview，也不构成公开 corpus release。原始 Parquet、`_needs_review`、clean-room duplicates 和已发布 model-ready payload 均未传输。证据见 `provenance/hf-bucket-snapshots/` 与 `step-25-hf-bucket-corpus-staging-pilot.json`、`step-30-hf-bucket-corpus-staging-readback.json`。
+
+## [2026-09-12] Full-corpus local RC 构建与验收完成
+
+- 新增 full-corpus 专用 manifest schema、原子构建器与独立验收器，并用 clean-room fixture 覆盖构建和验收闭环。构建器从 frozen step-11 staging 复制到 Git 忽略的候选根；不会覆盖既有候选，也不执行任何 Hugging Face 写入。
+- `v0.2.0-corpus-preview-1` 已在 `release-candidates/` 本地完成：41 个 corpus、53 个 physical source、205 个 payload 文件、13,127,476,889 bytes、2,428,291 reactions；候选 root SHA-256 为 `930a9111b6e9f7a85abdff2199c8e7637a08822782cf8ffc5081b93e563bc663`。
+- 候选同时保留与私有 bucket 已回读快照逐项对应的 SHA256SUMS（hash `4a546010d1aad3badc567a74be149afe53b21606cc518126d41e0b81d22a21af`），而根目录 SHA256SUMS 使用候选内路径，避免路径迁移掩盖字节差异。
+- Step-32 独立验收通过：0 blocking checks、94 lineage nodes、53 complete edges，根哈希一致。尚未获得公开 Dataset repository 写入授权，故状态为 `local_validation_passed_pending_publication_authorization`；未创建或上传公开 HF Dataset。证据为 `step-31-full-corpus-rc-build.json` 和 `step-32-full-corpus-rc-validation.json`。
