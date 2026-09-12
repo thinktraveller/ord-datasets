@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "step_id": "step-30",
+  "status": "blocked",
+  "remote_release_url": null,
+  "remote_readback_attempted": false,
+  "verified_root_sha256": null,
+  "expected_root_sha256": "a757863ea622f1a69205024a9ee04482952b95bdee85bbb98c74a2990df970db",
+  "blocked_by": [
+    "No authorized remote release or immutable tag exists.",
+    "Step 29 uploaded object count is zero.",
+    "Step 20 clean-room source download is blocked."
+  ],
+  "required_future_scope": ["control-plane clone", "small corpus", "largest data shard", "complete target", "two-hop lineage", "sample rebuild"]
+}

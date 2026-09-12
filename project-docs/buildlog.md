@@ -516,3 +516,8 @@
 
 - release decision 仍为 pending，local RC 也处于 rejected；因此没有连接远端、上传 object、创建 commit/tag/release 或产生费用。upload checkpoint 记录 0 objects / 0 bytes：`reports/release-acceptance/step-29-upload-checkpoint.json`。
 - 未来只能在通过闸门后从新的 immutable upload manifest 断点续传，禁止覆盖已存在 tag/object；状态：`blocked`。
+
+## [2026-09-12 02:13 CST] 步骤 30 阻塞：无缓存远端回读
+
+- 因未存在远端 release、tag 或 uploaded object，未执行 clone/download/readback，也没有将本地 staging 当作远端回读证据。expected draft root 已记录，verified remote root 保持 null。
+- `reports/release-acceptance/step-30-remote-readback.json` 固化将来必须覆盖的 control-plane、小/最大数据对象、完整 target、lineage 与 sample rebuild；状态：`blocked`。
