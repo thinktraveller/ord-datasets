@@ -555,3 +555,15 @@
 - 规划依据为步骤 13 staging manifest：190 个 target-support 文件、`211,008,093` bytes，最大文件 `54,055,777` bytes。普通 Git 可作为候选传输，但最大文件超过 50 MiB 警告阈值，仍须在授权 pilot 中 clean-clone/readback 验证；LFS/object 后端仍可由 owner 选择。
 - 41 个 corpus payload、所有 ORD Parquet 和 `_needs_review` payload 被明确排除。此变更不修改 payload、不重写既有 acceptance report、不表示 corpus 已发布，也不授权远端写入。
 - 步骤 25～31 将以 preview 变体生成独立 catalog、inventory、lineage 子图、manifest、root hash 和不可变 tag；full corpus release 保留为有独立版本与验收的后续轨道。
+
+## [2026-09-12] 步骤 26-preview 完成：原子生成独立 local RC
+
+- 新增 `build_model_ready_preview_rc.py` 与 preview 专用 manifest schema。它从已验收 step-13 staging 读取并逐文件复核后，将 payload 复制到 Git 忽略的 `release-candidates/` 临时同级目录；所有 hash、preview catalog、artifact inventory、source closure、reference-only corpus lineage、documentation 和 manifest 完成后以单次 rename 提升。它拒绝覆盖既有 RC。
+- 本次 local-only candidate 使用明确的非发布临时 ID `v0.0.0-model-ready-preview-local-rc`：19 target / 15 package / 190 target payload files，合计 `211,008,093` bytes；18 个固定 physical source、15 个 reference-only corpus node、52 个 lineage node 和 37 条完整边。release-tree root SHA-256 为 `ee9af36eb5efd7d42e63d68ffe028a9416bf4f0d3cdd7bacddfa65e8c38a159a`。
+- `datasets/corpus/**` payload、所有 `.parquet` 和 `_needs_review` payload 均为 0；它们只可作为显式 excluded scope 或 provenance reference 存在。未改写既有 full-release draft manifest/graph，未移动仓库顶层 `datasets/model-ready/`，也未执行远端写入。
+
+## [2026-09-12] 步骤 27-preview 完成：local RC 完整性验收
+
+- 新增 `validate_model_ready_preview_rc.py`，独立复核 preview schema、19-record catalog、190-file inventory、per-target checksums/metadata/source links、53-source closure、两跳 reference-only lineage、root hash、scope/status wording 和 release-tree credential/email scan。
+- 严格验收通过：blocking data-integrity failures 为 0，敏感扫描为 0，root hash 与生成时一致。唯一 warning 是 `pfizer-hte-lc-area-percent/audit.jsonl` 的 `54,055,777` bytes 超过普通 Git 50 MiB 警告阈值；它不是本地结构阻塞，但 pilot 必须完成 clean clone/readback。
+- 状态是 `local_validation_passed_pending_owner_gates`，不是 upload acceptance。B3 仍需选定远端/transport 并授权可回读 pilot；B4 仍需冻结真实 version/tag 与 remote write `go`。步骤 26/27 报告记录在 `reports/release-acceptance/step-26-model-ready-preview-build.json` 与 `step-27-model-ready-preview-validation.json`。
