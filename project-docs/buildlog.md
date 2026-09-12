@@ -478,3 +478,9 @@
 - 新增 `build_release_lineage_graph.py`，生成 113 个内容寻址 release artifact 节点（53 source、41 corpus、19 target）、72 条 source→corpus→target 边和两条受 schema 约束的 transformation record。
 - `provenance/release-artifacts.jsonl` 是 release 图专用 inventory；`lineage-edges.csv`、`transformations.jsonl` 与 `release-manifest.json` 形成 draft RC 的 provenance 控制面。root SHA-256 为 `a757863ea622f1a69205024a9ee04482952b95bdee85bbb98c74a2990df970db`。
 - manifest 的 release status 保持 `draft`，不表示 local RC 已接受或有远端对象；状态：`draft_complete`。
+
+## [2026-09-12 01:58 CST] 步骤 24 完成：发布文档、署名与使用说明
+
+- 新增 `DATA_CARD.md` 和 `CITATION.cff`，更新 README 的实际 staging/发布状态，并把 NOTICE 的 ORD revision 改为已验证的 `83f971f...`。
+- 文档明确 corpus 与 model-ready 的口径、19 target 的 non-accepted 状态、CC BY-SA/Apache 边界、literal-email 脱敏、两跳 lineage、外部对象下载模式以及当前 release blockers；不把 draft 误称为 published benchmark。
+- 机器可读检查：`reports/release-acceptance/step-24-documentation.json`；状态：`complete`。

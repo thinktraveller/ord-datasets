@@ -10,7 +10,7 @@ Data and data-derived metadata
 The files identified as CC-BY-SA-4.0 in provenance/license-inventory.csv are
 adaptations or processed metadata derived from the Open Reaction Database
 Project (ORD). The frozen source release is:
-https://github.com/open-reaction-database/ord-data/tree/26e17b78d9ab44a46a4b4327aa55c53549ec0596
+https://github.com/open-reaction-database/ord-data/tree/83f971f586f6ad18f358ae4ae99d045e94ed2066
 
 Those files are offered under Creative Commons Attribution-ShareAlike 4.0
 International. Reuse must provide appropriate attribution to the ORD Project,

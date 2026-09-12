@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "step_id": "step-24",
+  "status": "complete",
+  "documents": [
+    "README.md",
+    "DATA_CARD.md",
+    "CITATION.cff",
+    "NOTICE",
+    "LICENSE-DATA",
+    "LICENSE-CODE",
+    "provenance/release-manifest.json"
+  ],
+  "required_disclosures": {
+    "corpus_model_ready_contract_separation": true,
+    "partial_and_blocked_target_statuses": true,
+    "cc_by_sa_and_apache_boundaries": true,
+    "two_hop_lineage": true,
+    "storage_and_release_gates": true
+  }
+}
