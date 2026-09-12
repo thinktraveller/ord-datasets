@@ -1,0 +1,780 @@
+#!/usr/bin/env python3
+"""Rebuild one ORD physical-to-logical-to-target chain from public Git LFS.
+
+The command deliberately has no ``--source-root`` option.  It gets immutable
+ORD Parquet objects through the public Git LFS batch protocol, verifies each
+object against the frozen source manifest, and writes every derivative under
+an explicitly supplied empty output root.  A caller must keep ``--download-root``
+outside the repository: original Parquet is a transient public input, never a
+release artifact.
+
+Only the generic percent-yield adapter is presently extracted.  Unsupported
+targets fail closed rather than silently applying a different label policy.
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import hashlib
+import json
+import os
+import shutil
+import sys
+import urllib.parse
+import urllib.request
+from pathlib import Path
+from typing import Any, Iterable
+
+import pyarrow.parquet as pq
+from google.protobuf.json_format import MessageToDict
+from jsonschema import Draft202012Validator
+from ord_schema.proto import reaction_pb2
+
+SCRIPT_DIRECTORY = Path(__file__).resolve().parent
+if str(SCRIPT_DIRECTORY) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIRECTORY))
+
+from build_corpus_staging import CORPUS_HEADER, build as build_corpus
+
+VERSION = "1.0.0"
+LFS_POINTER_VERSION = "https://git-lfs.github.com/spec/v1"
+LFS_ACCEPT = "application/vnd.git-lfs+json"
+PARQUET_BATCH_SIZE = 1024
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def canonical_json(value: Any) -> str:
+    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+
+def write_json(path: Path, value: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(f".{path.name}.partial")
+    if temporary.exists():
+        raise FileExistsError(f"refusing to replace existing temporary file: {temporary}")
+    temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    os.replace(temporary, path)
+
+
+def read_csv(path: Path) -> list[dict[str, str]]:
+    with path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        if reader.fieldnames is None:
+            raise ValueError(f"CSV has no header: {path}")
+        return list(reader)
+
+
+def write_csv(path: Path, fieldnames: list[str], rows: Iterable[dict[str, object]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def nonempty_clean_directory(path: Path, label: str) -> None:
+    if path.exists() and any(path.iterdir()):
+        raise ValueError(f"{label} must be empty: {path}")
+    path.mkdir(parents=True, exist_ok=True)
+
+
+def is_within(path: Path, parent: Path) -> bool:
+    try:
+        path.resolve().relative_to(parent.resolve())
+        return True
+    except ValueError:
+        return False
+
+
+def parse_json_array(row: dict[str, str], field: str) -> list[str]:
+    value = json.loads(row[field])
+    if not isinstance(value, list) or not all(isinstance(item, str) for item in value):
+        raise ValueError(f"{field} must be a JSON string array")
+    return value
+
+
+def raw_lfs_pointer_url(source: dict[str, str]) -> str:
+    repo = urllib.parse.urlparse(source["upstream_repo_url"])
+    if repo.scheme != "https" or repo.netloc != "github.com" or not repo.path.endswith(".git"):
+        raise ValueError("source manifest upstream_repo_url must be an HTTPS github.com Git repository")
+    repository = repo.path.strip("/")[:-4]
+    if repository.count("/") != 1:
+        raise ValueError("source manifest upstream repository path is invalid")
+    return f"https://raw.githubusercontent.com/{repository}/{source['upstream_revision']}/{source['upstream_path']}"
+
+
+def lfs_batch_endpoint(source: dict[str, str]) -> str:
+    repository_url = source["upstream_repo_url"].removesuffix("/")
+    if not repository_url.endswith(".git"):
+        raise ValueError("source manifest upstream_repo_url must end in .git")
+    return f"{repository_url}/info/lfs/objects/batch"
+
+
+def fetch_bytes(request: urllib.request.Request, timeout_seconds: int) -> bytes:
+    with urllib.request.urlopen(request, timeout=timeout_seconds) as response:  # noqa: S310 - hosts are validated below.
+        return response.read()
+
+
+def parse_lfs_pointer(payload: bytes) -> tuple[str, int]:
+    try:
+        text = payload.decode("utf-8")
+    except UnicodeDecodeError as error:
+        raise ValueError("pinned raw URL did not return a UTF-8 Git LFS pointer") from error
+    fields: dict[str, str] = {}
+    for line in text.splitlines():
+        key, separator, value = line.partition(" ")
+        if separator:
+            fields[key] = value.strip()
+    if fields.get("version") != LFS_POINTER_VERSION:
+        raise ValueError("pinned raw URL did not return a Git LFS pointer")
+    oid = fields.get("oid", "")
+    if not oid.startswith("sha256:") or len(oid.removeprefix("sha256:")) != 64:
+        raise ValueError("Git LFS pointer has no SHA-256 oid")
+    try:
+        size = int(fields["size"])
+    except (KeyError, ValueError) as error:
+        raise ValueError("Git LFS pointer has no valid size") from error
+    if size < 1:
+        raise ValueError("Git LFS pointer size must be positive")
+    return oid.removeprefix("sha256:"), size
+
+
+def lfs_download_action(source: dict[str, str], oid: str, size: int, timeout_seconds: int) -> tuple[str, dict[str, str]]:
+    request_body = canonical_json({"operation": "download", "transfers": ["basic"], "objects": [{"oid": oid, "size": size}]}).encode("utf-8")
+    request = urllib.request.Request(
+        lfs_batch_endpoint(source),
+        data=request_body,
+        method="POST",
+        headers={"Accept": LFS_ACCEPT, "Content-Type": LFS_ACCEPT},
+    )
+    try:
+        response = json.loads(fetch_bytes(request, timeout_seconds).decode("utf-8"))
+        objects = response["objects"]
+        object_record = objects[0]
+        action = object_record["actions"]["download"]
+        href = action["href"]
+    except (KeyError, IndexError, TypeError, UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise ValueError("public Git LFS batch response has no usable download action") from error
+    if len(objects) != 1 or object_record.get("oid") != oid or int(object_record.get("size", -1)) != size:
+        raise ValueError("public Git LFS batch response does not match the requested object")
+    parsed = urllib.parse.urlparse(href)
+    allowed_hosts = {"github.com", "github-cloud.githubusercontent.com"}
+    if parsed.scheme != "https" or parsed.netloc not in allowed_hosts or parsed.username or parsed.password:
+        raise ValueError("public Git LFS download action has an unexpected host")
+    headers = action.get("header", {})
+    if not isinstance(headers, dict) or not all(isinstance(key, str) and isinstance(value, str) for key, value in headers.items()):
+        raise ValueError("public Git LFS download action has invalid headers")
+    return href, headers
+
+
+def download_lfs_source(source: dict[str, str], download_root: Path, timeout_seconds: int) -> dict[str, object]:
+    """Download one public LFS object and return non-secret verification evidence."""
+    raw_url = raw_lfs_pointer_url(source)
+    pointer_request = urllib.request.Request(raw_url, headers={"Accept": "text/plain"})
+    pointer_oid, pointer_size = parse_lfs_pointer(fetch_bytes(pointer_request, timeout_seconds))
+    expected_oid = source["git_lfs_oid"]
+    expected_size = int(source["size_bytes"])
+    if pointer_oid != expected_oid or pointer_oid != source["source_sha256"] or pointer_size != expected_size:
+        raise ValueError(f"pinned LFS pointer disagrees with frozen source manifest: {source['physical_dataset_id']}")
+    href, headers = lfs_download_action(source, pointer_oid, pointer_size, timeout_seconds)
+    destination = download_root / f"{source['physical_dataset_id']}.parquet"
+    temporary = destination.with_name(f".{destination.name}.partial")
+    if destination.exists() or temporary.exists():
+        raise FileExistsError(f"refusing to overwrite downloaded source: {destination}")
+    request = urllib.request.Request(href, headers=headers)
+    try:
+        with urllib.request.urlopen(request, timeout=timeout_seconds) as response, temporary.open("wb") as handle:  # noqa: S310 - action host is validated above.
+            shutil.copyfileobj(response, handle, length=1024 * 1024)
+    except Exception:
+        if temporary.exists():
+            temporary.unlink()
+        raise
+    actual_hash = sha256(temporary)
+    actual_size = temporary.stat().st_size
+    if actual_hash != expected_oid or actual_size != expected_size:
+        temporary.unlink()
+        raise ValueError(f"downloaded LFS object hash or size disagrees with source manifest: {source['physical_dataset_id']}")
+    os.replace(temporary, destination)
+    return {
+        "physical_dataset_id": source["physical_dataset_id"],
+        "raw_lfs_pointer_url": raw_url,
+        "lfs_batch_endpoint": lfs_batch_endpoint(source),
+        "lfs_batch_protocol": "basic",
+        "ephemeral_download_action_url_persisted": False,
+        "source_sha256": actual_hash,
+        "size_bytes": actual_size,
+        "path": destination,
+    }
+
+
+def parquet_to_physical_csv(parquet_path: Path, source: dict[str, str], output_path: Path) -> dict[str, object]:
+    """Stream a verified ORD Parquet object into the legacy-compatible physical CSV."""
+    if sha256(parquet_path) != source["source_sha256"]:
+        raise ValueError(f"Parquet hash changed before conversion: {source['physical_dataset_id']}")
+    parquet = pq.ParquetFile(parquet_path)
+    names = set(parquet.schema_arrow.names)
+    if names != {"reaction_id", "reaction"}:
+        raise ValueError(f"ORD Parquet has unexpected columns: {sorted(names)}")
+    count = 0
+    with output_path.open("w", encoding="utf-8", newline="") as handle:
+        # The legacy physical layer has exactly these two columns and CRLF
+        # records.  Logical assembly adds immutable source lineage later.
+        writer = csv.DictWriter(handle, fieldnames=["reaction_id", "reaction_json"], lineterminator="\r\n")
+        writer.writeheader()
+        for batch in parquet.iter_batches(batch_size=PARQUET_BATCH_SIZE, columns=["reaction_id", "reaction"]):
+            reaction_ids = batch.column(0).to_pylist()
+            reactions = batch.column(1).to_pylist()
+            for reaction_id, serialized in zip(reaction_ids, reactions, strict=True):
+                if not isinstance(reaction_id, str) or not isinstance(serialized, bytes):
+                    raise ValueError("ORD Parquet reaction_id/reaction types are invalid")
+                reaction = reaction_pb2.Reaction()
+                reaction.ParseFromString(serialized)
+                if reaction.reaction_id != reaction_id:
+                    raise ValueError("ORD Parquet reaction column disagrees with its reaction_id column")
+                writer.writerow(
+                    {
+                        "reaction_id": reaction_id,
+                        "reaction_json": json.dumps(
+                            MessageToDict(reaction, preserving_proto_field_name=True), ensure_ascii=False, separators=(",", ":")
+                        ),
+                    }
+                )
+                count += 1
+    if count != int(source["reaction_count"]):
+        raise ValueError(f"Parquet row count disagrees with source manifest: {source['physical_dataset_id']}")
+    return {"physical_dataset_id": source["physical_dataset_id"], "row_count": count, "sha256": sha256(output_path), "size_bytes": output_path.stat().st_size}
+
+
+def assemble_logical_csv(physical_csvs: list[tuple[dict[str, str], Path]], output_path: Path) -> dict[str, object]:
+    count = 0
+    with output_path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=CORPUS_HEADER, lineterminator="\n")
+        writer.writeheader()
+        for source, physical_csv in sorted(physical_csvs, key=lambda item: item[0]["upstream_path"]):
+            with physical_csv.open(encoding="utf-8", newline="") as input_handle:
+                reader = csv.DictReader(input_handle)
+                if reader.fieldnames != ["reaction_id", "reaction_json"]:
+                    raise ValueError(f"physical CSV has an unexpected header: {physical_csv}")
+                for expected_index, row in enumerate(reader):
+                    writer.writerow(
+                        {
+                            "physical_dataset_id": source["physical_dataset_id"],
+                            "source_file": source["upstream_path"],
+                            "reaction_id": row["reaction_id"],
+                            "row_index": expected_index,
+                            "reaction_json": row["reaction_json"],
+                        }
+                    )
+                    count += 1
+    return {"row_count": count, "sha256": sha256(output_path), "size_bytes": output_path.stat().st_size}
+
+
+def decision_id(target_id: str, physical_id: str, row_index: str, reaction_id: str, decision: str) -> str:
+    material = "\0".join((target_id, physical_id, row_index, reaction_id, decision)).encode("utf-8")
+    return f"label-{hashlib.sha256(material).hexdigest()[:24]}"
+
+
+def unique_yield_percent(reaction: dict[str, Any]) -> tuple[str | None, int]:
+    values: list[str] = []
+    for outcome in reaction.get("outcomes", []):
+        for product in outcome.get("products", []):
+            for measurement in product.get("measurements", []):
+                if measurement.get("type") != "YIELD":
+                    continue
+                percentage = measurement.get("percentage")
+                if not isinstance(percentage, dict) or "value" not in percentage:
+                    continue
+                value = percentage["value"]
+                if isinstance(value, bool) or not isinstance(value, (int, float)):
+                    continue
+                values.append(format(value, ".17g"))
+    unique = sorted(set(values))
+    return (unique[0] if len(unique) == 1 else None), len(values)
+
+
+def source_links(source_rows: list[dict[str, str]], logical_id: str) -> dict[str, object]:
+    return {
+        "schema_version": VERSION,
+        "logical_dataset_id": logical_id,
+        "source_manifest_path": "provenance/source-files.initial.csv",
+        "links": [
+            {
+                "physical_dataset_id": row["physical_dataset_id"],
+                "source_file": row["upstream_path"],
+                "upstream_revision": row["upstream_revision"],
+                "source_file_url": row["source_file_url"],
+                "source_sha256": row["source_sha256"],
+                "git_lfs_oid": row["git_lfs_oid"],
+                "size_bytes": int(row["size_bytes"]),
+                "reaction_count": int(row["reaction_count"]),
+                "data_license_id": row["data_license_id"],
+                "verification_status": row["verification_status"],
+            }
+            for row in sorted(source_rows, key=lambda item: item["upstream_path"])
+        ],
+    }
+
+
+def write_checksums(directory: Path, names: dict[str, str]) -> None:
+    rows = []
+    for role, name in names.items():
+        path = directory / name
+        rows.append({"role": role, "path": name, "sha256": sha256(path), "size_bytes": path.stat().st_size})
+    write_csv(directory / "checksums.csv", ["role", "path", "sha256", "size_bytes"], rows)
+
+
+def build_percent_yield_target(
+    corpus_csv: Path,
+    target: dict[str, str],
+    source_rows: list[dict[str, str]],
+    target_root: Path,
+    schema_dir: Path,
+    source_manifest_hash: str,
+) -> dict[str, object]:
+    if target["label_type"] != "reaction_yield_percent" or target["target_adapter"] != "generic":
+        raise ValueError("clean-room adapter currently supports only generic reaction_yield_percent targets")
+    target_sources = set(parse_json_array(target, "physical_dataset_ids_json"))
+    if len(target_sources) != 1:
+        raise ValueError("clean-room percent-yield adapter requires exactly one physical target source")
+    selected_sources = [row for row in source_rows if row["physical_dataset_id"] in target_sources]
+    if len(selected_sources) != 1:
+        raise ValueError("target source is missing from the rebuilt logical corpus")
+    slug = target["target_slug"]
+    final_dir = target_root / slug
+    partial_dir = target_root / f".{slug}.partial"
+    if final_dir.exists() or partial_dir.exists():
+        raise FileExistsError(f"refusing to overwrite model-ready target: {slug}")
+    partial_dir.mkdir(parents=True)
+    label_column = target["label_column"]
+    included: list[dict[str, object]] = []
+    row_map: list[dict[str, object]] = []
+    exclusions: list[dict[str, object]] = []
+    audit: list[dict[str, object]] = []
+    try:
+        with corpus_csv.open(encoding="utf-8", newline="") as handle:
+            reader = csv.DictReader(handle)
+            if reader.fieldnames != CORPUS_HEADER:
+                raise ValueError("rebuilt corpus CSV has an unexpected header")
+            for row in reader:
+                if row["physical_dataset_id"] not in target_sources:
+                    continue
+                reaction = json.loads(row["reaction_json"])
+                value, candidate_count = unique_yield_percent(reaction)
+                identity = (row["physical_dataset_id"], row["row_index"], row["reaction_id"])
+                reaction_key = ":".join(identity)
+                if value is None:
+                    decision = "exclude"
+                    decision_value = decision_id(target["target_id"], *identity, decision)
+                    reason = "no_unique_structured_percent_yield"
+                    exclusions.append(
+                        {
+                            "reaction_key": reaction_key,
+                            "physical_dataset_id": row["physical_dataset_id"],
+                            "source_row_index": row["row_index"],
+                            "label_decision_id": decision_value,
+                            "exclusion_reason": reason,
+                        }
+                    )
+                else:
+                    decision = "include"
+                    decision_value = decision_id(target["target_id"], *identity, decision)
+                    reason = "unique_structured_percent_yield"
+                    included.append({"reaction_key": reaction_key, label_column: value})
+                    row_map.append(
+                        {
+                            "csv_row_number": len(included),
+                            "reaction_key": reaction_key,
+                            "physical_dataset_id": row["physical_dataset_id"],
+                            "source_row_index": row["row_index"],
+                            "label_decision_id": decision_value,
+                        }
+                    )
+                audit.append(
+                    {
+                        "schema_version": VERSION,
+                        "decision": decision,
+                        "target_id": target["target_id"],
+                        "reaction_key": reaction_key,
+                        "physical_dataset_id": row["physical_dataset_id"],
+                        "source_file": row["source_file"],
+                        "source_row_index": int(row["row_index"]),
+                        "label_decision_id": decision_value,
+                        "reason": reason,
+                        "eligible_measurement_count": candidate_count,
+                    }
+                )
+        expected_source_count = int(target["source_count"])
+        if len(included) + len(exclusions) != expected_source_count:
+            raise ValueError("target source count differs from frozen semantic target map")
+        if len(included) != int(target["included_count"]) or len(exclusions) != int(target["excluded_count"]):
+            raise ValueError("clean-room target decisions differ from frozen semantic target map")
+        write_csv(partial_dir / "dataset.csv", ["reaction_key", label_column], included)
+        write_csv(
+            partial_dir / "row-map.csv",
+            ["csv_row_number", "reaction_key", "physical_dataset_id", "source_row_index", "label_decision_id"],
+            row_map,
+        )
+        write_csv(
+            partial_dir / "exclusions.csv",
+            ["reaction_key", "physical_dataset_id", "source_row_index", "label_decision_id", "exclusion_reason"],
+            exclusions,
+        )
+        with (partial_dir / "audit.jsonl").open("w", encoding="utf-8") as handle:
+            for item in audit:
+                handle.write(canonical_json(item) + "\n")
+        target_schema = {
+            "schema_version": VERSION,
+            "dataset_kind": "model-ready",
+            "target_id": target["target_id"],
+            "columns": [
+                {"name": "reaction_key", "role": "identifier", "type": "string"},
+                {"name": label_column, "role": "label", "type": "float", "unit": target["label_unit"]},
+            ],
+            "label_policy": target["label_policy"],
+            "adapter": "generic_unique_structured_percent_yield",
+        }
+        write_json(partial_dir / "schema.json", target_schema)
+        links = source_links(selected_sources, target["logical_dataset_id"])
+        Draft202012Validator(json.loads((schema_dir / "source-links.schema.json").read_text(encoding="utf-8"))).validate(links)
+        write_json(partial_dir / "source-links.json", links)
+        target_provenance = {
+            "schema_version": VERSION,
+            "target_id": target["target_id"],
+            "input": {"corpus_csv_sha256": sha256(corpus_csv), "source_manifest_sha256": source_manifest_hash},
+            "transformation": {
+                "name": "generic_unique_structured_percent_yield",
+                "policy": target["label_policy"],
+                "candidate_measurement_type": "YIELD",
+            },
+            "counts": {"included": len(included), "excluded": len(exclusions), "source": expected_source_count},
+        }
+        write_json(partial_dir / "target-provenance.json", target_provenance)
+        checksum_names = {
+            "dataset": "dataset.csv",
+            "schema": "schema.json",
+            "row-map": "row-map.csv",
+            "exclusions": "exclusions.csv",
+            "audit": "audit.jsonl",
+            "source-links": "source-links.json",
+            "target-provenance": "target-provenance.json",
+        }
+        write_checksums(partial_dir, checksum_names)
+        metadata_artifacts = []
+        for role in ("dataset", "schema", "row-map", "exclusions", "audit"):
+            path = partial_dir / checksum_names[role]
+            metadata_artifacts.append(
+                {"role": role, "path": f"datasets/model-ready/{slug}/{path.name}", "sha256": sha256(path), "size_bytes": path.stat().st_size}
+            )
+        checksum_path = partial_dir / "checksums.csv"
+        metadata_artifacts.append(
+            {"role": "checksums", "path": f"datasets/model-ready/{slug}/checksums.csv", "sha256": sha256(checksum_path), "size_bytes": checksum_path.stat().st_size}
+        )
+        metadata = {
+            "schema_version": VERSION,
+            "dataset_kind": "model-ready",
+            "dataset_slug": slug,
+            "display_name_en": target["display_name_en"],
+            "display_name_zh": target["display_name_zh"],
+            "logical_dataset_id": target["logical_dataset_id"],
+            "physical_dataset_ids": sorted(target_sources),
+            "source_links_path": f"datasets/model-ready/{slug}/source-links.json",
+            "license_id": "CC-BY-SA-4.0",
+            "artifact_status": "staged",
+            "readiness_status": target["readiness_status"],
+            "corpus_row_count": int(target["source_count"]),
+            "target_id": target["target_id"],
+            "label": {"column": label_column, "type": target["label_type"], "unit": target["label_unit"], "policy": target["label_policy"]},
+            "included_count": len(included),
+            "excluded_count": len(exclusions),
+            "content_artifacts": metadata_artifacts,
+            "input_provenance": {
+                "ord_upstream_revision": selected_sources[0]["upstream_revision"],
+                "source_manifest_sha256": source_manifest_hash,
+                "semantic_name_policy_version": target["naming_policy_version"],
+                "provenance_schema_version": VERSION,
+                "pipeline_commit": None,
+            },
+        }
+        Draft202012Validator(json.loads((schema_dir / "dataset-metadata.schema.json").read_text(encoding="utf-8"))).validate(metadata)
+        write_json(partial_dir / "metadata.json", metadata)
+        os.replace(partial_dir, final_dir)
+    except Exception:
+        if partial_dir.exists():
+            shutil.rmtree(partial_dir)
+        raise
+    return {
+        "target_id": target["target_id"],
+        "target_slug": slug,
+        "included_count": len(included),
+        "excluded_count": len(exclusions),
+        "artifacts": {path.name: {"sha256": sha256(path), "size_bytes": path.stat().st_size} for path in sorted(final_dir.iterdir()) if path.is_file()},
+    }
+
+
+def output_tree(root: Path) -> tuple[list[dict[str, object]], str]:
+    records = []
+    for path in sorted(item for item in root.rglob("*") if item.is_file() and item.name != "clean-room-output-manifest.json"):
+        records.append({"path": path.relative_to(root).as_posix(), "sha256": sha256(path), "size_bytes": path.stat().st_size})
+    root_hash = hashlib.sha256(canonical_json(records).encode("utf-8")).hexdigest()
+    return records, root_hash
+
+
+def find_single(rows: list[dict[str, str]], field: str, value: str, label: str) -> dict[str, str]:
+    matches = [row for row in rows if row.get(field) == value]
+    if len(matches) != 1:
+        raise ValueError(f"expected exactly one {label} with {field}={value}, found {len(matches)}")
+    return matches[0]
+
+
+def baseline_comparison(
+    corpus_manifest_path: Path | None, target_manifest_path: Path | None, physical_index_path: Path | None,
+    logical: dict[str, str], target: dict[str, str], physical_records: list[dict[str, object]], corpus_hash: str,
+    target_record: dict[str, object],
+) -> dict[str, object]:
+    """Compare only control-plane hashes; never read a local payload or cache."""
+    result: dict[str, object] = {"available": False}
+    if physical_index_path is not None:
+        physical_rows = read_csv(physical_index_path)
+        matches = [row for row in physical_rows if row.get("old_path", "").endswith(f"{physical_records[0]['physical_dataset_id']}.csv")]
+        if len(matches) != 1:
+            raise ValueError("physical archive index has no unique selected source record")
+        expected = matches[0]["sha256"]
+        result["physical_csv"] = {"expected_sha256": expected, "actual_sha256": physical_records[0]["sha256"], "matches": expected == physical_records[0]["sha256"]}
+    if corpus_manifest_path is not None:
+        corpus_manifest = json.loads(corpus_manifest_path.read_text(encoding="utf-8"))
+        package = find_single(corpus_manifest["packages"], "dataset_slug", logical["directory_slug"], "baseline corpus package")
+        expected = package["reaction_sha256"]
+        result["corpus"] = {"expected_reactions_sha256": expected, "actual_reactions_sha256": corpus_hash, "matches": expected == corpus_hash, "row_count_matches": int(package["row_count"]) == int(logical["reaction_count"])}
+    if target_manifest_path is not None:
+        target_manifest = json.loads(target_manifest_path.read_text(encoding="utf-8"))
+        package = find_single(target_manifest["packages"], "target_id", target["target_id"], "baseline target package")
+        expected = package["artifacts"]["dataset.csv"]["sha256"]
+        actual = target_record["artifacts"]["dataset.csv"]["sha256"]
+        result["target"] = {
+            "expected_dataset_sha256": expected,
+            "actual_dataset_sha256": actual,
+            "dataset_bytes_match": expected == actual,
+            "included_count_matches": int(package["included_count"]) == int(target_record["included_count"]),
+            "excluded_count_matches": int(package["excluded_count"]) == int(target_record["excluded_count"]),
+            "source_count_matches": int(package["source_count"]) == int(target_record["included_count"]) + int(target_record["excluded_count"]),
+        }
+    result["available"] = any(key in result for key in ("physical_csv", "corpus", "target"))
+    return result
+
+
+def run(
+    source_manifest_path: Path,
+    semantic_map_path: Path,
+    members_path: Path,
+    target_map_path: Path,
+    schema_dir: Path,
+    physical_id: str,
+    target_id: str,
+    download_root: Path,
+    output_root: Path,
+    report_path: Path,
+    timeout_seconds: int = 300,
+    baseline_corpus_manifest_path: Path | None = None,
+    baseline_target_manifest_path: Path | None = None,
+    baseline_physical_index_path: Path | None = None,
+    expected_output_root_sha256: str | None = None,
+) -> dict[str, object]:
+    if is_within(download_root, output_root) or is_within(output_root, download_root):
+        raise ValueError("download root and output root must not contain one another")
+    if is_within(download_root, Path.cwd()):
+        raise ValueError("download root must be outside the repository working directory")
+    nonempty_clean_directory(download_root, "download root")
+    nonempty_clean_directory(output_root, "clean-room output root")
+    if is_within(report_path, output_root):
+        raise ValueError("report path must be outside clean-room output root")
+    source_rows = read_csv(source_manifest_path)
+    target_rows = read_csv(target_map_path)
+    target = find_single(target_rows, "target_id", target_id, "target")
+    target_source_ids = parse_json_array(target, "physical_dataset_ids_json")
+    if physical_id not in target_source_ids:
+        raise ValueError("selected physical ID is not declared by selected target")
+    selected_source = find_single(source_rows, "physical_dataset_id", physical_id, "source")
+    logical = find_single(read_csv(semantic_map_path), "logical_dataset_id", target["logical_dataset_id"], "logical dataset")
+    members = [row for row in read_csv(members_path) if row["logical_dataset_id"] == logical["logical_dataset_id"]]
+    if not members:
+        raise ValueError("selected logical dataset has no physical members")
+    source_by_id = {row["physical_dataset_id"]: row for row in source_rows}
+    logical_sources = []
+    for member in members:
+        source = source_by_id.get(member["physical_dataset_id"])
+        if source is None or source["upstream_path"] != member["source_file"]:
+            raise ValueError("logical membership and source manifest disagree")
+        logical_sources.append(source)
+    if selected_source not in logical_sources:
+        raise ValueError("selected target source is not a member of its logical corpus")
+    if int(logical["reaction_count"]) != sum(int(member["reaction_count"]) for member in members):
+        raise ValueError("logical corpus count disagrees with membership")
+
+    provenance_root = output_root / "provenance"
+    physical_root = output_root / "physical"
+    logical_root = output_root / "logical"
+    corpus_root = output_root / "datasets" / "corpus"
+    target_root = output_root / "datasets" / "model-ready"
+    for directory in (provenance_root, physical_root, logical_root, corpus_root, target_root):
+        directory.mkdir(parents=True, exist_ok=True)
+    write_csv(provenance_root / "source-files.initial.csv", list(source_rows[0]), logical_sources)
+    write_csv(provenance_root / "logical-dataset-members.csv", list(members[0]), members)
+    write_csv(provenance_root / "semantic-name-map.csv", list(logical), [logical])
+    write_csv(provenance_root / "semantic-target-map.csv", list(target), [target])
+    source_manifest_hash = sha256(provenance_root / "source-files.initial.csv")
+
+    download_records = []
+    physical_records = []
+    physical_csvs: list[tuple[dict[str, str], Path]] = []
+    for source in sorted(logical_sources, key=lambda row: row["upstream_path"]):
+        download = download_lfs_source(source, download_root, timeout_seconds)
+        download_records.append({key: value for key, value in download.items() if key != "path"})
+        physical_csv = physical_root / f"{source['physical_dataset_id']}.csv"
+        physical_records.append(parquet_to_physical_csv(download["path"], source, physical_csv))
+        physical_csvs.append((source, physical_csv))
+    logical_csv = logical_root / f"logical_dataset_id={logical['logical_dataset_id']}" / "reactions.csv"
+    logical_csv.parent.mkdir(parents=True)
+    logical_record = assemble_logical_csv(physical_csvs, logical_csv)
+    if logical_record["row_count"] != int(logical["reaction_count"]):
+        raise ValueError("assembled logical CSV row count differs from semantic map")
+
+    corpus_run_manifest = provenance_root / "corpus-build-manifest.json"
+    corpus_summary = build_corpus(
+        logical_root,
+        provenance_root / "semantic-name-map.csv",
+        provenance_root / "logical-dataset-members.csv",
+        provenance_root / "source-files.initial.csv",
+        corpus_root,
+        provenance_root / "redaction-audits",
+        corpus_run_manifest,
+        schema_dir,
+        expected_corpus_count=1,
+        expected_reaction_count=int(logical["reaction_count"]),
+        expected_physical_count=len(logical_sources),
+    )
+    corpus_dir = corpus_root / logical["directory_slug"]
+    target_record = build_percent_yield_target(
+        corpus_dir / "reactions.csv", target, logical_sources, target_root, schema_dir, source_manifest_hash
+    )
+    transformations = [
+        {"schema_version": VERSION, "step": "public_lfs_to_physical_csv", "inputs": [item["source_sha256"] for item in download_records], "outputs": [item["sha256"] for item in physical_records]},
+        {"schema_version": VERSION, "step": "physical_csv_to_logical_corpus", "inputs": [item["sha256"] for item in physical_records], "outputs": [logical_record["sha256"], sha256(corpus_dir / "reactions.csv")]},
+        {"schema_version": VERSION, "step": "logical_corpus_to_model_ready_target", "inputs": [sha256(corpus_dir / "reactions.csv")], "outputs": [target_record["artifacts"]["dataset.csv"]["sha256"]]},
+    ]
+    with (provenance_root / "transformations.jsonl").open("w", encoding="utf-8") as handle:
+        for record in transformations:
+            handle.write(canonical_json(record) + "\n")
+    files, root_hash = output_tree(output_root)
+    output_manifest = {"schema_version": VERSION, "files": files, "root_sha256": root_hash}
+    write_json(output_root / "clean-room-output-manifest.json", output_manifest)
+    if expected_output_root_sha256 is not None and (
+        len(expected_output_root_sha256) != 64 or any(character not in "0123456789abcdef" for character in expected_output_root_sha256)
+    ):
+        raise ValueError("expected output root SHA-256 must be lowercase hexadecimal")
+    corpus_hash = sha256(corpus_dir / "reactions.csv")
+    baseline = baseline_comparison(
+        baseline_corpus_manifest_path,
+        baseline_target_manifest_path,
+        baseline_physical_index_path,
+        logical,
+        target,
+        physical_records,
+        corpus_hash,
+        target_record,
+    )
+    byte_gate = baseline.get("target", {}).get("dataset_bytes_match")
+    repeat_matches = expected_output_root_sha256 is None or expected_output_root_sha256 == root_hash
+    if byte_gate not in (None, True):
+        status = "partial_target_byte_equivalence_unresolved"
+    elif not repeat_matches:
+        status = "failed_repeat_hash_mismatch"
+    else:
+        status = "complete"
+    report = {
+        "schema_version": VERSION,
+        "step_id": "step-20",
+        "status": status,
+        "clean_room_policy": {
+            "public_input_only": True,
+            "local_staging_or_cache_used_as_input": False,
+            "original_parquet_written_inside_repository": False,
+            "download_root_must_be_external": True,
+        },
+        "sample": {
+            "selected_physical_dataset_id": physical_id,
+            "logical_dataset_id": logical["logical_dataset_id"],
+            "corpus_slug": logical["directory_slug"],
+            "target_id": target_id,
+            "target_slug": target["target_slug"],
+        },
+        "public_source_retrieval": download_records,
+        "physical_csv": physical_records,
+        "logical_csv": logical_record,
+        "corpus": {"summary": corpus_summary, "reactions_sha256": corpus_hash},
+        "target": target_record,
+        "provenance": {"source_manifest_sha256": source_manifest_hash, "transformations_path": "provenance/transformations.jsonl"},
+        "reproducibility": {"output_file_count": len(files), "output_root_sha256": root_hash, "output_manifest_path": "clean-room-output-manifest.json"},
+        "independent_repeat": None
+        if expected_output_root_sha256 is None
+        else {"expected_output_root_sha256": expected_output_root_sha256, "matches": expected_output_root_sha256 == root_hash},
+        "baseline_comparison": baseline,
+        "remaining_blocker": (
+            None
+            if status == "complete"
+            else "The extracted generic target contract has matching source/included/excluded semantics but does not byte-match the frozen target dataset artifact."
+            if status == "partial_target_byte_equivalence_unresolved"
+            else "The independently repeated clean-room output root hash differs from the expected hash."
+        ),
+    }
+    write_json(report_path, report)
+    return report
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--source-manifest", required=True, type=Path)
+    parser.add_argument("--semantic-map", required=True, type=Path)
+    parser.add_argument("--members", required=True, type=Path)
+    parser.add_argument("--target-map", required=True, type=Path)
+    parser.add_argument("--schema-dir", required=True, type=Path)
+    parser.add_argument("--physical-id", required=True)
+    parser.add_argument("--target-id", required=True)
+    parser.add_argument("--download-root", required=True, type=Path)
+    parser.add_argument("--output-root", required=True, type=Path)
+    parser.add_argument("--report-path", required=True, type=Path)
+    parser.add_argument("--timeout-seconds", type=int, default=300)
+    parser.add_argument("--baseline-corpus-manifest", type=Path)
+    parser.add_argument("--baseline-target-manifest", type=Path)
+    parser.add_argument("--baseline-physical-index", type=Path)
+    parser.add_argument("--expected-output-root-sha256")
+    args = parser.parse_args()
+    result = run(
+        source_manifest_path=args.source_manifest,
+        semantic_map_path=args.semantic_map,
+        members_path=args.members,
+        target_map_path=args.target_map,
+        schema_dir=args.schema_dir,
+        physical_id=args.physical_id,
+        target_id=args.target_id,
+        download_root=args.download_root,
+        output_root=args.output_root,
+        report_path=args.report_path,
+        timeout_seconds=args.timeout_seconds,
+        baseline_corpus_manifest_path=args.baseline_corpus_manifest,
+        baseline_target_manifest_path=args.baseline_target_manifest,
+        baseline_physical_index_path=args.baseline_physical_index,
+        expected_output_root_sha256=args.expected_output_root_sha256,
+    )
+    print(json.dumps({"status": result["status"], "output_root_sha256": result["reproducibility"]["output_root_sha256"]}, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main()

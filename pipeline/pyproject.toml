@@ -5,6 +5,8 @@ description = "Reproducible staging, provenance, and release validation for ord-
 requires-python = ">=3.12"
 dependencies = [
   "jsonschema>=4.10,<5",
+  "ord-schema>=0.6.31,<0.7",
+  "pyarrow>=14,<25",
 ]
 
 [dependency-groups]
