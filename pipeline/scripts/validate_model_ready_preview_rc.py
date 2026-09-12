@@ -116,9 +116,22 @@ def read_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
+def release_files(root: Path):
+    """Yield payload files while excluding checkout-local Git metadata.
+
+    A release artifact is the versioned working tree, not the ``.git``
+    database created by ``git clone``.  Keeping this rule here lets the same
+    validator operate on either an extracted archive or a fresh clone.
+    """
+    for path in sorted((item for item in root.rglob("*") if item.is_file()), key=lambda item: item.as_posix()):
+        if path.relative_to(root).parts[:1] == (".git",):
+            continue
+        yield path
+
+
 def root_hash(root: Path) -> str:
     records = []
-    for path in sorted((item for item in root.rglob("*") if item.is_file()), key=lambda item: item.as_posix()):
+    for path in release_files(root):
         relative = path.relative_to(root)
         if relative == MANIFEST_RELATIVE:
             continue
@@ -133,7 +146,7 @@ def add_failure(failures: list[str], message: str) -> None:
 
 def scan_release_tree(root: Path) -> list[dict[str, str]]:
     findings: list[dict[str, str]] = []
-    for path in sorted(item for item in root.rglob("*") if item.is_file()):
+    for path in release_files(root):
         relative = path.relative_to(root).as_posix()
         tail = b""
         categories: set[str] = set()

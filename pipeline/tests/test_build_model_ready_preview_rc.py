@@ -242,6 +242,15 @@ class ModelReadyPreviewBuilderTest(unittest.TestCase):
             self.assertEqual("local_validation_passed_pending_owner_gates", validation["status"])
             self.assertEqual(0, validation["blocking_check_failures"])
 
+            # A no-cache Git readback includes local commit/log metadata.  It
+            # must not change release-artifact validation or sensitive scans.
+            git_metadata = candidate / ".git" / "logs"
+            git_metadata.mkdir(parents=True)
+            (git_metadata / "HEAD").write_text("author@example.test\n", encoding="utf-8")
+            clone_validation = VALIDATOR.validate(candidate, ROOT / "pipeline" / "schemas", strict_frozen_baseline=False)
+            self.assertEqual("local_validation_passed_pending_owner_gates", clone_validation["status"])
+            self.assertEqual(0, clone_validation["blocking_check_failures"])
+
 
 if __name__ == "__main__":
     unittest.main()
