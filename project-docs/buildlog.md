@@ -506,3 +506,8 @@
 
 - 新增 `validate_release_candidate.py`，复核 catalog、staging 和 lineage 的控制面：41 corpus、19 target、113 nodes、72 edges，failed edge 为 0；没有远端写入。
 - RC 未被接受。4 个 blocking check 仍为 dependency lock、clean-room rebuild、storage pilot 和 release authorization。机器可读结果：`reports/release-acceptance/step-27-release-candidate-validation.json`，状态：`rejected`。
+
+## [2026-09-12 02:11 CST] 步骤 28 等待授权：冻结 release 决策
+
+- `provenance/release-decision.json` 明确列出 remote URL/owner/visibility、版本/tag、object backend/quota、`_needs_review` 范围和 partial/blocked 展示方式这七项尚未由 owner 选择；`remote_write_authorized` 为 false。
+- 本记录不包含 credential，也不构成上传授权；状态：`pending_owner_decision`。

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "step_id": "step-28",
+  "status": "pending_owner_decision",
+  "go_no_go": "pending",
+  "required_owner_choices": {
+    "remote_repository_url": null,
+    "remote_owner": null,
+    "visibility": null,
+    "release_version_and_tag": null,
+    "object_backend_and_quota": null,
+    "needs_review_first_release_scope": null,
+    "partial_blocked_target_presentation": null
+  },
+  "credential_handling": "Credentials must be supplied through an authorized secure channel and must never be written to this repository.",
+  "remote_write_authorized": false
+}
