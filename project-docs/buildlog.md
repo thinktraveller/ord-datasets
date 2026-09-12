@@ -454,3 +454,9 @@
 - 新增 `pipeline/scripts/audit_needs_review.py`，对全部 210 个待审文件从冻结 inventory 重新建立逐文件 review table，不复制任一待审 payload。
 - 43 个与非待审 canonical artifact 逐字节相同的文件标记为 `superseded` / `excluded_duplicate`；其余 167 个保留 `quarantined`。首发 inclusion 为 0，未把待审对象默认为公开。
 - 审计范围为 14,828,180,158 bytes；机器可读 review table：`intermediate/90-legacy-needs-review/review-disposition.csv`，摘要：`reports/release-acceptance/step-18-needs-review-audit.json`；状态：`complete`。
+
+## [2026-09-12 01:35 CST] 步骤 19 部分完成：抽取生产 pipeline
+
+- `pipeline/` 现有 12 个参数化脚本、schema、policy、fixtures 和测试被封装为 Python 项目；新增 `pyproject.toml`、archive indexer regression tests 和可执行说明。所有输出 root 由 CLI 调用方提供，脚本源码不含本机绝对路径。
+- 静态检查（未定义名称）和 5 个单元/fixture 测试均通过；原先一处未使用 import 已清理。
+- **阻塞**：`uv lock` 下载 `ruff` 时 TLS 连接失败，离线 resolver 亦无可用 ruff cache，故没有生成 `uv.lock`；未用未锁定依赖替代它。详见 `pipeline/DEPENDENCY_LOCK_BLOCKED.md` 与 `reports/release-acceptance/step-19-pipeline-extraction.json`。在网络可用环境生成 lock 前，本步骤不能标记 complete，也阻塞 RC 验收。
