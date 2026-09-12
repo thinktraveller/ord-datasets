@@ -1,0 +1,76 @@
+{
+  "artifact_status": "staged",
+  "content_artifacts": [
+    {
+      "path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/dataset.csv",
+      "role": "dataset",
+      "sha256": "a589fdfe1f90e655bd9193983aa92264e0b86bfdb017c04836b5b933edc429c7",
+      "size_bytes": 303418
+    },
+    {
+      "path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/schema.json",
+      "role": "schema",
+      "sha256": "f362b5227d85a15afa5d25e17c8cb20e393e734ee024477d467379d2eb0e25f5",
+      "size_bytes": 1635
+    },
+    {
+      "path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/yonod-config.json",
+      "role": "yonod-config",
+      "sha256": "1ee7a5b68495d6057e1dfc16ee1cbb9fcb4c32092966fa82970d250372569412",
+      "size_bytes": 3052
+    },
+    {
+      "path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/exclusions.csv",
+      "role": "exclusions",
+      "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+      "size_bytes": 85
+    },
+    {
+      "path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/row-map.csv",
+      "role": "row-map",
+      "sha256": "a829c13773734275e8c368cf7a387334ad3e6e241ce45958eb7f6034155e87fb",
+      "size_bytes": 286729
+    },
+    {
+      "path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/audit.jsonl",
+      "role": "audit",
+      "sha256": "d035af84551d3fbf4e6049b3250cfca72fbd53ea6c672311f74006c9cd349cf5",
+      "size_bytes": 3936179
+    },
+    {
+      "path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/checksums.csv",
+      "role": "checksums",
+      "sha256": "fa1d524160e6504bdc7ae3c5f8ac8be0aafceeddcaba1f5cca39084c9a7d7626",
+      "size_bytes": 809
+    }
+  ],
+  "corpus_row_count": 1430,
+  "dataset_kind": "model-ready",
+  "dataset_slug": "asymmetric-alkylation-ee-s-minus-r-percent",
+  "display_name_en": "Asymmetric Alkylation ee (S-R, %)",
+  "display_name_zh": "不对称烷基化 ee（S-R，%）",
+  "excluded_count": 0,
+  "included_count": 1430,
+  "input_provenance": {
+    "ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+    "pipeline_commit": null,
+    "provenance_schema_version": "1.0.0",
+    "semantic_name_policy_version": "semantic-target-names-v1",
+    "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7"
+  },
+  "label": {
+    "column": "ee_s_minus_r_percent",
+    "policy": "signed_selectivity_v1:s_config_imms_percentage",
+    "type": "signed_enantiomeric_excess_s_minus_r_percent",
+    "unit": "percentage points, S minus R"
+  },
+  "license_id": "CC-BY-SA-4.0",
+  "logical_dataset_id": "physical_c5b00523487a4211a194160edf45e9ab",
+  "physical_dataset_ids": [
+    "ord_dataset-c5b00523487a4211a194160edf45e9ab"
+  ],
+  "readiness_status": "generated_adapter_blocked",
+  "schema_version": "1.0.0",
+  "source_links_path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/source-links.json",
+  "target_id": "asymmetric_alkylation_ee_s_minus_r_percent"
+}

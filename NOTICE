@@ -1,0 +1,8 @@
+ord-datasets model-ready preview NOTICE
+=======================================
+
+The data and data-derived metadata in this preview are adaptations of the Open Reaction Database Project (ORD) and are offered under Creative Commons Attribution-ShareAlike 4.0 International. Reuse must provide attribution, link to the source and license, identify modifications, and comply with ShareAlike.
+
+This preview redistributes no ORD Parquet payload, corpus payload, or `_needs_review` payload. Commit-pinned ORD source URLs, content hashes, and Git LFS OIDs are preserved as provenance metadata only.
+
+Code is separately licensed under Apache-2.0. No license here grants rights to material outside this declared preview scope.

@@ -1,0 +1,76 @@
+{
+  "artifact_status": "staged",
+  "content_artifacts": [
+    {
+      "path": "datasets/model-ready/science-hte-relative-lc-area-ratio/dataset.csv",
+      "role": "dataset",
+      "sha256": "2d1bfd835869c7263d37d035131981fb4042f9c93671640ea983deb5f417e163",
+      "size_bytes": 340725
+    },
+    {
+      "path": "datasets/model-ready/science-hte-relative-lc-area-ratio/schema.json",
+      "role": "schema",
+      "sha256": "dfd7876422cde7d9278c54b9a537d36e8007a5853c769445e4cbf7acb99f6365",
+      "size_bytes": 1796
+    },
+    {
+      "path": "datasets/model-ready/science-hte-relative-lc-area-ratio/yonod-config.json",
+      "role": "yonod-config",
+      "sha256": "e7e2fb5e49d114e192498f4b7b038385f6be3cebce601e5a3a730f0c155bfe21",
+      "size_bytes": 3168
+    },
+    {
+      "path": "datasets/model-ready/science-hte-relative-lc-area-ratio/exclusions.csv",
+      "role": "exclusions",
+      "sha256": "1cbc613a6828a169615d29e6f979431f4a44e2f27b3d3d443be0612a223d3893",
+      "size_bytes": 1268
+    },
+    {
+      "path": "datasets/model-ready/science-hte-relative-lc-area-ratio/row-map.csv",
+      "role": "row-map",
+      "sha256": "5863de3a012bf0587a435d0487d58f59c50434c1ff45c38cea6ea6d9aedb7a07",
+      "size_bytes": 359199
+    },
+    {
+      "path": "datasets/model-ready/science-hte-relative-lc-area-ratio/audit.jsonl",
+      "role": "audit",
+      "sha256": "20d3cd578b86e0b125ccbe0e3ea3782dd2050c0a48fd2709c2aaa1d4ac6228fe",
+      "size_bytes": 7641386
+    },
+    {
+      "path": "datasets/model-ready/science-hte-relative-lc-area-ratio/checksums.csv",
+      "role": "checksums",
+      "sha256": "354ca05ad4e1816f77b6e732705e220c9dd5427689bf0970acb55cae8583f14f",
+      "size_bytes": 811
+    }
+  ],
+  "corpus_row_count": 1824,
+  "dataset_kind": "model-ready",
+  "dataset_slug": "science-hte-relative-lc-area-ratio",
+  "display_name_en": "Science HTE Relative LC Area Ratio",
+  "display_name_zh": "Science 高通量相对 LC 面积比",
+  "excluded_count": 5,
+  "included_count": 1531,
+  "input_provenance": {
+    "ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+    "pipeline_commit": null,
+    "provenance_schema_version": "1.0.0",
+    "semantic_name_policy_version": "semantic-target-names-v1",
+    "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7"
+  },
+  "label": {
+    "column": "relative_product_lc_area_ratio",
+    "policy": "unique_structured_scalar_no_aggregation",
+    "type": "relative_lc_area_ratio",
+    "unit": "dimensionless ratio (product LC area / internal-standard LC area)"
+  },
+  "license_id": "CC-BY-SA-4.0",
+  "logical_dataset_id": "lit_10_1126_science_1259203",
+  "physical_dataset_ids": [
+    "ord_dataset-7d8f5fd922d4497d91cb81489b052746"
+  ],
+  "readiness_status": "partial_scope_generated",
+  "schema_version": "1.0.0",
+  "source_links_path": "datasets/model-ready/science-hte-relative-lc-area-ratio/source-links.json",
+  "target_id": "science_hte_diverse_nucleophile_relative_lc_area_ratio"
+}

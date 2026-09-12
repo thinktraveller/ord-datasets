@@ -1,0 +1,18 @@
+{
+  "input_artifacts": {
+    "normalized_dataset": "427e149d84943bb82adcf3066be751edd2418696bb8b972177e510663a1a2ef3",
+    "raw_exclusions": "76d6a5ca9f764f76c4db719a17a6bd109080b1ee74d3b6229427611585ea10d0",
+    "row_map": "e1c91bfc396d85a7b2fda5f219366b114cdb24908922758445734504ef8bfc0b",
+    "standardized_schema": "701e39c8d386813caa498b191451173872a77eca2b8aa7d962a8aeb667593323",
+    "target_audit": "111bbbe137bb48cf53fbacfddbc33b1a4545adaedd9ff7574cbcceb5a3afdad1",
+    "yonod_config": "dccc6c726e14061d898de9d6ff28151fb7ea7c8b3aaf9cdf6dbf569ae7319bad"
+  },
+  "logical_dataset_id": "physical_b440f8c90b6343189093770060fc4098",
+  "schema_version": "1.0.0",
+  "target_id": "photodehalogenation_conversion_percent",
+  "target_manifest_sha256": "fb503dd8570712dc890bbbb6ef352e6c8bd07ffed6f44833174a1dc823bec490",
+  "transformation": {
+    "name": "enrich-exclusions-with-label-decision-id",
+    "output_sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7"
+  }
+}

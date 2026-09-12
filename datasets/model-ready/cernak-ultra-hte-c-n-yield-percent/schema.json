@@ -1,0 +1,66 @@
+{
+  "adapter_version": "wave-a-labels-v1",
+  "column_roles": {
+    "conditions": [
+      "temperature_c",
+      "reaction_time_s"
+    ],
+    "label": "yield_percent",
+    "others": [
+      "reagent-1",
+      "catalyst-1",
+      "catalyst-2",
+      "solvent-1",
+      "solvent-2",
+      "solvent-3",
+      "solvent-4",
+      "solvent-5",
+      "solvent-6",
+      "solvent-7",
+      "solvent-8",
+      "solvent-9",
+      "solvent-10"
+    ],
+    "products": [
+      "product"
+    ],
+    "reactants": [
+      "reactant-1",
+      "reactant-2"
+    ]
+  },
+  "columns": [
+    "reactant-1",
+    "reactant-2",
+    "reagent-1",
+    "catalyst-1",
+    "catalyst-2",
+    "solvent-1",
+    "solvent-2",
+    "solvent-3",
+    "solvent-4",
+    "solvent-5",
+    "solvent-6",
+    "solvent-7",
+    "solvent-8",
+    "solvent-9",
+    "solvent-10",
+    "product",
+    "temperature_c",
+    "reaction_time_s",
+    "yield_percent"
+  ],
+  "label_policy": "unique_structured_scalar_no_aggregation",
+  "logical_dataset_id": "physical_805ad863feef48579d95d86a728035f4",
+  "physical_dataset_ids": [
+    "ord_dataset-805ad863feef48579d95d86a728035f4"
+  ],
+  "project_name": "c_n_yield_structure_v1",
+  "target_adapter": "unique_desired_product",
+  "target_id": "c_n_yield_percent",
+  "target_metadata": {
+    "doi": "10.1021/jacs.6c05959",
+    "notes": "\u9762\u5411 Pd\u3001Ni\u3001Cu \u50ac\u5316 C\u2013N \u5076\u8054\u7684 assay yield \u5efa\u6a21\u3002\u8be5\u9ad8\u901a\u91cf\u4f53\u7cfb\u540c\u65f6\u53d8\u5316\u82b3\u57fa\u5364\u5316\u7269\u3001\u80fa\u3001\u91d1\u5c5e/\u914d\u4f53\u3001\u78b1\u3001\u6e29\u5ea6\u548c\u6eb6\u5242\uff0c\u5316\u5b66\u7a7a\u95f4\u8f83\u5e7f\uff0c\u9002\u5408\u6bd4\u8f83\u4e0d\u540c\u91d1\u5c5e\u50ac\u5316\u5e73\u53f0\u7684\u89c4\u5f8b\u3002",
+    "repo_url": "https://github.com/open-reaction-database/ord-data/blob/main/data/80/ord_dataset-805ad863feef48579d95d86a728035f4.parquet"
+  }
+}

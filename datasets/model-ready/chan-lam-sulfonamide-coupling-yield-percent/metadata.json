@@ -1,0 +1,76 @@
+{
+  "artifact_status": "staged",
+  "content_artifacts": [
+    {
+      "path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/dataset.csv",
+      "role": "dataset",
+      "sha256": "648de1e73169feca1cc221f1f53858c11918f91c4f959e206f1a8a66ff4b482b",
+      "size_bytes": 1856612
+    },
+    {
+      "path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/schema.json",
+      "role": "schema",
+      "sha256": "e6a61d75fdd4f867c6bd36c893e673c599b275849f19e1dc322b6f1926c43da0",
+      "size_bytes": 1552
+    },
+    {
+      "path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/yonod-config.json",
+      "role": "yonod-config",
+      "sha256": "b401147034c6c4d560d8f68a6e6bf46b0b8d23c5457c3a584728698adb48efd1",
+      "size_bytes": 2884
+    },
+    {
+      "path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/exclusions.csv",
+      "role": "exclusions",
+      "sha256": "df62a4deb8d003ef572dafdd1e33705ba6db1e12f3f381516d263d4232ed3548",
+      "size_bytes": 4634
+    },
+    {
+      "path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/row-map.csv",
+      "role": "row-map",
+      "sha256": "3c99c78f8e5e02044c4274a9ed94756af60ee597d51efe797cecbadfe4a7f6ef",
+      "size_bytes": 1937484
+    },
+    {
+      "path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/audit.jsonl",
+      "role": "audit",
+      "sha256": "8a3a14fb1b89994d3b7414dd1548595419fa4d413c908b6658e703d6ab817261",
+      "size_bytes": 9592789
+    },
+    {
+      "path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/checksums.csv",
+      "role": "checksums",
+      "sha256": "a7798ee552aad338228d3252080ac6ecb792bdbf66a02f30d10694bdb99c7825",
+      "size_bytes": 813
+    }
+  ],
+  "corpus_row_count": 9632,
+  "dataset_kind": "model-ready",
+  "dataset_slug": "chan-lam-sulfonamide-coupling-yield-percent",
+  "display_name_en": "Chan-Lam Sulfonamide-Coupling Yield (%)",
+  "display_name_zh": "Chan-Lam 磺酰胺偶联产率（%）",
+  "excluded_count": 30,
+  "included_count": 9602,
+  "input_provenance": {
+    "ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+    "pipeline_commit": null,
+    "provenance_schema_version": "1.0.0",
+    "semantic_name_policy_version": "semantic-target-names-v1",
+    "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7"
+  },
+  "label": {
+    "column": "yield_percent",
+    "policy": "unique_structured_scalar_no_aggregation",
+    "type": "reaction_yield_percent",
+    "unit": "percent yield as defined by the source measurement"
+  },
+  "license_id": "CC-BY-SA-4.0",
+  "logical_dataset_id": "physical_5c9a10329a8a48968d18879a48bb8ab2",
+  "physical_dataset_ids": [
+    "ord_dataset-5c9a10329a8a48968d18879a48bb8ab2"
+  ],
+  "readiness_status": "generated_pending_campaign_evaluation",
+  "schema_version": "1.0.0",
+  "source_links_path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/source-links.json",
+  "target_id": "chan_lam_yield_percent"
+}

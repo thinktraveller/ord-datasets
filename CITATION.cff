@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite this preview and the Open Reaction Database."
+title: "ord-datasets model-ready preview"
+version: "0.1.0-model-ready-preview-1"
+date-released: "2026-09-12"
+license: "CC-BY-SA-4.0"
+authors:
+  - name: "ord-datasets contributors"
+references:
+  - type: software
+    title: "Open Reaction Database"
+    url: "https://github.com/open-reaction-database/ord-data/tree/83f971f586f6ad18f358ae4ae99d045e94ed2066"
+    license: "CC-BY-SA-4.0"

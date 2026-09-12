@@ -1,0 +1,45 @@
+{
+  "artifact_inventory_path": "provenance/model-ready-preview/artifact-inventory.csv",
+  "catalog_path": "datasets/catalog.csv",
+  "contract_versions": {
+    "artifact_inventory": "1.0.0",
+    "catalog": "1.0.0",
+    "csv_contracts": "1.1.0",
+    "metadata": "1.0.0",
+    "release_manifest": "1.0.0",
+    "source_links": "1.0.0",
+    "transformation": "1.0.0"
+  },
+  "counts": {
+    "largest_target_file_bytes": 54055777,
+    "logical_corpus_references": 15,
+    "model_ready_packages": 15,
+    "model_ready_targets": 19,
+    "physical_sources_referenced": 18,
+    "target_payload_bytes": 211008093,
+    "target_payload_files": 190
+  },
+  "excluded_payloads": [
+    "datasets/corpus payload",
+    "original ORD Parquet payload",
+    "_needs_review payload"
+  ],
+  "license": {
+    "code_license_id": "Apache-2.0",
+    "data_license_id": "CC-BY-SA-4.0",
+    "notice_path": "NOTICE"
+  },
+  "lineage_edges_path": "provenance/model-ready-preview/lineage-edges.csv",
+  "ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+  "project_commit": "60639be962a0d235e6363f36db126d0e53c723a4",
+  "release_artifacts_path": "provenance/model-ready-preview/release-artifacts.jsonl",
+  "release_id": "v0.1.0-model-ready-preview-1",
+  "release_status": "local-release-candidate",
+  "release_track": "model-ready-preview",
+  "root_hash_scope": "all preview tree files excluding provenance/model-ready-preview/release-manifest.json",
+  "root_sha256": "24246a51ee47c36788892d813ec504eef53010aaf16af15c3e1774ef64b935e6",
+  "schema_version": "1.0.0",
+  "source_manifest_path": "provenance/source-files.initial.csv",
+  "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7",
+  "transformations_path": "provenance/model-ready-preview/transformations.jsonl"
+}

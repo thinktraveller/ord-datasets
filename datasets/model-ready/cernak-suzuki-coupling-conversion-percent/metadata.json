@@ -1,0 +1,76 @@
+{
+  "artifact_status": "staged",
+  "content_artifacts": [
+    {
+      "path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/dataset.csv",
+      "role": "dataset",
+      "sha256": "df6c85864b54120438f2fa0163bb5da00d7cc80ca1082499640b4b1bcae96ca9",
+      "size_bytes": 314179
+    },
+    {
+      "path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/schema.json",
+      "role": "schema",
+      "sha256": "9ea36bd8af548d3089666092af5a8eedd1cdddedc917ea3b0a3cb65712591372",
+      "size_bytes": 1922
+    },
+    {
+      "path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/yonod-config.json",
+      "role": "yonod-config",
+      "sha256": "122d56918e8a3860692736370509031262ad5bee553e2a81433b4b597649b2d6",
+      "size_bytes": 3601
+    },
+    {
+      "path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/exclusions.csv",
+      "role": "exclusions",
+      "sha256": "5ae11eca84432d9f83fff0aa5599c132241312bb3f0ee6b3044ada48b6ee28ba",
+      "size_bytes": 17959
+    },
+    {
+      "path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/row-map.csv",
+      "role": "row-map",
+      "sha256": "dce561fb9a6e632f141ea638e7a078466c8971d6480104b6719be30d6f7a7dfd",
+      "size_bytes": 264635
+    },
+    {
+      "path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/audit.jsonl",
+      "role": "audit",
+      "sha256": "33c223ede6e04718cb342d266fbbb594f95846e2015d35d7847713505204901a",
+      "size_bytes": 1269152
+    },
+    {
+      "path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/checksums.csv",
+      "role": "checksums",
+      "sha256": "be7a2fc8defa3f475a216699aae7b1fba0fbc011d70bfa4edea60874330b550d",
+      "size_bytes": 812
+    }
+  ],
+  "corpus_row_count": 2696,
+  "dataset_kind": "model-ready",
+  "dataset_slug": "cernak-suzuki-coupling-conversion-percent",
+  "display_name_en": "Cernak Suzuki-Coupling Conversion (%)",
+  "display_name_zh": "Cernak Suzuki 偶联转化率（%）",
+  "excluded_count": 120,
+  "included_count": 1320,
+  "input_provenance": {
+    "ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+    "pipeline_commit": null,
+    "provenance_schema_version": "1.0.0",
+    "semantic_name_policy_version": "semantic-target-names-v1",
+    "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7"
+  },
+  "label": {
+    "column": "conversion_percent",
+    "policy": "unique_structured_scalar_no_aggregation",
+    "type": "conversion_percent",
+    "unit": "percent conversion"
+  },
+  "license_id": "CC-BY-SA-4.0",
+  "logical_dataset_id": "lit_10_1038_s44160_023_00351_1",
+  "physical_dataset_ids": [
+    "ord_dataset-3b8a2ef300e145468579027f206a3ac8"
+  ],
+  "readiness_status": "generated_pending_campaign_evaluation",
+  "schema_version": "1.0.0",
+  "source_links_path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/source-links.json",
+  "target_id": "cernak_member_3b8a2e_conversion_percent"
+}

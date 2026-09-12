@@ -1,0 +1,479 @@
+[
+  {
+    "artifact_status": "staged",
+    "content_sha256": "6a912585bb987ab698e2502585e1927403c372e10d8e3bcf8ce26f93c4021acf",
+    "dataset_slug": "ahneman-c-n-cross-coupling-yield-percent",
+    "display_name_en": "Ahneman C-N Cross-Coupling Yield (%)",
+    "display_name_zh": "Ahneman C-N 交叉偶联产率（%）",
+    "label_type": "reaction_yield_percent",
+    "label_unit": "percent yield as defined by the source measurement",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "physical_46ff9a32d9e04016b9380b1b1ef949c3",
+    "metadata_path": "datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-46ff9a32d9e04016b9380b1b1ef949c3"
+    ],
+    "physical_source_files": [
+      "data/46/ord_dataset-46ff9a32d9e04016b9380b1b1ef949c3.parquet"
+    ],
+    "readiness_status": "active_generated_pending_release_validation",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent",
+    "row_count": 4312,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/source-links.json",
+    "target_id": "ahneman_yield_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "a589fdfe1f90e655bd9193983aa92264e0b86bfdb017c04836b5b933edc429c7",
+    "dataset_slug": "asymmetric-alkylation-ee-s-minus-r-percent",
+    "display_name_en": "Asymmetric Alkylation ee (S-R, %)",
+    "display_name_zh": "不对称烷基化 ee（S-R，%）",
+    "label_type": "signed_enantiomeric_excess_s_minus_r_percent",
+    "label_unit": "percentage points, S minus R",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "physical_c5b00523487a4211a194160edf45e9ab",
+    "metadata_path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-c5b00523487a4211a194160edf45e9ab"
+    ],
+    "physical_source_files": [
+      "data/c5/ord_dataset-c5b00523487a4211a194160edf45e9ab.parquet"
+    ],
+    "readiness_status": "generated_adapter_blocked",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent",
+    "row_count": 1430,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/source-links.json",
+    "target_id": "asymmetric_alkylation_ee_s_minus_r_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "0d25125e1cf707c839b93106b8131f8a836938b8d416e37698610f5bf8ee965e",
+    "dataset_slug": "cernak-reductive-amination-conversion-percent",
+    "display_name_en": "Cernak Reductive-Amination Conversion (%)",
+    "display_name_zh": "Cernak 还原胺化转化率（%）",
+    "label_type": "conversion_percent",
+    "label_unit": "percent conversion",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "lit_10_1038_s44160_023_00351_1",
+    "metadata_path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-2be11f57f3304e678ea8469baf6dd1bc"
+    ],
+    "physical_source_files": [
+      "data/2b/ord_dataset-2be11f57f3304e678ea8469baf6dd1bc.parquet"
+    ],
+    "readiness_status": "generated_pending_campaign_evaluation",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/cernak-reductive-amination-conversion-percent",
+    "row_count": 1152,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/source-links.json",
+    "target_id": "cernak_member_2be11_conversion_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "df6c85864b54120438f2fa0163bb5da00d7cc80ca1082499640b4b1bcae96ca9",
+    "dataset_slug": "cernak-suzuki-coupling-conversion-percent",
+    "display_name_en": "Cernak Suzuki-Coupling Conversion (%)",
+    "display_name_zh": "Cernak Suzuki 偶联转化率（%）",
+    "label_type": "conversion_percent",
+    "label_unit": "percent conversion",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "lit_10_1038_s44160_023_00351_1",
+    "metadata_path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-3b8a2ef300e145468579027f206a3ac8"
+    ],
+    "physical_source_files": [
+      "data/3b/ord_dataset-3b8a2ef300e145468579027f206a3ac8.parquet"
+    ],
+    "readiness_status": "generated_pending_campaign_evaluation",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent",
+    "row_count": 1320,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/source-links.json",
+    "target_id": "cernak_member_3b8a2e_conversion_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "ba845e82bb3701469aadf172a7457c64354b1e7d6f8e2ab1aad2b96c2445a012",
+    "dataset_slug": "cernak-ultra-hte-c-n-yield-percent",
+    "display_name_en": "Cernak Ultra-HTE C-N Yield (%)",
+    "display_name_zh": "Cernak 超高通量 C-N 产率（%）",
+    "label_type": "reaction_yield_percent",
+    "label_unit": "percent yield as defined by the source measurement",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "physical_805ad863feef48579d95d86a728035f4",
+    "metadata_path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-805ad863feef48579d95d86a728035f4"
+    ],
+    "physical_source_files": [
+      "data/80/ord_dataset-805ad863feef48579d95d86a728035f4.parquet"
+    ],
+    "readiness_status": "generated_pending_campaign_evaluation",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent",
+    "row_count": 50668,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/source-links.json",
+    "target_id": "c_n_yield_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "648de1e73169feca1cc221f1f53858c11918f91c4f959e206f1a8a66ff4b482b",
+    "dataset_slug": "chan-lam-sulfonamide-coupling-yield-percent",
+    "display_name_en": "Chan-Lam Sulfonamide-Coupling Yield (%)",
+    "display_name_zh": "Chan-Lam 磺酰胺偶联产率（%）",
+    "label_type": "reaction_yield_percent",
+    "label_unit": "percent yield as defined by the source measurement",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "physical_5c9a10329a8a48968d18879a48bb8ab2",
+    "metadata_path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-5c9a10329a8a48968d18879a48bb8ab2"
+    ],
+    "physical_source_files": [
+      "data/5c/ord_dataset-5c9a10329a8a48968d18879a48bb8ab2.parquet"
+    ],
+    "readiness_status": "generated_pending_campaign_evaluation",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent",
+    "row_count": 9602,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/source-links.json",
+    "target_id": "chan_lam_yield_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "90c762cff7defe31e7e45d35406df595d094186a0b35b05b0f799cfe66411f72",
+    "dataset_slug": "chemrxiv-aniline-amidation-yield-percent",
+    "display_name_en": "ChemRxiv Aniline-Amidation Yield (%)",
+    "display_name_zh": "ChemRxiv 苯胺酰胺化产率（%）",
+    "label_type": "reaction_yield_percent",
+    "label_unit": "percent yield as defined by the source measurement",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "upstream_chemrxiv_64c7e2e1658ec5f7e5808425",
+    "metadata_path": "datasets/model-ready/chemrxiv-aniline-amidation-yield-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-7acd6ad2bf4d4cff841cad008ab726d5"
+    ],
+    "physical_source_files": [
+      "data/7a/ord_dataset-7acd6ad2bf4d4cff841cad008ab726d5.parquet"
+    ],
+    "readiness_status": "active_generated_pending_release_validation",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/chemrxiv-aniline-amidation-yield-percent",
+    "row_count": 957,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/chemrxiv-aniline-amidation-yield-percent/source-links.json",
+    "target_id": "chemrxiv_amide_yield_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "3d11901429869a5875d98ec4feec8239efbfa121c59d750a9bf8c04612906f7d",
+    "dataset_slug": "chemrxiv-imidazole-c-h-arylation-yield-percent",
+    "display_name_en": "ChemRxiv Imidazole C-H Arylation Yield (%)",
+    "display_name_zh": "ChemRxiv 咪唑 C-H 芳基化产率（%）",
+    "label_type": "reaction_yield_percent",
+    "label_unit": "percent yield as defined by the source measurement",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "upstream_chemrxiv_64c7e2e1658ec5f7e5808425",
+    "metadata_path": "datasets/model-ready/chemrxiv-imidazole-c-h-arylation-yield-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-675eddcaa6674ce3ae61e79bbc1e1c08"
+    ],
+    "physical_source_files": [
+      "data/67/ord_dataset-675eddcaa6674ce3ae61e79bbc1e1c08.parquet"
+    ],
+    "readiness_status": "active_generated_pending_release_validation",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/chemrxiv-imidazole-c-h-arylation-yield-percent",
+    "row_count": 1529,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/chemrxiv-imidazole-c-h-arylation-yield-percent/source-links.json",
+    "target_id": "chemrxiv_ch_arylation_yield_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "d1a09d05fb70c93c221438761893f5f71f6390f94c49bef3973a42bcd9308c84",
+    "dataset_slug": "flow-catechol-product-2-response-percent",
+    "display_name_en": "Flow Catechol Product 2 HPLC Response (%)",
+    "display_name_zh": "连续流儿茶酚产物 2 HPLC 响应（%）",
+    "label_type": "hplc_response_percent",
+    "label_unit": "HPLC percentage response; not isolated yield",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "physical_1ec2807f02fa4beda27d2a81b86eb843",
+    "metadata_path": "datasets/model-ready/flow-catechol-product-2-response-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-1ec2807f02fa4beda27d2a81b86eb843"
+    ],
+    "physical_source_files": [
+      "data/1e/ord_dataset-1ec2807f02fa4beda27d2a81b86eb843.parquet"
+    ],
+    "readiness_status": "research_only_benchmark_blocked",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/flow-catechol-product-2-response-percent",
+    "row_count": 1227,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/flow-catechol-product-2-response-percent/source-links.json",
+    "target_id": "catechol_product_2_yield_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "5cc90e232268be1fc5e15330039927b90a13a4444df2347987d312612ea771d2",
+    "dataset_slug": "flow-catechol-product-3-response-percent",
+    "display_name_en": "Flow Catechol Product 3 HPLC Response (%)",
+    "display_name_zh": "连续流儿茶酚产物 3 HPLC 响应（%）",
+    "label_type": "hplc_response_percent",
+    "label_unit": "HPLC percentage response; not isolated yield",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "physical_1ec2807f02fa4beda27d2a81b86eb843",
+    "metadata_path": "datasets/model-ready/flow-catechol-product-3-response-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-1ec2807f02fa4beda27d2a81b86eb843"
+    ],
+    "physical_source_files": [
+      "data/1e/ord_dataset-1ec2807f02fa4beda27d2a81b86eb843.parquet"
+    ],
+    "readiness_status": "research_only_benchmark_blocked",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/flow-catechol-product-3-response-percent",
+    "row_count": 1227,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/flow-catechol-product-3-response-percent/source-links.json",
+    "target_id": "catechol_product_3_yield_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "9067b4cdce62de221a83ff15b095aadd6e110c4d143458917c7d6362bdbde397",
+    "dataset_slug": "flow-catechol-total-product-response-percent",
+    "display_name_en": "Flow Catechol Total-Product HPLC Response (%)",
+    "display_name_zh": "连续流儿茶酚总产物 HPLC 响应（%）",
+    "label_type": "hplc_response_percent",
+    "label_unit": "HPLC percentage response; not isolated yield",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "physical_1ec2807f02fa4beda27d2a81b86eb843",
+    "metadata_path": "datasets/model-ready/flow-catechol-total-product-response-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-1ec2807f02fa4beda27d2a81b86eb843"
+    ],
+    "physical_source_files": [
+      "data/1e/ord_dataset-1ec2807f02fa4beda27d2a81b86eb843.parquet"
+    ],
+    "readiness_status": "research_only_benchmark_blocked",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/flow-catechol-total-product-response-percent",
+    "row_count": 1227,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/flow-catechol-total-product-response-percent/source-links.json",
+    "target_id": "catechol_total_product_yield_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "21b8072d3587bc8b1290124dafa6fdcdceee501980b6e6a3769aee6ead804d6d",
+    "dataset_slug": "nano-c-n-photochemistry-yield-percent",
+    "display_name_en": "Nano C-N Photochemistry Yield (%)",
+    "display_name_zh": "纳米 C-N 光化学产率（%）",
+    "label_type": "reaction_yield_percent",
+    "label_unit": "percent yield as defined by the source measurement",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "physical_ac78456835404910b3a4c840248b6ac9",
+    "metadata_path": "datasets/model-ready/nano-c-n-photochemistry-yield-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-ac78456835404910b3a4c840248b6ac9"
+    ],
+    "physical_source_files": [
+      "data/ac/ord_dataset-ac78456835404910b3a4c840248b6ac9.parquet"
+    ],
+    "readiness_status": "active_generated_pending_release_validation",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/nano-c-n-photochemistry-yield-percent",
+    "row_count": 1728,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/nano-c-n-photochemistry-yield-percent/source-links.json",
+    "target_id": "nano_yield_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "51f705bdfc42ff0432cdb6288cda3ee9cbd6e2294c216fff13e5015e94b3deda",
+    "dataset_slug": "nicolit-nickel-coupling-yield-percent",
+    "display_name_en": "NiCOlit Nickel-Coupling Yield (%)",
+    "display_name_zh": "NiCOlit 镍催化偶联产率（%）",
+    "label_type": "reaction_yield_percent",
+    "label_unit": "percent yield as defined by the source measurement",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "physical_9b8aa9a7835143ef8ce3f70abfab7545",
+    "metadata_path": "datasets/model-ready/nicolit-nickel-coupling-yield-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-9b8aa9a7835143ef8ce3f70abfab7545"
+    ],
+    "physical_source_files": [
+      "data/9b/ord_dataset-9b8aa9a7835143ef8ce3f70abfab7545.parquet"
+    ],
+    "readiness_status": "generated_with_source_caveat",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/nicolit-nickel-coupling-yield-percent",
+    "row_count": 1669,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/nicolit-nickel-coupling-yield-percent/source-links.json",
+    "target_id": "nicolit_yield_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "acc5860363baddd0fc24e87bb66e37d550b4cb8e1accf301f5f2aadb6d25758d",
+    "dataset_slug": "pfizer-hte-lc-area-percent",
+    "display_name_en": "Pfizer HTE LC Area (%)",
+    "display_name_zh": "辉瑞高通量 LC 面积（%）",
+    "label_type": "lc_uv_area_percent",
+    "label_unit": "LC/UV area percent; not isolated yield or conversion",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "physical_d92976309c3a48a3a64a4cf5e7048086",
+    "metadata_path": "datasets/model-ready/pfizer-hte-lc-area-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-d92976309c3a48a3a64a4cf5e7048086"
+    ],
+    "physical_source_files": [
+      "data/d9/ord_dataset-d92976309c3a48a3a64a4cf5e7048086.parquet"
+    ],
+    "readiness_status": "generated_pending_campaign_evaluation",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/pfizer-hte-lc-area-percent",
+    "row_count": 39347,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/pfizer-hte-lc-area-percent/source-links.json",
+    "target_id": "pfizer_lcms_area_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "427e149d84943bb82adcf3066be751edd2418696bb8b972177e510663a1a2ef3",
+    "dataset_slug": "photocatalytic-aryl-bromide-dehalogenation-conversion-percent",
+    "display_name_en": "Photocatalytic Aryl-Bromide Dehalogenation Conversion (%)",
+    "display_name_zh": "光催化芳基溴脱卤转化率（%）",
+    "label_type": "conversion_percent",
+    "label_unit": "percent conversion",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "physical_b440f8c90b6343189093770060fc4098",
+    "metadata_path": "datasets/model-ready/photocatalytic-aryl-bromide-dehalogenation-conversion-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-b440f8c90b6343189093770060fc4098"
+    ],
+    "physical_source_files": [
+      "data/b4/ord_dataset-b440f8c90b6343189093770060fc4098.parquet"
+    ],
+    "readiness_status": "active_generated_pending_release_validation",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/photocatalytic-aryl-bromide-dehalogenation-conversion-percent",
+    "row_count": 1152,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/photocatalytic-aryl-bromide-dehalogenation-conversion-percent/source-links.json",
+    "target_id": "photodehalogenation_conversion_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "35b3444917708e5a19956e5f871fd9b83958ad3b2484874b0ba85d21f381e5e8",
+    "dataset_slug": "roche-borylation-yield-percent",
+    "display_name_en": "Roche Borylation Yield (%)",
+    "display_name_zh": "罗氏硼化产率（%）",
+    "label_type": "reaction_yield_percent",
+    "label_unit": "percent yield as defined by the source measurement",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "physical_99c23cf435dc42f1af884053bc8b11c7",
+    "metadata_path": "datasets/model-ready/roche-borylation-yield-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-99c23cf435dc42f1af884053bc8b11c7"
+    ],
+    "physical_source_files": [
+      "data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+    ],
+    "readiness_status": "generated_pending_campaign_evaluation",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/roche-borylation-yield-percent",
+    "row_count": 890,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/roche-borylation-yield-percent/source-links.json",
+    "target_id": "roche_borylation_yield_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "2d1bfd835869c7263d37d035131981fb4042f9c93671640ea983deb5f417e163",
+    "dataset_slug": "science-hte-relative-lc-area-ratio",
+    "display_name_en": "Science HTE Relative LC Area Ratio",
+    "display_name_zh": "Science 高通量相对 LC 面积比",
+    "label_type": "relative_lc_area_ratio",
+    "label_unit": "dimensionless ratio (product LC area / internal-standard LC area)",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "lit_10_1126_science_1259203",
+    "metadata_path": "datasets/model-ready/science-hte-relative-lc-area-ratio/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-7d8f5fd922d4497d91cb81489b052746"
+    ],
+    "physical_source_files": [
+      "data/7d/ord_dataset-7d8f5fd922d4497d91cb81489b052746.parquet"
+    ],
+    "readiness_status": "partial_scope_generated",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/science-hte-relative-lc-area-ratio",
+    "row_count": 1531,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/science-hte-relative-lc-area-ratio/source-links.json",
+    "target_id": "science_hte_diverse_nucleophile_relative_lc_area_ratio"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "35e1698ae9f8e57ea96ca351008f78770c7cba8343db0c68ac2bd44e1362e61d",
+    "dataset_slug": "shields-arylation-yield-percent",
+    "display_name_en": "Shields Arylation Yield (%)",
+    "display_name_zh": "Shields 芳基化产率（%）",
+    "label_type": "reaction_yield_percent",
+    "label_unit": "percent yield as defined by the source measurement",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "lit_10_1038_s41586_021_03213_y",
+    "metadata_path": "datasets/model-ready/shields-arylation-yield-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-0c75d67751634f0594b24b9f498b77c2",
+      "ord_dataset-d26118acda314269becc35db5c22dc59"
+    ],
+    "physical_source_files": [
+      "data/0c/ord_dataset-0c75d67751634f0594b24b9f498b77c2.parquet",
+      "data/d2/ord_dataset-d26118acda314269becc35db5c22dc59.parquet"
+    ],
+    "readiness_status": "active_generated_pending_release_validation",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/shields-arylation-yield-percent",
+    "row_count": 1984,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/shields-arylation-yield-percent/source-links.json",
+    "target_id": "shields_yield_percent"
+  },
+  {
+    "artifact_status": "staged",
+    "content_sha256": "75466f69ef7bcc53a3be76914166b91dd091c57471b62a4d69f5754f030c9f97",
+    "dataset_slug": "suzuki-miyaura-nanoscale-yield-percent",
+    "display_name_en": "Suzuki-Miyaura Nanoscale Yield (%)",
+    "display_name_zh": "Suzuki-Miyaura 纳米尺度产率（%）",
+    "label_type": "reaction_yield_percent",
+    "label_unit": "percent yield as defined by the source measurement",
+    "license_id": "CC-BY-SA-4.0",
+    "logical_dataset_id": "physical_68cb8b4b2b384e3d85b5b1efae58b203",
+    "metadata_path": "datasets/model-ready/suzuki-miyaura-nanoscale-yield-percent/metadata.json",
+    "physical_dataset_ids": [
+      "ord_dataset-68cb8b4b2b384e3d85b5b1efae58b203"
+    ],
+    "physical_source_files": [
+      "data/68/ord_dataset-68cb8b4b2b384e3d85b5b1efae58b203.parquet"
+    ],
+    "readiness_status": "active_generated_pending_release_validation",
+    "record_type": "model-ready",
+    "release_path": "datasets/model-ready/suzuki-miyaura-nanoscale-yield-percent",
+    "row_count": 5760,
+    "schema_version": "1.0.0",
+    "source_links_path": "datasets/model-ready/suzuki-miyaura-nanoscale-yield-percent/source-links.json",
+    "target_id": "suzuki_yield_percent"
+  }
+]

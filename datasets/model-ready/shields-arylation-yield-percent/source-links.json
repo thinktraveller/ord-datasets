@@ -1,0 +1,31 @@
+{
+  "links": [
+    {
+      "data_license_id": "CC-BY-SA-4.0",
+      "git_lfs_oid": "00fe35e881dc9a02feaa9186eaf69a221a44f1a281ea1b01f593953ecd65ede6",
+      "physical_dataset_id": "ord_dataset-0c75d67751634f0594b24b9f498b77c2",
+      "reaction_count": 256,
+      "size_bytes": 29842,
+      "source_file": "data/0c/ord_dataset-0c75d67751634f0594b24b9f498b77c2.parquet",
+      "source_file_url": "https://github.com/open-reaction-database/ord-data/blob/83f971f586f6ad18f358ae4ae99d045e94ed2066/data/0c/ord_dataset-0c75d67751634f0594b24b9f498b77c2.parquet",
+      "source_sha256": "00fe35e881dc9a02feaa9186eaf69a221a44f1a281ea1b01f593953ecd65ede6",
+      "upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+      "verification_status": "verified"
+    },
+    {
+      "data_license_id": "CC-BY-SA-4.0",
+      "git_lfs_oid": "0a600968a24eff0a440e30685b2cb7b62030693605574105eb57b7f07329700b",
+      "physical_dataset_id": "ord_dataset-d26118acda314269becc35db5c22dc59",
+      "reaction_count": 1728,
+      "size_bytes": 130893,
+      "source_file": "data/d2/ord_dataset-d26118acda314269becc35db5c22dc59.parquet",
+      "source_file_url": "https://github.com/open-reaction-database/ord-data/blob/83f971f586f6ad18f358ae4ae99d045e94ed2066/data/d2/ord_dataset-d26118acda314269becc35db5c22dc59.parquet",
+      "source_sha256": "0a600968a24eff0a440e30685b2cb7b62030693605574105eb57b7f07329700b",
+      "upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+      "verification_status": "verified"
+    }
+  ],
+  "logical_dataset_id": "lit_10_1038_s41586_021_03213_y",
+  "schema_version": "1.0.0",
+  "source_manifest_path": "provenance/source-files.initial.csv"
+}

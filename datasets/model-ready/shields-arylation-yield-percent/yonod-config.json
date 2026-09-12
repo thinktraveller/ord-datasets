@@ -1,0 +1,133 @@
+{
+  "column_roles": {
+    "conditions": [
+      "temperature_c",
+      "reaction_time_s"
+    ],
+    "label": "yield_percent",
+    "others": [
+      "reagent-1",
+      "catalyst-1",
+      "catalyst-2",
+      "solvent-1"
+    ],
+    "products": [
+      "product"
+    ],
+    "reactants": [
+      "reactant-1",
+      "reactant-2"
+    ]
+  },
+  "descriptors": [
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "product",
+        "reagent-1",
+        "catalyst-1",
+        "catalyst-2",
+        "solvent-1"
+      ],
+      "descriptor": "morgan",
+      "mode": "concat"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "product",
+        "reagent-1",
+        "catalyst-1",
+        "catalyst-2",
+        "solvent-1"
+      ],
+      "descriptor": "maccs",
+      "mode": "concat"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "product",
+        "reagent-1",
+        "catalyst-1",
+        "catalyst-2",
+        "solvent-1"
+      ],
+      "descriptor": "rdkit2d",
+      "mode": "concat"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "product",
+        "reagent-1",
+        "catalyst-1",
+        "catalyst-2",
+        "solvent-1"
+      ],
+      "descriptor": "fisd",
+      "mode": "concat"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "product",
+        "reagent-1",
+        "catalyst-1",
+        "catalyst-2",
+        "solvent-1"
+      ],
+      "descriptor": "molmetalm",
+      "mode": "concat"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "product",
+        "reagent-1",
+        "catalyst-1",
+        "catalyst-2",
+        "solvent-1"
+      ],
+      "descriptor": "maf",
+      "mode": "sum"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "product"
+      ],
+      "descriptor": "drfp",
+      "extra_reactants": [
+        "reagent-1",
+        "catalyst-1",
+        "catalyst-2",
+        "solvent-1"
+      ],
+      "mode": "reaction"
+    }
+  ],
+  "metadata": {
+    "doi": "10.1038/s41586-021-03213-y",
+    "notes": "\u9762\u5411\u82b3\u57fa\u5316\u53cd\u5e94\u7684\u767e\u5206\u6bd4\u4ea7\u7387\u5efa\u6a21\u3002\u6570\u636e\u5305\u542b\u5e95\u7269\u3001\u50ac\u5316\u5242\u3001\u78b1\u3001\u6eb6\u5242\u53ca\u8fde\u7eed\u6761\u4ef6\u53d8\u91cf\uff0c\u5177\u6709\u4f18\u5316\u8f68\u8ff9\u5f0f\u7684\u6761\u4ef6\u63a2\u7d22\u7279\u5f81\uff0c\u9002\u5408\u8bc4\u4f30\u8d1d\u53f6\u65af\u4f18\u5316\u6216\u6761\u4ef6\u63a8\u8350\u65b9\u6cd5\u3002",
+    "repo_url": "https://github.com/open-reaction-database/ord-data/blob/main/data/0c/ord_dataset-0c75d67751634f0594b24b9f498b77c2.parquet; https://github.com/open-reaction-database/ord-data/blob/main/data/d2/ord_dataset-d26118acda314269becc35db5c22dc59.parquet"
+  },
+  "models": [
+    "XGBoost",
+    "Random Forest",
+    "AutoGluon"
+  ],
+  "project_name": "shields_yield_structure_v1",
+  "report_formats": [
+    "HTML",
+    "Markdown"
+  ],
+  "version": "1.0"
+}

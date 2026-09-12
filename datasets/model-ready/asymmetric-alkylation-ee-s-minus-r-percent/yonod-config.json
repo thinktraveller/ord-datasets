@@ -1,0 +1,135 @@
+{
+  "column_roles": {
+    "conditions": [],
+    "label": "ee_s_minus_r_percent",
+    "others": [
+      "catalyst-1",
+      "catalyst-2",
+      "solvent-1",
+      "solvent-2",
+      "solvent-3",
+      "solvent-4",
+      "solvent-5"
+    ],
+    "products": [],
+    "reactants": [
+      "reactant-1",
+      "reactant-2",
+      "reactant-3"
+    ]
+  },
+  "descriptors": [
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "reactant-3",
+        "catalyst-1",
+        "catalyst-2",
+        "solvent-1",
+        "solvent-2",
+        "solvent-3",
+        "solvent-4",
+        "solvent-5"
+      ],
+      "descriptor": "morgan",
+      "mode": "concat"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "reactant-3",
+        "catalyst-1",
+        "catalyst-2",
+        "solvent-1",
+        "solvent-2",
+        "solvent-3",
+        "solvent-4",
+        "solvent-5"
+      ],
+      "descriptor": "maccs",
+      "mode": "concat"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "reactant-3",
+        "catalyst-1",
+        "catalyst-2",
+        "solvent-1",
+        "solvent-2",
+        "solvent-3",
+        "solvent-4",
+        "solvent-5"
+      ],
+      "descriptor": "rdkit2d",
+      "mode": "concat"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "reactant-3",
+        "catalyst-1",
+        "catalyst-2",
+        "solvent-1",
+        "solvent-2",
+        "solvent-3",
+        "solvent-4",
+        "solvent-5"
+      ],
+      "descriptor": "fisd",
+      "mode": "concat"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "reactant-3",
+        "catalyst-1",
+        "catalyst-2",
+        "solvent-1",
+        "solvent-2",
+        "solvent-3",
+        "solvent-4",
+        "solvent-5"
+      ],
+      "descriptor": "molmetalm",
+      "mode": "concat"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "reactant-3",
+        "catalyst-1",
+        "catalyst-2",
+        "solvent-1",
+        "solvent-2",
+        "solvent-3",
+        "solvent-4",
+        "solvent-5"
+      ],
+      "descriptor": "maf",
+      "mode": "sum"
+    }
+  ],
+  "metadata": {
+    "doi": "10.1038/s41467-023-42446-5",
+    "notes": "\u9762\u5411\u5149\u6c27\u5316\u8fd8\u539f/\u6709\u673a\u50ac\u5316\u919b alpha-\u4e0d\u5bf9\u79f0\u70f7\u57fa\u5316\u7684\u5bf9\u6620\u9009\u62e9\u6027\u5efa\u6a21\u3002\u6807\u7b7e\u4e3a\u6709\u7b26\u53f7 ee\uff08S\u2212R\uff0c\u767e\u5206\u6bd4\uff09\u800c\u975e\u4ea7\u7387\uff1b\u4ea7\u7269\u7acb\u4f53\u4fe1\u606f\u53ea\u7528\u4e8e\u6807\u7b7e\u5224\u5b9a\uff0c\u4e0d\u4f5c\u4e3a\u6a21\u578b\u7279\u5f81\u3002",
+    "repo_url": "https://github.com/open-reaction-database/ord-data/blob/main/data/c5/ord_dataset-c5b00523487a4211a194160edf45e9ab.parquet"
+  },
+  "models": [
+    "XGBoost",
+    "Random Forest",
+    "AutoGluon"
+  ],
+  "project_name": "asymmetric_alkylation_ee_s_minus_r_v1",
+  "report_formats": [
+    "HTML",
+    "Markdown"
+  ],
+  "version": "1.0"
+}
