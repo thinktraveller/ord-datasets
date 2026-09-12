@@ -548,3 +548,10 @@
 - 适配器仍只从 revision-pinned public Git LFS payload 读入 Parquet；它不接受 `../dataset`、`../ord-data`、staging 或缓存作为输入。baseline manifests/index 仅在输出完成后用于 hash 对照。
 - 两次新建外部 download/output root 的独立重建均得到 output-root SHA-256 `b1e1504872a5e7247e81c5272cc30d46984e99116fc781fdb505d989eb9325af`。物理 CSV `7a3e939aefc95556611e253ad20a8e754d6353c627149908191b063b805cc4dd`、corpus `889ed18c722dde3ba1a2f0e745091f4a6e330c985e42a79369072dd288e9a27c`、target `dataset.csv` `6a912585bb987ab698e2502585e1927403c372e10d8e3bcf8ce26f93c4021acf` 均与冻结基线一致。
 - fixture 覆盖无本地 payload 输入、RDKit canonical SMILES、feature-slot contract 和 reaction-ID 排序；locked 环境 `pytest`（6 项）与 Ruff 均通过。步骤 20 报告状态：`complete`。未进行远端写入。
+
+## [2026-09-12] 发布计划修订：model-ready-only preview
+
+- 按项目所有者的首发范围决策，`project-plan.md` 与 `goal.md` 新增 model-ready preview 轨道：只规划 19 个 target / 15 个 package 及其必要 catalog、provenance、许可证与文档。
+- 规划依据为步骤 13 staging manifest：190 个 target-support 文件、`211,008,093` bytes，最大文件 `54,055,777` bytes。普通 Git 可作为候选传输，但最大文件超过 50 MiB 警告阈值，仍须在授权 pilot 中 clean-clone/readback 验证；LFS/object 后端仍可由 owner 选择。
+- 41 个 corpus payload、所有 ORD Parquet 和 `_needs_review` payload 被明确排除。此变更不修改 payload、不重写既有 acceptance report、不表示 corpus 已发布，也不授权远端写入。
+- 步骤 25～31 将以 preview 变体生成独立 catalog、inventory、lineage 子图、manifest、root hash 和不可变 tag；full corpus release 保留为有独立版本与验收的后续轨道。

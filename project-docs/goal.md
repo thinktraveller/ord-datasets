@@ -2,9 +2,9 @@
 
 ## 文档状态
 
-- 文档日期：2026-09-11（Asia/Shanghai）
+- 文档日期：2026-09-12（Asia/Shanghai）
 - 目标项目：`/home/wangzh685/桌面/ord-data/ord-datasets`
-- 当前阶段：仅完成目标定义、许可审阅和发布任务书；不搬运数据、不改写处理结果、不上传远端。
+- 当前阶段：已完成本地 staging、依赖锁与代表性 clean-room 重建；近期发布目标调整为 model-ready-only preview。尚未提升 payload、创建远端或上传。
 - 当前基线来源：同级 `ord-data/` 与 `dataset/` 的本地只读盘点。
 - 本文是 `ord-datasets` 项目的现行目标基线；后续实现若改变范围、计数、许可或目录契约，必须先更新本文并留下新的 QA 记录。
 
@@ -78,6 +78,23 @@
   - 总体验收标准
 
 <!-- GOAL-QA-R003-END -->
+
+### QA-R004：首发改为 model-ready-only preview
+<!-- GOAL-QA-R004-START -->
+
+- **提问时间**：2026-09-12
+- **提问目的**：在完整 corpus 与原始 Parquet 尚未进入发布目录的情况下，将近期可交付版本限定为 model-ready preview，而不改变完整项目的最终范围或伪称 corpus 已发布。
+- **用户决策**：更新计划书，优先发布 model-ready。
+- **提炼结论**：
+  - 首发版本是独立版本化的 `model-ready-preview`：范围为 15 个 package 的 19 个 target，以及保证其可用、可校验、可溯源的 preview catalog、provenance、许可证与文档。当前 staging 证据为 190 个 target-support 文件、211,008,093 bytes，最大单文件 54,055,777 bytes。
+  - `datasets/corpus/**` 的 41 个完整 corpus payload、所有原始 ORD Parquet 和 `_needs_review` payload 均明确排除；它们不能因 catalog/provenance 中出现引用而被宣称已发布。原始 Parquet 仍通过固定 revision URL、hash 与 LFS OID 反查。
+  - 首发 catalog 必须是 preview 专用视图：可下载 record 仅为 19 个 target。必要的 corpus/source 身份只能作 reference-only provenance，并标明本 preview 未发布 corpus payload。
+  - 19 个 target 的真实 readiness/status、标签语义、included/excluded、row map、audit 和 source links 必须完整保留。preview 不是完整 ORD corpus，也不是 accepted benchmark。
+  - 普通 Git 对该 preview 在技术上可行，但最大文件超过 50 MiB 警告阈值；项目所有者仍须选择远端、visibility、版本/tag、普通 Git 或可选 LFS/object 策略，并授权 pilot 与最终写入。凭证不得写入项目。
+  - 完整 corpus release 保留为后续独立版本：仍须完成 41 corpus、2,428,291 Reaction、13 GB 级 payload 的后端/分片/回读验收，且必须使用新的 manifest、root hash 与不可变 tag。
+- **影响的目标文档章节**：当前三层产物口径、目标目录契约、发布工程、总体验收标准、完成边界。
+
+<!-- GOAL-QA-R004-END -->
 
 <!-- GOAL-QA-LOG-END -->
 

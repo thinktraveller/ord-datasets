@@ -2,12 +2,57 @@
 
 ## 0. 计划状态
 
-- 计划版本：`ord-datasets-plan-v1`
-- 编制日期：2026-09-11（Asia/Shanghai）
+- 计划版本：`ord-datasets-plan-v1.1-model-ready-preview`
+- 编制日期：2026-09-12（Asia/Shanghai）；原全量计划于 2026-09-11 编制。
 - 目标仓库：`/home/wangzh685/桌面/ord-data/ord-datasets`
-- 权威目标：`project-docs/goal.md`，当前包含 QA-R001～QA-R003。
-- 当前项目状态：仓库内只有目标文档，尚未创建数据、处理中间件、pipeline、provenance 或发布目录。
-- 本计划阶段只编制和提交 `project-docs/project-plan.md`，不复制约 42GB 数据，不改写 `ord-data/` 或 `dataset/`，不创建远端、不上传。
+- 权威目标：`project-docs/goal.md`，当前包含 QA-R001～QA-R004。
+- 当前项目状态：41 个 corpus 与 19 个 model-ready target 均已在本地 staging 验收；依赖锁和代表性 clean-room 重建已完成。未提升任何 payload、未创建远端、未上传或发布。
+- 当前首发轨道：本修订将近期可发布版本收敛为独立版本化的 **model-ready-only preview**。它不改变 53/41/15/19 的项目基线，也不把原全量 corpus release 标记为完成。
+
+## 0.1 发布轨道修订：model-ready-only preview
+
+本节是对原计划中步骤 25～31、M6/M7 和“初始版本”完成口径的专项修订；仅在与本节冲突处，以本节为准。原计划中的 corpus 构建、provenance 与全量发布要求仍有效，但移至后续 full release，不能被 preview 取代。
+
+### Preview 版本范围
+
+| 范围 | 允许内容 | 明确排除 |
+|---|---|---|
+| model-ready payload | 19 个 target、15 个 package；每个 target 的 `dataset.csv`、`schema.json`、`yonod-config.json`、`row-map.csv`、`audit.jsonl`、`exclusions.csv`、`metadata.json`、`source-links.json`、`target-build-provenance.json` 与 `checksums.csv`。当前 staging 基线为 190 个文件、211,008,093 bytes（约 211.01 MB / 201.23 MiB）。 | 不得以缺少配套 audit、row map 或 exclusion 的“裸 CSV”替代完整 target 包。 |
+| catalog 与 provenance | 新生成的 preview catalog（恰 19 条 model-ready record）、目标语义映射、源文件/target source-link 闭包、target lineage、preview 专用 artifact inventory、hash tree 与 release manifest。可携带只读 source metadata，但不得把 reference-only corpus metadata 写成可下载 payload。 | 现有全量 release manifest / graph 仍是 full-release 草案，不能改名或复用为 preview manifest；不得声称 41 个 corpus 已随 preview 发布。 |
+| 文档与许可 | README、DATA_CARD、CITATION、NOTICE、`LICENSE-DATA`、`LICENSE-CODE`、目标状态说明、下载/校验说明和本 preview 的 release note。 | 凭证、`.env`、缓存、虚拟环境、未审第三方对象和原始 email 值。 |
+| corpus 与 source | 每个 target 通过 row map/source links 保持到固定 ORD revision 的两跳溯源。 | 41 个 `datasets/corpus/**` payload（约 13.13 GB）、53 个原始 ORD Parquet（约 1.26 GB）以及 `_needs_review` payload（约 14.83 GB）均不进入 preview。 |
+
+`datasets/catalog.csv` 的现有 60 条统一 staging 记录是构建证据，不是 preview 可用性声明。步骤 26 必须单独生成 preview catalog：其中只有 19 个可下载 model-ready target；如需要列出 corpus 身份，只能作为不可下载的 provenance reference，并须显著标记 `not_published_in_this_preview`，不得提供指向不存在 corpus payload 的 release path。
+
+### 版本声明、状态与合规不变量
+
+1. preview 的名称、README、catalog、manifest 与 tag 都必须包含 `model-ready-preview`（或等价不歧义字样），并声明“不是完整 ORD corpus release，也不是已接受 benchmark”。
+2. 所有 19 个 target 随包保留原始 `readiness_status`：7 个 `active_generated_pending_release_validation`、6 个 `generated_pending_campaign_evaluation`、1 个 `partial_scope_generated`、3 个 `research_only_benchmark_blocked`、1 个 `generated_adapter_blocked`、1 个 `generated_with_source_caveat`。`artifact_status=staged` 只表示本地构建事实，发布后不得被改写为 benchmark accepted。
+3. preview data/metadata 继续遵守 CC BY-SA 4.0、代码继续遵守 Apache-2.0；NOTICE、署名、修改说明、许可证链接和来源 revision 必须随 release 交付。不得借 preview 扩大任何第三方、待审或上游 Parquet 的再分发范围。
+4. 在上传前，对实际 preview tree（而不是仅对 staging 输入）重跑 secret/PII/路径扫描；严重 credential finding 必须为 0。既有结构化脱敏与 target 审计不能免除这次 release-tree 检查。
+5. 任何 preview manifest 的计数、字节数和 root hash 仅覆盖 preview 闭包；不得使用 full-release 草案的 113-node/41-corpus root hash 来证明 preview。
+
+### 存储策略
+
+当前最大 preview 文件为 `54,055,777` bytes（约 54.06 MB / 51.55 MiB），小于 GitHub 普通 Git 的 100 MiB 单文件硬限制，但超过 50 MiB 警告阈值。因而，对这个 211 MB preview，普通 Git 在技术上可行；必须在 release note 记录大文件警告，并在新 checkout 中实际验证 clone/download 与 SHA-256。Git LFS 或版本化对象存储是可选后端，不是因为此 preview 的体量而强制要求；若选择它们，所有 pointer/object 的回读仍是 blocking gate。
+
+后端、远端、额度与写入权限仍由项目所有者决定。没有明确的 pilot 写入授权，不得创建远端测试对象；普通 Git 也不构成绕过该授权的例外。
+
+### Preview 阶段与替代步骤 25～31
+
+| 阶段 / 步骤 | 仅限 preview 的动作 | 放行条件 |
+|---|---|---|
+| P0：范围与 pilot 决策 | 所有者冻结远端 URL/owner/visibility、preview 版本/tag、普通 Git 或 LFS/object 策略、额度（如适用）、`_needs_review=none`、19 target 的状态展示，以及可撤销的 pilot 写入授权。 | `release-decision.json` 仍为 pending 时只可完成本地准备，不能写远端。 |
+| 步骤 25-preview：存储 pilot | 以 preview inventory 做本地大小/路径检查；在授权测试位置上传一个小型 manifest、一个完整 target，以及含 54.06 MB 最大文件的 target 文件；在全新目录回读并逐项核验 SHA-256。普通 Git 路径还必须验证无 LFS 依赖的 clean clone。 | 190 个预期对象都低于所选后端限制；试点对象 hash 一致；无普通 Git 超限 blob、无缺失 pointer/object。 |
+| 步骤 26-preview：原子生成本地 RC | 在与正式目录同一文件系统的同级 staging 路径完成 19 个 target、preview catalog/provenance/docs 的 hash 检查后，原子提升为 preview RC。生成独立 preview manifest、inventory、lineage 子图、计数/字节/root hash。 | `datasets/model-ready/` 恰含 19 target；无 `datasets/corpus/**` payload、无 `*.parquet`，且不存在 staging 临时引用。 |
+| 步骤 27-preview：发布前验收 | 校验 15 package/19 target、190 文件、211,008,093 bytes、每 target checksums、schema、two-hop lineage、许可证/署名、release-tree secret/PII、状态分布、路径和幂等 hash。对不存在 corpus payload 的断言应通过；任何文档把 preview 写成全量 corpus 或 accepted benchmark 都是 blocking failure。 | blocking checks 为 0；最大对象、普通 Git 警告处置和每个 warning 的 owner/reason 均记录。 |
+| 步骤 28-preview：最终 go/no-go | 将 pilot 结果、不可变 tag、精确 scope、状态措辞和远端写入授权写入决策记录；凭证仅走安全渠道。 | 所有者明确 `go` 且 `remote_write_authorized=true`。 |
+| 步骤 29-preview：上传 | 先控制面与 manifest，再全部 190 个 target 文件；每批回读 hash，最后创建不可变 preview tag/release。不得 force-push、覆盖 tag 或把 corpus/Parquet 追加进相同版本。 | 远端 object/file count、bytes 和 root hash 与 preview RC 一致。 |
+| 步骤 30～31-preview：无缓存回读与维护 | 在没有 staging/cache/原始数据挂载的环境，获取 preview catalog、一个完整普通 target、最大文件所在 target、两跳 lineage 和 Ahneman clean-room sample；记录 preview version、已知 target statuses 和 full-release backlog。 | 远端 preview root hash 一致；文档可执行；closeout 明确“preview complete，full corpus release 未开始”。 |
+
+### 后续 full release 路径
+
+preview 的完成只关闭 model-ready preview 轨道。完整 release 仍需重新执行并单独验收：41 个 corpus/2,428,291 行/53 physical source 覆盖、约 13.13 GB corpus payload 的分片与对象后端 pilot、full-release 专用 manifest/root hash、无缓存读取最大 corpus 分片，以及不得与 preview tag 混用的不可变新版本。53 个原始 Parquet 继续以 revision-pinned source link + hash/LFS OID 形式引用，不在该项目重新托管，除非另有经许可和存储审查的项目决策。
 
 ## 1. 不可破坏的项目基线
 
