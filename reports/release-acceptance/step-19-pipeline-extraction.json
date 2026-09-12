@@ -1,24 +1,25 @@
 {
   "schema_version": "1.0.0",
   "step_id": "step-19",
-  "status": "partial_blocked_dependency_lock",
-  "pipeline_scripts": 12,
+  "status": "complete",
+  "pipeline_scripts": 13,
   "tests": {
-    "runner": "python3 -m unittest discover -s pipeline/tests -v",
+    "runner": "uv sync --group dev --locked && uv run pytest -q",
     "status": "passed",
-    "count": 5
+    "count": 6
   },
   "static_checks": {
-    "runner": "ruff check pipeline/scripts pipeline/tests",
+    "runner": "uv run ruff check scripts tests",
     "status": "passed",
     "rules": ["F"],
     "absolute_workstation_path_scan": "passed"
   },
   "dependency_management": {
     "pyproject": "pipeline/pyproject.toml",
-    "lock": "blocked",
-    "blocker": "TLS retrieval of ruff from the package index failed; offline resolution has no ruff distribution in its cache.",
-    "resolution": "Generate uv.lock with uv lock in a network-enabled environment before accepting an RC."
+    "lock": "pipeline/uv.lock",
+    "status": "locked_and_synced",
+    "runtime_dependencies": ["jsonschema", "ord-schema", "pyarrow"],
+    "resolution": "The locked environment was synchronized and used for the complete test and lint run."
   },
   "source_write_paths": "none; all pipeline output roots are caller-supplied"
 }
