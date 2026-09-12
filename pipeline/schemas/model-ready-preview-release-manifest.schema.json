@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-reaction-database.github.io/ord-datasets/schemas/1.0.0/model-ready-preview-release-manifest.schema.json",
+  "title": "ord-datasets model-ready preview release manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release_id",
+    "release_status",
+    "release_track",
+    "project_commit",
+    "ord_upstream_revision",
+    "source_manifest_path",
+    "source_manifest_sha256",
+    "contract_versions",
+    "counts",
+    "excluded_payloads",
+    "license",
+    "catalog_path",
+    "artifact_inventory_path",
+    "release_artifacts_path",
+    "transformations_path",
+    "lineage_edges_path",
+    "root_hash_scope",
+    "root_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "release_id": {"type": "string", "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+-model-ready-preview(?:-[0-9A-Za-z.-]+)?$"},
+    "release_status": {"const": "local-release-candidate"},
+    "release_track": {"const": "model-ready-preview"},
+    "project_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "ord_upstream_revision": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "source_manifest_path": {"const": "provenance/source-files.initial.csv"},
+    "source_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "contract_versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["catalog", "metadata", "source_links", "artifact_inventory", "transformation", "release_manifest", "csv_contracts"],
+      "properties": {
+        "catalog": {"const": "1.0.0"},
+        "metadata": {"const": "1.0.0"},
+        "source_links": {"const": "1.0.0"},
+        "artifact_inventory": {"const": "1.0.0"},
+        "transformation": {"const": "1.0.0"},
+        "release_manifest": {"const": "1.0.0"},
+        "csv_contracts": {"enum": ["1.0.0", "1.1.0"]}
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["physical_sources_referenced", "logical_corpus_references", "model_ready_packages", "model_ready_targets", "target_payload_files", "target_payload_bytes", "largest_target_file_bytes"],
+      "properties": {
+        "physical_sources_referenced": {"type": "integer", "minimum": 1},
+        "logical_corpus_references": {"type": "integer", "minimum": 1},
+        "model_ready_packages": {"const": 15},
+        "model_ready_targets": {"const": 19},
+        "target_payload_files": {"const": 190},
+        "target_payload_bytes": {"type": "integer", "minimum": 0},
+        "largest_target_file_bytes": {"type": "integer", "minimum": 0}
+      }
+    },
+    "excluded_payloads": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {"enum": ["datasets/corpus payload", "original ORD Parquet payload", "_needs_review payload"]}
+    },
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["data_license_id", "code_license_id", "notice_path"],
+      "properties": {
+        "data_license_id": {"const": "CC-BY-SA-4.0"},
+        "code_license_id": {"const": "Apache-2.0"},
+        "notice_path": {"const": "NOTICE"}
+      }
+    },
+    "catalog_path": {"const": "datasets/catalog.csv"},
+    "artifact_inventory_path": {"const": "provenance/model-ready-preview/artifact-inventory.csv"},
+    "release_artifacts_path": {"const": "provenance/model-ready-preview/release-artifacts.jsonl"},
+    "transformations_path": {"const": "provenance/model-ready-preview/transformations.jsonl"},
+    "lineage_edges_path": {"const": "provenance/model-ready-preview/lineage-edges.csv"},
+    "root_hash_scope": {"const": "all preview tree files excluding provenance/model-ready-preview/release-manifest.json"},
+    "root_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

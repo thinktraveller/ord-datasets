@@ -195,6 +195,53 @@
         "lineage_edges_path": "provenance/lineage-edges.csv",
         "root_sha256": "fedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321"
       }
+    ],
+    "model-ready-preview-release-manifest.schema.json": [
+      {
+        "schema_version": "1.0.0",
+        "release_id": "v0.1.0-model-ready-preview",
+        "release_status": "local-release-candidate",
+        "release_track": "model-ready-preview",
+        "project_commit": "29c475dfb64d62effc808ae112aba3afa95731aa",
+        "ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+        "source_manifest_path": "provenance/source-files.initial.csv",
+        "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7",
+        "contract_versions": {
+          "catalog": "1.0.0",
+          "metadata": "1.0.0",
+          "source_links": "1.0.0",
+          "artifact_inventory": "1.0.0",
+          "transformation": "1.0.0",
+          "release_manifest": "1.0.0",
+          "csv_contracts": "1.1.0"
+        },
+        "counts": {
+          "physical_sources_referenced": 1,
+          "logical_corpus_references": 1,
+          "model_ready_packages": 15,
+          "model_ready_targets": 19,
+          "target_payload_files": 190,
+          "target_payload_bytes": 211008093,
+          "largest_target_file_bytes": 54055777
+        },
+        "excluded_payloads": [
+          "datasets/corpus payload",
+          "original ORD Parquet payload",
+          "_needs_review payload"
+        ],
+        "license": {
+          "data_license_id": "CC-BY-SA-4.0",
+          "code_license_id": "Apache-2.0",
+          "notice_path": "NOTICE"
+        },
+        "catalog_path": "datasets/catalog.csv",
+        "artifact_inventory_path": "provenance/model-ready-preview/artifact-inventory.csv",
+        "release_artifacts_path": "provenance/model-ready-preview/release-artifacts.jsonl",
+        "transformations_path": "provenance/model-ready-preview/transformations.jsonl",
+        "lineage_edges_path": "provenance/model-ready-preview/lineage-edges.csv",
+        "root_hash_scope": "all preview tree files excluding provenance/model-ready-preview/release-manifest.json",
+        "root_sha256": "fedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321"
+      }
     ]
   },
   "invalid": {
