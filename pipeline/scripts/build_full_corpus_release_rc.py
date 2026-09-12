@@ -421,7 +421,30 @@ def main() -> None:
     parser.add_argument("--build-timestamp", required=True)
     parser.add_argument("--report", required=True, type=Path)
     args = parser.parse_args()
-    print(json.dumps(build(**vars(args)), ensure_ascii=False, sort_keys=True))
+    print(
+        json.dumps(
+            build(
+                staging_root=args.staging_root,
+                semantic_map_path=args.semantic_map,
+                members_path=args.members,
+                source_files_path=args.source_files,
+                control_manifest_path=args.control_manifest,
+                private_transport_sha256sums_path=args.private_transport_sha256sums,
+                expected_private_transport_sha256=args.expected_private_transport_sha256,
+                private_transport_snapshot=args.private_transport_snapshot,
+                schema_dir=args.schema_dir,
+                project_root=args.project_root,
+                dataset_card_path=args.dataset_card,
+                release_root=args.release_root,
+                release_id=args.release_id,
+                project_commit=args.project_commit,
+                build_timestamp=args.build_timestamp,
+                report_path=args.report,
+            ),
+            ensure_ascii=False,
+            sort_keys=True,
+        )
+    )
 
 
 if __name__ == "__main__":
