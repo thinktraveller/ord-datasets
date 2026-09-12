@@ -13,8 +13,8 @@
       "matches": true
     },
     "target": {
-      "actual_dataset_sha256": "433b1ca544cddd823baa482b9f5218c7b1dcb9af064b32ce9d9960eb5929e2a4",
-      "dataset_bytes_match": false,
+      "actual_dataset_sha256": "6a912585bb987ab698e2502585e1927403c372e10d8e3bcf8ce26f93c4021acf",
+      "dataset_bytes_match": true,
       "excluded_count_matches": true,
       "expected_dataset_sha256": "6a912585bb987ab698e2502585e1927403c372e10d8e3bcf8ce26f93c4021acf",
       "included_count_matches": true,
@@ -36,7 +36,7 @@
     }
   },
   "independent_repeat": {
-    "expected_output_root_sha256": "d663773a78fc6dc2c6fdc9fcfdb4faa8b0c86841273102f9ef8070da035f8215",
+    "expected_output_root_sha256": "b1e1504872a5e7247e81c5272cc30d46984e99116fc781fdb505d989eb9325af",
     "matches": true
   },
   "logical_csv": {
@@ -67,11 +67,11 @@
       "source_sha256": "39440ea3e5442dddbb4daccbc48fb53940724085327c0e3b82909e1fd8cc661a"
     }
   ],
-  "remaining_blocker": "The extracted generic target contract has matching source/included/excluded semantics but does not byte-match the frozen target dataset artifact.",
+  "remaining_blocker": null,
   "reproducibility": {
     "output_file_count": 23,
     "output_manifest_path": "clean-room-output-manifest.json",
-    "output_root_sha256": "d663773a78fc6dc2c6fdc9fcfdb4faa8b0c86841273102f9ef8070da035f8215"
+    "output_root_sha256": "b1e1504872a5e7247e81c5272cc30d46984e99116fc781fdb505d989eb9325af"
   },
   "sample": {
     "corpus_slug": "ahneman-c-n-cross-coupling",
@@ -81,45 +81,45 @@
     "target_slug": "ahneman-c-n-cross-coupling-yield-percent"
   },
   "schema_version": "1.0.0",
-  "status": "partial_target_byte_equivalence_unresolved",
+  "status": "complete",
   "step_id": "step-20",
   "target": {
     "artifacts": {
       "audit.jsonl": {
-        "sha256": "ee32230df70693ccc3e50cd0233f3c29a6a0c79e9d8d3030ee2b5891a5ac9e24",
-        "size_bytes": 2089100
+        "sha256": "51a45a5858b8b5ea0f068388fd2d7af3ace39f76f685e0f10054e368dfb87215",
+        "size_bytes": 3922370
       },
       "checksums.csv": {
-        "sha256": "6d737629a9dd694497336bba48b6df71b65c53bd204daa1b1674768a2ac0434b",
-        "size_bytes": 695
+        "sha256": "6b73bcf97ae922a8b7f290e5060911d71ef3d19a7050c0a8e122dec31981074a",
+        "size_bytes": 696
       },
       "dataset.csv": {
-        "sha256": "433b1ca544cddd823baa482b9f5218c7b1dcb9af064b32ce9d9960eb5929e2a4",
-        "size_bytes": 444175
+        "sha256": "6a912585bb987ab698e2502585e1927403c372e10d8e3bcf8ce26f93c4021acf",
+        "size_bytes": 1271230
       },
       "exclusions.csv": {
-        "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
-        "size_bytes": 85
+        "sha256": "76d6a5ca9f764f76c4db719a17a6bd109080b1ee74d3b6229427611585ea10d0",
+        "size_bytes": 73
       },
       "metadata.json": {
-        "sha256": "6fbe675b9f3fa100e69d8c8d7f021b554ee85625edb3d32f1a4cdaee82a77de0",
-        "size_bytes": 2768
+        "sha256": "3362a5fe01971830a77e795804946691acfbe73731ee76a6013b0536e96d8897",
+        "size_bytes": 2769
       },
       "row-map.csv": {
-        "sha256": "3ae29fd40f6bb0689576e71b2a8a8302fb574500886ca8413e1b69526f238042",
-        "size_bytes": 742732
+        "sha256": "a1cecd6b5d68702d2153c35c0d6c184f8a72f7b73b486bbc48cc1b07c15e9504",
+        "size_bytes": 868893
       },
       "schema.json": {
-        "sha256": "a4ac25228d4a933a7a5d0422503908cc814fbbbae1a983ee005ddfa8e3d65762",
-        "size_bytes": 492
+        "sha256": "4e6780754dce9ac03b848eb1b86e1cfd4286d25f11b007b720d5e950598cdfcc",
+        "size_bytes": 930
       },
       "source-links.json": {
         "sha256": "5515acdb9b16a877afd0dbd3d9365904165a3cb1cf2e596f372fbb6755dd06e1",
         "size_bytes": 934
       },
       "target-provenance.json": {
-        "sha256": "a0c1be7cbea577b26b7bbbcaa984b8d30a68396cab6b0e1e9c99315686268bb5",
-        "size_bytes": 540
+        "sha256": "b3848158d76d1b2e3bb9eeaa76b230fe30e4bf959b50fb80c65ccea2e768ede8",
+        "size_bytes": 716
       }
     },
     "excluded_count": 0,

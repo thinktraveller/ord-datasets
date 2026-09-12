@@ -541,3 +541,10 @@
 - 物理 CSV（4,312 行）及经 literal-email 结构化清理后的 corpus 均逐字节匹配冻结 staging 基线；独立重复运行的 23 文件 output root hash 均为 `d663773a78fc6dc2c6fdc9fcfdb4faa8b0c86841273102f9ef8070da035f8215`。
 - 通用 yield adapter 已生成 target、row map、exclusions、audit 和 transformations provenance；included/excluded/source 计数为 4,312/0/4,312，符合冻结 target map。但它的 `dataset.csv` SHA-256 为 `433b1ca544cddd823baa482b9f5218c7b1dcb9af064b32ce9d9960eb5929e2a4`，尚未匹配冻结 baseline `6a912585bb987ab698e2502585e1927403c372e10d8e3bcf8ce26f93c4021acf`。
 - 状态：`partial_target_byte_equivalence_unresolved`。未伪造通过、未读取 local staging payload、未写入只读输入或远端；精确剩余工作已转入 B2。
+
+## [2026-09-12] 步骤 20 / B2 完成：标准化 target clean-room 字节复现
+
+- 只读审阅原 target projection、schema、config 与 package 后，将 Ahneman 的 frozen contract 参数化迁入 `rebuild_clean_room_sample.py`：固定 14 个 feature/label 列、`physical_dataset_id:reaction_id` key、按 physical/reaction/source-row 排序、RDKit canonical isomeric SMILES、unique desired/single-product structured percentage-YIELD、温度/反应时间单位换算，以及 Python CSV 的稳定序列化。
+- 适配器仍只从 revision-pinned public Git LFS payload 读入 Parquet；它不接受 `../dataset`、`../ord-data`、staging 或缓存作为输入。baseline manifests/index 仅在输出完成后用于 hash 对照。
+- 两次新建外部 download/output root 的独立重建均得到 output-root SHA-256 `b1e1504872a5e7247e81c5272cc30d46984e99116fc781fdb505d989eb9325af`。物理 CSV `7a3e939aefc95556611e253ad20a8e754d6353c627149908191b063b805cc4dd`、corpus `889ed18c722dde3ba1a2f0e745091f4a6e330c985e42a79369072dd288e9a27c`、target `dataset.csv` `6a912585bb987ab698e2502585e1927403c372e10d8e3bcf8ce26f93c4021acf` 均与冻结基线一致。
+- fixture 覆盖无本地 payload 输入、RDKit canonical SMILES、feature-slot contract 和 reaction-ID 排序；locked 环境 `pytest`（6 项）与 Ruff 均通过。步骤 20 报告状态：`complete`。未进行远端写入。
