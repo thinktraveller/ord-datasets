@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "mode": "external-content-addressed-data-plane",
+  "control_plane": "regular-git",
+  "primary_backend_candidate": "huggingface-dataset",
+  "fallback_backend_candidate": "versioned-s3-compatible-object-storage",
+  "remote_repository": null,
+  "remote_revision": null,
+  "max_object_shard_bytes": 1073741824,
+  "content_key_template": "sha256/{sha256}",
+  "upload_authorization_required": true,
+  "readback_hash_required": true,
+  "regular_git_payload_policy": "no-dataset-or-row-lineage-payload"
+}

@@ -490,3 +490,9 @@
 - 以最小的固定 source record 构造 GitHub raw URL 并从空路径执行下载探测；连接在 TLS 阶段以 `SSL_ERROR_SYSCALL` 失败。source manifest 的 direct download 字段也尚未经回读验证。
 - 未以本地 `ord-data/`、staging 或缓存替代公网输入，因此没有把缓存命中误报告为 clean-room 成功。`uv.lock` 缺失和 source→target adapter 未完整抽取亦阻止端到端重建。
 - 失败命令、固定 URL、source hash 与后续修复条件保存在 `reports/release-acceptance/step-20-clean-room-rebuild.json`；状态：`blocked`。
+
+## [2026-09-12 02:05 CST] 步骤 25 阻塞：大文件后端 pilot
+
+- 添加不含 credential、remote URL 或本机路径的 `pipeline/configs/release-object-storage.example.json`，固定控制面/数据面分离、SHA-256 content addressing、1 GiB shard 上限与 readback-hash 规则。
+- 尚未收到 owner、visibility、后端账户和额度的授权选择，故没有创建测试对象、执行 upload/pull 或任何远端写入。local policy check 通过不替代真实 pilot。
+- `reports/release-acceptance/step-25-storage-pilot.json` 列出阻塞条件；状态：`blocked`。

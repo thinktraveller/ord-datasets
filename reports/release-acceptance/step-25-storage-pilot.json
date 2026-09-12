@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "step_id": "step-25",
+  "status": "blocked",
+  "backend_configuration": "pipeline/configs/release-object-storage.example.json",
+  "selected_candidate": "huggingface-dataset",
+  "remote_write_attempted": false,
+  "pilot_objects_created": 0,
+  "blocking_conditions": [
+    "Project owner has not supplied an authorized remote repository, owner, visibility, or account quota.",
+    "A storage pilot must upload and read back an authorized object; no remote write is permitted before that authorization.",
+    "The draft has no dependency lock or clean-room rebuild result."
+  ],
+  "local_policy_checks": {
+    "regular_git_large_payloads": 0,
+    "object_shard_limit_bytes": 1073741824,
+    "content_addressed_keying": true
+  }
+}
