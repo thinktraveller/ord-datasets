@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "step_id": "step-30-preview",
+  "status": "complete",
+  "release_id": "v0.1.0-model-ready-preview-1",
+  "repository": "https://github.com/thinktraveller/ord-datasets.git",
+  "readback_method": {
+    "command_shape": "git clone --depth 1 --branch release/v0.1.0-model-ready-preview-1 <repository>",
+    "branch": "release/v0.1.0-model-ready-preview-1",
+    "clone_depth": 1,
+    "readback_commit": "7d52dd27071c5625008a14737a1a8e1252ae6217",
+    "tag": "v0.1.0-model-ready-preview-1",
+    "tag_peeled_commit": "7d52dd27071c5625008a14737a1a8e1252ae6217",
+    "tree_comparison_excludes": [
+      ".git"
+    ]
+  },
+  "validation": {
+    "validator": "pipeline/scripts/validate_model_ready_preview_rc.py",
+    "status": "accepted_for_authorized_upload",
+    "blocking_check_failures": 0,
+    "owner_gates": [],
+    "sensitive_scan_blocking_findings": 0,
+    "root_sha256": "24246a51ee47c36788892d813ec504eef53010aaf16af15c3e1774ef64b935e6",
+    "target_directories": 19,
+    "target_payload_files": 190,
+    "target_payload_bytes": 211008093,
+    "largest_target_file_bytes": 54055777
+  },
+  "result": "remote release working tree is byte-for-byte equivalent to the accepted local preview candidate; only clone-local .git metadata is excluded from artifact scope."
+}

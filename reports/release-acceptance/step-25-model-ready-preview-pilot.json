@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "step_id": "step-25-preview",
+  "status": "complete",
+  "release_id": "v0.1.0-model-ready-preview-1",
+  "transport": {
+    "backend": "ordinary-git",
+    "repository": "https://github.com/thinktraveller/ord-datasets.git",
+    "visibility": "public",
+    "lfs_objects": 0,
+    "large_file_warning": {
+      "path": "datasets/model-ready/pfizer-hte-lc-area-percent/audit.jsonl",
+      "size_bytes": 54055777,
+      "github_recommended_limit_bytes": 52428800,
+      "github_hard_limit_bytes": 104857600,
+      "outcome": "accepted_with_warning"
+    }
+  },
+  "pilot_branch": "pilot/v0.1.0-model-ready-preview-1",
+  "pilot_commit": "b224523fb91e992290faa8037554d7f754b70c29",
+  "pilot_scope": {
+    "manifest": {
+      "path": "provenance/model-ready-preview/release-manifest.json",
+      "sha256": "59b35322ccad17fea4e61f047453c4ad3bd0e3006c7361baa969da435c075e30"
+    },
+    "targets": [
+      {
+        "path": "datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent",
+        "files": 10,
+        "bytes": 6073626
+      },
+      {
+        "path": "datasets/model-ready/pfizer-hte-lc-area-percent",
+        "files": 10,
+        "bytes": 69097967
+      }
+    ]
+  },
+  "clean_clone_readback": {
+    "clone_depth": 1,
+    "branch_commit": "b224523fb91e992290faa8037554d7f754b70c29",
+    "target_directory_byte_equivalence": true,
+    "manifest_sha256_matches": true,
+    "lfs_pointer_files": 0
+  }
+}

@@ -567,3 +567,10 @@
 - 新增 `validate_model_ready_preview_rc.py`，独立复核 preview schema、19-record catalog、190-file inventory、per-target checksums/metadata/source links、53-source closure、两跳 reference-only lineage、root hash、scope/status wording 和 release-tree credential/email scan。
 - 严格验收通过：blocking data-integrity failures 为 0，敏感扫描为 0，root hash 与生成时一致。唯一 warning 是 `pfizer-hte-lc-area-percent/audit.jsonl` 的 `54,055,777` bytes 超过普通 Git 50 MiB 警告阈值；它不是本地结构阻塞，但 pilot 必须完成 clean clone/readback。
 - 状态是 `local_validation_passed_pending_owner_gates`，不是 upload acceptance。B3 仍需选定远端/transport 并授权可回读 pilot；B4 仍需冻结真实 version/tag 与 remote write `go`。步骤 26/27 报告记录在 `reports/release-acceptance/step-26-model-ready-preview-build.json` 与 `step-27-model-ready-preview-validation.json`。
+
+## [2026-09-12] 步骤 25–31 preview 完成：发布、回读与收尾
+
+- 所有者已选择公开 GitHub 仓库 `thinktraveller/ord-datasets` 和 ordinary Git。`pilot/v0.1.0-model-ready-preview-1` 在 `b224523…` 中覆盖 Ahneman（6,073,626 bytes）、Pfizer（69,097,967 bytes）以及发布 manifest；全新浅克隆回读逐文件一致，且无 LFS pointer/object。GitHub 对 Pfizer 的 54,055,777-byte 文件给出 >50 MiB 建议阈值警告，但接受传输。
+- 以候选工作树的精确内容创建 `release/v0.1.0-model-ready-preview-1`，提交 `7d52dd2…`，并创建带注释 tag `v0.1.0-model-ready-preview-1`。GitHub prerelease 已发布；范围严格为 19 target / 15 package、190 个 target payload、211,008,093 bytes，release-tree root SHA-256 为 `24246a51ee47c36788892d813ec504eef53010aaf16af15c3e1774ef64b935e6`。
+- 从远端 branch 重新 shallow-clone 后，release validator 通过：0 个 blocking check、0 个敏感扫描发现、0 个 owner gate。校验器同时修正为显式排除 clone-local `.git` 元数据，并添加回归测试；这不会排除或改变发布工作树中的任何文件。
+- preview 发布闭环证据见 `step-25-model-ready-preview-pilot.json`、`step-29-model-ready-preview-v0.1.0-upload.json`、`step-30-model-ready-preview-v0.1.0-readback.json` 和 `step-31-model-ready-preview-closeout.json`。41 corpus、原始 Parquet 与 `_needs_review` 仍未发布，保留为独立的 full-release 轨道。

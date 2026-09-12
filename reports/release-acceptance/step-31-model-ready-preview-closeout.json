@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "step_id": "step-31-preview",
+  "status": "model_ready_preview_release_closed_full_release_deferred",
+  "release_id": "v0.1.0-model-ready-preview-1",
+  "completed_steps": [
+    "step-25-preview transport pilot",
+    "step-26-preview candidate build",
+    "step-27-preview validation",
+    "step-28-preview owner decision",
+    "step-29-preview immutable publication",
+    "step-30-preview no-cache readback"
+  ],
+  "published_root_sha256": "24246a51ee47c36788892d813ec504eef53010aaf16af15c3e1774ef64b935e6",
+  "follow_up": "The 41-corpus release remains a separately versioned, separately validated release track; no corpus, raw Parquet, or _needs_review payload was promoted by this closeout."
+}

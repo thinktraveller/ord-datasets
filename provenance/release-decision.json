@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "step_id": "step-28",
-  "status": "go_authorized_for_model_ready_preview",
+  "status": "published_model_ready_preview",
   "go_no_go": "go",
   "release_track": "model-ready-preview",
   "proposed_scope": {
@@ -27,5 +27,13 @@
   },
   "storage_note": "Ordinary Git is technically permitted for this preview because the largest file is below 100 MiB; files above 50 MiB require a documented warning/clone-readback check. LFS or object storage is optional but, if selected, must pass a pointer/object readback pilot.",
   "credential_handling": "Credentials must be supplied through an authorized secure channel and must never be written to this repository.",
-  "remote_write_authorized": true
+  "remote_write_authorized": true,
+  "published_release": {
+    "published_at": "2026-09-12T12:29:57+08:00",
+    "release_branch": "release/v0.1.0-model-ready-preview-1",
+    "release_commit": "7d52dd27071c5625008a14737a1a8e1252ae6217",
+    "annotated_tag_object": "1850849ca4716c7ee2169924e48c7dab3c8a2f72",
+    "github_prerelease_url": "https://github.com/thinktraveller/ord-datasets/releases/tag/v0.1.0-model-ready-preview-1",
+    "remote_readback_root_sha256": "24246a51ee47c36788892d813ec504eef53010aaf16af15c3e1774ef64b935e6"
+  }
 }
