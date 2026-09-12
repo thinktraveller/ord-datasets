@@ -501,3 +501,8 @@
 
 - draft lineage root 与 release manifest 已生成，但没有移动 41 corpus 或 19 target staging payload 到正式目录：dependency lock、clean-room rebuild 和 storage readback pilot 都尚未通过，release authorization 也尚未存在。
 - 因没有提升任何大对象，正式 target tree 未被改变，也不需要 rollback。`reports/release-acceptance/step-26-release-candidate.json` 是逐闸门状态证据；状态：`blocked`。
+
+## [2026-09-12 02:09 CST] 步骤 27 完成（rejected）：发布前本地验收
+
+- 新增 `validate_release_candidate.py`，复核 catalog、staging 和 lineage 的控制面：41 corpus、19 target、113 nodes、72 edges，failed edge 为 0；没有远端写入。
+- RC 未被接受。4 个 blocking check 仍为 dependency lock、clean-room rebuild、storage pilot 和 release authorization。机器可读结果：`reports/release-acceptance/step-27-release-candidate-validation.json`，状态：`rejected`。

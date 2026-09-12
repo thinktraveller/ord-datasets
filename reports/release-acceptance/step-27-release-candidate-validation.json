@@ -1,0 +1,26 @@
+{
+  "blocking_check_failures": 4,
+  "blocking_checks": [
+    "dependency_lock",
+    "clean_room_rebuild",
+    "storage_pilot",
+    "release_authorization"
+  ],
+  "catalog": {
+    "corpus": 41,
+    "model_ready_targets": 19
+  },
+  "lineage": {
+    "edges": 72,
+    "failed_edges": 0,
+    "nodes": 113
+  },
+  "remote_write_attempted": false,
+  "schema_version": "1.0.0",
+  "staging": {
+    "corpus": 41,
+    "model_ready_targets": 19
+  },
+  "status": "rejected",
+  "step_id": "step-27"
+}
