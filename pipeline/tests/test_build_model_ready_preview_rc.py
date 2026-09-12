@@ -20,6 +20,13 @@ MODULE = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = MODULE
 SPEC.loader.exec_module(MODULE)
 
+VALIDATOR_SCRIPT = ROOT / "pipeline" / "scripts" / "validate_model_ready_preview_rc.py"
+VALIDATOR_SPEC = importlib.util.spec_from_file_location("preview_rc_validator", VALIDATOR_SCRIPT)
+assert VALIDATOR_SPEC and VALIDATOR_SPEC.loader
+VALIDATOR = importlib.util.module_from_spec(VALIDATOR_SPEC)
+sys.modules[VALIDATOR_SPEC.name] = VALIDATOR
+VALIDATOR_SPEC.loader.exec_module(VALIDATOR)
+
 REVISION = "a" * 40
 SOURCE_ID = "ord_dataset-00000000000000000000000000000000"
 
@@ -231,6 +238,9 @@ class ModelReadyPreviewBuilderTest(unittest.TestCase):
             self.assertEqual(19, len(list((candidate / "datasets" / "model-ready").iterdir())))
             with (candidate / "datasets" / "catalog.csv").open(encoding="utf-8", newline="") as handle:
                 self.assertEqual(19, len(list(csv.DictReader(handle))))
+            validation = VALIDATOR.validate(candidate, ROOT / "pipeline" / "schemas", strict_frozen_baseline=False)
+            self.assertEqual("local_validation_passed_pending_owner_gates", validation["status"])
+            self.assertEqual(0, validation["blocking_check_failures"])
 
 
 if __name__ == "__main__":
