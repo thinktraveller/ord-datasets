@@ -1,0 +1,43 @@
+{
+  "atomic_promotion": true,
+  "excluded_payloads": [
+    "datasets/corpus payload",
+    "original ORD Parquet payload",
+    "_needs_review payload"
+  ],
+  "lineage": {
+    "edges": 37,
+    "nodes": 52,
+    "reference_only_corpus_nodes": 15
+  },
+  "payload": {
+    "largest_target_file_bytes": 54055777,
+    "logical_corpus_references": 15,
+    "model_ready_packages": 15,
+    "model_ready_targets": 19,
+    "physical_sources_referenced": 18,
+    "target_payload_bytes": 211008093,
+    "target_payload_files": 190
+  },
+  "project_commit": "60639be962a0d235e6363f36db126d0e53c723a4",
+  "readiness_status_counts": {
+    "active_generated_pending_release_validation": 7,
+    "generated_adapter_blocked": 1,
+    "generated_pending_campaign_evaluation": 6,
+    "generated_with_source_caveat": 1,
+    "partial_scope_generated": 1,
+    "research_only_benchmark_blocked": 3
+  },
+  "release_id": "v0.1.0-model-ready-preview-1",
+  "release_manifest_sha256": "59b35322ccad17fea4e61f047453c4ad3bd0e3006c7361baa969da435c075e30",
+  "release_track": "model-ready-preview",
+  "remaining_blockers": [
+    "owner_transport_pilot",
+    "owner_release_go_and_remote_write_authorization"
+  ],
+  "remote_write_attempted": false,
+  "root_sha256": "24246a51ee47c36788892d813ec504eef53010aaf16af15c3e1774ef64b935e6",
+  "schema_version": "1.0.0",
+  "status": "local_rc_built_pending_pilot_and_owner_go",
+  "step_id": "step-26-preview"
+}

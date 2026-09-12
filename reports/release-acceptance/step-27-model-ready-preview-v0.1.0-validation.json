@@ -1,0 +1,45 @@
+{
+  "blocking_check_failures": 0,
+  "blocking_checks": [],
+  "lineage": {
+    "edges": 37,
+    "nodes": 52,
+    "reference_only_corpus_nodes": 15,
+    "source_nodes": 18,
+    "target_nodes": 19
+  },
+  "owner_gates": [],
+  "payload": {
+    "files": 190,
+    "largest_file_bytes": 54055777,
+    "target_directories": 19,
+    "total_bytes": 211008093
+  },
+  "readiness_status_counts": {
+    "active_generated_pending_release_validation": 7,
+    "generated_adapter_blocked": 1,
+    "generated_pending_campaign_evaluation": 6,
+    "generated_with_source_caveat": 1,
+    "partial_scope_generated": 1,
+    "research_only_benchmark_blocked": 3
+  },
+  "release_id": "v0.1.0-model-ready-preview-1",
+  "remote_write_attempted": false,
+  "root_sha256": "24246a51ee47c36788892d813ec504eef53010aaf16af15c3e1774ef64b935e6",
+  "schema_version": "1.0.0",
+  "sensitive_scan": {
+    "blocking_findings": 0,
+    "findings": []
+  },
+  "status": "accepted_for_authorized_upload",
+  "step_id": "step-27-preview",
+  "warnings": [
+    {
+      "check": "ordinary_git_large_file_warning",
+      "owner": "project-owner",
+      "path": "datasets/model-ready/pfizer-hte-lc-area-percent/audit.jsonl",
+      "reason": "The selected transport must document the >50 MiB warning and perform required readback before release.",
+      "size_bytes": 54055777
+    }
+  ]
+}
