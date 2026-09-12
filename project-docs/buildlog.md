@@ -496,3 +496,8 @@
 - 添加不含 credential、remote URL 或本机路径的 `pipeline/configs/release-object-storage.example.json`，固定控制面/数据面分离、SHA-256 content addressing、1 GiB shard 上限与 readback-hash 规则。
 - 尚未收到 owner、visibility、后端账户和额度的授权选择，故没有创建测试对象、执行 upload/pull 或任何远端写入。local policy check 通过不替代真实 pilot。
 - `reports/release-acceptance/step-25-storage-pilot.json` 列出阻塞条件；状态：`blocked`。
+
+## [2026-09-12 02:07 CST] 步骤 26 阻塞：提升 staging 并生成 local RC
+
+- draft lineage root 与 release manifest 已生成，但没有移动 41 corpus 或 19 target staging payload 到正式目录：dependency lock、clean-room rebuild 和 storage readback pilot 都尚未通过，release authorization 也尚未存在。
+- 因没有提升任何大对象，正式 target tree 未被改变，也不需要 rollback。`reports/release-acceptance/step-26-release-candidate.json` 是逐闸门状态证据；状态：`blocked`。

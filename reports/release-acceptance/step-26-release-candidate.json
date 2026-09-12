@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "step_id": "step-26",
+  "status": "blocked",
+  "release_manifest": "provenance/release-manifest.json",
+  "staging_payloads_promoted": false,
+  "target_tree_modified": false,
+  "draft_root_sha256": "a757863ea622f1a69205024a9ee04482952b95bdee85bbb98c74a2990df970db",
+  "blocking_gates": {
+    "step_19_dependency_lock": "blocked",
+    "step_20_clean_room_rebuild": "blocked",
+    "step_25_storage_readback_pilot": "blocked",
+    "step_28_release_authorization": "pending"
+  },
+  "rollback": "No staging payload was moved, so no release-candidate promotion rollback is required."
+}
