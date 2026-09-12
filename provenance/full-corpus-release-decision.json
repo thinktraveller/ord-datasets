@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "step_id": "full-corpus-release-decision",
-  "status": "local_rc_validated_pending_publication_authorization",
-  "go_no_go": "pending",
+  "status": "published_verified",
+  "go_no_go": "go",
   "release_track": "corpus-public-release",
   "repository": {
     "repo_id": "thinktraveller/ord-processed-reaction-corpus",
@@ -41,12 +41,40 @@
       "status": "complete",
       "evidence": "reports/release-acceptance/step-32-full-corpus-rc-validation.json",
       "blocking_check_failures": 0
+    },
+    {
+      "gate": "Review the rendered HF dataset card and public-license/citation presentation.",
+      "status": "complete",
+      "evidence": "release-candidates/v0.2.0-corpus-preview-1/{README.md,LICENSE-DATA,LICENSE-CODE,NOTICE,CITATION.cff}"
+    },
+    {
+      "gate": "Explicitly authorize creation and upload of the public HF Dataset repository.",
+      "status": "complete",
+      "authorization": "project owner message on 2026-09-12"
     }
   ],
-  "required_before_go": [
-    "Review the rendered HF dataset card and public-license/citation presentation.",
-    "Explicitly authorize creation and upload of the public HF Dataset repository.",
-    "Perform a fresh post-upload readback and record the immutable revision."
-  ],
-  "public_remote_write_authorized": false
+  "required_before_go": [],
+  "public_remote_write_authorized": true,
+  "public_release": {
+    "status": "published_verified",
+    "url": "https://huggingface.co/datasets/thinktraveller/ord-processed-reaction-corpus",
+    "commit": "260cde0feb414c75b2bf971d6f3a4dbbee7b2e95",
+    "tag": "v0.2.0-corpus-preview-1",
+    "tag_object": "0d7ab9847d45311fdbf40083d2d731071163cb5b",
+    "tag_resolved_commit": "260cde0feb414c75b2bf971d6f3a4dbbee7b2e95"
+  },
+  "completed_after_go": {
+    "gate": "Perform a fresh post-upload readback and record the immutable revision.",
+    "status": "complete",
+    "evidence": "reports/release-acceptance/step-33-full-corpus-public-upload.json and reports/release-acceptance/step-34-full-corpus-public-readback.json",
+    "readback": {
+      "revision": "260cde0feb414c75b2bf971d6f3a4dbbee7b2e95",
+      "tag": "v0.2.0-corpus-preview-1",
+      "candidate_files": 224,
+      "hub_generated_files": [".gitattributes"],
+      "payload_sha256sums": "205 of 205 passed",
+      "blocking_check_failures": 0,
+      "root_sha256": "930a9111b6e9f7a85abdff2199c8e7637a08822782cf8ffc5081b93e563bc663"
+    }
+  }
 }

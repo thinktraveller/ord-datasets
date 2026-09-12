@@ -587,3 +587,9 @@
 - `v0.2.0-corpus-preview-1` 已在 `release-candidates/` 本地完成：41 个 corpus、53 个 physical source、205 个 payload 文件、13,127,476,889 bytes、2,428,291 reactions；候选 root SHA-256 为 `930a9111b6e9f7a85abdff2199c8e7637a08822782cf8ffc5081b93e563bc663`。
 - 候选同时保留与私有 bucket 已回读快照逐项对应的 SHA256SUMS（hash `4a546010d1aad3badc567a74be149afe53b21606cc518126d41e0b81d22a21af`），而根目录 SHA256SUMS 使用候选内路径，避免路径迁移掩盖字节差异。
 - Step-32 独立验收通过：0 blocking checks、94 lineage nodes、53 complete edges，根哈希一致。尚未获得公开 Dataset repository 写入授权，故状态为 `local_validation_passed_pending_publication_authorization`；未创建或上传公开 HF Dataset。证据为 `step-31-full-corpus-rc-build.json` 和 `step-32-full-corpus-rc-validation.json`。
+
+## [2026-09-13] Full-corpus 公共 HF Dataset 发布与回读完成
+
+- 所有者明确授权后，创建公开 Dataset `thinktraveller/ord-processed-reaction-corpus`，并用 `hf upload` 上传已验收的精确 224-file candidate tree。Hub 自动添加的 `.gitattributes` 是唯一额外控制文件；没有上传原始 Parquet、`_needs_review`、clean-room duplicate 或 model-ready payload。
+- 首个发布 commit 为 `260cde0feb414c75b2bf971d6f3a4dbbee7b2e95`；annotated tag `v0.2.0-corpus-preview-1` 的 tag object 为 `0d7ab9847d45311fdbf40083d2d731071163cb5b`，peeled commit 与发布 commit 一致。
+- 从该固定 commit 下载到全新目录后，根目录 `SHA256SUMS` 为 205/205 passed；下载器缓存和 Hub 自动控制文件未计入 release tree。完整远端副本验收通过：0 blocking checks、0 owner gates、41 corpus/53 source/205 payload/2,428,291 reactions、root SHA-256 `930a9111b6e9f7a85abdff2199c8e7637a08822782cf8ffc5081b93e563bc663`。证据为 steps 33–34 full-corpus reports。

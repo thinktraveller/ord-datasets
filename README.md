@@ -6,6 +6,11 @@ The first model-ready data preview is published as
 [`v0.1.0-model-ready-preview-1`](https://github.com/thinktraveller/ord-datasets/releases/tag/v0.1.0-model-ready-preview-1).
 It contains 19 model-ready targets across 15 packages.
 
+The complete processed corpus is published separately on Hugging Face as
+[`ORD Processed Reaction Corpus v0.2.0-corpus-preview-1`](https://huggingface.co/datasets/thinktraveller/ord-processed-reaction-corpus/tree/v0.2.0-corpus-preview-1).
+It contains 41 sanitized corpus packages and 2,428,291 reactions. Its
+immutable tag resolves to commit `260cde0feb414c75b2bf971d6f3a4dbbee7b2e95`.
+
 - [Browse the published model-ready targets](https://github.com/thinktraveller/ord-datasets/tree/release/v0.1.0-model-ready-preview-1/datasets/model-ready)
 - [Browse the immutable release tag](https://github.com/thinktraveller/ord-datasets/tree/v0.1.0-model-ready-preview-1)
 
@@ -26,10 +31,9 @@ presented as an accepted benchmark.
 This repository is the local, content-addressed release workspace for
 processed Open Reaction Database datasets, their reproducible processing
 pipeline, intermediate indexes, and provenance records. It has 41 validated
-corpus staging packages and 19 validated model-ready target staging packages.
-The model-ready preview above is published; the 41-corpus release remains a
-separate, unpublished track. The authoritative scope, build log, and release
-gates are documented in:
+corpus packages and 19 validated model-ready target staging packages. The
+model-ready preview and the separate corpus release above are published. The
+authoritative scope, build log, and release evidence are documented in:
 
 - `project-docs/goal.md`
 - `project-docs/project-plan.md`
@@ -40,10 +44,11 @@ gates are documented in:
 The sibling directories `../ord-data/` and `../dataset/` are read-only inputs.
 Build commands must write only inside this repository. Original ORD Parquet
 files are referenced by immutable source metadata and are not copied here.
-The published model-ready preview uses the immutable release tag above; the
-larger corpus payload remains outside regular Git until a separately authorized
-object backend passes its readback pilot. Remote uploads require the explicit
-release gate defined in the project plan.
+The published model-ready preview uses the immutable GitHub release tag; the
+larger corpus payload is published through the immutable Hugging Face Dataset
+tag above, rather than regular Git. Original ORD Parquet payload remains out of
+scope. Remote uploads require the explicit release gate defined in the project
+plan.
 
 ## Planned areas
 

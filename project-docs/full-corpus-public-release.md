@@ -6,10 +6,11 @@
 |---|---|
 | Hugging Face Dataset repo | `thinktraveller/ord-processed-reaction-corpus` |
 | Display name | `ORD Processed Reaction Corpus` |
-| Proposed initial version | `v0.2.0-corpus-preview-1` |
-| Visibility | public, pending final owner authorization |
+| Published version | [`v0.2.0-corpus-preview-1`](https://huggingface.co/datasets/thinktraveller/ord-processed-reaction-corpus/tree/v0.2.0-corpus-preview-1) |
+| Visibility | public, verified |
 | Transport | Hugging Face Dataset repository backed by Xet |
 | Private verified source snapshot | `corpus-staging-step11-4a546010d1aad3ba` |
+| Immutable commit | `260cde0feb414c75b2bf971d6f3a4dbbee7b2e95` |
 
 ## Fixed scope
 
@@ -58,14 +59,14 @@ provenance/
 3. Complete: independent local validation passed schema, license, redaction,
    scope, lineage, file count, byte count, and deterministic root hash with
    zero blocking checks. See steps 31–32 full-corpus reports.
-4. Review the rendered Dataset Card, license, NOTICE, citation, and public
-   wording. The repo must not imply ORD affiliation or an accepted benchmark.
-5. Change `provenance/full-corpus-release-decision.json` to `go` only after the
-   preceding gates pass and the owner explicitly authorizes the public HF
-   repository write.
-6. Upload the exact candidate to the HF Dataset repo, freeze an immutable
-   revision/version, then run a clean remote readback and all-file SHA-256
-   verification before declaring publication complete.
+4. Complete: the Dataset Card, licenses, NOTICE, citation, and public wording
+   were reviewed before the owner authorized publication.
+5. Complete: `provenance/full-corpus-release-decision.json` records the owner
+   `go` decision and public write authorization.
+6. Complete: the exact candidate was uploaded to the HF Dataset repo and
+   frozen at annotated tag `v0.2.0-corpus-preview-1` (peeled commit
+   `260cde0feb414c75b2bf971d6f3a4dbbee7b2e95`). A fresh download passed all
+   205 SHA-256 checks and complete validation with zero blocking checks.
 
 ## Non-goals
 
@@ -74,8 +75,11 @@ public release. It is not made public and its mutable prefixes are not used as
 release versions. `_needs_review` stays out of scope until its own review and
 release decision are complete.
 
-## Local candidate status
+## Publication result
 
-The validated candidate is local and Git-ignored; its payload was not added to
-the source repository and no public Hugging Face write was attempted. It is
-ready only for the owner review and explicit public-write decision in gate 5.
+The public Dataset contains the exact 224-file candidate tree plus Hub's
+automatic `.gitattributes` control file. The fresh tagged readback verified the
+205 payload checksums and candidate root SHA-256
+`930a9111b6e9f7a85abdff2199c8e7637a08822782cf8ffc5081b93e563bc663`.
+No original ORD Parquet, `_needs_review`, clean-room duplicate, or model-ready
+payload was included in this corpus release.

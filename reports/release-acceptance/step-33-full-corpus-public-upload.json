@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "step_id": "step-33-full-corpus-public-upload",
+  "status": "complete",
+  "repository": {
+    "repo_id": "thinktraveller/ord-processed-reaction-corpus",
+    "repo_type": "dataset",
+    "visibility": "public",
+    "url": "https://huggingface.co/datasets/thinktraveller/ord-processed-reaction-corpus"
+  },
+  "candidate": {
+    "release_id": "v0.2.0-corpus-preview-1",
+    "root_sha256": "930a9111b6e9f7a85abdff2199c8e7637a08822782cf8ffc5081b93e563bc663",
+    "corpus_packages": 41,
+    "payload_files": 205,
+    "payload_bytes": 13127476889,
+    "reactions": 2428291
+  },
+  "immutable_revision": {
+    "commit": "260cde0feb414c75b2bf971d6f3a4dbbee7b2e95",
+    "annotated_tag": "v0.2.0-corpus-preview-1",
+    "tag_object": "0d7ab9847d45311fdbf40083d2d731071163cb5b",
+    "tag_peeled_commit": "260cde0feb414c75b2bf971d6f3a4dbbee7b2e95"
+  },
+  "transport": {
+    "tool": "hf upload",
+    "source_scope": "exact 224-file local release candidate tree",
+    "remote_generated_file": ".gitattributes",
+    "remote_write_attempted": true
+  }
+}
