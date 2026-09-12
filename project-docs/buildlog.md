@@ -435,3 +435,10 @@
 - JSON 的 60 条 record 全部通过 catalog-record JSON Schema；CSV/JSON 均包含 semantic slug、logical/physical/source file 集、target/label（corpus 为 null）、真实 readiness、staged status、license、行数、content hash 和计划发布路径。
 - 验收：41 corpus + 19 model-ready = 60，两个格式记录数和语义分层一致。SHA-256：CSV `c13e690152896e811ccbd28e3e2f4c2de4989bf88ce9e46861e0b3af84ef4509`，JSON `bb9de21780145197f17b39d1f92a4b3e978748f84554a7346549b61b04ef35ef`，builder `43b142343b5e39e00639a60dd059ae5a493ac20901c713760df3fa2de6ef2bdc`。
 - 状态：`complete`。Catalog 是 staging index，不代表已上传或已发布；下一步为阶段 D 的中间资产归档与 pipeline 抽取。
+
+## [2026-09-12 01:18 CST] 步骤 16 完成：归档 00～04 阶段中间资产索引
+
+- 新增内容寻址归档器 `pipeline/scripts/archive_intermediate_indices.py`，为 `00`～`04` 写入 payload-free `archive-index.csv`。归档记录旧相对路径、SHA-256、字节数、disposition、许可/再分发状态、canonical artifact 和计划 archive path；不复制原始文件。
+- 原始 53 physical CSV 在敏感审计中仍含 blocking PII finding，故保留为只读内容寻址引用，而非把未脱敏 payload 再写入发布工作区。此选择也避免将 physical、logical 与发布语料做物理重复保存。
+- 验收：`01-physical-csv` index 有 53 个 physical CSV（另含 `datasets.csv` catalog），五个分组共 94 条记录；source evidence、logical manifests 与 4 个 field-profiling 文件均可由 hash 对账。
+- 机器可读证据：`reports/release-acceptance/step-16-intermediate-archive.json`；状态：`complete`。

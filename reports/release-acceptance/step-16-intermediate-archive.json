@@ -1,0 +1,60 @@
+{
+  "input_inventory_sha256": "5f12f84351a860121a4ad191cece809de01f992dac00cee453d155655cdb9dcc",
+  "payload_policy": "external_read_only_content_addressed_references",
+  "physical_csv_count": 53,
+  "schema_version": "1.0.0",
+  "stages": [
+    {
+      "bytes": 19449724,
+      "dispositions": {
+        "intermediate": 30
+      },
+      "index": "intermediate/00-snapshot-inventory/archive-index.csv",
+      "record_count": 30,
+      "sha256": "aa83b43eb15ffd95469f8698943b839858236c601cb6a308fdb378adab2f53e6",
+      "stage": "00-snapshot-inventory"
+    },
+    {
+      "bytes": 13126761119,
+      "dispositions": {
+        "intermediate": 54
+      },
+      "index": "intermediate/01-physical-csv/archive-index.csv",
+      "record_count": 54,
+      "sha256": "afe2203e49f92a3ac8ba692da387642dc08568c133848ee92ddd22087187fe58",
+      "stage": "01-physical-csv"
+    },
+    {
+      "bytes": 1425945845,
+      "dispositions": {
+        "intermediate": 2
+      },
+      "index": "intermediate/02-source-evidence/archive-index.csv",
+      "record_count": 2,
+      "sha256": "09d2fb362e3c104dffa04731c1c94500876cd166c26e365f361e4a49ed172b08",
+      "stage": "02-source-evidence"
+    },
+    {
+      "bytes": 34618,
+      "dispositions": {
+        "intermediate": 4
+      },
+      "index": "intermediate/03-logical-assembly/archive-index.csv",
+      "record_count": 4,
+      "sha256": "3fab02afb79b3fe2550eb003e34e1f9f4ad832e1734a33fbb84d474a9d78cb5d",
+      "stage": "03-logical-assembly"
+    },
+    {
+      "bytes": 1638667,
+      "dispositions": {
+        "intermediate": 4
+      },
+      "index": "intermediate/04-field-profiling/archive-index.csv",
+      "record_count": 4,
+      "sha256": "e9f3286d9cabb67462d2784e21111840e302997cc68cd1a0cdb0bae3343f4b7a",
+      "stage": "04-field-profiling"
+    }
+  ],
+  "status": "complete",
+  "step_id": "step-16"
+}
