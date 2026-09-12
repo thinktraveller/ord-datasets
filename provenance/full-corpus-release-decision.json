@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "step_id": "full-corpus-release-decision",
+  "status": "planned_pending_publication_authorization",
+  "go_no_go": "pending",
+  "release_track": "corpus-public-release",
+  "repository": {
+    "repo_id": "thinktraveller/ord-processed-reaction-corpus",
+    "repo_type": "dataset",
+    "visibility": "public",
+    "backend": "huggingface-dataset-xet"
+  },
+  "proposed_release_version": "v0.2.0-corpus-preview-1",
+  "proposed_scope": {
+    "included": "41 sanitized corpus packages with corpus-only catalog, provenance, licenses, citation, dataset card, SHA256SUMS, and a full-release manifest",
+    "payload_files": 205,
+    "payload_bytes": 13127476889,
+    "physical_sources": 53,
+    "reactions": 2428291,
+    "excluded": [
+      "original ORD Parquet payload",
+      "_needs_review payload",
+      "clean-room duplicates",
+      "model-ready payload released independently in v0.1.0-model-ready-preview-1"
+    ]
+  },
+  "private_transport_pilot": {
+    "bucket_snapshot": "corpus-staging-step11-4a546010d1aad3ba",
+    "sha256sums_sha256": "4a546010d1aad3badc567a74be149afe53b21606cc518126d41e0b81d22a21af",
+    "readback": "205 of 205 payload hashes passed"
+  },
+  "required_before_go": [
+    "Build an isolated full corpus release candidate from the frozen payload and control-plane files.",
+    "Pass full-release scope, schema, lineage, license, sensitive-data, count, and root-hash validation.",
+    "Review the rendered HF dataset card and public-license/citation presentation.",
+    "Explicitly authorize creation and upload of the public HF Dataset repository.",
+    "Perform a fresh post-upload readback and record the immutable revision."
+  ],
+  "public_remote_write_authorized": false
+}

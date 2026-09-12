@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "release_track": "corpus-public-release",
+  "repository": {
+    "repo_id": "thinktraveller/ord-processed-reaction-corpus",
+    "repo_type": "dataset",
+    "visibility": "public",
+    "backend": "huggingface-dataset-xet"
+  },
+  "release": {
+    "version": "v0.2.0-corpus-preview-1",
+    "dataset_card_template": "project-docs/hf-corpus-dataset-card.md",
+    "immutable_revision_required": true
+  },
+  "input": {
+    "private_bucket_snapshot": "corpus-staging-step11-4a546010d1aad3ba",
+    "staging_payload_root": ".staging/ord-datasets-v0/step-11/datasets/corpus",
+    "corpus_directories": 41,
+    "payload_files": 205,
+    "payload_bytes": 13127476889,
+    "sha256sums_sha256": "4a546010d1aad3badc567a74be149afe53b21606cc518126d41e0b81d22a21af"
+  },
+  "scope": {
+    "include": [
+      "datasets/corpus/**",
+      "corpus-only catalog",
+      "source and corpus provenance",
+      "license, citation, notice, and dataset card",
+      "corpus-only release manifest and SHA256SUMS"
+    ],
+    "exclude": [
+      "original ORD Parquet payload",
+      "_needs_review payload",
+      "clean-room duplicates",
+      "model-ready target payload; released separately as v0.1.0-model-ready-preview-1",
+      "credentials, caches, virtual environments, and local paths"
+    ]
+  },
+  "safety_gates": {
+    "full_rc_validation_required": true,
+    "public_remote_write_authorized": false,
+    "no_overwrite_of_existing_version": true,
+    "fresh_remote_readback_required": true,
+    "all_payload_sha256_required": true
+  }
+}
