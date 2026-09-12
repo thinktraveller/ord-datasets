@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "step_id": "step-20",
+  "status": "blocked",
+  "sample_source": {
+    "physical_dataset_id": "ord_dataset-5e8318f0dda04b398c14f4c3adfeb32c",
+    "upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+    "source_sha256": "94de6b8e87229d5db4fe8c17212afa2d3563478ca32aee934cc449559cab0bca",
+    "source_file_url": "https://github.com/open-reaction-database/ord-data/blob/83f971f586f6ad18f358ae4ae99d045e94ed2066/data/5e/ord_dataset-5e8318f0dda04b398c14f4c3adfeb32c.parquet",
+    "raw_download_url": "https://raw.githubusercontent.com/open-reaction-database/ord-data/83f971f586f6ad18f358ae4ae99d045e94ed2066/data/5e/ord_dataset-5e8318f0dda04b398c14f4c3adfeb32c.parquet"
+  },
+  "attempt": {
+    "command": "curl --fail --location --silent --show-error --max-time 30 -I <raw_download_url>",
+    "result": "failed",
+    "error_class": "TLS_CONNECTION_FAILURE",
+    "error": "OpenSSL SSL_connect: SSL_ERROR_SYSCALL"
+  },
+  "additional_blockers": [
+    "provenance/source-files.initial.csv has no verified direct_download_url",
+    "pipeline/uv.lock is not available because dependency resolution could not reach the package index",
+    "a source-to-target adapter chain has not been extracted as a parameterized clean-room command"
+  ],
+  "safety": "No local cache or staging payload was substituted for the public source download."
+}

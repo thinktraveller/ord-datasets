@@ -484,3 +484,9 @@
 - 新增 `DATA_CARD.md` 和 `CITATION.cff`，更新 README 的实际 staging/发布状态，并把 NOTICE 的 ORD revision 改为已验证的 `83f971f...`。
 - 文档明确 corpus 与 model-ready 的口径、19 target 的 non-accepted 状态、CC BY-SA/Apache 边界、literal-email 脱敏、两跳 lineage、外部对象下载模式以及当前 release blockers；不把 draft 误称为 published benchmark。
 - 机器可读检查：`reports/release-acceptance/step-24-documentation.json`；状态：`complete`。
+
+## [2026-09-12 02:02 CST] 步骤 20 阻塞：clean-room 小样本重建
+
+- 以最小的固定 source record 构造 GitHub raw URL 并从空路径执行下载探测；连接在 TLS 阶段以 `SSL_ERROR_SYSCALL` 失败。source manifest 的 direct download 字段也尚未经回读验证。
+- 未以本地 `ord-data/`、staging 或缓存替代公网输入，因此没有把缓存命中误报告为 clean-room 成功。`uv.lock` 缺失和 source→target adapter 未完整抽取亦阻止端到端重建。
+- 失败命令、固定 URL、source hash 与后续修复条件保存在 `reports/release-acceptance/step-20-clean-room-rebuild.json`；状态：`blocked`。
