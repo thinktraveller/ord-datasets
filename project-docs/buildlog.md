@@ -521,3 +521,9 @@
 
 - 因未存在远端 release、tag 或 uploaded object，未执行 clone/download/readback，也没有将本地 staging 当作远端回读证据。expected draft root 已记录，verified remote root 保持 null。
 - `reports/release-acceptance/step-30-remote-readback.json` 固化将来必须覆盖的 control-plane、小/最大数据对象、完整 target、lineage 与 sample rebuild；状态：`blocked`。
+
+## [2026-09-12 02:15 CST] 步骤 31 完成（维护基线）：项目收尾
+
+- 新增 `MAINTENANCE.md`，规定 ORD revision 更新、语义版本、schema/naming compatibility、immutable release 与复验流程；`project-docs/release-backlog.md` 为每个 blocking issue 指定 `project-owner` 和可复核 exit evidence。
+- closeout 固定 53/41/2,428,291/15/19/210 的已知基线，16、17、18、21、22、24 为 complete，23 为 draft complete；初始 release 仍未关闭。
+- `reports/release-acceptance/step-31-closeout.json` 确认无未归属 blocking issue；状态：`maintenance_baseline_established_release_not_closed`。

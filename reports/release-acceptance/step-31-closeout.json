@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "step_id": "step-31",
+  "status": "maintenance_baseline_established_release_not_closed",
+  "release_version": null,
+  "known_counts": {
+    "physical_sources": 53,
+    "logical_corpora": 41,
+    "corpus_reactions": 2428291,
+    "model_packages": 15,
+    "model_ready_targets": 19,
+    "needs_review_files": 210
+  },
+  "complete_steps": [16, 17, 18, 21, 22, 24],
+  "draft_complete_steps": [23],
+  "blocked_or_pending_steps": [19, 20, 25, 26, 27, 28, 29, 30],
+  "maintenance_runbook": "MAINTENANCE.md",
+  "backlog": "project-docs/release-backlog.md",
+  "unassigned_blocking_issues": 0
+}
