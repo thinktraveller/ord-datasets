@@ -1,0 +1,20 @@
+{
+  "logical_corpora": 41,
+  "logical_memberships": 53,
+  "model_packages": 15,
+  "model_ready_targets": 19,
+  "outputs": {
+    "logical-dataset-members.csv": "be852c09dd5a2dd15118a7f956fbc284c032e900841c54837805b90c1575a76f",
+    "logical-datasets.csv": "c3ab81dd3b1601834cd35741cb2481f16c55beb46b05d16a4a3bbd21ddf31e5f",
+    "package-datasets.csv": "d5c31a95151abe1826f4568ae032ec3d066937b281211e4e120d507e2db263b4",
+    "physical-datasets.csv": "e3a9bb6455b187eb6aa1a70aa5168c26598be990f896938d3447a897729e3ad6",
+    "source-evidence.csv": "0e7f0b3af8056ca38d8c3576bb0e2914a5551e8cfb3393ef333dbbaec9e65dfd",
+    "source-files.csv": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7",
+    "target-datasets.csv": "65c835e61547d07480fc59b5606a6ce591c36a734f3e6289bb015ba4675b3bcd"
+  },
+  "physical_sources": 53,
+  "schema_version": "1.0.0",
+  "status": "complete",
+  "step_id": "step-21",
+  "unpinned_main_urls": 0
+}

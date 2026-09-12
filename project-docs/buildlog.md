@@ -460,3 +460,9 @@
 - `pipeline/` 现有 12 个参数化脚本、schema、policy、fixtures 和测试被封装为 Python 项目；新增 `pyproject.toml`、archive indexer regression tests 和可执行说明。所有输出 root 由 CLI 调用方提供，脚本源码不含本机绝对路径。
 - 静态检查（未定义名称）和 5 个单元/fixture 测试均通过；原先一处未使用 import 已清理。
 - **阻塞**：`uv lock` 下载 `ruff` 时 TLS 连接失败，离线 resolver 亦无可用 ruff cache，故没有生成 `uv.lock`；未用未锁定依赖替代它。详见 `pipeline/DEPENDENCY_LOCK_BLOCKED.md` 与 `reports/release-acceptance/step-19-pipeline-extraction.json`。在网络可用环境生成 lock 前，本步骤不能标记 complete，也阻塞 RC 验收。
+
+## [2026-09-12 01:43 CST] 步骤 21 完成：生成数据集级 provenance maps
+
+- 新增 `build_dataset_provenance.py`，从冻结 source、semantic 和 target map 生成 physical、logical、membership、package、target 与 source-evidence 的规范 provenance 表，并将 source manifest 原样复制为 `provenance/source-files.csv`。
+- 验收：53 physical source、41 logical corpus、53 memberships、15 packages、19 targets；所有 source URL 都带 40 位固定 upstream revision，`/blob/main/` 为 0。
+- 输出 hash 写入 `reports/release-acceptance/step-21-dataset-provenance.json`；状态：`complete`。
