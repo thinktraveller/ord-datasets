@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "step_id": "step-29",
+  "status": "blocked",
+  "release_decision_status": "pending_owner_decision",
+  "remote_write_attempted": false,
+  "uploaded_objects": 0,
+  "uploaded_bytes": 0,
+  "remote_commit": null,
+  "remote_tag": null,
+  "resume_instruction": "After an owner records a go decision and the RC passes, create a new checkpoint from the immutable upload manifest; never overwrite an existing tag or object."
+}

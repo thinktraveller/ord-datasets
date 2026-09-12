@@ -511,3 +511,8 @@
 
 - `provenance/release-decision.json` 明确列出 remote URL/owner/visibility、版本/tag、object backend/quota、`_needs_review` 范围和 partial/blocked 展示方式这七项尚未由 owner 选择；`remote_write_authorized` 为 false。
 - 本记录不包含 credential，也不构成上传授权；状态：`pending_owner_decision`。
+
+## [2026-09-12 02:12 CST] 步骤 29 阻塞：上传与不可变 release
+
+- release decision 仍为 pending，local RC 也处于 rejected；因此没有连接远端、上传 object、创建 commit/tag/release 或产生费用。upload checkpoint 记录 0 objects / 0 bytes：`reports/release-acceptance/step-29-upload-checkpoint.json`。
+- 未来只能在通过闸门后从新的 immutable upload manifest 断点续传，禁止覆盖已存在 tag/object；状态：`blocked`。
