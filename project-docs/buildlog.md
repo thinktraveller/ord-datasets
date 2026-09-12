@@ -448,3 +448,9 @@
 - 新增 `pipeline/scripts/archive_model_ready_intermediates.py`，从已通过步骤 14 验收的 step-13 staging 生成 05～08 分组索引，而不是复制旧的、未审查的 `reactions_model.csv` 快照。
 - 19 个 target 的 dataset 投影、row map/audit/exclusions/source links、schema/YONOD config 与 checksums 共 190 个 artifacts 已逐个记录路径、大小和 SHA-256。payload 保持为 staging 的内容寻址引用，避免重复大对象进入普通 Git。
 - 验收：19 target / 15 package；05、06、07、08 分别有 19、114、38、19 条 index 记录。机器可读证据：`reports/release-acceptance/step-17-intermediate-archive.json`；状态：`complete`。
+
+## [2026-09-12 01:26 CST] 步骤 18 完成：处置 legacy `_needs_review`
+
+- 新增 `pipeline/scripts/audit_needs_review.py`，对全部 210 个待审文件从冻结 inventory 重新建立逐文件 review table，不复制任一待审 payload。
+- 43 个与非待审 canonical artifact 逐字节相同的文件标记为 `superseded` / `excluded_duplicate`；其余 167 个保留 `quarantined`。首发 inclusion 为 0，未把待审对象默认为公开。
+- 审计范围为 14,828,180,158 bytes；机器可读 review table：`intermediate/90-legacy-needs-review/review-disposition.csv`，摘要：`reports/release-acceptance/step-18-needs-review-audit.json`；状态：`complete`。
