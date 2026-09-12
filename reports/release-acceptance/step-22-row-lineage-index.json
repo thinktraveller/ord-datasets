@@ -1,0 +1,9 @@
+{
+  "corpus_index_count": 41,
+  "corpus_index_sha256": "534ed887d264ab7c8118c478ab97c5576f86901e7a6ef3b1c1826dfb9973608c",
+  "schema_version": "1.0.0",
+  "status": "complete",
+  "step_id": "step-22",
+  "target_index_count": 19,
+  "target_index_sha256": "03d10128429e06c75fad7cb8b04e8c82b3780d2627360047c8b83a7e4c038a0b"
+}

@@ -466,3 +466,9 @@
 - 新增 `build_dataset_provenance.py`，从冻结 source、semantic 和 target map 生成 physical、logical、membership、package、target 与 source-evidence 的规范 provenance 表，并将 source manifest 原样复制为 `provenance/source-files.csv`。
 - 验收：53 physical source、41 logical corpus、53 memberships、15 packages、19 targets；所有 source URL 都带 40 位固定 upstream revision，`/blob/main/` 为 0。
 - 输出 hash 写入 `reports/release-acceptance/step-21-dataset-provenance.json`；状态：`complete`。
+
+## [2026-09-12 01:49 CST] 步骤 22 完成：验证行级 lineage
+
+- 新增 `build_row_lineage_index.py`，为 41 corpus 和 19 target 构建紧凑的 hash index；行本身保留在已验收 staging payload 中，不以重复行级文件占用 regular Git。
+- 全量重跑验收：2,428,291 corpus 行的 physical/source/reaction/row_index 均通过，53 physical source 无孤儿、重复 logical membership、可变 `main` URL 或残余 literal email；19 target 的 128,712 included 与 499 excluded 也重新验证，row map/source index/label leak/status mismatch 均为 0。
+- `provenance/row-lineage/two-hop-query-examples.md` 说明 corpus 和 target 从行定位到固定 source manifest 的两跳路径。状态：`complete`。

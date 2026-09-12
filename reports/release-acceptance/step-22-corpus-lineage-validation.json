@@ -1,0 +1,389 @@
+{
+  "corpus_count": 41,
+  "duplicate_logical_memberships": 0,
+  "input_hashes": {
+    "control_manifest": "fb0475232ca5666151da9955706057af70bc7f56733b7820f852ce69c80186e6",
+    "logical_dataset_members": "ca3f2d586bcaaa1d8c821d2db125624cecec52032c51c839a91cb51bc13df366",
+    "semantic_name_map": "72cc994b7f7c3f79c9647894250527258d0c424f2e769af80b083815ecd233f6",
+    "source_files_manifest": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7"
+  },
+  "orphan_physical_sources": 0,
+  "packages": [
+    {
+      "dataset_slug": "ahneman-c-n-cross-coupling",
+      "logical_dataset_id": "physical_46ff9a32d9e04016b9380b1b1ef949c3",
+      "physical_source_count": 1,
+      "reaction_sha256": "889ed18c722dde3ba1a2f0e745091f4a6e330c985e42a79369072dd288e9a27c",
+      "reaction_size_bytes": 32068315,
+      "remaining_literal_email_values": 0,
+      "row_count": 4312
+    },
+    {
+      "dataset_slug": "aichemeeco-amide-coupling-conditions",
+      "logical_dataset_id": "physical_47eaacc46c3a4487bbdf99adb1a15e41",
+      "physical_source_count": 1,
+      "reaction_sha256": "898a686aadf805f97b3660fdced6133ad51ffc4cac48db35fa88283b487ae60c",
+      "reaction_size_bytes": 497330028,
+      "remaining_literal_email_values": 0,
+      "row_count": 47015
+    },
+    {
+      "dataset_slug": "astrazeneca-eln-buchwald-hartwig-yields",
+      "logical_dataset_id": "physical_00005539a1e04c809a9a78647bea649c",
+      "physical_source_count": 1,
+      "reaction_sha256": "a27ec65da5129e401247c840ab9ff7f23877ed7f1d54fe133aaa2ff48d42d241",
+      "reaction_size_bytes": 2852445,
+      "remaining_literal_email_values": 0,
+      "row_count": 750
+    },
+    {
+      "dataset_slug": "asymmetric-alkylation-chemical-space",
+      "logical_dataset_id": "physical_c5b00523487a4211a194160edf45e9ab",
+      "physical_source_count": 1,
+      "reaction_sha256": "77681a945d66fe8801d50bd75b2b3512d4f115c8d8d337b12a5e72b3f97ec4a1",
+      "reaction_size_bytes": 16349673,
+      "remaining_literal_email_values": 0,
+      "row_count": 1430
+    },
+    {
+      "dataset_slug": "automated-kinetic-profiling-hplc-optimization",
+      "logical_dataset_id": "physical_35a5a513f1dd44a3a97c88da99f81a00",
+      "physical_source_count": 1,
+      "reaction_sha256": "f65cae93bd38aa357f1da868d87c01d4cf92680f410bc9be66e9558aa586d91e",
+      "reaction_size_bytes": 945207,
+      "remaining_literal_email_values": 0,
+      "row_count": 7
+    },
+    {
+      "dataset_slug": "aza-heck-impatien-a-ligand-screen",
+      "logical_dataset_id": "physical_5e8318f0dda04b398c14f4c3adfeb32c",
+      "physical_source_count": 1,
+      "reaction_sha256": "ed3ae842e0842644f12649ab6b98b7ea533fcdb1b30a924c6a243a11c0efabbf",
+      "reaction_size_bytes": 304731,
+      "remaining_literal_email_values": 0,
+      "row_count": 24
+    },
+    {
+      "dataset_slug": "cernak-miniaturized-diversity-reactions",
+      "logical_dataset_id": "lit_10_1038_s44160_023_00351_1",
+      "physical_source_count": 3,
+      "reaction_sha256": "382ab2c212422db21075715eff0259ac57a92a5e9f6a8b1df7ee50dadaca91b1",
+      "reaction_size_bytes": 27491522,
+      "remaining_literal_email_values": 0,
+      "row_count": 2696
+    },
+    {
+      "dataset_slug": "cernak-ultra-hte-c-n-coupling",
+      "logical_dataset_id": "physical_805ad863feef48579d95d86a728035f4",
+      "physical_source_count": 1,
+      "reaction_sha256": "5ea9115349950fbd3e51d2cb5314d0f0b4cb07ea9250f2e01ea252f6bcb9152e",
+      "reaction_size_bytes": 509048737,
+      "remaining_literal_email_values": 0,
+      "row_count": 50688
+    },
+    {
+      "dataset_slug": "chan-lam-sulfonamide-boronic-acid-coupling",
+      "logical_dataset_id": "physical_5c9a10329a8a48968d18879a48bb8ab2",
+      "physical_source_count": 1,
+      "reaction_sha256": "3b707a1f7b07b384dd7590cc374b38e505de2725f90088cb03c1846a6b3383c4",
+      "reaction_size_bytes": 91887212,
+      "remaining_literal_email_values": 0,
+      "row_count": 9632
+    },
+    {
+      "dataset_slug": "chemistry-informer-libraries",
+      "logical_dataset_id": "lit_10_1039_c5sc04751j",
+      "physical_source_count": 2,
+      "reaction_sha256": "1c4bdf20e22eaa9518032320be27b11524c9ad8295e04b357443e7d4439303df",
+      "reaction_size_bytes": 1593796,
+      "remaining_literal_email_values": 0,
+      "row_count": 354
+    },
+    {
+      "dataset_slug": "chemrxiv-decarboxylative-olefination-campaigns",
+      "logical_dataset_id": "lit_10_26434_chemrxiv_15001213",
+      "physical_source_count": 2,
+      "reaction_sha256": "c8e3217f43c6f1fa380bd749e89f7f3ef657bbdc722c578511cb911b4907ab19",
+      "reaction_size_bytes": 1081999,
+      "remaining_literal_email_values": 0,
+      "row_count": 256
+    },
+    {
+      "dataset_slug": "chemrxiv-imidazole-arylation-and-aniline-amidation",
+      "logical_dataset_id": "upstream_chemrxiv_64c7e2e1658ec5f7e5808425",
+      "physical_source_count": 2,
+      "reaction_sha256": "339bcf4fc4cb5e142b4480c756fd3ab67f305fb9e71f49de64ed8462059ed27d",
+      "reaction_size_bytes": 15024525,
+      "remaining_literal_email_values": 0,
+      "row_count": 2496
+    },
+    {
+      "dataset_slug": "copper-enantioselective-alkene-hydroamination",
+      "logical_dataset_id": "physical_5540e162c09f4c04905ddc8ba9c931c6",
+      "physical_source_count": 1,
+      "reaction_sha256": "276c0a63a02aae1944cd7d8190856666c64feb7325039882ac90cccee4f39df6",
+      "reaction_size_bytes": 29208,
+      "remaining_literal_email_values": 0,
+      "row_count": 3
+    },
+    {
+      "dataset_slug": "deoxyfluorination-screen",
+      "logical_dataset_id": "physical_fc83743b978f4deea7d6856deacbfe53",
+      "physical_source_count": 1,
+      "reaction_sha256": "fb3c48026fef6a6c5e6314ed5c8ef0f23a1b3e170ea1a34ac947bdb7cf636414",
+      "reaction_size_bytes": 328251,
+      "remaining_literal_email_values": 0,
+      "row_count": 80
+    },
+    {
+      "dataset_slug": "electroreductive-alkenyl-benzyl-halide-coupling",
+      "logical_dataset_id": "physical_8d1e28ec1f6b4ee8ad372e0b5ed7a62e",
+      "physical_source_count": 1,
+      "reaction_sha256": "269eb56079ee70cac2e30bb994d31cb509932e4f28c0663e917509f388488195",
+      "reaction_size_bytes": 201078,
+      "remaining_literal_email_values": 0,
+      "row_count": 27
+    },
+    {
+      "dataset_slug": "flow-catechol-rearrangement",
+      "logical_dataset_id": "physical_1ec2807f02fa4beda27d2a81b86eb843",
+      "physical_source_count": 1,
+      "reaction_sha256": "ba1d79d673196ea5cba980d23c70be89b30ef146d82eed0c8a78b1fe8ed7a1c8",
+      "reaction_size_bytes": 15372636,
+      "remaining_literal_email_values": 0,
+      "row_count": 1227
+    },
+    {
+      "dataset_slug": "golden-pyridine-nucleophile-cross-coupling",
+      "logical_dataset_id": "physical_a12fa15d036d489c971b0b514caeae52",
+      "physical_source_count": 1,
+      "reaction_sha256": "7f541277c66955ad387840de42eb86c302022700ee8eaf01dc98db44cd9a4155",
+      "reaction_size_bytes": 1669241,
+      "remaining_literal_email_values": 0,
+      "row_count": 288
+    },
+    {
+      "dataset_slug": "hte-suzuki-coupling",
+      "logical_dataset_id": "physical_eeba974d3c284aed86d1c1d442260a1e",
+      "physical_source_count": 1,
+      "reaction_sha256": "90724a104a5cfa3aead59bfc16c6a412e38284898c8966af52c1c53113758daa",
+      "reaction_size_bytes": 1411077,
+      "remaining_literal_email_values": 0,
+      "row_count": 376
+    },
+    {
+      "dataset_slug": "imidazopyridine-three-component-synthesis",
+      "logical_dataset_id": "physical_10b940e7982c4622b1e1ac879394aba6",
+      "physical_source_count": 1,
+      "reaction_sha256": "09b41f96ca705d1b7f19169c8b3bcfd383e9b9109f7ad7974617077b61e01589",
+      "reaction_size_bytes": 1320301,
+      "remaining_literal_email_values": 0,
+      "row_count": 384
+    },
+    {
+      "dataset_slug": "islatravir-biocatalytic-cascade",
+      "logical_dataset_id": "physical_6a0bfcdf53a64c07987822162ae591e2",
+      "physical_source_count": 1,
+      "reaction_sha256": "30073366994acdc921b9d4d84c02ea17dd741e167e834e75162be3f4840027fe",
+      "reaction_size_bytes": 27994,
+      "remaining_literal_email_values": 0,
+      "row_count": 3
+    },
+    {
+      "dataset_slug": "microwave-biginelli-condensation",
+      "logical_dataset_id": "physical_55de08a995554f558c25fc43eac62359",
+      "physical_source_count": 1,
+      "reaction_sha256": "7d96aa6dc6f923652648458fddaa3cbb6277502948c0c316deffb2585e373f87",
+      "reaction_size_bytes": 197568,
+      "remaining_literal_email_values": 0,
+      "row_count": 48
+    },
+    {
+      "dataset_slug": "nano-c-n-photochemistry-informer",
+      "logical_dataset_id": "physical_ac78456835404910b3a4c840248b6ac9",
+      "physical_source_count": 1,
+      "reaction_sha256": "1aa201d80f3f50dc9f40c2d0c5445524d86a69f05f481116bf2f2876f51336fe",
+      "reaction_size_bytes": 17545612,
+      "remaining_literal_email_values": 0,
+      "row_count": 1728
+    },
+    {
+      "dataset_slug": "newman-1-octene-mizoroki-heck",
+      "logical_dataset_id": "physical_1d3a1a6fb70d46c084602d0688967afc",
+      "physical_source_count": 1,
+      "reaction_sha256": "383f2eb4a13165641c3a3c1510b0de4f94a527371f6539c7111f5b1b0cfbc42a",
+      "reaction_size_bytes": 1289296,
+      "remaining_literal_email_values": 0,
+      "row_count": 96
+    },
+    {
+      "dataset_slug": "newman-n-vinyl-pyrrolidone-mizoroki-heck",
+      "logical_dataset_id": "physical_ce5045aceb214cfc8bfd0ef3031e2737",
+      "physical_source_count": 1,
+      "reaction_sha256": "85aaf7e0e09a34e35fc29bb91214024d3a1dfd9990a39c09aecb402660a44fa2",
+      "reaction_size_bytes": 928187,
+      "remaining_literal_email_values": 0,
+      "row_count": 96
+    },
+    {
+      "dataset_slug": "newman-styrene-mizoroki-heck",
+      "logical_dataset_id": "physical_0316886541d9435489859c2ad7edc863",
+      "physical_source_count": 1,
+      "reaction_sha256": "5cf6160fd51959331c10b51d9460b6c9af84ae423cee7d01021717cc286c5f7d",
+      "reaction_size_bytes": 832104,
+      "remaining_literal_email_values": 0,
+      "row_count": 96
+    },
+    {
+      "dataset_slug": "newman-vinyl-ether-mizoroki-heck",
+      "logical_dataset_id": "physical_52bd3b0ec72c443aab113bcea09bf3f4",
+      "physical_source_count": 1,
+      "reaction_sha256": "d53c59749bd46d17245fb48e6ba89b7b9470556eedd7456d3ba98ae395e30cf9",
+      "reaction_size_bytes": 1071888,
+      "remaining_literal_email_values": 0,
+      "row_count": 96
+    },
+    {
+      "dataset_slug": "nickel-suzuki-miyaura-cross-coupling",
+      "logical_dataset_id": "physical_3b5db90e337942ea886b8f5bc5e3aa72",
+      "physical_source_count": 1,
+      "reaction_sha256": "2056bbc46e004d294e7bc9b9c317302a6df3b9e843f2b9718c77f3e2ead00b58",
+      "reaction_size_bytes": 2748221,
+      "remaining_literal_email_values": 0,
+      "row_count": 450
+    },
+    {
+      "dataset_slug": "nicolit-nickel-cross-couplings",
+      "logical_dataset_id": "physical_9b8aa9a7835143ef8ce3f70abfab7545",
+      "physical_source_count": 1,
+      "reaction_sha256": "e3915c5fb7ca26931e6c64d88fb649980939b99d3ee0bfd2cbac927c3a40569c",
+      "reaction_size_bytes": 3428909,
+      "remaining_literal_email_values": 0,
+      "row_count": 1762
+    },
+    {
+      "dataset_slug": "pfizer-hte-reaction-conditions",
+      "logical_dataset_id": "physical_d92976309c3a48a3a64a4cf5e7048086",
+      "physical_source_count": 1,
+      "reaction_sha256": "f25da3289cc17f21e0da69bf557b40d36f519190b554f97212c8b6def1e9b754",
+      "reaction_size_bytes": 225102946,
+      "remaining_literal_email_values": 0,
+      "row_count": 39347
+    },
+    {
+      "dataset_slug": "photocatalytic-aryl-bromide-dehalogenation",
+      "logical_dataset_id": "physical_b440f8c90b6343189093770060fc4098",
+      "physical_source_count": 1,
+      "reaction_sha256": "d269f6f99d570067a9ae25c4d97d6486660f06dcf14afc65468c31a6b78ebc76",
+      "reaction_size_bytes": 6601676,
+      "remaining_literal_email_values": 0,
+      "row_count": 1152
+    },
+    {
+      "dataset_slug": "pyparser-oxazole-c-h-activation",
+      "logical_dataset_id": "physical_5415f83da68e4797856ddd330dda5c61",
+      "physical_source_count": 1,
+      "reaction_sha256": "b57b3d9affe356285900de7c3341b5b0675cbe3f5851a8c3f1b2f0e7433971e2",
+      "reaction_size_bytes": 420916,
+      "remaining_literal_email_values": 0,
+      "row_count": 48
+    },
+    {
+      "dataset_slug": "reizman-suzuki-miyaura-feedback-optimization",
+      "logical_dataset_id": "lit_10_1039_c6re00153j",
+      "physical_source_count": 4,
+      "reaction_sha256": "e8e402ed49074bbbd0eee98a534edf00dc1090b95e0afe4b88675cf66fb1ca89",
+      "reaction_size_bytes": 2229336,
+      "remaining_literal_email_values": 0,
+      "row_count": 385
+    },
+    {
+      "dataset_slug": "rexgen-direct-reaction-smiles",
+      "logical_dataset_id": "upstream_rexgen_direct_c8sc04228d",
+      "physical_source_count": 3,
+      "reaction_sha256": "f9bcff02cf8333ce07996d85a233e6ebdedb1d1dab66992036dfb1ed8dc92fc2",
+      "reaction_size_bytes": 1473910753,
+      "remaining_literal_email_values": 0,
+      "row_count": 479035
+    },
+    {
+      "dataset_slug": "roche-borylation-surf",
+      "logical_dataset_id": "physical_99c23cf435dc42f1af884053bc8b11c7",
+      "physical_source_count": 1,
+      "reaction_sha256": "a81c55ed41e0adad92340746746df7e3c6637dd4bc81cb9dc35c2c6df0d714dc",
+      "reaction_size_bytes": 4297701,
+      "remaining_literal_email_values": 0,
+      "row_count": 1111
+    },
+    {
+      "dataset_slug": "roche-minisci-surf",
+      "logical_dataset_id": "physical_feaf1b793c6d408aaec1cac7cc3ceadc",
+      "physical_source_count": 1,
+      "reaction_sha256": "009f0293f868adb738c3dc31663591d997d8f70b938d393d22c21f736395c8fb",
+      "reaction_size_bytes": 479307,
+      "remaining_literal_email_values": 0,
+      "row_count": 130
+    },
+    {
+      "dataset_slug": "science-hte-palladium-cross-coupling",
+      "logical_dataset_id": "lit_10_1126_science_1259203",
+      "physical_source_count": 2,
+      "reaction_sha256": "6710778c355d7d649a5a5902ff0011ad35fd67c6802db298892d12b326ec8ef4",
+      "reaction_size_bytes": 17211668,
+      "remaining_literal_email_values": 0,
+      "row_count": 1824
+    },
+    {
+      "dataset_slug": "shields-bayesian-arylation",
+      "logical_dataset_id": "lit_10_1038_s41586_021_03213_y",
+      "physical_source_count": 2,
+      "reaction_sha256": "fda075ca3e3a7c2ccd662a9696f63d18ee4720662b381b98adbefe0388dbacda",
+      "reaction_size_bytes": 12954973,
+      "remaining_literal_email_values": 0,
+      "row_count": 1984
+    },
+    {
+      "dataset_slug": "sp3-carboxyl-aryl-halide-coupling",
+      "logical_dataset_id": "physical_89b083710e2d441aa0040c361d63359f",
+      "physical_source_count": 1,
+      "reaction_sha256": "74af905ebcfe1126d4aa6851185f81c6e5b1d6d4da7c2ea9766a1b469db2171f",
+      "reaction_size_bytes": 185316,
+      "remaining_literal_email_values": 0,
+      "row_count": 24
+    },
+    {
+      "dataset_slug": "sulfonamide-flow-synthesis-library",
+      "logical_dataset_id": "physical_5eb7f2689f4a42eba63ad9e37e49a5cd",
+      "physical_source_count": 1,
+      "reaction_sha256": "e12193ff91def94b07e32eb1bf7d0c52cb213e8b34397f73c46b8dfc47528694",
+      "reaction_size_bytes": 198234,
+      "remaining_literal_email_values": 0,
+      "row_count": 39
+    },
+    {
+      "dataset_slug": "suzuki-miyaura-nanoscale-screen",
+      "logical_dataset_id": "physical_68cb8b4b2b384e3d85b5b1efae58b203",
+      "physical_source_count": 1,
+      "reaction_sha256": "00ea04f4c541daf35073dad22e26de8d94befc3841ba8a6fd174adfa4948a714",
+      "reaction_size_bytes": 31247822,
+      "remaining_literal_email_values": 0,
+      "row_count": 5760
+    },
+    {
+      "dataset_slug": "uspto-grants-reactions",
+      "logical_dataset_id": "physical_1158e351757f315b93cbcbe7bc55f38e",
+      "physical_source_count": 1,
+      "reaction_sha256": "e0b96db7d9db81aa27ea312884b23ddfe2e7c7e3a986a2109e6da5b7c16b0c72",
+      "reaction_size_bytes": 10108105821,
+      "remaining_literal_email_values": 0,
+      "row_count": 1771032
+    }
+  ],
+  "physical_source_count": 53,
+  "reaction_count": 2428291,
+  "remaining_literal_email_values": 0,
+  "schema_version": "1.0.0",
+  "status": "complete",
+  "step_id": "step-12",
+  "unpinned_main_urls": 0
+}

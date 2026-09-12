@@ -1,0 +1,191 @@
+{
+  "excluded_count": 499,
+  "included_count": 128712,
+  "input_hashes": {
+    "control_manifest": "79a2e522c29453a5b974f38a6a5b640d449f8bf97e09ada165c23e3fe13d2578",
+    "semantic_target_map": "df3028a5e68fdf1a244868a812291d64651286f9d22ce268262d72bb98f6fb8a",
+    "source_files_manifest": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7"
+  },
+  "label_leaks": 0,
+  "packages": [
+    {
+      "dataset_sha256": "6a912585bb987ab698e2502585e1927403c372e10d8e3bcf8ce26f93c4021acf",
+      "excluded_count": 0,
+      "included_count": 4312,
+      "readiness_status": "active_generated_pending_release_validation",
+      "remaining_label_leaks": 0,
+      "target_id": "ahneman_yield_percent",
+      "target_slug": "ahneman-c-n-cross-coupling-yield-percent"
+    },
+    {
+      "dataset_sha256": "a589fdfe1f90e655bd9193983aa92264e0b86bfdb017c04836b5b933edc429c7",
+      "excluded_count": 0,
+      "included_count": 1430,
+      "readiness_status": "generated_adapter_blocked",
+      "remaining_label_leaks": 0,
+      "target_id": "asymmetric_alkylation_ee_s_minus_r_percent",
+      "target_slug": "asymmetric-alkylation-ee-s-minus-r-percent"
+    },
+    {
+      "dataset_sha256": "0d25125e1cf707c839b93106b8131f8a836938b8d416e37698610f5bf8ee965e",
+      "excluded_count": 0,
+      "included_count": 1152,
+      "readiness_status": "generated_pending_campaign_evaluation",
+      "remaining_label_leaks": 0,
+      "target_id": "cernak_member_2be11_conversion_percent",
+      "target_slug": "cernak-reductive-amination-conversion-percent"
+    },
+    {
+      "dataset_sha256": "df6c85864b54120438f2fa0163bb5da00d7cc80ca1082499640b4b1bcae96ca9",
+      "excluded_count": 120,
+      "included_count": 1320,
+      "readiness_status": "generated_pending_campaign_evaluation",
+      "remaining_label_leaks": 0,
+      "target_id": "cernak_member_3b8a2e_conversion_percent",
+      "target_slug": "cernak-suzuki-coupling-conversion-percent"
+    },
+    {
+      "dataset_sha256": "ba845e82bb3701469aadf172a7457c64354b1e7d6f8e2ab1aad2b96c2445a012",
+      "excluded_count": 20,
+      "included_count": 50668,
+      "readiness_status": "generated_pending_campaign_evaluation",
+      "remaining_label_leaks": 0,
+      "target_id": "c_n_yield_percent",
+      "target_slug": "cernak-ultra-hte-c-n-yield-percent"
+    },
+    {
+      "dataset_sha256": "648de1e73169feca1cc221f1f53858c11918f91c4f959e206f1a8a66ff4b482b",
+      "excluded_count": 30,
+      "included_count": 9602,
+      "readiness_status": "generated_pending_campaign_evaluation",
+      "remaining_label_leaks": 0,
+      "target_id": "chan_lam_yield_percent",
+      "target_slug": "chan-lam-sulfonamide-coupling-yield-percent"
+    },
+    {
+      "dataset_sha256": "90c762cff7defe31e7e45d35406df595d094186a0b35b05b0f799cfe66411f72",
+      "excluded_count": 3,
+      "included_count": 957,
+      "readiness_status": "active_generated_pending_release_validation",
+      "remaining_label_leaks": 0,
+      "target_id": "chemrxiv_amide_yield_percent",
+      "target_slug": "chemrxiv-aniline-amidation-yield-percent"
+    },
+    {
+      "dataset_sha256": "3d11901429869a5875d98ec4feec8239efbfa121c59d750a9bf8c04612906f7d",
+      "excluded_count": 7,
+      "included_count": 1529,
+      "readiness_status": "active_generated_pending_release_validation",
+      "remaining_label_leaks": 0,
+      "target_id": "chemrxiv_ch_arylation_yield_percent",
+      "target_slug": "chemrxiv-imidazole-c-h-arylation-yield-percent"
+    },
+    {
+      "dataset_sha256": "d1a09d05fb70c93c221438761893f5f71f6390f94c49bef3973a42bcd9308c84",
+      "excluded_count": 0,
+      "included_count": 1227,
+      "readiness_status": "research_only_benchmark_blocked",
+      "remaining_label_leaks": 0,
+      "target_id": "catechol_product_2_yield_percent",
+      "target_slug": "flow-catechol-product-2-response-percent"
+    },
+    {
+      "dataset_sha256": "5cc90e232268be1fc5e15330039927b90a13a4444df2347987d312612ea771d2",
+      "excluded_count": 0,
+      "included_count": 1227,
+      "readiness_status": "research_only_benchmark_blocked",
+      "remaining_label_leaks": 0,
+      "target_id": "catechol_product_3_yield_percent",
+      "target_slug": "flow-catechol-product-3-response-percent"
+    },
+    {
+      "dataset_sha256": "9067b4cdce62de221a83ff15b095aadd6e110c4d143458917c7d6362bdbde397",
+      "excluded_count": 0,
+      "included_count": 1227,
+      "readiness_status": "research_only_benchmark_blocked",
+      "remaining_label_leaks": 0,
+      "target_id": "catechol_total_product_yield_percent",
+      "target_slug": "flow-catechol-total-product-response-percent"
+    },
+    {
+      "dataset_sha256": "21b8072d3587bc8b1290124dafa6fdcdceee501980b6e6a3769aee6ead804d6d",
+      "excluded_count": 0,
+      "included_count": 1728,
+      "readiness_status": "active_generated_pending_release_validation",
+      "remaining_label_leaks": 0,
+      "target_id": "nano_yield_percent",
+      "target_slug": "nano-c-n-photochemistry-yield-percent"
+    },
+    {
+      "dataset_sha256": "51f705bdfc42ff0432cdb6288cda3ee9cbd6e2294c216fff13e5015e94b3deda",
+      "excluded_count": 93,
+      "included_count": 1669,
+      "readiness_status": "generated_with_source_caveat",
+      "remaining_label_leaks": 0,
+      "target_id": "nicolit_yield_percent",
+      "target_slug": "nicolit-nickel-coupling-yield-percent"
+    },
+    {
+      "dataset_sha256": "acc5860363baddd0fc24e87bb66e37d550b4cb8e1accf301f5f2aadb6d25758d",
+      "excluded_count": 0,
+      "included_count": 39347,
+      "readiness_status": "generated_pending_campaign_evaluation",
+      "remaining_label_leaks": 0,
+      "target_id": "pfizer_lcms_area_percent",
+      "target_slug": "pfizer-hte-lc-area-percent"
+    },
+    {
+      "dataset_sha256": "427e149d84943bb82adcf3066be751edd2418696bb8b972177e510663a1a2ef3",
+      "excluded_count": 0,
+      "included_count": 1152,
+      "readiness_status": "active_generated_pending_release_validation",
+      "remaining_label_leaks": 0,
+      "target_id": "photodehalogenation_conversion_percent",
+      "target_slug": "photocatalytic-aryl-bromide-dehalogenation-conversion-percent"
+    },
+    {
+      "dataset_sha256": "35b3444917708e5a19956e5f871fd9b83958ad3b2484874b0ba85d21f381e5e8",
+      "excluded_count": 221,
+      "included_count": 890,
+      "readiness_status": "generated_pending_campaign_evaluation",
+      "remaining_label_leaks": 0,
+      "target_id": "roche_borylation_yield_percent",
+      "target_slug": "roche-borylation-yield-percent"
+    },
+    {
+      "dataset_sha256": "2d1bfd835869c7263d37d035131981fb4042f9c93671640ea983deb5f417e163",
+      "excluded_count": 5,
+      "included_count": 1531,
+      "readiness_status": "partial_scope_generated",
+      "remaining_label_leaks": 0,
+      "target_id": "science_hte_diverse_nucleophile_relative_lc_area_ratio",
+      "target_slug": "science-hte-relative-lc-area-ratio"
+    },
+    {
+      "dataset_sha256": "35e1698ae9f8e57ea96ca351008f78770c7cba8343db0c68ac2bd44e1362e61d",
+      "excluded_count": 0,
+      "included_count": 1984,
+      "readiness_status": "active_generated_pending_release_validation",
+      "remaining_label_leaks": 0,
+      "target_id": "shields_yield_percent",
+      "target_slug": "shields-arylation-yield-percent"
+    },
+    {
+      "dataset_sha256": "75466f69ef7bcc53a3be76914166b91dd091c57471b62a4d69f5754f030c9f97",
+      "excluded_count": 0,
+      "included_count": 5760,
+      "readiness_status": "active_generated_pending_release_validation",
+      "remaining_label_leaks": 0,
+      "target_id": "suzuki_yield_percent",
+      "target_slug": "suzuki-miyaura-nanoscale-yield-percent"
+    }
+  ],
+  "row_map_errors": 0,
+  "schema_version": "1.0.0",
+  "source_index_errors": 0,
+  "status": "complete",
+  "status_mismatches": 0,
+  "step_id": "step-14",
+  "target_count": 19,
+  "unpinned_main_urls": 0
+}
