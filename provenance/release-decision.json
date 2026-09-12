@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "step_id": "step-28",
-  "status": "pending_owner_decision",
-  "go_no_go": "pending",
+  "status": "go_authorized_for_model_ready_preview",
+  "go_no_go": "go",
   "release_track": "model-ready-preview",
   "proposed_scope": {
     "included": "19 model-ready targets across 15 packages plus preview catalog, target provenance, license, and documentation",
@@ -17,15 +17,15 @@
     "full_release_follow_up": "A full corpus release requires a separate manifest, root hash, backend pilot, validation, and immutable version."
   },
   "required_owner_choices": {
-    "remote_repository_url": null,
-    "remote_owner": null,
-    "visibility": null,
-    "release_version_and_tag": null,
-    "object_backend_and_quota": null,
+    "remote_repository_url": "https://github.com/thinktraveller/ord-datasets.git",
+    "remote_owner": "thinktraveller",
+    "visibility": "public",
+    "release_version_and_tag": "v0.1.0-model-ready-preview-1",
+    "object_backend_and_quota": "ordinary-git on GitHub; 211,008,093-byte preview with one documented >50 MiB warning; no LFS objects",
     "needs_review_first_release_scope": "none for model-ready-preview; payload excluded",
     "partial_blocked_target_presentation": "must preserve exact readiness status and say not an accepted benchmark"
   },
   "storage_note": "Ordinary Git is technically permitted for this preview because the largest file is below 100 MiB; files above 50 MiB require a documented warning/clone-readback check. LFS or object storage is optional but, if selected, must pass a pointer/object readback pilot.",
   "credential_handling": "Credentials must be supplied through an authorized secure channel and must never be written to this repository.",
-  "remote_write_authorized": false
+  "remote_write_authorized": true
 }
