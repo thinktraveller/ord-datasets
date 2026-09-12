@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "release_id": "v0.1.0-rc.0",
+  "release_status": "draft",
+  "project_commit": "055092e186743979677f8c65e48c92147fc263af",
+  "ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+  "source_manifest_path": "provenance/source-files.initial.csv",
+  "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7",
+  "contract_versions": {
+    "catalog": "1.0.0", "metadata": "1.0.0", "source_links": "1.0.0",
+    "artifact_inventory": "1.0.0", "row_map": "1.0.0", "transformation": "1.0.0",
+    "release_manifest": "1.0.0", "csv_contracts": "1.1.0"
+  },
+  "counts": {"physical_sources": 53, "logical_corpora": 41, "model_ready_targets": 19, "release_files": 113, "total_bytes": 14411794395},
+  "license": {"data_license_id": "CC-BY-SA-4.0", "code_license_id": "Apache-2.0", "notice_path": "NOTICE"},
+  "artifact_inventory_path": "provenance/artifact-inventory.csv",
+  "transformations_path": "provenance/transformations.jsonl",
+  "lineage_edges_path": "provenance/lineage-edges.csv",
+  "root_sha256": "a757863ea622f1a69205024a9ee04482952b95bdee85bbb98c74a2990df970db"
+}

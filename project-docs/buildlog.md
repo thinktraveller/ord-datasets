@@ -472,3 +472,9 @@
 - 新增 `build_row_lineage_index.py`，为 41 corpus 和 19 target 构建紧凑的 hash index；行本身保留在已验收 staging payload 中，不以重复行级文件占用 regular Git。
 - 全量重跑验收：2,428,291 corpus 行的 physical/source/reaction/row_index 均通过，53 physical source 无孤儿、重复 logical membership、可变 `main` URL 或残余 literal email；19 target 的 128,712 included 与 499 excluded 也重新验证，row map/source index/label leak/status mismatch 均为 0。
 - `provenance/row-lineage/two-hop-query-examples.md` 说明 corpus 和 target 从行定位到固定 source manifest 的两跳路径。状态：`complete`。
+
+## [2026-09-12 01:53 CST] 步骤 23 完成：组装 transformation graph 与 draft release hash tree
+
+- 新增 `build_release_lineage_graph.py`，生成 113 个内容寻址 release artifact 节点（53 source、41 corpus、19 target）、72 条 source→corpus→target 边和两条受 schema 约束的 transformation record。
+- `provenance/release-artifacts.jsonl` 是 release 图专用 inventory；`lineage-edges.csv`、`transformations.jsonl` 与 `release-manifest.json` 形成 draft RC 的 provenance 控制面。root SHA-256 为 `a757863ea622f1a69205024a9ee04482952b95bdee85bbb98c74a2990df970db`。
+- manifest 的 release status 保持 `draft`，不表示 local RC 已接受或有远端对象；状态：`draft_complete`。

@@ -1,0 +1,11 @@
+{
+  "edge_count": 72,
+  "lineage_edges_sha256": "49d4699db0566a2890fb20f1b24dfb276a78f70de6d37b46186d21e891b79141",
+  "node_count": 113,
+  "release_artifacts_sha256": "1579e8c9b73eb628b54004080cdc618f8492cc1c56fd908b36b530f5ab933ff5",
+  "root_sha256": "a757863ea622f1a69205024a9ee04482952b95bdee85bbb98c74a2990df970db",
+  "schema_version": "1.0.0",
+  "status": "draft_complete",
+  "step_id": "step-23",
+  "transformations_sha256": "69d7225ae9172e2c3c76d080dd06df331bddad79fdb8eaa9f73b3f1b34f59605"
+}
