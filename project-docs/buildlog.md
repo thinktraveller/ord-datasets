@@ -442,3 +442,9 @@
 - 原始 53 physical CSV 在敏感审计中仍含 blocking PII finding，故保留为只读内容寻址引用，而非把未脱敏 payload 再写入发布工作区。此选择也避免将 physical、logical 与发布语料做物理重复保存。
 - 验收：`01-physical-csv` index 有 53 个 physical CSV（另含 `datasets.csv` catalog），五个分组共 94 条记录；source evidence、logical manifests 与 4 个 field-profiling 文件均可由 hash 对账。
 - 机器可读证据：`reports/release-acceptance/step-16-intermediate-archive.json`；状态：`complete`。
+
+## [2026-09-12 01:24 CST] 步骤 17 完成：归档 05～08 阶段 model-ready 证据索引
+
+- 新增 `pipeline/scripts/archive_model_ready_intermediates.py`，从已通过步骤 14 验收的 step-13 staging 生成 05～08 分组索引，而不是复制旧的、未审查的 `reactions_model.csv` 快照。
+- 19 个 target 的 dataset 投影、row map/audit/exclusions/source links、schema/YONOD config 与 checksums 共 190 个 artifacts 已逐个记录路径、大小和 SHA-256。payload 保持为 staging 的内容寻址引用，避免重复大对象进入普通 Git。
+- 验收：19 target / 15 package；05、06、07、08 分别有 19、114、38、19 条 index 记录。机器可读证据：`reports/release-acceptance/step-17-intermediate-archive.json`；状态：`complete`。

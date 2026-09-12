@@ -1,0 +1,34 @@
+{
+  "package_count": 15,
+  "payload_policy": "sanitized_staging_content_addressed_references",
+  "schema_version": "1.0.0",
+  "stages": [
+    {
+      "bytes": 27941952,
+      "record_count": 19,
+      "sha256": "bee8a863741cd8ba84324e4c1d0cb81c6540465577230ffca963dab79bb5804e",
+      "stage": "05-model-projection"
+    },
+    {
+      "bytes": 182955952,
+      "record_count": 114,
+      "sha256": "a5148c1d9812590fdcb9ff16a83631d4198c251dff2c64c9c295c7057a2fc43a",
+      "stage": "06-target-adaptation"
+    },
+    {
+      "bytes": 94788,
+      "record_count": 38,
+      "sha256": "4a8a1a9b451f08969d3a3273b71549d1f74a73658caaf466806cad457340b289",
+      "stage": "07-validation-configs"
+    },
+    {
+      "bytes": 15401,
+      "record_count": 19,
+      "sha256": "4fb3efed964e9332c7a6b5f36bd0578f8369e583cad50f938e41d40e86b820b0",
+      "stage": "08-runs-and-reports"
+    }
+  ],
+  "status": "complete",
+  "step_id": "step-17",
+  "target_count": 19
+}
