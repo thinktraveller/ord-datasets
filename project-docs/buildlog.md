@@ -574,3 +574,9 @@
 - 以候选工作树的精确内容创建 `release/v0.1.0-model-ready-preview-1`，提交 `7d52dd2…`，并创建带注释 tag `v0.1.0-model-ready-preview-1`。GitHub prerelease 已发布；范围严格为 19 target / 15 package、190 个 target payload、211,008,093 bytes，release-tree root SHA-256 为 `24246a51ee47c36788892d813ec504eef53010aaf16af15c3e1774ef64b935e6`。
 - 从远端 branch 重新 shallow-clone 后，release validator 通过：0 个 blocking check、0 个敏感扫描发现、0 个 owner gate。校验器同时修正为显式排除 clone-local `.git` 元数据，并添加回归测试；这不会排除或改变发布工作树中的任何文件。
 - preview 发布闭环证据见 `step-25-model-ready-preview-pilot.json`、`step-29-model-ready-preview-v0.1.0-upload.json`、`step-30-model-ready-preview-v0.1.0-readback.json` 和 `step-31-model-ready-preview-closeout.json`。41 corpus、原始 Parquet 与 `_needs_review` 仍未发布，保留为独立的 full-release 轨道。
+
+## [2026-09-12] HF 私有 corpus staging transport pilot 完成
+
+- 选定私有 Hugging Face Storage Bucket/Xet 作为 41-corpus staging 的大对象 transport；上传使用经过审阅的 205-file plan，新增 `13,127,476,889` bytes，删除与覆盖均为 0。payload 位于私有的 content-addressed snapshot prefix `corpus-staging-step11-4a546010d1aad3ba`。
+- Bucket 中同时保存 SHA256SUMS、snapshot manifest 和 corpus validation reports。新建本地目录完成全量回读后，`sha256sum -c` 为 205 OK、0 failed；SHA256SUMS 自身 hash 为 `4a546010d1aad3badc567a74be149afe53b21606cc518126d41e0b81d22a21af`。
+- 此操作是可回读的私有 backup/transport pilot，不改变 GitHub 的 model-ready preview，也不构成公开 corpus release。原始 Parquet、`_needs_review`、clean-room duplicates 和已发布 model-ready payload 均未传输。证据见 `provenance/hf-bucket-snapshots/` 与 `step-25-hf-bucket-corpus-staging-pilot.json`、`step-30-hf-bucket-corpus-staging-readback.json`。

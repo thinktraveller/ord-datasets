@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "step_id": "step-30-hf-bucket-corpus-staging",
+  "status": "complete",
+  "snapshot_id": "corpus-staging-step11-4a546010d1aad3ba",
+  "bucket_id": "thinktraveller/ord-datasets-intermediate",
+  "remote_prefix": "corpus-staging/corpus-staging-step11-4a546010d1aad3ba",
+  "readback": {
+    "method": "fresh local directory synchronized from private bucket before SHA-256 verification",
+    "payload_files": 205,
+    "payload_bytes": 13127476889,
+    "sha256sums_sha256": "4a546010d1aad3badc567a74be149afe53b21606cc518126d41e0b81d22a21af",
+    "sha256_ok": 205,
+    "sha256_failed": 0,
+    "other_output_lines": 0
+  },
+  "result": "The complete private-bucket corpus snapshot is byte-equivalent to its frozen SHA256SUMS manifest."
+}

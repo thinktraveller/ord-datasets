@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "step_id": "step-25-hf-bucket-corpus-staging",
+  "status": "complete_private_transport_pilot",
+  "backend": "huggingface-storage-bucket-xet",
+  "bucket_id": "thinktraveller/ord-datasets-intermediate",
+  "visibility": "private",
+  "snapshot_id": "corpus-staging-step11-4a546010d1aad3ba",
+  "remote_prefix": "corpus-staging/corpus-staging-step11-4a546010d1aad3ba",
+  "upload_plan": {
+    "uploads": 205,
+    "downloads": 0,
+    "deletes": 0,
+    "skips": 0,
+    "payload_bytes": 13127476889
+  },
+  "remote_after_upload": {
+    "payload_files": 205,
+    "payload_bytes": 13127476889,
+    "total_objects_in_bucket": 209,
+    "total_bytes_in_bucket": 13127517912
+  },
+  "scope": {
+    "corpus_directories": 41,
+    "physical_sources": 53,
+    "reactions": 2428291,
+    "excluded": [
+      "original ORD Parquet",
+      "_needs_review",
+      "clean-room duplicates",
+      "model-ready preview payload"
+    ]
+  },
+  "not_a_public_release": true
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "snapshot_id": "corpus-staging-step11-4a546010d1aad3ba",
+  "status": "private_bucket_backup_verified_not_public_release",
+  "transport": "huggingface-storage-bucket-xet",
+  "bucket_id": "thinktraveller/ord-datasets-intermediate",
+  "bucket_prefix": "corpus-staging/corpus-staging-step11-4a546010d1aad3ba",
+  "source_path": ".staging/ord-datasets-v0/step-11/datasets/corpus",
+  "project_commit": "648d748271f17661b1fbf17d181a755e702ffdd0",
+  "payload": {
+    "corpus_directories": 41,
+    "files": 205,
+    "bytes": 13127476889,
+    "sha256sums_sha256": "4a546010d1aad3badc567a74be149afe53b21606cc518126d41e0b81d22a21af"
+  },
+  "uploaded_control_files": {
+    "SHA256SUMS": "4a546010d1aad3badc567a74be149afe53b21606cc518126d41e0b81d22a21af",
+    "manifest.json": "891d4ae6ce7a76a8f78be9e50dff5b0929946c89b7fa84dbd42626dce2cf579e",
+    "corpus-validation.json": "de49493eb3454b7600bdd31b91b58e70b343c25a12a049a786e3e935ee4f20e7",
+    "corpus-validation.md": "b4a8c6b22ac8df4c34951033773aaa38053db48906f939bbd6b07b2a3db7b30d"
+  },
+  "excluded_payloads": [
+    "original ORD Parquet",
+    "_needs_review",
+    "clean-room duplicates",
+    "model-ready preview payload"
+  ]
+}

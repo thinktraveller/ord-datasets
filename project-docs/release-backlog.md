@@ -14,5 +14,5 @@
 
 | ID | Owner | Deferred work | Exit evidence |
 |---|---|---|---|
-| F1 | project-owner | Select and pilot a large-object backend for the 41-corpus payload (about 13.13 GB), including any required sharding and quota. | Full-release object pilot/readback passes. |
+| F1 | resolved for private transport pilot | Hugging Face Storage Bucket/Xet was selected and piloted for the 41-corpus staging payload (13,127,476,889 bytes); no sharding was required. | Private bucket snapshot `corpus-staging-step11-4a546010d1aad3ba` uploaded 205 files, then passed a fresh 205/205 SHA-256 readback; see steps 25 and 30 HF reports. This does not authorize a public corpus release. |
 | F2 | project-owner | Build a distinct full-release RC and immutable version after corpus-specific validation. | 41 corpus / 2,428,291 Reaction / 53 physical-source checks and a distinct full root hash pass. |
