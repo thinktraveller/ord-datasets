@@ -19,8 +19,8 @@ SPEC.loader.exec_module(MODULE)
 class ReleaseContractTest(unittest.TestCase):
     def test_positive_and_negative_contract_fixtures(self) -> None:
         summary = MODULE.run_validation()
-        self.assertEqual(9, summary["indexed_contracts"])
-        self.assertEqual(11, summary["valid_fixtures"])
+        self.assertEqual(10, summary["indexed_contracts"])
+        self.assertEqual(12, summary["valid_fixtures"])
         self.assertEqual(4, summary["invalid_fixtures"])
 
 

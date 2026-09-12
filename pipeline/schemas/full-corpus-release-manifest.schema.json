@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-reaction-database.github.io/ord-datasets/schemas/1.0.0/full-corpus-release-manifest.schema.json",
+  "title": "ord-datasets full corpus release manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "release_id", "release_status", "release_track", "project_commit",
+    "ord_upstream_revision", "source_manifest_path", "source_manifest_sha256",
+    "semantic_map_path", "semantic_map_sha256", "members_path", "members_sha256",
+    "staging_control_manifest_path", "staging_control_manifest_sha256",
+    "private_transport_snapshot", "contract_versions", "counts", "excluded_payloads",
+    "license", "catalog_path", "artifact_inventory_path", "release_artifacts_path",
+    "transformations_path", "lineage_edges_path", "sha256sums_path", "sha256sums_sha256",
+    "private_transport_sha256sums_path", "private_transport_sha256sums_sha256",
+    "root_hash_scope", "root_sha256", "publication"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "release_id": {"type": "string", "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+-corpus-preview(?:-[0-9A-Za-z.-]+)?$"},
+    "release_status": {"const": "local-release-candidate"},
+    "release_track": {"const": "corpus-public-release"},
+    "project_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "ord_upstream_revision": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "source_manifest_path": {"const": "provenance/source-files.initial.csv"},
+    "source_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "semantic_map_path": {"const": "provenance/semantic-name-map.csv"},
+    "semantic_map_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "members_path": {"const": "provenance/logical-dataset-members.csv"},
+    "members_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "staging_control_manifest_path": {"const": "provenance/full-corpus-release/staging-control-manifest.json"},
+    "staging_control_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "private_transport_snapshot": {"type": "string", "pattern": "^corpus-staging-step11-[0-9a-f]{16}$"},
+    "contract_versions": {
+      "type": "object", "additionalProperties": false,
+      "required": ["catalog", "metadata", "source_links", "artifact_inventory", "transformation", "release_manifest", "csv_contracts"],
+      "properties": {
+        "catalog": {"const": "1.0.0"}, "metadata": {"const": "1.0.0"},
+        "source_links": {"const": "1.0.0"}, "artifact_inventory": {"const": "1.0.0"},
+        "transformation": {"const": "1.0.0"}, "release_manifest": {"const": "1.0.0"},
+        "csv_contracts": {"const": "1.1.0"}
+      }
+    },
+    "counts": {
+      "type": "object", "additionalProperties": false,
+      "required": ["physical_sources_referenced", "corpus_packages", "corpus_payload_files", "corpus_payload_bytes", "reactions", "largest_corpus_file_bytes"],
+      "properties": {
+        "physical_sources_referenced": {"type": "integer", "minimum": 1},
+        "corpus_packages": {"type": "integer", "minimum": 1},
+        "corpus_payload_files": {"type": "integer", "minimum": 1},
+        "corpus_payload_bytes": {"type": "integer", "minimum": 1},
+        "reactions": {"type": "integer", "minimum": 1},
+        "largest_corpus_file_bytes": {"type": "integer", "minimum": 1}
+      }
+    },
+    "excluded_payloads": {
+      "type": "array", "minItems": 4, "uniqueItems": true,
+      "items": {"enum": ["original ORD Parquet payload", "_needs_review payload", "clean-room duplicate payload", "model-ready target payload"]}
+    },
+    "license": {
+      "type": "object", "additionalProperties": false,
+      "required": ["data_license_id", "code_license_id", "notice_path"],
+      "properties": {
+        "data_license_id": {"const": "CC-BY-SA-4.0"},
+        "code_license_id": {"const": "Apache-2.0"}, "notice_path": {"const": "NOTICE"}
+      }
+    },
+    "catalog_path": {"const": "datasets/catalog.csv"},
+    "artifact_inventory_path": {"const": "provenance/full-corpus-release/artifact-inventory.csv"},
+    "release_artifacts_path": {"const": "provenance/full-corpus-release/release-artifacts.jsonl"},
+    "transformations_path": {"const": "provenance/full-corpus-release/transformations.jsonl"},
+    "lineage_edges_path": {"const": "provenance/full-corpus-release/lineage-edges.csv"},
+    "sha256sums_path": {"const": "SHA256SUMS"},
+    "sha256sums_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "private_transport_sha256sums_path": {"const": "provenance/full-corpus-release/private-transport-SHA256SUMS"},
+    "private_transport_sha256sums_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "root_hash_scope": {"const": "all candidate tree files excluding provenance/full-corpus-release/release-manifest.json"},
+    "root_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "publication": {
+      "type": "object", "additionalProperties": false,
+      "required": ["repository", "repo_type", "visibility", "remote_write_attempted"],
+      "properties": {
+        "repository": {"const": "thinktraveller/ord-processed-reaction-corpus"},
+        "repo_type": {"const": "dataset"}, "visibility": {"const": "public"},
+        "remote_write_attempted": {"const": false}
+      }
+    }
+  }
+}

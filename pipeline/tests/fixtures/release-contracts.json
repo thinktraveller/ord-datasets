@@ -242,6 +242,41 @@
         "root_hash_scope": "all preview tree files excluding provenance/model-ready-preview/release-manifest.json",
         "root_sha256": "fedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321"
       }
+    ],
+    "full-corpus-release-manifest.schema.json": [
+      {
+        "schema_version": "1.0.0",
+        "release_id": "v0.2.0-corpus-preview-1",
+        "release_status": "local-release-candidate",
+        "release_track": "corpus-public-release",
+        "project_commit": "29c475dfb64d62effc808ae112aba3afa95731aa",
+        "ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+        "source_manifest_path": "provenance/source-files.initial.csv",
+        "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7",
+        "semantic_map_path": "provenance/semantic-name-map.csv",
+        "semantic_map_sha256": "72cc994b7f7c3f79c9647894250527258d0c424f2e769af80b083815ecd233f6",
+        "members_path": "provenance/logical-dataset-members.csv",
+        "members_sha256": "be852c09dd5a2dd15118a7f956fbc284c032e900841c54837805b90c1575a76f",
+        "staging_control_manifest_path": "provenance/full-corpus-release/staging-control-manifest.json",
+        "staging_control_manifest_sha256": "fb0475232ca5666151da9955706057af70bc7f56733b7820f852ce69c80186e6",
+        "private_transport_snapshot": "corpus-staging-step11-4a546010d1aad3ba",
+        "contract_versions": {"catalog": "1.0.0", "metadata": "1.0.0", "source_links": "1.0.0", "artifact_inventory": "1.0.0", "transformation": "1.0.0", "release_manifest": "1.0.0", "csv_contracts": "1.1.0"},
+        "counts": {"physical_sources_referenced": 53, "corpus_packages": 41, "corpus_payload_files": 205, "corpus_payload_bytes": 13127476889, "reactions": 2428291, "largest_corpus_file_bytes": 10108105821},
+        "excluded_payloads": ["original ORD Parquet payload", "_needs_review payload", "clean-room duplicate payload", "model-ready target payload"],
+        "license": {"data_license_id": "CC-BY-SA-4.0", "code_license_id": "Apache-2.0", "notice_path": "NOTICE"},
+        "catalog_path": "datasets/catalog.csv",
+        "artifact_inventory_path": "provenance/full-corpus-release/artifact-inventory.csv",
+        "release_artifacts_path": "provenance/full-corpus-release/release-artifacts.jsonl",
+        "transformations_path": "provenance/full-corpus-release/transformations.jsonl",
+        "lineage_edges_path": "provenance/full-corpus-release/lineage-edges.csv",
+        "sha256sums_path": "SHA256SUMS",
+        "sha256sums_sha256": "4a546010d1aad3badc567a74be149afe53b21606cc518126d41e0b81d22a21af",
+        "private_transport_sha256sums_path": "provenance/full-corpus-release/private-transport-SHA256SUMS",
+        "private_transport_sha256sums_sha256": "4a546010d1aad3badc567a74be149afe53b21606cc518126d41e0b81d22a21af",
+        "root_hash_scope": "all candidate tree files excluding provenance/full-corpus-release/release-manifest.json",
+        "root_sha256": "fedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321",
+        "publication": {"repository": "thinktraveller/ord-processed-reaction-corpus", "repo_type": "dataset", "visibility": "public", "remote_write_attempted": false}
+      }
     ]
   },
   "invalid": {

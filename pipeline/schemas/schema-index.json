@@ -12,6 +12,7 @@
     {"name": "transformation record", "file": "transformation-record.schema.json", "format": "json"},
     {"name": "release manifest", "file": "release-manifest.schema.json", "format": "json"},
     {"name": "model-ready preview release manifest", "file": "model-ready-preview-release-manifest.schema.json", "format": "json"},
+    {"name": "full corpus release manifest", "file": "full-corpus-release-manifest.schema.json", "format": "json"},
     {"name": "CSV headers and scalar encodings", "file": "csv-contracts.json", "format": "csv-sidecar"}
   ]
 }
