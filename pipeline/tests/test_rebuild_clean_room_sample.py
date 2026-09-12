@@ -30,7 +30,7 @@ PHYSICAL_ID = "ord_dataset-00000000000000000000000000000000"
 LOGICAL_ID = "physical_00000000000000000000000000000000"
 SOURCE_FILE = "data/00/ord_dataset-00000000000000000000000000000000.parquet"
 REVISION = "83f971f586f6ad18f358ae4ae99d045e94ed2066"
-TARGET_ID = "fixture_yield_percent"
+TARGET_ID = "ahneman_yield_percent"
 
 
 def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, object]]) -> None:
@@ -51,10 +51,21 @@ def sha256(path: Path) -> str:
 def fixture_parquet(path: Path) -> None:
     reaction_ids = []
     reactions = []
-    for number, yield_percent in enumerate((12.5, 87.5), start=1):
+    # Deliberately write reverse reaction-ID order.  The standardized target
+    # contract must sort by reaction ID rather than preserve Parquet order.
+    for number, yield_percent in ((2, 87.5), (1, 12.5)):
         reaction = reaction_pb2.Reaction(reaction_id=f"ord-fixture-{number}")
         reaction.provenance.record_created.person.email = "fixture@example.invalid"
-        product = reaction.outcomes.add().products.add()
+        reaction.inputs["reactant"].components.add(
+            reaction_role=reaction_pb2.ReactionRole.REACTANT
+        ).identifiers.add(type=reaction_pb2.CompoundIdentifier.SMILES, value="OCC")
+        reaction.conditions.temperature.setpoint.value = 298.15
+        reaction.conditions.temperature.setpoint.units = reaction_pb2.Temperature.KELVIN
+        outcome = reaction.outcomes.add()
+        outcome.reaction_time.value = 1.5
+        outcome.reaction_time.units = reaction_pb2.Time.HOUR
+        product = outcome.products.add()
+        product.identifiers.add(type=reaction_pb2.CompoundIdentifier.SMILES, value="O=CC")
         measurement = product.measurements.add()
         measurement.type = reaction_pb2.ProductMeasurement.YIELD
         measurement.percentage.value = yield_percent
@@ -259,7 +270,12 @@ class CleanRoomRebuilderTest(unittest.TestCase):
             self.assertNotIn("fixture@example.invalid", corpus.read_text(encoding="utf-8"))
             dataset = root / "output-one" / "datasets" / "model-ready" / "fixture-yield-percent" / "dataset.csv"
             with dataset.open(encoding="utf-8", newline="") as handle:
-                self.assertEqual(2, len(list(csv.DictReader(handle))))
+                rows = list(csv.DictReader(handle))
+            self.assertEqual(2, len(rows))
+            self.assertEqual("CCO", rows[0]["reactant-1"])
+            self.assertEqual("CC=O", rows[0]["product"])
+            self.assertEqual("12.5", rows[0]["yield_percent"])
+            self.assertEqual("87.5", rows[1]["yield_percent"])
 
 
 if __name__ == "__main__":

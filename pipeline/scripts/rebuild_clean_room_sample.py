@@ -8,8 +8,9 @@ an explicitly supplied empty output root.  A caller must keep ``--download-root`
 outside the repository: original Parquet is a transient public input, never a
 release artifact.
 
-Only the generic percent-yield adapter is presently extracted.  Unsupported
-targets fail closed rather than silently applying a different label policy.
+The Ahneman percent-yield standardized projection contract is presently
+extracted. Unsupported targets fail closed rather than silently applying a
+different label or feature policy.
 """
 
 from __future__ import annotations
@@ -18,6 +19,7 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 import os
 import shutil
 import sys
@@ -27,9 +29,11 @@ from pathlib import Path
 from typing import Any, Iterable
 
 import pyarrow.parquet as pq
-from google.protobuf.json_format import MessageToDict
+from google.protobuf.json_format import MessageToDict, ParseDict
 from jsonschema import Draft202012Validator
+from ord_schema import UnitMessage, units
 from ord_schema.proto import reaction_pb2
+from rdkit import Chem
 
 SCRIPT_DIRECTORY = Path(__file__).resolve().parent
 if str(SCRIPT_DIRECTORY) not in sys.path:
@@ -41,6 +45,60 @@ VERSION = "1.0.0"
 LFS_POINTER_VERSION = "https://git-lfs.github.com/spec/v1"
 LFS_ACCEPT = "application/vnd.git-lfs+json"
 PARQUET_BATCH_SIZE = 1024
+
+
+# These are frozen, source-independent projection contracts.  They were
+# extracted from the original standardized target builder and intentionally do
+# not read the original target package at runtime.  A target without an entry
+# here fails closed: it is unsafe to substitute a lossy generic two-column
+# label table for a model-ready standardized target.
+TARGET_CONTRACTS: dict[str, dict[str, object]] = {
+    "ahneman_yield_percent": {
+        "adapter_version": "wave-a-labels-v1",
+        "columns": (
+            "reactant-1",
+            "reactant-2",
+            "reagent-1",
+            "reagent-2",
+            "catalyst-1",
+            "solvent-1",
+            "solvent-2",
+            "solvent-3",
+            "solvent-4",
+            "solvent-5",
+            "product",
+            "temperature_c",
+            "reaction_time_s",
+            "yield_percent",
+        ),
+        "column_roles": {
+            "reactants": ("reactant-1", "reactant-2"),
+            "others": (
+                "reagent-1",
+                "reagent-2",
+                "catalyst-1",
+                "solvent-1",
+                "solvent-2",
+                "solvent-3",
+                "solvent-4",
+                "solvent-5",
+            ),
+            "products": ("product",),
+            "conditions": ("temperature_c", "reaction_time_s"),
+        },
+        "role_limits": {"reactant": 2, "reagent": 2, "catalyst": 1, "solvent": 5},
+        "numeric_conditions": ("temperature_c", "reaction_time_s"),
+        "project_name": "ahneman_yield_structure_v1",
+        "requires_product": True,
+    }
+}
+ROLE_ENUM_TO_NAME = {
+    reaction_pb2.ReactionRole.REACTANT: "reactant",
+    reaction_pb2.ReactionRole.REAGENT: "reagent",
+    reaction_pb2.ReactionRole.CATALYST: "catalyst",
+    reaction_pb2.ReactionRole.SOLVENT: "solvent",
+}
+IDENTIFIER_PRIORITY = ("SMILES", "CXSMILES", "INCHI", "MOLBLOCK")
 
 
 def sha256(path: Path) -> str:
@@ -282,22 +340,226 @@ def decision_id(target_id: str, physical_id: str, row_index: str, reaction_id: s
     return f"label-{hashlib.sha256(material).hexdigest()[:24]}"
 
 
-def unique_yield_percent(reaction: dict[str, Any]) -> tuple[str | None, int]:
-    values: list[str] = []
-    for outcome in reaction.get("outcomes", []):
-        for product in outcome.get("products", []):
-            for measurement in product.get("measurements", []):
-                if measurement.get("type") != "YIELD":
+def enum_name(message: Any, field_name: str) -> str:
+    """Return an ORD enum name without depending on JSON enum conversion."""
+    descriptor = message.DESCRIPTOR
+    field = descriptor.fields_by_name[field_name]
+    if field.enum_type is None:
+        raise TypeError(f"field is not an enum: {field_name}")
+    return field.enum_type.values_by_number[int(getattr(message, field_name))].name
+
+
+def optional_scalar(message: Any, field_name: str) -> tuple[bool, object | None]:
+    """Keep protobuf scalar presence distinct from a present zero."""
+    if not message.HasField(field_name):
+        return False, None
+    return True, getattr(message, field_name)
+
+
+def canonical_smiles(identifiers: Iterable[Any]) -> tuple[str, str]:
+    """Mirror the frozen SMILES>CXSMILES>InChI>MOLBLOCK projection policy."""
+    by_type: dict[str, list[Any]] = {}
+    for identifier in identifiers:
+        by_type.setdefault(enum_name(identifier, "type"), []).append(identifier)
+    for identifier_type in IDENTIFIER_PRIORITY:
+        for identifier in by_type.get(identifier_type, []):
+            raw_value = identifier.value.strip()
+            if not raw_value:
+                continue
+            try:
+                if identifier_type in {"SMILES", "CXSMILES"}:
+                    molecule = Chem.MolFromSmiles(raw_value)
+                elif identifier_type == "INCHI":
+                    molecule = Chem.MolFromInchi(raw_value)
+                else:
+                    molecule = Chem.MolFromMolBlock(raw_value, sanitize=True)
+                if molecule is None:
                     continue
-                percentage = measurement.get("percentage")
-                if not isinstance(percentage, dict) or "value" not in percentage:
-                    continue
-                value = percentage["value"]
-                if isinstance(value, bool) or not isinstance(value, (int, float)):
-                    continue
-                values.append(format(value, ".17g"))
-    unique = sorted(set(values))
-    return (unique[0] if len(unique) == 1 else None), len(values)
+                result = Chem.MolToSmiles(molecule, canonical=True, isomericSmiles=True)
+            except (RuntimeError, ValueError):
+                continue
+            if result:
+                return result, "ok"
+    return "", "missing_or_unparseable_identifier"
+
+
+def collect_components(reaction: reaction_pb2.Reaction) -> dict[str, list[str]]:
+    """Collect source components in the frozen target-builder slot order."""
+    records: list[tuple[str, int, str, int | None, bool | None, str]] = []
+    for input_key in sorted(reaction.inputs):
+        reaction_input = reaction.inputs[input_key]
+        addition_order = reaction_input.addition_order if reaction_input.addition_order > 0 else None
+        for component_ordinal, compound in enumerate(reaction_input.components):
+            role = ROLE_ENUM_TO_NAME.get(compound.reaction_role, "other")
+            smiles, _ = canonical_smiles(compound.identifiers)
+            present, limiting = optional_scalar(compound, "is_limiting")
+            records.append(
+                (
+                    input_key,
+                    component_ordinal,
+                    role,
+                    addition_order,
+                    bool(limiting) if present else None,
+                    smiles,
+                )
+            )
+    ordered = sorted(
+        records,
+        key=lambda item: (
+            0 if item[4] is True else 1,
+            item[3] is None,
+            item[3] or 0,
+            item[0].encode("utf-8"),
+            item[1],
+            item[5],
+        ),
+    )
+    result = {role: [] for role in ("reactant", "reagent", "catalyst", "solvent")}
+    for _, _, role, _, _, smiles in ordered:
+        if role in result:
+            result[role].append(smiles)
+    return result
+
+
+def measurement_value(measurement: reaction_pb2.ProductMeasurement) -> tuple[str, bool, float | str | None]:
+    """Reproduce the source builder's structured measurement representation."""
+    kind = measurement.WhichOneof("value")
+    if kind is None:
+        return "", False, None
+    value = getattr(measurement, kind)
+    if kind == "string_value":
+        return kind, True, str(value)
+    if kind in {"percentage", "float_value"}:
+        present, scalar = optional_scalar(value, "value")
+        return kind, present, float(str(scalar)) if present else None
+    return kind, True, None
+
+
+def product_records_and_candidates(reaction: reaction_pb2.Reaction) -> tuple[list[dict[str, object]], list[dict[str, object]]]:
+    """Project only the product/label evidence needed by the frozen target contract."""
+    products: list[dict[str, object]] = []
+    candidates: list[dict[str, object]] = []
+    for outcome_ordinal, outcome in enumerate(reaction.outcomes):
+        for product_ordinal, product in enumerate(outcome.products):
+            smiles, status = canonical_smiles(product.identifiers)
+            desired_present, desired_value = optional_scalar(product, "is_desired_product")
+            product_record = {
+                "canonical_smiles": smiles,
+                "identifier_status": status,
+                "is_desired_product_present": desired_present,
+                "is_desired_product_value": desired_value,
+            }
+            products.append(product_record)
+            for measurement_ordinal, measurement in enumerate(product.measurements):
+                value_kind, value_present, value = measurement_value(measurement)
+                candidates.append(
+                    {
+                        "analysis_key": measurement.analysis_key,
+                        "candidate_kind": "product_measurement",
+                        "details": measurement.details,
+                        "is_desired_product_present": desired_present,
+                        "is_desired_product_value": desired_value,
+                        "measurement_ordinal": measurement_ordinal,
+                        "measurement_type": enum_name(measurement, "type"),
+                        "outcome_ordinal": outcome_ordinal,
+                        "product_ordinal": product_ordinal,
+                        "product_smiles": smiles,
+                        "value": value,
+                        "value_kind": value_kind,
+                        "value_present": value_present,
+                    }
+                )
+    return products, candidates
+
+
+def pick_product(products: list[dict[str, object]]) -> tuple[str, str]:
+    desired = [
+        item
+        for item in products
+        if item["is_desired_product_present"] is True and item["is_desired_product_value"] is True
+    ]
+    if len(desired) == 1:
+        return str(desired[0]["canonical_smiles"]), "unique_desired"
+    if not desired and len(products) == 1:
+        return str(products[0]["canonical_smiles"]), "unique_product_fallback"
+    if len(desired) > 1:
+        return "", "multiple_desired_products"
+    return "", "ambiguous_product"
+
+
+def select_unique_percent_yield(reaction: reaction_pb2.Reaction) -> tuple[float | None, str, str, dict[str, object] | None, int]:
+    """Apply the original generic target's no-first/no-aggregation label policy."""
+    products, candidates = product_records_and_candidates(reaction)
+    product_smiles, product_status = pick_product(products)
+    if not product_smiles:
+        return None, product_smiles, product_status, None, len(candidates)
+    eligible = [
+        item
+        for item in candidates
+        if item["candidate_kind"] == "product_measurement"
+        and item["measurement_type"] == "YIELD"
+        and item["value_kind"] == "percentage"
+        and item["value_present"] is True
+        and item["product_smiles"] == product_smiles
+    ]
+    if len(eligible) != 1:
+        return None, product_smiles, "missing_label" if not eligible else "ambiguous_label", None, len(candidates)
+    candidate = eligible[0]
+    value = candidate["value"]
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return None, product_smiles, "non_numeric_label", candidate, len(candidates)
+    numeric_value = float(value)
+    if not math.isfinite(numeric_value):
+        return None, product_smiles, "non_finite_label", candidate, len(candidates)
+    if not 0.0 <= numeric_value <= 100.0:
+        return None, product_smiles, "label_out_of_range", candidate, len(candidates)
+    return numeric_value, product_smiles, "unique", candidate, len(candidates)
+
+
+def unit_projection(message: UnitMessage, target_unit: str) -> float | None:
+    present, _ = optional_scalar(message, "value")
+    if not present or enum_name(message, "units") == "UNSPECIFIED":
+        return None
+    try:
+        converted = units.UnitResolver().convert(message, target_unit)
+    except (KeyError, TypeError, ValueError, ZeroDivisionError):
+        return None
+    return float(converted.value)
+
+
+def temperature_c(reaction: reaction_pb2.Reaction) -> float | None:
+    if not reaction.HasField("conditions") or not reaction.conditions.HasField("temperature"):
+        return None
+    condition = reaction.conditions.temperature
+    if not condition.HasField("setpoint"):
+        return None
+    return unit_projection(condition.setpoint, "°C")
+
+
+def reaction_time_s(reaction: reaction_pb2.Reaction) -> float | None:
+    values: list[float] = []
+    for outcome in reaction.outcomes:
+        if not outcome.HasField("reaction_time"):
+            continue
+        value = unit_projection(outcome.reaction_time, "s")
+        if value is None:
+            return None
+        values.append(value)
+    if not values or len({round(value, 12) for value in values}) != 1:
+        return None
+    return values[0]
+
+
+def included_decision_id(target_id: str, reaction_key: str, candidate: dict[str, object], value: float, contract: dict[str, object]) -> str:
+    payload = {
+        "adapter": "generic",
+        "adapter_version": contract["adapter_version"],
+        "candidate": candidate,
+        "reaction_key": reaction_key,
+        "target_id": target_id,
+        "value": value,
+    }
+    return hashlib.sha256(canonical_json(payload).encode("utf-8")).hexdigest()
 
 
 def source_links(source_rows: list[dict[str, str]], logical_id: str) -> dict[str, object]:
@@ -341,6 +603,12 @@ def build_percent_yield_target(
 ) -> dict[str, object]:
     if target["label_type"] != "reaction_yield_percent" or target["target_adapter"] != "generic":
         raise ValueError("clean-room adapter currently supports only generic reaction_yield_percent targets")
+    contract = TARGET_CONTRACTS.get(target["target_id"])
+    if contract is None:
+        raise ValueError(f"no frozen standardized target contract is available for {target['target_id']}")
+    columns = list(contract["columns"])
+    if target["label_column"] not in columns or columns[-1] != target["label_column"]:
+        raise ValueError("frozen target contract and semantic target map disagree on label serialization")
     target_sources = set(parse_json_array(target, "physical_dataset_ids_json"))
     if len(target_sources) != 1:
         raise ValueError("clean-room percent-yield adapter requires exactly one physical target source")
@@ -354,7 +622,7 @@ def build_percent_yield_target(
         raise FileExistsError(f"refusing to overwrite model-ready target: {slug}")
     partial_dir.mkdir(parents=True)
     label_column = target["label_column"]
-    included: list[dict[str, object]] = []
+    included_records: list[dict[str, object]] = []
     row_map: list[dict[str, object]] = []
     exclusions: list[dict[str, object]] = []
     audit: list[dict[str, object]] = []
@@ -366,57 +634,103 @@ def build_percent_yield_target(
             for row in reader:
                 if row["physical_dataset_id"] not in target_sources:
                     continue
-                reaction = json.loads(row["reaction_json"])
-                value, candidate_count = unique_yield_percent(reaction)
-                identity = (row["physical_dataset_id"], row["row_index"], row["reaction_id"])
-                reaction_key = ":".join(identity)
+                reaction = reaction_pb2.Reaction()
+                try:
+                    ParseDict(json.loads(row["reaction_json"]), reaction, ignore_unknown_fields=False)
+                except (TypeError, ValueError) as error:
+                    raise ValueError(f"corpus reaction JSON cannot be parsed: {row['reaction_id']}") from error
+                if reaction.reaction_id != row["reaction_id"]:
+                    raise ValueError("corpus reaction JSON disagrees with reaction_id")
+                reaction_key = f"{row['physical_dataset_id']}:{row['reaction_id']}"
+                components = collect_components(reaction)
+                role_limits = contract["role_limits"]
+                if not isinstance(role_limits, dict):
+                    raise TypeError("target role limits are invalid")
+                for role, limit in role_limits.items():
+                    if len(components[role]) > limit:
+                        raise ValueError(f"target projection schema overflow for {reaction_key}: {role}")
+                value, product_smiles, reason, candidate, candidate_count = select_unique_percent_yield(reaction)
+                temperature = temperature_c(reaction)
+                duration = reaction_time_s(reaction)
+                if not any(components["reactant"]):
+                    value = None
+                    reason = "missing_valid_reactant"
+                elif value is not None and (temperature is None or duration is None):
+                    value = None
+                    reason = "missing_or_invalid_required_numeric_condition"
                 if value is None:
-                    decision = "exclude"
-                    decision_value = decision_id(target["target_id"], *identity, decision)
-                    reason = "no_unique_structured_percent_yield"
+                    decision = "excluded"
+                    decision_value = ""
                     exclusions.append(
                         {
                             "reaction_key": reaction_key,
                             "physical_dataset_id": row["physical_dataset_id"],
                             "source_row_index": row["row_index"],
-                            "label_decision_id": decision_value,
-                            "exclusion_reason": reason,
+                            "reason": reason,
+                            "candidate_count": candidate_count,
                         }
                     )
                 else:
-                    decision = "include"
-                    decision_value = decision_id(target["target_id"], *identity, decision)
-                    reason = "unique_structured_percent_yield"
-                    included.append({"reaction_key": reaction_key, label_column: value})
-                    row_map.append(
+                    if candidate is None or temperature is None or duration is None:
+                        raise RuntimeError("included target row is missing projection evidence")
+                    decision = "included"
+                    decision_value = included_decision_id(target["target_id"], reaction_key, candidate, value, contract)
+                    feature_row: dict[str, object] = {column: "" for column in columns}
+                    for role, limit in role_limits.items():
+                        for ordinal, smiles in enumerate(components[role], start=1):
+                            feature_row[f"{role}-{ordinal}"] = smiles
+                    feature_row["product"] = product_smiles
+                    feature_row["temperature_c"] = temperature
+                    feature_row["reaction_time_s"] = duration
+                    feature_row[label_column] = value
+                    included_records.append(
                         {
-                            "csv_row_number": len(included),
-                            "reaction_key": reaction_key,
+                            "feature_row": {column: feature_row[column] for column in columns},
                             "physical_dataset_id": row["physical_dataset_id"],
-                            "source_row_index": row["row_index"],
+                            "reaction_id": row["reaction_id"],
+                            "source_row_index": int(row["row_index"]),
+                            "reaction_key": reaction_key,
                             "label_decision_id": decision_value,
                         }
                     )
                 audit.append(
                     {
-                        "schema_version": VERSION,
-                        "decision": decision,
-                        "target_id": target["target_id"],
-                        "reaction_key": reaction_key,
-                        "physical_dataset_id": row["physical_dataset_id"],
-                        "source_file": row["source_file"],
-                        "source_row_index": int(row["row_index"]),
+                        "adapter_version": contract["adapter_version"],
+                        "candidate_count": candidate_count,
+                        "label_column": label_column,
                         "label_decision_id": decision_value,
+                        "physical_dataset_id": row["physical_dataset_id"],
+                        "product_smiles": product_smiles,
+                        "reaction_key": reaction_key,
                         "reason": reason,
-                        "eligible_measurement_count": candidate_count,
+                        "selected_candidate": candidate,
+                        "source_row_index": int(row["row_index"]),
+                        "status": decision,
+                        "target_adapter": "generic",
+                        "target_id": target["target_id"],
+                        "value": value,
                     }
                 )
         expected_source_count = int(target["source_count"])
-        if len(included) + len(exclusions) != expected_source_count:
+        if len(included_records) + len(exclusions) != expected_source_count:
             raise ValueError("target source count differs from frozen semantic target map")
-        if len(included) != int(target["included_count"]) or len(exclusions) != int(target["excluded_count"]):
+        if len(included_records) != int(target["included_count"]) or len(exclusions) != int(target["excluded_count"]):
             raise ValueError("clean-room target decisions differ from frozen semantic target map")
-        write_csv(partial_dir / "dataset.csv", ["reaction_key", label_column], included)
+        included_records.sort(
+            key=lambda item: (item["physical_dataset_id"], item["reaction_id"], item["source_row_index"])
+        )
+        audit.sort(key=lambda item: (str(item["physical_dataset_id"]), str(item["reaction_key"])))
+        for csv_row_number, record in enumerate(included_records, start=2):
+            row_map.append(
+                {
+                    "csv_row_number": csv_row_number,
+                    "reaction_key": record["reaction_key"],
+                    "physical_dataset_id": record["physical_dataset_id"],
+                    "source_row_index": record["source_row_index"],
+                    "label_decision_id": record["label_decision_id"],
+                }
+            )
+        write_csv(partial_dir / "dataset.csv", columns, [record["feature_row"] for record in included_records])
         write_csv(
             partial_dir / "row-map.csv",
             ["csv_row_number", "reaction_key", "physical_dataset_id", "source_row_index", "label_decision_id"],
@@ -424,7 +738,7 @@ def build_percent_yield_target(
         )
         write_csv(
             partial_dir / "exclusions.csv",
-            ["reaction_key", "physical_dataset_id", "source_row_index", "label_decision_id", "exclusion_reason"],
+            ["reaction_key", "physical_dataset_id", "source_row_index", "reason", "candidate_count"],
             exclusions,
         )
         with (partial_dir / "audit.jsonl").open("w", encoding="utf-8") as handle:
@@ -434,12 +748,12 @@ def build_percent_yield_target(
             "schema_version": VERSION,
             "dataset_kind": "model-ready",
             "target_id": target["target_id"],
-            "columns": [
-                {"name": "reaction_key", "role": "identifier", "type": "string"},
-                {"name": label_column, "role": "label", "type": "float", "unit": target["label_unit"]},
-            ],
+            "columns": columns,
+            "column_roles": contract["column_roles"],
             "label_policy": target["label_policy"],
-            "adapter": "generic_unique_structured_percent_yield",
+            "adapter": "generic",
+            "adapter_version": contract["adapter_version"],
+            "project_name": contract["project_name"],
         }
         write_json(partial_dir / "schema.json", target_schema)
         links = source_links(selected_sources, target["logical_dataset_id"])
@@ -450,11 +764,13 @@ def build_percent_yield_target(
             "target_id": target["target_id"],
             "input": {"corpus_csv_sha256": sha256(corpus_csv), "source_manifest_sha256": source_manifest_hash},
             "transformation": {
-                "name": "generic_unique_structured_percent_yield",
+                "name": "generic_standardized_percent_yield_projection",
                 "policy": target["label_policy"],
                 "candidate_measurement_type": "YIELD",
+                "row_order": "physical_dataset_id,reaction_id,source_row_index",
+                "structure_policy": "SMILES>CXSMILES>InChI>MOLBLOCK;rdkit_canonical_isomeric;no_fragment_split",
             },
-            "counts": {"included": len(included), "excluded": len(exclusions), "source": expected_source_count},
+            "counts": {"included": len(included_records), "excluded": len(exclusions), "source": expected_source_count},
         }
         write_json(partial_dir / "target-provenance.json", target_provenance)
         checksum_names = {
@@ -492,7 +808,7 @@ def build_percent_yield_target(
             "corpus_row_count": int(target["source_count"]),
             "target_id": target["target_id"],
             "label": {"column": label_column, "type": target["label_type"], "unit": target["label_unit"], "policy": target["label_policy"]},
-            "included_count": len(included),
+            "included_count": len(included_records),
             "excluded_count": len(exclusions),
             "content_artifacts": metadata_artifacts,
             "input_provenance": {
@@ -513,7 +829,7 @@ def build_percent_yield_target(
     return {
         "target_id": target["target_id"],
         "target_slug": slug,
-        "included_count": len(included),
+        "included_count": len(included_records),
         "excluded_count": len(exclusions),
         "artifacts": {path.name: {"sha256": sha256(path), "size_bytes": path.stat().st_size} for path in sorted(final_dir.iterdir()) if path.is_file()},
     }
@@ -729,7 +1045,7 @@ def run(
         "remaining_blocker": (
             None
             if status == "complete"
-            else "The extracted generic target contract has matching source/included/excluded semantics but does not byte-match the frozen target dataset artifact."
+            else "The extracted standardized target projection has matching source/included/excluded semantics but does not byte-match the frozen target dataset artifact."
             if status == "partial_target_byte_equivalence_unresolved"
             else "The independently repeated clean-room output root hash differs from the expected hash."
         ),

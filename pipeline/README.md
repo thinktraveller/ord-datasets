@@ -27,10 +27,17 @@ copy legacy raw payloads into regular Git or promote a quarantined object.
 
 `rebuild_clean_room_sample.py` resolves a revision-pinned Git LFS pointer via
 the public Git LFS batch protocol, verifies the downloaded Parquet hash, then
-builds a physical CSV, logical corpus, generic yield target, and provenance
-under an empty output root. It deliberately has no local source/staging/cache
-input option. Keep the transient `--download-root` outside this repository;
-the Parquet source itself is never promoted into the repository.
+builds a physical CSV, logical corpus, the frozen Ahneman standardized yield
+target projection, and provenance under an empty output root. It deliberately
+has no local source/staging/cache input option. Keep the transient
+`--download-root` outside this repository; the Parquet source itself is never
+promoted into the repository.
+
+The extracted target contract fixes the feature columns, RDKit canonical-SMILES
+selection, unique desired/single-product structured percentage-YIELD policy,
+temperature/time unit conversion, source reaction-key policy, row ordering,
+and CSV serialization. Other targets fail closed until their own frozen
+contract has been extracted.
 
 From the repository root, a representative invocation is:
 
@@ -52,5 +59,7 @@ uv --directory pipeline run python ../pipeline/scripts/rebuild_clean_room_sample
 ```
 
 Supply the optional baseline manifests and physical archive index to enforce
-the committed byte/semantic comparison. The step-20 report names any remaining
+the committed byte/semantic comparison. Run a second invocation with a fresh
+download/output root and `--expected-output-root-sha256` set to the first
+report's output-root hash. The step-20 report names any remaining
 target-contract mismatch explicitly; it is not a release acceptance override.

@@ -656,6 +656,7 @@ dependencies = [
     { name = "jsonschema" },
     { name = "ord-schema" },
     { name = "pyarrow" },
+    { name = "rdkit" },
 ]
 
 [package.dev-dependencies]
@@ -669,6 +670,7 @@ requires-dist = [
     { name = "jsonschema", specifier = ">=4.10,<5" },
     { name = "ord-schema", specifier = ">=0.6.31,<0.7" },
     { name = "pyarrow", specifier = ">=14,<25" },
+    { name = "rdkit", specifier = ">=2026.3,<2027" },
 ]
 
 [package.metadata.requires-dev]
