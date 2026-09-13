@@ -36,16 +36,38 @@ CHECKSUM_NAMES = {
     "target-build-provenance",
 }
 SUPPORTING_FILES = (
-    ("schema.json", "字段、字段角色、标签定义和提取规则。"),
-    ("row-map.csv", "把主表中的行号连接回 ORD 反应记录。"),
-    ("audit.jsonl", "逐条记录标签候选、最终选择和原因。"),
-    ("exclusions.csv", "未纳入主表的记录及排除原因。"),
-    ("source-links.json", "固定到 ORD 提交版本的原始文件链接和 SHA-256。"),
-    ("metadata.json", "数据集名称、规模、标签单位、许可证和就绪状态。"),
-    ("yonod-config.json", "建模字段角色和示例配置。"),
-    ("target-build-provenance.json", "构建本数据集的输入和转换哈希。"),
-    ("checksums.csv", "用于检查数据与溯源文件是否损坏或被修改。"),
+    ("schema.json", "Exact columns, field roles, label definition, and extraction rule.", "字段、字段角色、标签定义和提取规则。"),
+    ("row-map.csv", "Maps a main-table row to its ORD reaction record.", "把主表中的行号连接回 ORD 反应记录。"),
+    ("audit.jsonl", "Records the label candidates, selected value, and reason for every decision.", "逐条记录标签候选、最终选择和原因。"),
+    ("exclusions.csv", "Lists records excluded from the main table and the reason for each decision.", "未纳入主表的记录及排除原因。"),
+    ("source-links.json", "Commit-pinned ORD source links and SHA-256 values.", "固定到 ORD 提交版本的原始文件链接和 SHA-256。"),
+    ("metadata.json", "Dataset identity, size, label unit, licence, and readiness state.", "数据集名称、规模、标签单位、许可证和就绪状态。"),
+    ("yonod-config.json", "Model field roles and example configuration.", "建模字段角色和示例配置。"),
+    ("target-build-provenance.json", "Hashes of the inputs and transformations used to build this target.", "构建本数据集的输入和转换哈希。"),
+    ("checksums.csv", "Checks whether data and provenance files are damaged or modified.", "用于检查数据与溯源文件是否损坏或被修改。"),
 )
+
+ENGLISH_SCOPE_NOTES = {
+    "ahneman-c-n-cross-coupling-yield-percent": "Percent-yield modelling for Buchwald-Hartwig-type C-N cross-coupling. Aryl substrates, amine substrates, ligands, bases, palladium catalysts, and solvents vary together, making the target useful for studying substrate generalisation and catalytic-system selection.",
+    "asymmetric-alkylation-ee-s-minus-r-percent": "Enantioselectivity modelling for photoredox/organocatalytic aldehyde alpha-asymmetric alkylation. The label is signed ee (S minus R, percentage points), not yield; product stereochemistry is used only to determine the label, not as a model feature.",
+    "cernak-reductive-amination-conversion-percent": "Conversion modelling for miniaturised reductive amination of staurosporine with aldehyde or ketone substrates. It combines condition optimisation with library synthesis and can be used to assess group generalisation from seen substrates to new aldehydes or ketones.",
+    "cernak-suzuki-coupling-conversion-percent": "Conversion modelling for miniaturised Suzuki coupling of aryl halides with boronic acids or boronate esters. The combinations span aryl-halide cores, boron partners, palladium precatalysts, bases, and solvents, enabling study of catalyst-substrate matching.",
+    "cernak-ultra-hte-c-n-yield-percent": "Assay-yield modelling for Pd-, Ni-, and Cu-catalysed C-N coupling. This high-throughput system varies aryl halides, amines, metal/ligand combinations, bases, temperatures, and solvents across a broad chemical space.",
+    "chan-lam-sulfonamide-coupling-yield-percent": "Yield modelling for Chan-Lam coupling of primary sulfonamides and boronic acids. The target covers diverse sulfonamides, boronic acids, copper catalysts, bases, and solvents, including replicate experiments for examining compatibility and robustness.",
+    "chemrxiv-aniline-amidation-yield-percent": "Yield modelling for amidation of a fixed carboxylic-acid core with varied anilines. It chiefly compares amine substrates, activating agents, bases, and solvent combinations to identify conditions that transfer across aniline substrates.",
+    "chemrxiv-imidazole-c-h-arylation-yield-percent": "Yield modelling for Pd-catalysed C5-H arylation of imidazoles with aryl bromides. Substrate pairs, monophosphine ligands, and reaction conditions are key variables for evaluating condition transferability.",
+    "flow-catechol-product-2-response-percent": "Research-only modelling target for the HPLC percentage response of Product 2 in a transient flow reaction. Features include substrate, binary-solvent composition, temperature, and residence time; reliable run grouping is not yet available, so it is not a batch-model benchmark.",
+    "flow-catechol-product-3-response-percent": "Research-only modelling target for the HPLC percentage response of Product 3 in a transient flow reaction. Features include substrate, binary-solvent composition, temperature, and residence time; reliable run grouping is not yet available, so it is not a batch-model benchmark.",
+    "flow-catechol-total-product-response-percent": "Research-only flow solvent-selection target for the sum of Product 2 and Product 3 percentage responses. The label is their deterministic sum; reliable run grouping is not yet available.",
+    "nano-c-n-photochemistry-yield-percent": "Product-yield modelling for photochemical C-N reactions with diverse substrates and photocatalytic conditions. Labels come from UPLC-MS quantification, supporting study of substrate electronics/sterics, photocatalyst systems, and solvents together.",
+    "nicolit-nickel-coupling-yield-percent": "Percent-yield modelling for nickel-catalysed organolithium cross-coupling involving C-O/C-N bond activation of ethers or aryl ammonium salts. Zero values are retained; GC and isolated yields are not distinguished and should be treated as an interpretation limitation.",
+    "pfizer-hte-lc-area-percent": "LC/UV area-percent modelling for a large high-throughput reaction collection. The target contains about 39,000 reactions and diverse reactant, reagent, and catalyst combinations; its label is an analytical signal, not isolated yield or conversion.",
+    "photocatalytic-aryl-bromide-dehalogenation-conversion-percent": "Five-hour conversion modelling for Ir(III)-photocatalysed aryl-bromide dehalogenation. The target emphasises matching among photocatalyst, aryl substrate, and irradiation conditions; the label is estimated conversion rather than isolated yield.",
+    "roche-borylation-yield-percent": "Percent-yield modelling for organoborylation reactions. Structured records contain reactants, reagents, catalysts, and solvents, supporting analysis of how functional groups and condition combinations affect borylation outcomes.",
+    "science-hte-relative-lc-area-ratio": "Relative LC-MS response modelling for palladium-catalysed cross-coupling with multiple nucleophiles. The label is target-product AREA divided by biphenyl internal-standard AREA, not yield or conversion.",
+    "shields-arylation-yield-percent": "Percent-yield modelling for arylation reactions. The data combine substrates, catalysts, bases, solvents, and continuous condition variables in an optimisation-trajectory-like design that can support Bayesian optimisation or condition recommendation studies.",
+    "suzuki-miyaura-nanoscale-yield-percent": "Percent-yield modelling for Suzuki-Miyaura C-C coupling. Aryl electrophiles and organoboron nucleophiles are combined systematically with ligands, bases, solvents, and catalytic conditions at small scale, supporting study of structure-condition interactions.",
+}
 
 
 def sha256(path: Path) -> str:
@@ -80,25 +102,37 @@ def write_csv(path: Path, rows: list[dict[str, str]]) -> None:
     os.replace(temporary, path)
 
 
-def markdown_list(values: list[str]) -> str:
+def markdown_list_zh(values: list[str]) -> str:
     return "、".join(f"`{value}`" for value in values) if values else "无"
 
 
-def format_sources(links: list[dict[str, Any]]) -> str:
+def markdown_list_en(values: list[str]) -> str:
+    return ", ".join(f"`{value}`" for value in values) if values else "None"
+
+
+def format_sources(links: list[dict[str, Any]], language: str) -> str:
     lines = []
     for link in links:
+        if language == "en":
+            qualifier = f"ORD revision `{link['upstream_revision']}`; SHA-256 `{link['source_sha256']}`"
+            separator = ": "
+        else:
+            qualifier = f"ORD revision `{link['upstream_revision']}`；SHA-256 `{link['source_sha256']}`"
+            separator = "："
         lines.append(
-            f"- `{link['physical_dataset_id']}`："
+            f"- `{link['physical_dataset_id']}`{separator}"
             f"[{link['source_file']}]({link['source_file_url']})  "
-            f"（ORD revision `{link['upstream_revision']}`；SHA-256 `{link['source_sha256']}`）"
+            f"({qualifier})"
         )
     return "\n".join(lines)
 
 
-def format_exclusions(path: Path) -> str:
+def format_exclusions(path: Path, language: str) -> str:
     counts = Counter(row["exclusion_reason"] for row in read_csv(path))
     if not counts:
-        return "无额外排除。"
+        return "No additional exclusions." if language == "en" else "无额外排除。"
+    if language == "en":
+        return "; ".join(f"`{reason}`: {count} record(s)" for reason, count in sorted(counts.items()))
     return "；".join(f"`{reason}`：{count} 条" for reason, count in sorted(counts.items()))
 
 
@@ -110,24 +144,101 @@ def render_readme(directory: Path, metadata: dict[str, Any], schema: dict[str, A
     target_metadata = schema.get("target_metadata", {})
     doi = target_metadata.get("doi")
     note = target_metadata.get("notes", "未提供额外的化学说明。")
-    publication = f"[{doi}](https://doi.org/{doi})" if doi else "未提供 DOI"
+    publication_en = f"[{doi}](https://doi.org/{doi})" if doi else "No DOI supplied"
+    publication_zh = f"[{doi}](https://doi.org/{doi})" if doi else "未提供 DOI"
     total = metadata["included_count"] + metadata["excluded_count"]
-
-    files = "\n".join(
-        [f"| [`{data_name}`]({data_name}) | 可直接用于分析或建模的主表；每行是一条纳入的反应。 |"]
-        + [f"| [`{filename}`]({filename}) | {description} |" for filename, description in SUPPORTING_FILES]
+    english_note = ENGLISH_SCOPE_NOTES[slug]
+    chinese_note = target_metadata.get("notes", "未提供额外的化学说明。")
+    files_en = "\n".join(
+        [f"| [`{data_name}`]({data_name}) | Analysis-ready main table; each row is an included reaction. |"]
+        + [f"| [`{filename}`]({filename}) | {description_en} |" for filename, description_en, _ in SUPPORTING_FILES]
     )
-    source_section = format_sources(links["links"])
-    exclusions = format_exclusions(directory / "exclusions.csv")
+    files_zh = "\n".join(
+        [f"| [`{data_name}`]({data_name}) | 可直接用于分析或建模的主表；每行是一条纳入的反应。 |"]
+        + [f"| [`{filename}`]({filename}) | {description_zh} |" for filename, _, description_zh in SUPPORTING_FILES]
+    )
+    source_section_en = format_sources(links["links"], "en")
+    source_section_zh = format_sources(links["links"], "zh")
+    exclusions_en = format_exclusions(directory / "exclusions.csv", "en")
+    exclusions_zh = format_exclusions(directory / "exclusions.csv", "zh")
 
     return f"""# {metadata['display_name_en']} / {metadata['display_name_zh']}
+
+[English](#english) | [中文](#chinese)
+
+<a id="english"></a>
+## English
+
+This is an ORD subset prepared for direct reaction modelling. Its main table is
+[`{data_name}`]({data_name}). The CSV bytes are identical to `dataset.csv` in the immutable
+[`v0.1.0-model-ready-preview-1`](https://github.com/thinktraveller/ord-datasets/releases/tag/v0.1.0-model-ready-preview-1)
+release; this directory uses a semantic filename to make individual downloads easier to identify.
+
+### At a glance
+
+| Item | Details |
+|---|---|
+| Main data file | [`{data_name}`]({data_name}) |
+| Included / excluded / input records | {metadata['included_count']:,} / {metadata['excluded_count']:,} / {total:,} |
+| Label column | `{label['column']}` |
+| Label meaning and unit | {label['unit']} |
+| Label-selection policy | `{label['policy']}` |
+| Modelling/benchmark readiness | `{metadata['readiness_status']}` |
+| Data licence | `{metadata['license_id']}` |
+| Associated publication | {publication_en} |
+
+> “Model-ready” means that the file can be read and modelled directly. It does not mean that the target is an accepted general-purpose benchmark. Consider the readiness state and label meaning before modelling or comparing results.
+
+### Chemical scope and filtering
+
+{english_note}
+
+- This target uses only the ORD physical sources listed below.
+- Only records satisfying `{label['policy']}` are included; multiple candidate labels are never averaged or aggregated without an explicit rule.
+- Observed exclusions: {exclusions_en}
+- `audit.jsonl` preserves the label candidates, final decision, and rationale for every reaction. `exclusions.csv` preserves the records that did not enter the main table.
+
+### Columns
+
+| Field role | Columns |
+|---|---|
+| Reactants | {markdown_list_en(roles.get('reactants', []))} |
+| Reagents, catalysts, solvents, and other components | {markdown_list_en(roles.get('others', []))} |
+| Products | {markdown_list_en(roles.get('products', []))} |
+| Conditions | {markdown_list_en(roles.get('conditions', []))} |
+| Label | `{roles['label']}` |
+
+[`schema.json`](schema.json) is authoritative for the complete column order, units, and roles. Molecular-structure columns normally use SMILES; condition-column names carry their units, such as `_c`, `_s`, `_kpa`, or `_nm`.
+
+### Files
+
+| File | Purpose |
+|---|---|
+{files_en}
+
+### Trace one reaction
+
+1. Select a row in [`{data_name}`]({data_name}). Its CSV row number, counting the header as row 1, is the `csv_row_number` in `row-map.csv`.
+2. Find that number in [`row-map.csv`](row-map.csv) to obtain `physical_dataset_id`, `source_row_index`, and `label_decision_id`.
+3. Search [`audit.jsonl`](audit.jsonl) for `label_decision_id` to see why the label was included or excluded.
+4. Use `physical_dataset_id` in [`source-links.json`](source-links.json) to find the pinned ORD Parquet URL, revision, and SHA-256.
+5. Use `physical_dataset_id` plus `source_row_index` to locate the same reaction in the complete ORD corpus. Do not rely on row order or SMILES alone.
+
+### Pinned data sources
+
+{source_section_en}
+
+For a paper, report, or reproducible workflow, keep `metadata.json`, `source-links.json`, `row-map.csv`, and `checksums.csv` with the main table and cite the immutable release above. The data and derived metadata are CC BY-SA 4.0; retain attribution, source, and licence information.
+
+<a id="chinese"></a>
+## 中文
 
 这是一个可直接用于反应建模的 ORD 数据子集。主表为
 [`{data_name}`]({data_name})；它的内容与不可变
 [`v0.1.0-model-ready-preview-1`](https://github.com/thinktraveller/ord-datasets/releases/tag/v0.1.0-model-ready-preview-1)
 发布版本中的 `dataset.csv` 相同，只是本目录使用了更容易识别的语义化文件名。
 
-## 快速信息
+### 快速信息
 
 | 项目 | 内容 |
 |---|---|
@@ -138,38 +249,38 @@ def render_readme(directory: Path, metadata: dict[str, Any], schema: dict[str, A
 | 标签选择规则 | `{label['policy']}` |
 | 模型/基准就绪状态 | `{metadata['readiness_status']}` |
 | 数据许可证 | `{metadata['license_id']}` |
-| 相关论文 | {publication} |
+| 相关论文 | {publication_zh} |
 
 > “model-ready”表示文件可以直接读取和建模，并不表示它已被接受为通用基准。建模或比较前，请结合上表的就绪状态与标签含义判断是否适合您的问题。
 
-## 化学范围与筛选
+### 化学范围与筛选
 
-{note}
+{chinese_note}
 
 - 本目标只使用下方列出的 ORD 物理数据源。
 - 只有满足 `{label['policy']}` 的标签记录被纳入主表；不会对多个候选标签做未声明的平均或聚合。
-- 实际排除情况：{exclusions}
+- 实际排除情况：{exclusions_zh}
 - `audit.jsonl` 保留每条反应的标签候选、最终决定和理由；`exclusions.csv` 保留未纳入记录，因此筛选过程可以复查。
 
-## 字段一览
+### 字段一览
 
 | 字段角色 | 列名 |
 |---|---|
-| 反应物 | {markdown_list(roles.get('reactants', []))} |
-| 试剂、催化剂、溶剂等 | {markdown_list(roles.get('others', []))} |
-| 产物 | {markdown_list(roles.get('products', []))} |
-| 条件 | {markdown_list(roles.get('conditions', []))} |
+| 反应物 | {markdown_list_zh(roles.get('reactants', []))} |
+| 试剂、催化剂、溶剂等 | {markdown_list_zh(roles.get('others', []))} |
+| 产物 | {markdown_list_zh(roles.get('products', []))} |
+| 条件 | {markdown_list_zh(roles.get('conditions', []))} |
 | 标签 | `{roles['label']}` |
 
 完整列顺序、单位及字段角色以 [`schema.json`](schema.json) 为准。通常，分子结构列使用 SMILES；单位已经写在条件列名称中，例如 `_c`、`_s`、`_kpa` 或 `_nm`。
 
-## 文件说明
+### 文件说明
 
 | 文件 | 用途 |
 |---|---|
-{files}
+{files_zh}
 
-## 如何溯源一条反应
+### 如何溯源一条反应
 
 1. 在 [`{data_name}`]({data_name}) 中选定一行；其 CSV 行号（把表头算作第 1 行）就是 `row-map.csv` 的 `csv_row_number`。
 2. 在 [`row-map.csv`](row-map.csv) 中按该行号找到 `physical_dataset_id`、`source_row_index` 和 `label_decision_id`。
@@ -177,9 +288,9 @@ def render_readme(directory: Path, metadata: dict[str, Any], schema: dict[str, A
 4. 在 [`source-links.json`](source-links.json) 中按 `physical_dataset_id` 找到固定的 ORD 原始 Parquet 链接、提交版本和 SHA-256。
 5. 用 `physical_dataset_id` 加 `source_row_index` 在完整 ORD 语料中定位同一条反应；请勿仅靠行号或 SMILES 匹配。
 
-## 固定数据来源
+### 固定数据来源
 
-{source_section}
+{source_section_zh}
 
 如需在论文、报告或可复现工作流中引用此数据，请同时保留本目录的 `metadata.json`、`source-links.json`、`row-map.csv` 和 `checksums.csv`，并引用上方不可变发布版本。数据及其派生元数据采用 CC BY-SA 4.0；请保留署名、来源和许可证信息。
 """

@@ -11,6 +11,34 @@ This is a provenance-preserving standardization and release workspace for the Op
 
 > **Two access paths, the same CSV content:** `datasets/model-ready/` on `main` keeps each main table byte-identical to the published model-ready snapshot, but gives it a semantic `*-dataset.csv` filename and adds a target README for convenient browsing. Cite the immutable release when its exact historical package layout matters. The much larger full-corpus payload remains on Hugging Face rather than `main`.
 
+## Repository layout
+
+```text
+ord-datasets/
+├── README.md                     # English guide
+├── README-zh.md                  # Chinese guide
+├── datasets/
+│   ├── README.md                 # Dataset-area overview
+│   ├── corpus/                   # Full-corpus catalog; payload is on Hugging Face
+│   └── model-ready/              # 19 individual modelling targets
+│       └── <target-slug>/
+│           ├── README.md         # English and Chinese target guide
+│           ├── <target-slug>-dataset.csv
+│           ├── schema.json       # Columns and label definition
+│           ├── row-map.csv       # Row-level ORD lineage
+│           ├── audit.jsonl       # Label-selection decisions
+│           ├── exclusions.csv    # Excluded records and reasons
+│           ├── source-links.json # Pinned ORD source files
+│           ├── metadata.json     # Scope, licence, and readiness state
+│           ├── yonod-config.json
+│           ├── target-build-provenance.json
+│           └── checksums.csv
+├── pipeline/                     # Build, validation, schemas, and tests
+├── provenance/                   # Source, artifact, and row-lineage records
+├── reports/                      # Data-quality, licence, and release evidence
+└── project-docs/                 # Project plan and build record
+```
+
 ## Getting started
 
 ### Which release should I download?

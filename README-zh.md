@@ -11,6 +11,34 @@
 
 > **两种入口，主表内容相同：** `main` 分支的 `datasets/model-ready/` 保留了与发布版本逐字节相同的主数据表，但改用语义化的 `*-dataset.csv` 文件名，并为每个目标加入 README，方便逐个浏览和下载；若需要旧式目录布局的固定版本，请引用不可变发布版本。体积大得多的完整语料仍放在 Hugging Face，不复制到 `main`。
 
+## 仓库目录结构
+
+```text
+ord-datasets/
+├── README.md                     # 英文总说明
+├── README-zh.md                  # 中文总说明
+├── datasets/
+│   ├── README.md                 # 数据区域总说明
+│   ├── corpus/                   # 完整语料目录；实际载荷位于 Hugging Face
+│   └── model-ready/              # 19 个可单独下载的建模目标
+│       └── <target-slug>/
+│           ├── README.md         # 该目标的中英文说明
+│           ├── <target-slug>-dataset.csv
+│           ├── schema.json       # 字段与标签定义
+│           ├── row-map.csv       # 行级 ORD 溯源映射
+│           ├── audit.jsonl       # 标签选择决策
+│           ├── exclusions.csv    # 排除记录及原因
+│           ├── source-links.json # 固定的 ORD 源文件
+│           ├── metadata.json     # 范围、许可证和就绪状态
+│           ├── yonod-config.json
+│           ├── target-build-provenance.json
+│           └── checksums.csv
+├── pipeline/                     # 构建、验证、schema 和测试
+├── provenance/                   # 来源、产物与行级溯源记录
+├── reports/                      # 数据质量、许可证与发布证据
+└── project-docs/                 # 项目计划和构建记录
+```
+
 ## 使用指南
 
 ### 我应该下载哪一个？
