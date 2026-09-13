@@ -593,3 +593,10 @@
 - 所有者明确授权后，创建公开 Dataset `thinktraveller/ord-processed-reaction-corpus`，并用 `hf upload` 上传已验收的精确 224-file candidate tree。Hub 自动添加的 `.gitattributes` 是唯一额外控制文件；没有上传原始 Parquet、`_needs_review`、clean-room duplicate 或 model-ready payload。
 - 首个发布 commit 为 `260cde0feb414c75b2bf971d6f3a4dbbee7b2e95`；annotated tag `v0.2.0-corpus-preview-1` 的 tag object 为 `0d7ab9847d45311fdbf40083d2d731071163cb5b`，peeled commit 与发布 commit 一致。
 - 从该固定 commit 下载到全新目录后，根目录 `SHA256SUMS` 为 205/205 passed；下载器缓存和 Hub 自动控制文件未计入 release tree。完整远端副本验收通过：0 blocking checks、0 owner gates、41 corpus/53 source/205 payload/2,428,291 reactions、root SHA-256 `930a9111b6e9f7a85abdff2199c8e7637a08822782cf8ffc5081b93e563bc663`。证据为 steps 33–34 full-corpus reports。
+
+## [2026-09-13] model-ready 目标说明改为分开的中英文文件
+
+- `datasets/model-ready/` 的 19 个目标现在各有 `README.md`（英文）和 `README-zh.md`（中文）。两份说明均覆盖数据集范围、主表和标签、字段、筛选/排除、固定来源、文件用途及逐条反应溯源；两份文件互相链接。
+- `pipeline/scripts/prepare_model_ready_download_layout.py` 现原子生成并校验这两个说明文件，同时继续校验语义化主表名、checksums 和 metadata；主表 CSV 的内容未修改。
+- 根目录 `README.md`、`README-zh.md` 与 `datasets/README.md` 已更新目录树、下载提示和文件说明，明确区分英文 `README.md` 与中文 `README-zh.md`。
+- 已对 19 个目标运行生成器的 `--apply` 和 `--check`；每一组说明都包含互链、语义化主表链接及逐条溯源章节。19 个主表的 SHA-256 均与不可变 preview candidate 对应的 `dataset.csv` 一致，metadata schema 与 8 项 pipeline 测试均通过。

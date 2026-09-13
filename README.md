@@ -9,7 +9,36 @@ This is a provenance-preserving standardization and release workspace for the Op
 | **Full corpus** `v0.2.0-corpus-preview-1` | Inspect complete ORD reaction JSON, re-extract fields, and trace individual rows | 41 packages; 53 pinned ORD sources; 2,428,291 reactions; 12.23 GiB | [Immutable Hugging Face tag](https://huggingface.co/datasets/thinktraveller/ord-processed-reaction-corpus/tree/v0.2.0-corpus-preview-1), commit `260cde0feb414c75b2bf971d6f3a4dbbee7b2e95` |
 | **Model-ready** `v0.1.0-model-ready-preview-1` | Directly analyze yield, conversion, LC response, or ee | 19 targets from 15 packages; 128,712 included and 499 excluded decisions; 26.6 MiB across the `*-dataset.csv` files, 201.2 MiB total | [Browse individual datasets on `main`](https://github.com/thinktraveller/ord-datasets/tree/main/datasets/model-ready); [immutable release](https://github.com/thinktraveller/ord-datasets/releases/tag/v0.1.0-model-ready-preview-1), commit `7d52dd27071c5625008a14737a1a8e1252ae6217` |
 
-> **Two access paths, the same CSV content:** `datasets/model-ready/` on `main` keeps each main table byte-identical to the published model-ready snapshot, but gives it a semantic `*-dataset.csv` filename and adds a target README for convenient browsing. Cite the immutable release when its exact historical package layout matters. The much larger full-corpus payload remains on Hugging Face rather than `main`.
+> **Two access paths, the same CSV content:** `datasets/model-ready/` on `main` keeps each main table byte-identical to the published model-ready snapshot, but gives it a semantic `*-dataset.csv` filename and separate English and Chinese target guides for convenient browsing. Cite the immutable release when its exact historical package layout matters. The much larger full-corpus payload remains on Hugging Face rather than `main`.
+
+## Repository layout
+
+```text
+ord-datasets/
+├── README.md                     # English guide
+├── README-zh.md                  # Chinese guide
+├── datasets/
+│   ├── README.md                 # Dataset-area overview
+│   ├── corpus/                   # Full-corpus catalog; payload is on Hugging Face
+│   └── model-ready/              # 19 individual modelling targets
+│       └── <target-slug>/
+│           ├── README.md         # English target guide
+│           ├── README-zh.md      # Chinese target guide
+│           ├── <target-slug>-dataset.csv
+│           ├── schema.json       # Columns and label definition
+│           ├── row-map.csv       # Row-level ORD lineage
+│           ├── audit.jsonl       # Label-selection decisions
+│           ├── exclusions.csv    # Excluded records and reasons
+│           ├── source-links.json # Pinned ORD source files
+│           ├── metadata.json     # Scope, licence, and readiness state
+│           ├── yonod-config.json
+│           ├── target-build-provenance.json
+│           └── checksums.csv
+├── pipeline/                     # Build, validation, schemas, and tests
+├── provenance/                   # Source, artifact, and row-lineage records
+├── reports/                      # Data-quality, licence, and release evidence
+└── project-docs/                 # Project plan and build record
+```
 
 ## Getting started
 
@@ -24,7 +53,7 @@ To download only one model-ready table in a browser:
 1. Select its name in the [19-target inventory](#19-model-ready-targets).
 2. Open the semantic `<target-slug>-dataset.csv` file in that directory.
 3. Select **Download raw file** (the downward-arrow button at the upper right of the file view).
-4. Also download `schema.json` and `metadata.json` if you need to interpret the columns, label, units, or readiness status. Keep the ten data/provenance files and the target README together when provenance and auditability matter.
+4. Also download `schema.json` and `metadata.json` if you need to interpret the columns, label, units, or readiness status. Keep the ten data/provenance files and the target's `README.md` or `README-zh.md` together when provenance and auditability matter.
 
 To check out one complete target directory without checking out every dataset, copy the commands below and replace the final directory name with the target you want:
 
@@ -66,7 +95,7 @@ All 41 corpus packages use the same fields:
 | `row_index` | Position in the original physical dataset, **counted from zero**. |
 | `reaction_json` | Complete nested reaction content, including inputs, reagents, catalysts, solvents, conditions, products, measurements, and provenance. |
 
-Every model-ready target contains ten data/provenance files plus a target-specific `README.md`:
+Every model-ready target contains ten data/provenance files plus separate English and Chinese guides:
 
 | File | Purpose |
 |---|---|
@@ -80,7 +109,8 @@ Every model-ready target contains ten data/provenance files plus a target-specif
 | `yonod-config.json` | Modeling field roles and configuration. |
 | `target-build-provenance.json` | Inputs and transformations used to build the target. |
 | `checksums.csv` | SHA-256 and size of the data/provenance files above (the explanatory README is not part of this checksum set). |
-| `README.md` | A plain-language guide to this target's scope, label, fields, filtering, sources, status, and reaction tracing. |
+| `README.md` | English plain-language guide to this target's scope, label, fields, filtering, sources, status, and reaction tracing. |
+| `README-zh.md` | Chinese version of the same target guide. |
 
 Use `row-map.csv`, not row order or a molecule string, to recover source identity.
 
