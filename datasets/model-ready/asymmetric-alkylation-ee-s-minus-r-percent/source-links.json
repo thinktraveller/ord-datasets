@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "data_license_id": "CC-BY-SA-4.0",
+      "git_lfs_oid": "73c04ce2acaf6cf2b6b3ecda8c623d2a321435f1f5830aedb0a0f1afd562bdc4",
+      "physical_dataset_id": "ord_dataset-c5b00523487a4211a194160edf45e9ab",
+      "reaction_count": 1430,
+      "size_bytes": 179304,
+      "source_file": "data/c5/ord_dataset-c5b00523487a4211a194160edf45e9ab.parquet",
+      "source_file_url": "https://github.com/open-reaction-database/ord-data/blob/83f971f586f6ad18f358ae4ae99d045e94ed2066/data/c5/ord_dataset-c5b00523487a4211a194160edf45e9ab.parquet",
+      "source_sha256": "73c04ce2acaf6cf2b6b3ecda8c623d2a321435f1f5830aedb0a0f1afd562bdc4",
+      "upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+      "verification_status": "verified"
+    }
+  ],
+  "logical_dataset_id": "physical_c5b00523487a4211a194160edf45e9ab",
+  "schema_version": "1.0.0",
+  "source_manifest_path": "provenance/source-files.initial.csv"
+}

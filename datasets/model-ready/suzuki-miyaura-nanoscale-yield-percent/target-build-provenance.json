@@ -1,0 +1,18 @@
+{
+  "input_artifacts": {
+    "normalized_dataset": "75466f69ef7bcc53a3be76914166b91dd091c57471b62a4d69f5754f030c9f97",
+    "raw_exclusions": "76d6a5ca9f764f76c4db719a17a6bd109080b1ee74d3b6229427611585ea10d0",
+    "row_map": "175f9d5922e70418d935aa0aea4113151005cefe12a8de714023a8397c224786",
+    "standardized_schema": "b7be306c738e568aa6e1009857737bf9dcc170ac016498e86afb12229a02ff4f",
+    "target_audit": "d96060c7a5a7e8eee55a6b76dba11b5716f8f335c16bc68173aa5fc4da2f2b79",
+    "yonod_config": "6cde9da49886861767c7dd5526ec4bb61752c07bc1a4dbee955baa4262c1ebb2"
+  },
+  "logical_dataset_id": "physical_68cb8b4b2b384e3d85b5b1efae58b203",
+  "schema_version": "1.0.0",
+  "target_id": "suzuki_yield_percent",
+  "target_manifest_sha256": "6ce863cc232d5a85b0b8d32ab002ff156271a07dd384e19d40d9e9d335ab27d2",
+  "transformation": {
+    "name": "enrich-exclusions-with-label-decision-id",
+    "output_sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7"
+  }
+}

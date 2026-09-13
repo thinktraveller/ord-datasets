@@ -1,0 +1,76 @@
+{
+  "artifact_status": "staged",
+  "content_artifacts": [
+    {
+      "path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/dataset.csv",
+      "role": "dataset",
+      "sha256": "0d25125e1cf707c839b93106b8131f8a836938b8d416e37698610f5bf8ee965e",
+      "size_bytes": 331171
+    },
+    {
+      "path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/schema.json",
+      "role": "schema",
+      "sha256": "52c98e6b7842f6f49fcca84728de128dcf27863cbeed03c25bb50c606c4ac2a9",
+      "size_bytes": 1787
+    },
+    {
+      "path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/yonod-config.json",
+      "role": "yonod-config",
+      "sha256": "11008e2953693a252e362fee503f43e7c12afc3016253d79052c9ac454750b45",
+      "size_bytes": 3502
+    },
+    {
+      "path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/exclusions.csv",
+      "role": "exclusions",
+      "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+      "size_bytes": 85
+    },
+    {
+      "path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/row-map.csv",
+      "role": "row-map",
+      "sha256": "9201530efa7e16260d50fecf09f53908640de8f91d27bc66ea1f281feebb719e",
+      "size_bytes": 230573
+    },
+    {
+      "path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/audit.jsonl",
+      "role": "audit",
+      "sha256": "3f51edd588cfd439ed80b161e8e1607b25cea68faf7769f4104d6495dfa2d4c9",
+      "size_bytes": 1005156
+    },
+    {
+      "path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/checksums.csv",
+      "role": "checksums",
+      "sha256": "518b4643a2eb7377f7117e4f60a9ee18f3e206284e319812f51cf98961961070",
+      "size_bytes": 809
+    }
+  ],
+  "corpus_row_count": 2696,
+  "dataset_kind": "model-ready",
+  "dataset_slug": "cernak-reductive-amination-conversion-percent",
+  "display_name_en": "Cernak Reductive-Amination Conversion (%)",
+  "display_name_zh": "Cernak 还原胺化转化率（%）",
+  "excluded_count": 0,
+  "included_count": 1152,
+  "input_provenance": {
+    "ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+    "pipeline_commit": null,
+    "provenance_schema_version": "1.0.0",
+    "semantic_name_policy_version": "semantic-target-names-v1",
+    "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7"
+  },
+  "label": {
+    "column": "conversion_percent",
+    "policy": "unique_structured_scalar_no_aggregation",
+    "type": "conversion_percent",
+    "unit": "percent conversion"
+  },
+  "license_id": "CC-BY-SA-4.0",
+  "logical_dataset_id": "lit_10_1038_s44160_023_00351_1",
+  "physical_dataset_ids": [
+    "ord_dataset-2be11f57f3304e678ea8469baf6dd1bc"
+  ],
+  "readiness_status": "generated_pending_campaign_evaluation",
+  "schema_version": "1.0.0",
+  "source_links_path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/source-links.json",
+  "target_id": "cernak_member_2be11_conversion_percent"
+}

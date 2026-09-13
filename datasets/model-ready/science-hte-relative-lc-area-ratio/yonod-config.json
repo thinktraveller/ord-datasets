@@ -1,0 +1,137 @@
+{
+  "column_roles": {
+    "conditions": [
+      "reaction_time_s"
+    ],
+    "label": "relative_product_lc_area_ratio",
+    "others": [
+      "reagent-1",
+      "reagent-2",
+      "catalyst-1",
+      "solvent-1",
+      "solvent-2",
+      "solvent-3",
+      "solvent-4"
+    ],
+    "products": [],
+    "reactants": [
+      "reactant-1",
+      "reactant-2",
+      "reactant-3"
+    ]
+  },
+  "descriptors": [
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "reactant-3",
+        "reagent-1",
+        "reagent-2",
+        "catalyst-1",
+        "solvent-1",
+        "solvent-2",
+        "solvent-3",
+        "solvent-4"
+      ],
+      "descriptor": "morgan",
+      "mode": "concat"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "reactant-3",
+        "reagent-1",
+        "reagent-2",
+        "catalyst-1",
+        "solvent-1",
+        "solvent-2",
+        "solvent-3",
+        "solvent-4"
+      ],
+      "descriptor": "maccs",
+      "mode": "concat"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "reactant-3",
+        "reagent-1",
+        "reagent-2",
+        "catalyst-1",
+        "solvent-1",
+        "solvent-2",
+        "solvent-3",
+        "solvent-4"
+      ],
+      "descriptor": "rdkit2d",
+      "mode": "concat"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "reactant-3",
+        "reagent-1",
+        "reagent-2",
+        "catalyst-1",
+        "solvent-1",
+        "solvent-2",
+        "solvent-3",
+        "solvent-4"
+      ],
+      "descriptor": "fisd",
+      "mode": "concat"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "reactant-3",
+        "reagent-1",
+        "reagent-2",
+        "catalyst-1",
+        "solvent-1",
+        "solvent-2",
+        "solvent-3",
+        "solvent-4"
+      ],
+      "descriptor": "molmetalm",
+      "mode": "concat"
+    },
+    {
+      "columns": [
+        "reactant-1",
+        "reactant-2",
+        "reactant-3",
+        "reagent-1",
+        "reagent-2",
+        "catalyst-1",
+        "solvent-1",
+        "solvent-2",
+        "solvent-3",
+        "solvent-4"
+      ],
+      "descriptor": "maf",
+      "mode": "sum"
+    }
+  ],
+  "metadata": {
+    "doi": "10.1126/science.1259203",
+    "notes": "\u9762\u5411 Pd \u50ac\u5316\u4ea4\u53c9\u5076\u8054\u4e2d\u591a\u4eb2\u6838\u8bd5\u5242\u4f53\u7cfb\u7684\u76f8\u5bf9 LC\u2013MS \u54cd\u5e94\u5efa\u6a21\u3002\u6807\u7b7e\u4e3a\u76ee\u6807\u4ea7\u7269 AREA \u4e0e\u8054\u82ef\u5185\u6807 AREA \u7684\u6bd4\u503c\uff0c\u4e0d\u662f\u4ea7\u7387\u6216\u8f6c\u5316\u7387\uff1b\u9002\u5408\u6bd4\u8f83\u4eb2\u6838\u8bd5\u5242\u3001\u50ac\u5316\u5242\u3001\u78b1\u548c\u6eb6\u5242\u7684\u76f8\u5bf9\u54cd\u5e94\u89c4\u5f8b\u3002",
+    "repo_url": "https://github.com/open-reaction-database/ord-data/blob/main/data/7d/ord_dataset-7d8f5fd922d4497d91cb81489b052746.parquet"
+  },
+  "models": [
+    "XGBoost",
+    "Random Forest",
+    "AutoGluon"
+  ],
+  "project_name": "science_hte_diverse_nucleophile_relative_lc_area_ratio_structure_v1",
+  "report_formats": [
+    "HTML",
+    "Markdown"
+  ],
+  "version": "1.0"
+}

@@ -1,0 +1,48 @@
+{
+  "adapter_version": "wave-a-labels-v1",
+  "column_roles": {
+    "conditions": [
+      "temperature_c",
+      "reaction_time_s"
+    ],
+    "label": "yield_percent",
+    "others": [
+      "reagent-1",
+      "catalyst-1",
+      "solvent-1",
+      "solvent-2"
+    ],
+    "products": [
+      "product"
+    ],
+    "reactants": [
+      "reactant-1",
+      "reactant-2"
+    ]
+  },
+  "columns": [
+    "reactant-1",
+    "reactant-2",
+    "reagent-1",
+    "catalyst-1",
+    "solvent-1",
+    "solvent-2",
+    "product",
+    "temperature_c",
+    "reaction_time_s",
+    "yield_percent"
+  ],
+  "label_policy": "unique_structured_scalar_no_aggregation",
+  "logical_dataset_id": "physical_5c9a10329a8a48968d18879a48bb8ab2",
+  "physical_dataset_ids": [
+    "ord_dataset-5c9a10329a8a48968d18879a48bb8ab2"
+  ],
+  "project_name": "chan_lam_yield_structure_v1",
+  "target_adapter": "unique_desired_product",
+  "target_id": "chan_lam_yield_percent",
+  "target_metadata": {
+    "doi": "10.26434/chemrxiv-2024-22jrq",
+    "notes": "\u9762\u5411\u4f2f\u78fa\u9170\u80fa\u4e0e\u787c\u9178\u7684 Chan\u2013Lam \u5076\u8054\u4ea7\u7387\u5efa\u6a21\u3002\u4f53\u7cfb\u8986\u76d6\u591a\u79cd\u78fa\u9170\u80fa\u3001\u787c\u9178\u3001\u94dc\u50ac\u5316\u5242\u3001\u78b1\u4e0e\u6eb6\u5242\uff0c\u5e76\u542b\u91cd\u590d\u5b9e\u9a8c\uff1b\u9002\u5408\u5206\u6790\u5e95\u7269\u517c\u5bb9\u6027\u548c\u6761\u4ef6\u7a33\u5065\u6027\u3002",
+    "repo_url": "https://github.com/open-reaction-database/ord-data/blob/main/data/5c/ord_dataset-5c9a10329a8a48968d18879a48bb8ab2.parquet"
+  }
+}

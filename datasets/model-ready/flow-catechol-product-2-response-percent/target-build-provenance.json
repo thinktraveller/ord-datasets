@@ -1,0 +1,18 @@
+{
+  "input_artifacts": {
+    "normalized_dataset": "d1a09d05fb70c93c221438761893f5f71f6390f94c49bef3973a42bcd9308c84",
+    "raw_exclusions": "76d6a5ca9f764f76c4db719a17a6bd109080b1ee74d3b6229427611585ea10d0",
+    "row_map": "16d61d8f56d8278be07a447031f8700ec6c5a2c02764c2f0191d86d3a76dc71f",
+    "standardized_schema": "58b5c8b23c33aa98fde3f26de8246df457cf8d45fa4bb1afe2536ca7079dc848",
+    "target_audit": "96f627cda36b99f17be7e4bd8b17177661c84e6f0cd75fcf9d62f09f1f096388",
+    "yonod_config": "c33097b32043c29bbd788b6323e6732b06d1ae232146d2fb8d79f40016be3e14"
+  },
+  "logical_dataset_id": "physical_1ec2807f02fa4beda27d2a81b86eb843",
+  "schema_version": "1.0.0",
+  "target_id": "catechol_product_2_yield_percent",
+  "target_manifest_sha256": "c11fbe2ee8a47a53e2ceb716a9c3fadbd8d728c11e39e635ea03a85f4c423885",
+  "transformation": {
+    "name": "enrich-exclusions-with-label-decision-id",
+    "output_sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7"
+  }
+}

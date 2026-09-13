@@ -1,0 +1,18 @@
+{
+  "input_artifacts": {
+    "normalized_dataset": "acc5860363baddd0fc24e87bb66e37d550b4cb8e1accf301f5f2aadb6d25758d",
+    "raw_exclusions": "76d6a5ca9f764f76c4db719a17a6bd109080b1ee74d3b6229427611585ea10d0",
+    "row_map": "e9105d86594a9816be25a1f5fc5b0ea5c8ca4fad28fcec7a77f70c5dbe4b7c0e",
+    "standardized_schema": "03e62e5bee4e77e337451f7d6346d3bf6296039d9ec2dfa8967136f772dcf2fa",
+    "target_audit": "fce81ca14d751160006f0334d7403a909dbdd2b091535d03bb5d1fbd7aea06f0",
+    "yonod_config": "4cc3205a96a6f4dcc9fd6c4cae8dc8154787fdf4453eb68ffe6d88eeaf18488c"
+  },
+  "logical_dataset_id": "physical_d92976309c3a48a3a64a4cf5e7048086",
+  "schema_version": "1.0.0",
+  "target_id": "pfizer_lcms_area_percent",
+  "target_manifest_sha256": "01f0731a3adda3f3031834a4cdf27891acdeb6f660ddd310b250e7f3fac05900",
+  "transformation": {
+    "name": "enrich-exclusions-with-label-decision-id",
+    "output_sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7"
+  }
+}
