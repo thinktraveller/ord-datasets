@@ -1,0 +1,77 @@
+{
+  "artifact_status": "staged",
+  "content_artifacts": [
+    {
+      "path": "datasets/model-ready/shields-arylation-yield-percent/dataset.csv",
+      "role": "dataset",
+      "sha256": "35e1698ae9f8e57ea96ca351008f78770c7cba8343db0c68ac2bd44e1362e61d",
+      "size_bytes": 379410
+    },
+    {
+      "path": "datasets/model-ready/shields-arylation-yield-percent/schema.json",
+      "role": "schema",
+      "sha256": "01b7f6266eeae778f5e29e3eeef468cb67b7f8718d0ad72552cbf4f630a1ef52",
+      "size_bytes": 1732
+    },
+    {
+      "path": "datasets/model-ready/shields-arylation-yield-percent/yonod-config.json",
+      "role": "yonod-config",
+      "sha256": "9333501cc95a89e2594eabe61a444f5e7ae132ef9336104c0baa8d688f7dc5a4",
+      "size_bytes": 3045
+    },
+    {
+      "path": "datasets/model-ready/shields-arylation-yield-percent/exclusions.csv",
+      "role": "exclusions",
+      "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+      "size_bytes": 85
+    },
+    {
+      "path": "datasets/model-ready/shields-arylation-yield-percent/row-map.csv",
+      "role": "row-map",
+      "sha256": "50f04d02cfaa44edb71cbbd10d937ef3e37bc7efe4bbcaf7312a2315181a69be",
+      "size_bytes": 398271
+    },
+    {
+      "path": "datasets/model-ready/shields-arylation-yield-percent/audit.jsonl",
+      "role": "audit",
+      "sha256": "bd3678420148dd4f9b41942364cb825ca54f5d8895079d3f3610c52147a041dd",
+      "size_bytes": 2035320
+    },
+    {
+      "path": "datasets/model-ready/shields-arylation-yield-percent/checksums.csv",
+      "role": "checksums",
+      "sha256": "3ecbde25762896c33993ea6719246dc635c7121eb31115aeb2bad0a637c6ebb4",
+      "size_bytes": 810
+    }
+  ],
+  "corpus_row_count": 1984,
+  "dataset_kind": "model-ready",
+  "dataset_slug": "shields-arylation-yield-percent",
+  "display_name_en": "Shields Arylation Yield (%)",
+  "display_name_zh": "Shields 芳基化产率（%）",
+  "excluded_count": 0,
+  "included_count": 1984,
+  "input_provenance": {
+    "ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+    "pipeline_commit": null,
+    "provenance_schema_version": "1.0.0",
+    "semantic_name_policy_version": "semantic-target-names-v1",
+    "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7"
+  },
+  "label": {
+    "column": "yield_percent",
+    "policy": "unique_structured_scalar_no_aggregation",
+    "type": "reaction_yield_percent",
+    "unit": "percent yield as defined by the source measurement"
+  },
+  "license_id": "CC-BY-SA-4.0",
+  "logical_dataset_id": "lit_10_1038_s41586_021_03213_y",
+  "physical_dataset_ids": [
+    "ord_dataset-0c75d67751634f0594b24b9f498b77c2",
+    "ord_dataset-d26118acda314269becc35db5c22dc59"
+  ],
+  "readiness_status": "active_generated_pending_release_validation",
+  "schema_version": "1.0.0",
+  "source_links_path": "datasets/model-ready/shields-arylation-yield-percent/source-links.json",
+  "target_id": "shields_yield_percent"
+}

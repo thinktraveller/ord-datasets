@@ -1,0 +1,76 @@
+{
+  "artifact_status": "staged",
+  "content_artifacts": [
+    {
+      "path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/dataset.csv",
+      "role": "dataset",
+      "sha256": "ba845e82bb3701469aadf172a7457c64354b1e7d6f8e2ab1aad2b96c2445a012",
+      "size_bytes": 12155576
+    },
+    {
+      "path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/schema.json",
+      "role": "schema",
+      "sha256": "dc0849c815516496dea3cbb3f3c357199e6b116a05e4266aa1d75e800110fbc0",
+      "size_bytes": 1897
+    },
+    {
+      "path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/yonod-config.json",
+      "role": "yonod-config",
+      "sha256": "fb3981a8de911ff01b8cbac32088fe3bd3d56228d3f4792317866ba494caa7ea",
+      "size_bytes": 4416
+    },
+    {
+      "path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/exclusions.csv",
+      "role": "exclusions",
+      "sha256": "6aa89bbef99173f5b3b1297227ee2235236900613813655265771dbf3ce4fd33",
+      "size_bytes": 3145
+    },
+    {
+      "path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/row-map.csv",
+      "role": "row-map",
+      "sha256": "13fac23db2bd8b4c6ab4093a7ef70afe80c08aa0ea9c197ccf6b039db55ab0fe",
+      "size_bytes": 10314143
+    },
+    {
+      "path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/audit.jsonl",
+      "role": "audit",
+      "sha256": "3c3f98eb4f86f6ad7a419fd45582815af45bb6f29f3942f70018557d46820975",
+      "size_bytes": 49015889
+    },
+    {
+      "path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/checksums.csv",
+      "role": "checksums",
+      "sha256": "36a2cb205fdbe48a8303ed2a798b377252a5e75c1450a421b7cf783fe70611d4",
+      "size_bytes": 816
+    }
+  ],
+  "corpus_row_count": 50688,
+  "dataset_kind": "model-ready",
+  "dataset_slug": "cernak-ultra-hte-c-n-yield-percent",
+  "display_name_en": "Cernak Ultra-HTE C-N Yield (%)",
+  "display_name_zh": "Cernak 超高通量 C-N 产率（%）",
+  "excluded_count": 20,
+  "included_count": 50668,
+  "input_provenance": {
+    "ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+    "pipeline_commit": null,
+    "provenance_schema_version": "1.0.0",
+    "semantic_name_policy_version": "semantic-target-names-v1",
+    "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7"
+  },
+  "label": {
+    "column": "yield_percent",
+    "policy": "unique_structured_scalar_no_aggregation",
+    "type": "reaction_yield_percent",
+    "unit": "percent yield as defined by the source measurement"
+  },
+  "license_id": "CC-BY-SA-4.0",
+  "logical_dataset_id": "physical_805ad863feef48579d95d86a728035f4",
+  "physical_dataset_ids": [
+    "ord_dataset-805ad863feef48579d95d86a728035f4"
+  ],
+  "readiness_status": "generated_pending_campaign_evaluation",
+  "schema_version": "1.0.0",
+  "source_links_path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/source-links.json",
+  "target_id": "c_n_yield_percent"
+}

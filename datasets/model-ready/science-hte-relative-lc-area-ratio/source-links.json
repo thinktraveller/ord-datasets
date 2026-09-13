@@ -1,0 +1,19 @@
+{
+  "links": [
+    {
+      "data_license_id": "CC-BY-SA-4.0",
+      "git_lfs_oid": "3d657d1eda5703b58b627565894890269b50b18e987709e70fd7968d83e59101",
+      "physical_dataset_id": "ord_dataset-7d8f5fd922d4497d91cb81489b052746",
+      "reaction_count": 1536,
+      "size_bytes": 194483,
+      "source_file": "data/7d/ord_dataset-7d8f5fd922d4497d91cb81489b052746.parquet",
+      "source_file_url": "https://github.com/open-reaction-database/ord-data/blob/83f971f586f6ad18f358ae4ae99d045e94ed2066/data/7d/ord_dataset-7d8f5fd922d4497d91cb81489b052746.parquet",
+      "source_sha256": "3d657d1eda5703b58b627565894890269b50b18e987709e70fd7968d83e59101",
+      "upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+      "verification_status": "verified"
+    }
+  ],
+  "logical_dataset_id": "lit_10_1126_science_1259203",
+  "schema_version": "1.0.0",
+  "source_manifest_path": "provenance/source-files.initial.csv"
+}

@@ -1,0 +1,76 @@
+{
+  "artifact_status": "staged",
+  "content_artifacts": [
+    {
+      "path": "datasets/model-ready/flow-catechol-total-product-response-percent/dataset.csv",
+      "role": "dataset",
+      "sha256": "9067b4cdce62de221a83ff15b095aadd6e110c4d143458917c7d6362bdbde397",
+      "size_bytes": 219467
+    },
+    {
+      "path": "datasets/model-ready/flow-catechol-total-product-response-percent/schema.json",
+      "role": "schema",
+      "sha256": "9a660083ccee989ff7c280505e72725aa5d03964090c70d6f31dba9f5e0a4bdc",
+      "size_bytes": 1879
+    },
+    {
+      "path": "datasets/model-ready/flow-catechol-total-product-response-percent/yonod-config.json",
+      "role": "yonod-config",
+      "sha256": "aed9fd8b42827c3deee20fb6a6ed8feec6bd3e8d55cdc89bf962b39c74c6bc68",
+      "size_bytes": 2293
+    },
+    {
+      "path": "datasets/model-ready/flow-catechol-total-product-response-percent/exclusions.csv",
+      "role": "exclusions",
+      "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+      "size_bytes": 85
+    },
+    {
+      "path": "datasets/model-ready/flow-catechol-total-product-response-percent/row-map.csv",
+      "role": "row-map",
+      "sha256": "40d9792859650c359c8306eab46ca5feee06fe0cb97509e5b043c3421660871b",
+      "size_bytes": 245723
+    },
+    {
+      "path": "datasets/model-ready/flow-catechol-total-product-response-percent/audit.jsonl",
+      "role": "audit",
+      "sha256": "41947a72dd087cb585a9268ee7f491e258fba6c869fd96fb812d4ab7608ecc58",
+      "size_bytes": 3415361
+    },
+    {
+      "path": "datasets/model-ready/flow-catechol-total-product-response-percent/checksums.csv",
+      "role": "checksums",
+      "sha256": "6458f62b5e532ca76616f2474b42b361d673e6b0a18e04b7120e2d3e475b5584",
+      "size_bytes": 809
+    }
+  ],
+  "corpus_row_count": 1227,
+  "dataset_kind": "model-ready",
+  "dataset_slug": "flow-catechol-total-product-response-percent",
+  "display_name_en": "Flow Catechol Total-Product HPLC Response (%)",
+  "display_name_zh": "连续流儿茶酚总产物 HPLC 响应（%）",
+  "excluded_count": 0,
+  "included_count": 1227,
+  "input_provenance": {
+    "ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+    "pipeline_commit": null,
+    "provenance_schema_version": "1.0.0",
+    "semantic_name_policy_version": "semantic-target-names-v1",
+    "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7"
+  },
+  "label": {
+    "column": "total_product_yield_percent",
+    "policy": "catechol_multitarget_v1:smiles_custom_name_hplc_yield",
+    "type": "hplc_response_percent",
+    "unit": "HPLC percentage response; not isolated yield"
+  },
+  "license_id": "CC-BY-SA-4.0",
+  "logical_dataset_id": "physical_1ec2807f02fa4beda27d2a81b86eb843",
+  "physical_dataset_ids": [
+    "ord_dataset-1ec2807f02fa4beda27d2a81b86eb843"
+  ],
+  "readiness_status": "research_only_benchmark_blocked",
+  "schema_version": "1.0.0",
+  "source_links_path": "datasets/model-ready/flow-catechol-total-product-response-percent/source-links.json",
+  "target_id": "catechol_total_product_yield_percent"
+}

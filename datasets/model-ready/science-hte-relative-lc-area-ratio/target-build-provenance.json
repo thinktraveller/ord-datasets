@@ -1,0 +1,18 @@
+{
+  "input_artifacts": {
+    "normalized_dataset": "2d1bfd835869c7263d37d035131981fb4042f9c93671640ea983deb5f417e163",
+    "raw_exclusions": "47c82da6b11c70fbb0ce1b73fcf69ebe8fbf34ff10b97127ff154ef926c70741",
+    "row_map": "5863de3a012bf0587a435d0487d58f59c50434c1ff45c38cea6ea6d9aedb7a07",
+    "standardized_schema": "dfd7876422cde7d9278c54b9a537d36e8007a5853c769445e4cbf7acb99f6365",
+    "target_audit": "20d3cd578b86e0b125ccbe0e3ea3782dd2050c0a48fd2709c2aaa1d4ac6228fe",
+    "yonod_config": "e7e2fb5e49d114e192498f4b7b038385f6be3cebce601e5a3a730f0c155bfe21"
+  },
+  "logical_dataset_id": "lit_10_1126_science_1259203",
+  "schema_version": "1.0.0",
+  "target_id": "science_hte_diverse_nucleophile_relative_lc_area_ratio",
+  "target_manifest_sha256": "afa527691c27adb966173e98bb33352640758898344e93361efdb6abf62ab1ea",
+  "transformation": {
+    "name": "enrich-exclusions-with-label-decision-id",
+    "output_sha256": "1cbc613a6828a169615d29e6f979431f4a44e2f27b3d3d443be0612a223d3893"
+  }
+}

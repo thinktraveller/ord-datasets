@@ -1,0 +1,18 @@
+{
+  "input_artifacts": {
+    "normalized_dataset": "df6c85864b54120438f2fa0163bb5da00d7cc80ca1082499640b4b1bcae96ca9",
+    "raw_exclusions": "387b7fd0074cab67e339a9f755b1bc2bc4fc4ddd9fd342b36f55b8618746df53",
+    "row_map": "dce561fb9a6e632f141ea638e7a078466c8971d6480104b6719be30d6f7a7dfd",
+    "standardized_schema": "9ea36bd8af548d3089666092af5a8eedd1cdddedc917ea3b0a3cb65712591372",
+    "target_audit": "33c223ede6e04718cb342d266fbbb594f95846e2015d35d7847713505204901a",
+    "yonod_config": "122d56918e8a3860692736370509031262ad5bee553e2a81433b4b597649b2d6"
+  },
+  "logical_dataset_id": "lit_10_1038_s44160_023_00351_1",
+  "schema_version": "1.0.0",
+  "target_id": "cernak_member_3b8a2e_conversion_percent",
+  "target_manifest_sha256": "68c44428df64f1f617c78f1ff128f0b7fd61441d6736013e6eddabf1706c1040",
+  "transformation": {
+    "name": "enrich-exclusions-with-label-decision-id",
+    "output_sha256": "5ae11eca84432d9f83fff0aa5599c132241312bb3f0ee6b3044ada48b6ee28ba"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "adapter_version": "catechol-multitarget-v1",
+  "column_roles": {
+    "conditions": [
+      "solvent_b_fraction",
+      "temperature_c",
+      "residence_time_s",
+      "residence_time_min"
+    ],
+    "label": "product_3_yield_percent",
+    "others": [
+      "solvent_a_smiles",
+      "solvent_b_smiles"
+    ],
+    "products": [],
+    "reactants": [
+      "reactant_smiles"
+    ]
+  },
+  "columns": [
+    "reactant_smiles",
+    "solvent_a_smiles",
+    "solvent_b_smiles",
+    "solvent_b_fraction",
+    "temperature_c",
+    "residence_time_s",
+    "residence_time_min",
+    "starting_material_recovery_percent_raw",
+    "product_sum_yield_percent_raw",
+    "mass_balance_sum_percent",
+    "starting_material_gt_100",
+    "mass_balance_gt_100",
+    "pressure_kpa_raw",
+    "product_3_yield_percent"
+  ],
+  "label_policy": "catechol_multitarget_v1:smiles_custom_name_hplc_yield",
+  "logical_dataset_id": "physical_1ec2807f02fa4beda27d2a81b86eb843",
+  "physical_dataset_ids": [
+    "ord_dataset-1ec2807f02fa4beda27d2a81b86eb843"
+  ],
+  "project_name": "catechol_product_3_research_full_v1",
+  "target_adapter": "catechol_multitarget_v1",
+  "target_id": "catechol_product_3_yield_percent",
+  "target_metadata": {
+    "doi": "10.48550/arXiv.2506.07619",
+    "notes": "\u7814\u7a76\u578b target\uff1a\u9762\u5411\u77ac\u6001\u6d41\u52a8\u53cd\u5e94\u4e2d Product 3 \u7684 HPLC \u767e\u5206\u6bd4\u54cd\u5e94\u5efa\u6a21\u3002\u7279\u5f81\u5305\u62ec\u5e95\u7269\u3001\u4e8c\u5143\u6eb6\u5242\u914d\u6bd4\u3001\u6e29\u5ea6\u548c\u505c\u7559\u65f6\u95f4\uff1b\u5f53\u524d\u7f3a\u5c11\u53ef\u9760\u7684\u8fd0\u884c\u5206\u7ec4\u754c\u5b9a\uff0c\u56e0\u6b64\u4e0d\u7eb3\u5165\u6279\u91cf\u5efa\u6a21\u3002",
+    "repo_url": "https://github.com/open-reaction-database/ord-data/blob/main/data/1e/ord_dataset-1ec2807f02fa4beda27d2a81b86eb843.parquet"
+  }
+}

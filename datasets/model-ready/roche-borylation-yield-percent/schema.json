@@ -1,0 +1,56 @@
+{
+  "adapter_version": "wave-a-labels-v1",
+  "column_roles": {
+    "conditions": [
+      "temperature_c",
+      "reaction_time_s"
+    ],
+    "label": "yield_percent",
+    "others": [
+      "reagent-1",
+      "reagent-2",
+      "reagent-3",
+      "reagent-4",
+      "reagent-5",
+      "catalyst-1",
+      "catalyst-2",
+      "solvent-1",
+      "solvent-2"
+    ],
+    "products": [
+      "product"
+    ],
+    "reactants": [
+      "reactant-1"
+    ]
+  },
+  "columns": [
+    "reactant-1",
+    "reagent-1",
+    "reagent-2",
+    "reagent-3",
+    "reagent-4",
+    "reagent-5",
+    "catalyst-1",
+    "catalyst-2",
+    "solvent-1",
+    "solvent-2",
+    "product",
+    "temperature_c",
+    "reaction_time_s",
+    "yield_percent"
+  ],
+  "label_policy": "unique_structured_scalar_no_aggregation",
+  "logical_dataset_id": "physical_99c23cf435dc42f1af884053bc8b11c7",
+  "physical_dataset_ids": [
+    "ord_dataset-99c23cf435dc42f1af884053bc8b11c7"
+  ],
+  "project_name": "roche_borylation_yield_structure_v1",
+  "target_adapter": "unique_desired_product",
+  "target_id": "roche_borylation_yield_percent",
+  "target_metadata": {
+    "doi": "10.26434/chemrxiv-2023-nfq7h",
+    "notes": "\u9762\u5411\u6709\u673a\u787c\u5316\u53cd\u5e94\u7684\u767e\u5206\u6bd4\u4ea7\u7387\u5efa\u6a21\u3002\u53cd\u5e94\u8bb0\u5f55\u5177\u6709\u7ed3\u6784\u5316\u53cd\u5e94\u7ec4\u6210\uff0c\u5305\u542b\u53cd\u5e94\u7269\u3001\u8bd5\u5242\u3001\u50ac\u5316\u5242\u548c\u6eb6\u5242\u7b49\u591a\u7c7b\u7ec4\u5206\uff1b\u9002\u5408\u63a2\u7d22\u4e0d\u540c\u5b98\u80fd\u56e2\u548c\u6761\u4ef6\u7ec4\u5408\u5bf9\u787c\u5316\u7ed3\u679c\u7684\u5f71\u54cd\u3002",
+    "repo_url": "https://github.com/open-reaction-database/ord-data/blob/main/data/99/ord_dataset-99c23cf435dc42f1af884053bc8b11c7.parquet"
+  }
+}

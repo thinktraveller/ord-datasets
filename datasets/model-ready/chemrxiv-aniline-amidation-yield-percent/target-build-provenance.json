@@ -1,0 +1,18 @@
+{
+  "input_artifacts": {
+    "normalized_dataset": "90c762cff7defe31e7e45d35406df595d094186a0b35b05b0f799cfe66411f72",
+    "raw_exclusions": "61c1884b0708f4b42f5365461141415e4d0f5158108f8d6a89f9bb7c0b7f649c",
+    "row_map": "be63107c0184d74c9f9a7ce94a96c4c7aafa3ee21e3ec37c9f73a10e6343a38b",
+    "standardized_schema": "3df9ea65934570a4012966c9eb5bca742ea943bbcdf9fdc743e6b6e306b5af9e",
+    "target_audit": "57db77438a16ba93c2d71c026c82d35eff6e843221a071b3e7731b442a7fc04b",
+    "yonod_config": "6db195daa13f29476cd44ae176ed1a27bfb5d2fd6a1bb43d0d4257b4f6af967b"
+  },
+  "logical_dataset_id": "upstream_chemrxiv_64c7e2e1658ec5f7e5808425",
+  "schema_version": "1.0.0",
+  "target_id": "chemrxiv_amide_yield_percent",
+  "target_manifest_sha256": "4c818d25beb24fed2b3f8d5b49f04b081b9066c03ca36a28cd3a49d51ef234c7",
+  "transformation": {
+    "name": "enrich-exclusions-with-label-decision-id",
+    "output_sha256": "2cf41e5f67c8f2932bd6acc9c33170f90a492213d26117ef9acb515c2e72528d"
+  }
+}

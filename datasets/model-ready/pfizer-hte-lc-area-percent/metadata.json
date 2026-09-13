@@ -1,0 +1,76 @@
+{
+  "artifact_status": "staged",
+  "content_artifacts": [
+    {
+      "path": "datasets/model-ready/pfizer-hte-lc-area-percent/dataset.csv",
+      "role": "dataset",
+      "sha256": "acc5860363baddd0fc24e87bb66e37d550b4cb8e1accf301f5f2aadb6d25758d",
+      "size_bytes": 7026314
+    },
+    {
+      "path": "datasets/model-ready/pfizer-hte-lc-area-percent/schema.json",
+      "role": "schema",
+      "sha256": "03e62e5bee4e77e337451f7d6346d3bf6296039d9ec2dfa8967136f772dcf2fa",
+      "size_bytes": 1679
+    },
+    {
+      "path": "datasets/model-ready/pfizer-hte-lc-area-percent/yonod-config.json",
+      "role": "yonod-config",
+      "sha256": "4cc3205a96a6f4dcc9fd6c4cae8dc8154787fdf4453eb68ffe6d88eeaf18488c",
+      "size_bytes": 3854
+    },
+    {
+      "path": "datasets/model-ready/pfizer-hte-lc-area-percent/exclusions.csv",
+      "role": "exclusions",
+      "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
+      "size_bytes": 85
+    },
+    {
+      "path": "datasets/model-ready/pfizer-hte-lc-area-percent/row-map.csv",
+      "role": "row-map",
+      "sha256": "e9105d86594a9816be25a1f5fc5b0ea5c8ca4fad28fcec7a77f70c5dbe4b7c0e",
+      "size_bytes": 8004659
+    },
+    {
+      "path": "datasets/model-ready/pfizer-hte-lc-area-percent/audit.jsonl",
+      "role": "audit",
+      "sha256": "fce81ca14d751160006f0334d7403a909dbdd2b091535d03bb5d1fbd7aea06f0",
+      "size_bytes": 54055777
+    },
+    {
+      "path": "datasets/model-ready/pfizer-hte-lc-area-percent/checksums.csv",
+      "role": "checksums",
+      "sha256": "6cd4213495c63229e9595b89a5b8a966f426aab40e3823d01a34d64002ad5b23",
+      "size_bytes": 812
+    }
+  ],
+  "corpus_row_count": 39347,
+  "dataset_kind": "model-ready",
+  "dataset_slug": "pfizer-hte-lc-area-percent",
+  "display_name_en": "Pfizer HTE LC Area (%)",
+  "display_name_zh": "辉瑞高通量 LC 面积（%）",
+  "excluded_count": 0,
+  "included_count": 39347,
+  "input_provenance": {
+    "ord_upstream_revision": "83f971f586f6ad18f358ae4ae99d045e94ed2066",
+    "pipeline_commit": null,
+    "provenance_schema_version": "1.0.0",
+    "semantic_name_policy_version": "semantic-target-names-v1",
+    "source_manifest_sha256": "2daa4f0737333cec1a699f3c2f4b977d19db67aa06a0ef95749ec846e0ac72f7"
+  },
+  "label": {
+    "column": "lc_area_percent",
+    "policy": "unique_structured_scalar_no_aggregation",
+    "type": "lc_uv_area_percent",
+    "unit": "LC/UV area percent; not isolated yield or conversion"
+  },
+  "license_id": "CC-BY-SA-4.0",
+  "logical_dataset_id": "physical_d92976309c3a48a3a64a4cf5e7048086",
+  "physical_dataset_ids": [
+    "ord_dataset-d92976309c3a48a3a64a4cf5e7048086"
+  ],
+  "readiness_status": "generated_pending_campaign_evaluation",
+  "schema_version": "1.0.0",
+  "source_links_path": "datasets/model-ready/pfizer-hte-lc-area-percent/source-links.json",
+  "target_id": "pfizer_lcms_area_percent"
+}

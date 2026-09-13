@@ -1,0 +1,58 @@
+{
+  "adapter_version": "wave-a-labels-v1",
+  "column_roles": {
+    "conditions": [
+      "temperature_c",
+      "reaction_time_s",
+      "reflux_value",
+      "conditions_are_dynamic_value"
+    ],
+    "label": "yield_percent",
+    "others": [
+      "reagent-1",
+      "reagent-2",
+      "catalyst-1",
+      "catalyst-2",
+      "solvent-1",
+      "solvent-2",
+      "solvent-3"
+    ],
+    "products": [
+      "product"
+    ],
+    "reactants": [
+      "reactant-1",
+      "reactant-2"
+    ]
+  },
+  "columns": [
+    "reactant-1",
+    "reactant-2",
+    "reagent-1",
+    "reagent-2",
+    "catalyst-1",
+    "catalyst-2",
+    "solvent-1",
+    "solvent-2",
+    "solvent-3",
+    "product",
+    "temperature_c",
+    "reaction_time_s",
+    "reflux_value",
+    "conditions_are_dynamic_value",
+    "yield_percent"
+  ],
+  "label_policy": "unique_structured_scalar_no_aggregation",
+  "logical_dataset_id": "upstream_chemrxiv_64c7e2e1658ec5f7e5808425",
+  "physical_dataset_ids": [
+    "ord_dataset-675eddcaa6674ce3ae61e79bbc1e1c08"
+  ],
+  "project_name": "chemrxiv_ch_arylation_yield_structure_v1",
+  "target_adapter": "generic",
+  "target_id": "chemrxiv_ch_arylation_yield_percent",
+  "target_metadata": {
+    "doi": "10.1038/s41586-024-07021-y",
+    "notes": "\u9762\u5411\u54aa\u5511 C5\u2013H \u4e0e\u82b3\u57fa\u6eb4\u5316\u7269\u7684 Pd \u50ac\u5316 C\u2013H \u82b3\u57fa\u5316\u4ea7\u7387\u5efa\u6a21\u3002\u91cd\u70b9\u53d8\u91cf\u4e3a\u5e95\u7269\u7ec4\u5408\u3001\u5355\u81a6\u914d\u4f53\u548c\u53cd\u5e94\u6761\u4ef6\uff0c\u9002\u5408\u8bc4\u4f30\u540c\u4e00\u6761\u4ef6\u5728\u4e0d\u540c\u5e95\u7269\u4e0a\u7684\u901a\u7528\u6027\u4e0e\u8fc1\u79fb\u80fd\u529b\u3002",
+    "repo_url": "https://github.com/open-reaction-database/ord-data/blob/main/data/67/ord_dataset-675eddcaa6674ce3ae61e79bbc1e1c08.parquet"
+  }
+}
