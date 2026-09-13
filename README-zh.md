@@ -9,7 +9,7 @@
 | **完整语料** `v0.2.0-corpus-preview-1` | 查阅完整 ORD 反应 JSON、重新提取字段、逐条溯源 | 41 个语料包；53 个固定 ORD 源；2,428,291 条反应；12.23 GiB | [Hugging Face 固定标签](https://huggingface.co/datasets/thinktraveller/ord-processed-reaction-corpus/tree/v0.2.0-corpus-preview-1)，commit `260cde0feb414c75b2bf971d6f3a4dbbee7b2e95` |
 | **模型就绪** `v0.1.0-model-ready-preview-1` | 直接分析产率、转化率、LC 响应或 ee | 15 个来源包中的 19 个目标；纳入 128,712 条、排除 499 条；所有 `*-dataset.csv` 共 26.6 MiB，整包 201.2 MiB | [在 `main` 中逐个浏览](https://github.com/thinktraveller/ord-datasets/tree/main/datasets/model-ready)；[不可变发布版本](https://github.com/thinktraveller/ord-datasets/releases/tag/v0.1.0-model-ready-preview-1)，commit `7d52dd27071c5625008a14737a1a8e1252ae6217` |
 
-> **两种入口，主表内容相同：** `main` 分支的 `datasets/model-ready/` 保留了与发布版本逐字节相同的主数据表，但改用语义化的 `*-dataset.csv` 文件名，并为每个目标加入 README，方便逐个浏览和下载；若需要旧式目录布局的固定版本，请引用不可变发布版本。体积大得多的完整语料仍放在 Hugging Face，不复制到 `main`。
+> **两种入口，主表内容相同：** `main` 分支的 `datasets/model-ready/` 保留了与发布版本逐字节相同的主数据表，但改用语义化的 `*-dataset.csv` 文件名，并为每个目标加入分开的英文和中文说明，方便逐个浏览和下载；若需要旧式目录布局的固定版本，请引用不可变发布版本。体积大得多的完整语料仍放在 Hugging Face，不复制到 `main`。
 
 ## 仓库目录结构
 
@@ -22,7 +22,8 @@ ord-datasets/
 │   ├── corpus/                   # 完整语料目录；实际载荷位于 Hugging Face
 │   └── model-ready/              # 19 个可单独下载的建模目标
 │       └── <target-slug>/
-│           ├── README.md         # 该目标的中英文说明
+│           ├── README.md         # 该目标的英文说明
+│           ├── README-zh.md      # 该目标的中文说明
 │           ├── <target-slug>-dataset.csv
 │           ├── schema.json       # 字段与标签定义
 │           ├── row-map.csv       # 行级 ORD 溯源映射
@@ -52,7 +53,7 @@ ord-datasets/
 1. 在下方 [19 个模型就绪目标表](#19-个模型就绪目标)中点击所需的数据集名称。
 2. 在打开的目录中点击以 `<target-slug>-dataset.csv` 结尾的主数据文件。
 3. 点击文件页面右上角的 **Download raw file**（向下箭头）按钮，将文件保存到电脑。
-4. 建议同时下载 `schema.json` 和 `metadata.json`，它们分别说明字段、标签、单位和就绪状态；如果研究需要完整溯源和审计，请保留全部 10 个数据/溯源文件及该目标的 README。
+4. 建议同时下载 `schema.json` 和 `metadata.json`，它们分别说明字段、标签、单位和就绪状态；如果研究需要完整溯源和审计，请保留全部 10 个数据/溯源文件及该目标的 `README.md`（英文）或 `README-zh.md`（中文）。
 
 如果会使用命令行，可以只检出一个完整的数据集目录，不把另外 18 个数据集写入工作目录。复制下面三行，并把最后一个目录名替换成所需目标：
 
@@ -94,7 +95,7 @@ git clone --depth 1 --branch v0.2.0-corpus-preview-1 https://huggingface.co/data
 | `row_index` | 反应在原始物理数据集中的位置；**从 0 开始计数**。 |
 | `reaction_json` | 完整反应内容，包括反应物、试剂、催化剂、溶剂、条件、产物、测量和来源等嵌套字段。 |
 
-每个模型就绪目标有 10 个数据/溯源文件，另有一份针对该目标的 `README.md`：
+每个模型就绪目标有 10 个数据/溯源文件，另有分开的英文和中文说明：
 
 | 文件 | 化学用户通常用它做什么 |
 |---|---|
@@ -108,7 +109,8 @@ git clone --depth 1 --branch v0.2.0-corpus-preview-1 https://huggingface.co/data
 | `yonod-config.json` | 建模字段角色与配置。 |
 | `target-build-provenance.json` | 本目标由哪些输入和转换生成。 |
 | `checksums.csv` | 上述数据/溯源文件的 SHA-256 与大小（说明性 README 不在此校验集合中）。 |
-| `README.md` | 用通俗语言说明该目标的范围、标签、字段、筛选、来源、状态和溯源方法。 |
+| `README.md` | 用英文通俗说明该目标的范围、标签、字段、筛选、来源、状态和溯源方法。 |
+| `README-zh.md` | 上述目标说明的中文版本。 |
 
 ### 数据经过了哪些筛选？
 

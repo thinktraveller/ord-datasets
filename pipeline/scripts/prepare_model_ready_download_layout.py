@@ -4,8 +4,9 @@
 The immutable ``v0.1.0-model-ready-preview-1`` release keeps its original
 ``dataset.csv`` layout.  This script prepares the separately maintained
 ``main/datasets/model-ready`` download layout: the main table in each target
-directory is named ``<target-slug>-dataset.csv`` and a concise, bilingual
-README explains how to use and trace that target.
+directory is named ``<target-slug>-dataset.csv``.  Separate English
+``README.md`` and Chinese ``README-zh.md`` files explain how to use and trace
+that target.
 
 The CSV bytes themselves are not changed.  The script updates the target-local
 checksum and metadata records whose paths refer to the renamed file.  The
@@ -102,6 +103,13 @@ def write_csv(path: Path, rows: list[dict[str, str]]) -> None:
     os.replace(temporary, path)
 
 
+def write_text(path: Path, value: str) -> None:
+    """Atomically write generated explanatory documentation."""
+    temporary = path.with_name(f".{path.name}.tmp")
+    temporary.write_text(value, encoding="utf-8")
+    os.replace(temporary, path)
+
+
 def markdown_list_zh(values: list[str]) -> str:
     return "、".join(f"`{value}`" for value in values) if values else "无"
 
@@ -136,45 +144,33 @@ def format_exclusions(path: Path, language: str) -> str:
     return "；".join(f"`{reason}`：{count} 条" for reason, count in sorted(counts.items()))
 
 
-def render_readme(directory: Path, metadata: dict[str, Any], schema: dict[str, Any], links: dict[str, Any]) -> str:
+def render_readme_en(directory: Path, metadata: dict[str, Any], schema: dict[str, Any], links: dict[str, Any]) -> str:
     slug = metadata["dataset_slug"]
     data_name = f"{slug}-dataset.csv"
     label = metadata["label"]
     roles = schema["column_roles"]
     target_metadata = schema.get("target_metadata", {})
     doi = target_metadata.get("doi")
-    note = target_metadata.get("notes", "未提供额外的化学说明。")
     publication_en = f"[{doi}](https://doi.org/{doi})" if doi else "No DOI supplied"
-    publication_zh = f"[{doi}](https://doi.org/{doi})" if doi else "未提供 DOI"
     total = metadata["included_count"] + metadata["excluded_count"]
     english_note = ENGLISH_SCOPE_NOTES[slug]
-    chinese_note = target_metadata.get("notes", "未提供额外的化学说明。")
     files_en = "\n".join(
         [f"| [`{data_name}`]({data_name}) | Analysis-ready main table; each row is an included reaction. |"]
         + [f"| [`{filename}`]({filename}) | {description_en} |" for filename, description_en, _ in SUPPORTING_FILES]
     )
-    files_zh = "\n".join(
-        [f"| [`{data_name}`]({data_name}) | 可直接用于分析或建模的主表；每行是一条纳入的反应。 |"]
-        + [f"| [`{filename}`]({filename}) | {description_zh} |" for filename, _, description_zh in SUPPORTING_FILES]
-    )
     source_section_en = format_sources(links["links"], "en")
-    source_section_zh = format_sources(links["links"], "zh")
     exclusions_en = format_exclusions(directory / "exclusions.csv", "en")
-    exclusions_zh = format_exclusions(directory / "exclusions.csv", "zh")
 
-    return f"""# {metadata['display_name_en']} / {metadata['display_name_zh']}
+    return f"""# {metadata['display_name_en']}
 
-[English](#english) | [中文](#chinese)
-
-<a id="english"></a>
-## English
+[中文](README-zh.md)
 
 This is an ORD subset prepared for direct reaction modelling. Its main table is
 [`{data_name}`]({data_name}). The CSV bytes are identical to `dataset.csv` in the immutable
 [`v0.1.0-model-ready-preview-1`](https://github.com/thinktraveller/ord-datasets/releases/tag/v0.1.0-model-ready-preview-1)
 release; this directory uses a semantic filename to make individual downloads easier to identify.
 
-### At a glance
+## At a glance
 
 | Item | Details |
 |---|---|
@@ -189,7 +185,7 @@ release; this directory uses a semantic filename to make individual downloads ea
 
 > “Model-ready” means that the file can be read and modelled directly. It does not mean that the target is an accepted general-purpose benchmark. Consider the readiness state and label meaning before modelling or comparing results.
 
-### Chemical scope and filtering
+## Chemical scope and filtering
 
 {english_note}
 
@@ -198,7 +194,7 @@ release; this directory uses a semantic filename to make individual downloads ea
 - Observed exclusions: {exclusions_en}
 - `audit.jsonl` preserves the label candidates, final decision, and rationale for every reaction. `exclusions.csv` preserves the records that did not enter the main table.
 
-### Columns
+## Columns
 
 | Field role | Columns |
 |---|---|
@@ -210,13 +206,13 @@ release; this directory uses a semantic filename to make individual downloads ea
 
 [`schema.json`](schema.json) is authoritative for the complete column order, units, and roles. Molecular-structure columns normally use SMILES; condition-column names carry their units, such as `_c`, `_s`, `_kpa`, or `_nm`.
 
-### Files
+## Files
 
 | File | Purpose |
 |---|---|
 {files_en}
 
-### Trace one reaction
+## Trace one reaction
 
 1. Select a row in [`{data_name}`]({data_name}). Its CSV row number, counting the header as row 1, is the `csv_row_number` in `row-map.csv`.
 2. Find that number in [`row-map.csv`](row-map.csv) to obtain `physical_dataset_id`, `source_row_index`, and `label_decision_id`.
@@ -224,21 +220,41 @@ release; this directory uses a semantic filename to make individual downloads ea
 4. Use `physical_dataset_id` in [`source-links.json`](source-links.json) to find the pinned ORD Parquet URL, revision, and SHA-256.
 5. Use `physical_dataset_id` plus `source_row_index` to locate the same reaction in the complete ORD corpus. Do not rely on row order or SMILES alone.
 
-### Pinned data sources
+## Pinned data sources
 
 {source_section_en}
 
 For a paper, report, or reproducible workflow, keep `metadata.json`, `source-links.json`, `row-map.csv`, and `checksums.csv` with the main table and cite the immutable release above. The data and derived metadata are CC BY-SA 4.0; retain attribution, source, and licence information.
+"""
 
-<a id="chinese"></a>
-## 中文
+
+def render_readme_zh(directory: Path, metadata: dict[str, Any], schema: dict[str, Any], links: dict[str, Any]) -> str:
+    slug = metadata["dataset_slug"]
+    data_name = f"{slug}-dataset.csv"
+    label = metadata["label"]
+    roles = schema["column_roles"]
+    target_metadata = schema.get("target_metadata", {})
+    doi = target_metadata.get("doi")
+    publication_zh = f"[{doi}](https://doi.org/{doi})" if doi else "未提供 DOI"
+    total = metadata["included_count"] + metadata["excluded_count"]
+    chinese_note = target_metadata.get("notes", "未提供额外的化学说明。")
+    files_zh = "\n".join(
+        [f"| [`{data_name}`]({data_name}) | 可直接用于分析或建模的主表；每行是一条纳入的反应。 |"]
+        + [f"| [`{filename}`]({filename}) | {description_zh} |" for filename, _, description_zh in SUPPORTING_FILES]
+    )
+    source_section_zh = format_sources(links["links"], "zh")
+    exclusions_zh = format_exclusions(directory / "exclusions.csv", "zh")
+
+    return f"""# {metadata['display_name_zh']}
+
+[English](README.md)
 
 这是一个可直接用于反应建模的 ORD 数据子集。主表为
 [`{data_name}`]({data_name})；它的内容与不可变
 [`v0.1.0-model-ready-preview-1`](https://github.com/thinktraveller/ord-datasets/releases/tag/v0.1.0-model-ready-preview-1)
 发布版本中的 `dataset.csv` 相同，只是本目录使用了更容易识别的语义化文件名。
 
-### 快速信息
+## 快速信息
 
 | 项目 | 内容 |
 |---|---|
@@ -253,7 +269,7 @@ For a paper, report, or reproducible workflow, keep `metadata.json`, `source-lin
 
 > “model-ready”表示文件可以直接读取和建模，并不表示它已被接受为通用基准。建模或比较前，请结合上表的就绪状态与标签含义判断是否适合您的问题。
 
-### 化学范围与筛选
+## 化学范围与筛选
 
 {chinese_note}
 
@@ -262,7 +278,7 @@ For a paper, report, or reproducible workflow, keep `metadata.json`, `source-lin
 - 实际排除情况：{exclusions_zh}
 - `audit.jsonl` 保留每条反应的标签候选、最终决定和理由；`exclusions.csv` 保留未纳入记录，因此筛选过程可以复查。
 
-### 字段一览
+## 字段一览
 
 | 字段角色 | 列名 |
 |---|---|
@@ -274,13 +290,13 @@ For a paper, report, or reproducible workflow, keep `metadata.json`, `source-lin
 
 完整列顺序、单位及字段角色以 [`schema.json`](schema.json) 为准。通常，分子结构列使用 SMILES；单位已经写在条件列名称中，例如 `_c`、`_s`、`_kpa` 或 `_nm`。
 
-### 文件说明
+## 文件说明
 
 | 文件 | 用途 |
 |---|---|
 {files_zh}
 
-### 如何溯源一条反应
+## 如何溯源一条反应
 
 1. 在 [`{data_name}`]({data_name}) 中选定一行；其 CSV 行号（把表头算作第 1 行）就是 `row-map.csv` 的 `csv_row_number`。
 2. 在 [`row-map.csv`](row-map.csv) 中按该行号找到 `physical_dataset_id`、`source_row_index` 和 `label_decision_id`。
@@ -288,7 +304,7 @@ For a paper, report, or reproducible workflow, keep `metadata.json`, `source-lin
 4. 在 [`source-links.json`](source-links.json) 中按 `physical_dataset_id` 找到固定的 ORD 原始 Parquet 链接、提交版本和 SHA-256。
 5. 用 `physical_dataset_id` 加 `source_row_index` 在完整 ORD 语料中定位同一条反应；请勿仅靠行号或 SMILES 匹配。
 
-### 固定数据来源
+## 固定数据来源
 
 {source_section_zh}
 
@@ -349,17 +365,19 @@ def migrate(directory: Path) -> None:
         }
     )
     write_json(metadata_path, metadata)
-    (directory / "README.md").write_text(
-        render_readme(directory, metadata, read_json(schema_path), read_json(links_path)),
-        encoding="utf-8",
-    )
+    schema = read_json(schema_path)
+    links = read_json(links_path)
+    write_text(directory / "README.md", render_readme_en(directory, metadata, schema, links))
+    write_text(directory / "README-zh.md", render_readme_zh(directory, metadata, schema, links))
 
 
 def check(directory: Path) -> None:
     metadata = read_json(directory / "metadata.json")
     slug = metadata["dataset_slug"]
     data_path = directory / expected_data_name(slug)
-    if (directory / "dataset.csv").exists() or not data_path.is_file() or not (directory / "README.md").is_file():
+    english_readme = directory / "README.md"
+    chinese_readme = directory / "README-zh.md"
+    if (directory / "dataset.csv").exists() or not data_path.is_file() or not english_readme.is_file() or not chinese_readme.is_file():
         raise ValueError(f"semantic download layout is incomplete in {directory}")
     checksum_rows = {row["role"]: row for row in read_csv(directory / "checksums.csv")}
     if set(checksum_rows) != CHECKSUM_NAMES:
@@ -374,8 +392,12 @@ def check(directory: Path) -> None:
         raise ValueError(f"dataset metadata path or hash mismatch in {directory}")
     if artifacts["checksums"]["sha256"] != sha256(directory / "checksums.csv"):
         raise ValueError(f"checksums metadata hash mismatch in {directory}")
-    if data_path.name not in (directory / "README.md").read_text(encoding="utf-8"):
+    english_text = english_readme.read_text(encoding="utf-8")
+    chinese_text = chinese_readme.read_text(encoding="utf-8")
+    if data_path.name not in english_text or data_path.name not in chinese_text:
         raise ValueError(f"README does not link the semantic data file in {directory}")
+    if "README-zh.md" not in english_text or "README.md" not in chinese_text:
+        raise ValueError(f"language README links are incomplete in {directory}")
 
 
 def directories(root: Path) -> list[Path]:
