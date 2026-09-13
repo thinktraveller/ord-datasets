@@ -602,3 +602,4 @@
 - 已对 19 个目标运行生成器的 `--apply` 和 `--check`；每一组说明都包含互链、语义化主表链接及逐条溯源章节。19 个主表的 SHA-256 均与不可变 preview candidate 对应的 `dataset.csv` 一致，metadata schema 与 8 项 pipeline 测试均通过。
 - 根目录中英文简介改为面向化学用户的平实说明：明确区分“保留完整实验信息、用于查找和溯源”的语料与“可直接分析或建模”的反应表格。
 - 根目录双语标题和语言入口已对应更新：中文说明使用“ORD 反应规范化数据集：可溯源完整与可直接建模的化学反应数据集”，英文说明明确为可溯源完整记录与可直接建模反应表格。
+- 根目录、数据目录及 19 个 model-ready 目标的中英文说明现明确：`yonod-config.json` 是 [YONOD](https://github.com/thinktraveller/YONOD) 使用的字段角色和示例配置；`target-build-provenance.json` 用于复现或审计构建；`checksums.csv` 用于下载完整性和意外变动检查。

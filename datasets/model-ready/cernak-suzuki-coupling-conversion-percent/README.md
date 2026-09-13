@@ -54,9 +54,9 @@ Conversion modelling for miniaturised Suzuki coupling of aryl halides with boron
 | [`exclusions.csv`](exclusions.csv) | Lists records excluded from the main table and the reason for each decision. |
 | [`source-links.json`](source-links.json) | Commit-pinned ORD source links and SHA-256 values. |
 | [`metadata.json`](metadata.json) | Dataset identity, size, label unit, licence, and readiness state. |
-| [`yonod-config.json`](yonod-config.json) | Model field roles and example configuration. |
-| [`target-build-provenance.json`](target-build-provenance.json) | Hashes of the inputs and transformations used to build this target. |
-| [`checksums.csv`](checksums.csv) | Checks whether data and provenance files are damaged or modified. |
+| [`yonod-config.json`](yonod-config.json) | Configuration for [YONOD](https://github.com/thinktraveller/YONOD): maps table columns to model roles and includes an example setup; optional for manual analysis. |
+| [`target-build-provenance.json`](target-build-provenance.json) | Input files, transformation rules, and hashes used to build this target; use it to reproduce or audit the build. |
+| [`checksums.csv`](checksums.csv) | File paths, SHA-256 fingerprints, and sizes for checking download integrity or unexpected changes. |
 
 ## Trace one reaction
 

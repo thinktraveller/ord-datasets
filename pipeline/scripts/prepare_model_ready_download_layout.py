@@ -43,9 +43,21 @@ SUPPORTING_FILES = (
     ("exclusions.csv", "Lists records excluded from the main table and the reason for each decision.", "未纳入主表的记录及排除原因。"),
     ("source-links.json", "Commit-pinned ORD source links and SHA-256 values.", "固定到 ORD 提交版本的原始文件链接和 SHA-256。"),
     ("metadata.json", "Dataset identity, size, label unit, licence, and readiness state.", "数据集名称、规模、标签单位、许可证和就绪状态。"),
-    ("yonod-config.json", "Model field roles and example configuration.", "建模字段角色和示例配置。"),
-    ("target-build-provenance.json", "Hashes of the inputs and transformations used to build this target.", "构建本数据集的输入和转换哈希。"),
-    ("checksums.csv", "Checks whether data and provenance files are damaged or modified.", "用于检查数据与溯源文件是否损坏或被修改。"),
+    (
+        "yonod-config.json",
+        "Configuration for [YONOD](https://github.com/thinktraveller/YONOD): maps table columns to model roles and includes an example setup; optional for manual analysis.",
+        "供 [YONOD](https://github.com/thinktraveller/YONOD) 使用的配置：将表格字段映射到建模角色，并提供示例设置；人工分析时可不使用。",
+    ),
+    (
+        "target-build-provenance.json",
+        "Input files, transformation rules, and hashes used to build this target; use it to reproduce or audit the build.",
+        "构建本目标所用的输入文件、转换规则和哈希；用于复现或审计构建过程。",
+    ),
+    (
+        "checksums.csv",
+        "File paths, SHA-256 fingerprints, and sizes for checking download integrity or unexpected changes.",
+        "文件路径、SHA-256 指纹和大小；用于检查下载是否完整以及文件是否意外变动。",
+    ),
 )
 
 ENGLISH_SCOPE_NOTES = {

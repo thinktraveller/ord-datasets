@@ -31,9 +31,9 @@ ord-datasets/
 │           ├── exclusions.csv    # Excluded records and reasons
 │           ├── source-links.json # Pinned ORD source files
 │           ├── metadata.json     # Scope, licence, and readiness state
-│           ├── yonod-config.json
-│           ├── target-build-provenance.json
-│           └── checksums.csv
+│           ├── yonod-config.json # Field-role configuration for YONOD
+│           ├── target-build-provenance.json # Reproducible-build record
+│           └── checksums.csv     # Download-integrity fingerprints
 ├── pipeline/                     # Build, validation, schemas, and tests
 ├── provenance/                   # Source, artifact, and row-lineage records
 ├── reports/                      # Data-quality, licence, and release evidence
@@ -106,9 +106,9 @@ Every model-ready target contains ten data/provenance files plus separate Englis
 | `exclusions.csv` | Records not included in the main table and their reasons. An empty file still retains its header. |
 | `source-links.json` | Revision-pinned original ORD files and hashes. |
 | `metadata.json` | Label unit, included/excluded counts, readiness status, and other metadata. |
-| `yonod-config.json` | Modeling field roles and configuration. |
-| `target-build-provenance.json` | Inputs and transformations used to build the target. |
-| `checksums.csv` | SHA-256 and size of the data/provenance files above (the explanatory README is not part of this checksum set). |
+| `yonod-config.json` | Configuration used by [YONOD](https://github.com/thinktraveller/YONOD): maps table columns to model roles and includes an example setup. It is optional for manual analysis. |
+| `target-build-provenance.json` | Input files, transformation rules, and hashes used to build the target; use it to reproduce or audit the build. |
+| `checksums.csv` | File paths, SHA-256 fingerprints, and sizes for checking download integrity or unexpected changes. The explanatory READMEs are not part of this checksum set. |
 | `README.md` | English plain-language guide to this target's scope, label, fields, filtering, sources, status, and reaction tracing. |
 | `README-zh.md` | Chinese version of the same target guide. |
 

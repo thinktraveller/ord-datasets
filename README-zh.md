@@ -31,9 +31,9 @@ ord-datasets/
 │           ├── exclusions.csv    # 排除记录及原因
 │           ├── source-links.json # 固定的 ORD 源文件
 │           ├── metadata.json     # 范围、许可证和就绪状态
-│           ├── yonod-config.json
-│           ├── target-build-provenance.json
-│           └── checksums.csv
+│           ├── yonod-config.json # 供 YONOD 使用的字段角色配置
+│           ├── target-build-provenance.json # 可复现构建记录
+│           └── checksums.csv     # 下载完整性指纹
 ├── pipeline/                     # 构建、验证、schema 和测试
 ├── provenance/                   # 来源、产物与行级溯源记录
 ├── reports/                      # 数据质量、许可证与发布证据
@@ -106,9 +106,9 @@ git clone --depth 1 --branch v0.2.0-corpus-preview-1 https://huggingface.co/data
 | `exclusions.csv` | 没有进入主数据表的记录及排除原因。即使为空也保留表头。 |
 | `source-links.json` | 固定 ORD 原始文件链接、版本和哈希。 |
 | `metadata.json` | 标签单位、纳入/排除数、就绪状态等。 |
-| `yonod-config.json` | 建模字段角色与配置。 |
-| `target-build-provenance.json` | 本目标由哪些输入和转换生成。 |
-| `checksums.csv` | 上述数据/溯源文件的 SHA-256 与大小（说明性 README 不在此校验集合中）。 |
+| `yonod-config.json` | [YONOD](https://github.com/thinktraveller/YONOD) 使用的配置：将表格字段映射到建模角色，并提供示例设置；人工分析时可不使用。 |
+| `target-build-provenance.json` | 构建本目标所用的输入文件、转换规则和哈希；用于复现或审计构建过程。 |
+| `checksums.csv` | 文件路径、SHA-256 指纹和大小，用于检查下载是否完整以及文件是否意外变动；说明性 README 不在此校验集合中。 |
 | `README.md` | 用英文通俗说明该目标的范围、标签、字段、筛选、来源、状态和溯源方法。 |
 | `README-zh.md` | 上述目标说明的中文版本。 |
 

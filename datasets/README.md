@@ -13,6 +13,13 @@ This area has two separate data contracts:
   `README.md` and Chinese `README-zh.md` files provide plain-language guides
   for browsing and downloading individual datasets.
 
+For every model-ready target, `yonod-config.json` is the field-role and example
+configuration used by [YONOD](https://github.com/thinktraveller/YONOD); it is
+optional for manual analysis. `target-build-provenance.json` records the inputs,
+rules, and hashes needed to reproduce or audit the target build, while
+`checksums.csv` lists file paths, SHA-256 fingerprints, and sizes for checking a
+download's integrity.
+
 The separation is logical. Catalogs and content hashes reference shared
 underlying objects where appropriate. Use the immutable release tag for a
 version-pinned citation.
