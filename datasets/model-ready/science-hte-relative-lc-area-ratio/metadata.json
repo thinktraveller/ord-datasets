@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/science-hte-relative-lc-area-ratio/dataset.csv",
+      "path": "datasets/model-ready/science-hte-relative-lc-area-ratio/science-hte-relative-lc-area-ratio-dataset.csv",
       "role": "dataset",
       "sha256": "2d1bfd835869c7263d37d035131981fb4042f9c93671640ea983deb5f417e163",
       "size_bytes": 340725
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/science-hte-relative-lc-area-ratio/checksums.csv",
       "role": "checksums",
-      "sha256": "354ca05ad4e1816f77b6e732705e220c9dd5427689bf0970acb55cae8583f14f",
-      "size_bytes": 811
+      "sha256": "0c3edb2f2370c373cec7fca84eb7dcb155a03955668e46126b4c44a4d2fa38a1",
+      "size_bytes": 846
     }
   ],
   "corpus_row_count": 1824,

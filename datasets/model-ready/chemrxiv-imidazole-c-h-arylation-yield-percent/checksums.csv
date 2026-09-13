@@ -1,5 +1,5 @@
 role,path,sha256,size_bytes
-dataset,dataset.csv,3d11901429869a5875d98ec4feec8239efbfa121c59d750a9bf8c04612906f7d,394075
+dataset,chemrxiv-imidazole-c-h-arylation-yield-percent-dataset.csv,3d11901429869a5875d98ec4feec8239efbfa121c59d750a9bf8c04612906f7d,394075
 schema,schema.json,a27995892bdb21300f96b92705aa7807e6908c32e65dce289fc0d5791cb781b7,1810
 yonod-config,yonod-config.json,fe20a135bbf43e59124b195d58b74780ec6797cbce732393f8338b0777337cad,3483
 row-map,row-map.csv,834e743133299f6acac97bd37d9a34ccca5e3ef92fa96e062a31e12c9a12870f,306734

@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/suzuki-miyaura-nanoscale-yield-percent/dataset.csv",
+      "path": "datasets/model-ready/suzuki-miyaura-nanoscale-yield-percent/suzuki-miyaura-nanoscale-yield-percent-dataset.csv",
       "role": "dataset",
       "sha256": "75466f69ef7bcc53a3be76914166b91dd091c57471b62a4d69f5754f030c9f97",
       "size_bytes": 1706821
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/suzuki-miyaura-nanoscale-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "1b2114b76bdfa9e7196faf53b48f688485def7be2dd28c3fb0c1f33023117b6a",
-      "size_bytes": 811
+      "sha256": "64a2d6dd0855be5c02db75a75934e5f70ad7f8a58554b6d0fd1ebf202fbd3bcd",
+      "size_bytes": 850
     }
   ],
   "corpus_row_count": 5760,

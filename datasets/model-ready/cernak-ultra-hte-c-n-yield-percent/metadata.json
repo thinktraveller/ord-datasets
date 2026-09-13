@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/dataset.csv",
+      "path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/cernak-ultra-hte-c-n-yield-percent-dataset.csv",
       "role": "dataset",
       "sha256": "ba845e82bb3701469aadf172a7457c64354b1e7d6f8e2ab1aad2b96c2445a012",
       "size_bytes": 12155576
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "36a2cb205fdbe48a8303ed2a798b377252a5e75c1450a421b7cf783fe70611d4",
-      "size_bytes": 816
+      "sha256": "460abe335c46e4ef063101d5028a690dd3c44b98c15922fc8c7deab89290961a",
+      "size_bytes": 851
     }
   ],
   "corpus_row_count": 50688,

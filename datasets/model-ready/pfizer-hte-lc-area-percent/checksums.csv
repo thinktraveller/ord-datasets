@@ -1,5 +1,5 @@
 role,path,sha256,size_bytes
-dataset,dataset.csv,acc5860363baddd0fc24e87bb66e37d550b4cb8e1accf301f5f2aadb6d25758d,7026314
+dataset,pfizer-hte-lc-area-percent-dataset.csv,acc5860363baddd0fc24e87bb66e37d550b4cb8e1accf301f5f2aadb6d25758d,7026314
 schema,schema.json,03e62e5bee4e77e337451f7d6346d3bf6296039d9ec2dfa8967136f772dcf2fa,1679
 yonod-config,yonod-config.json,4cc3205a96a6f4dcc9fd6c4cae8dc8154787fdf4453eb68ffe6d88eeaf18488c,3854
 row-map,row-map.csv,e9105d86594a9816be25a1f5fc5b0ea5c8ca4fad28fcec7a77f70c5dbe4b7c0e,8004659

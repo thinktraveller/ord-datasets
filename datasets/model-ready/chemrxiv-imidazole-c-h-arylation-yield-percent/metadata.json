@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/chemrxiv-imidazole-c-h-arylation-yield-percent/dataset.csv",
+      "path": "datasets/model-ready/chemrxiv-imidazole-c-h-arylation-yield-percent/chemrxiv-imidazole-c-h-arylation-yield-percent-dataset.csv",
       "role": "dataset",
       "sha256": "3d11901429869a5875d98ec4feec8239efbfa121c59d750a9bf8c04612906f7d",
       "size_bytes": 394075
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/chemrxiv-imidazole-c-h-arylation-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "e9dfbfec3569be5c499f709fe3d2d2b4083275f03464f8c21ed222bf11284be3",
-      "size_bytes": 811
+      "sha256": "21d6bfcaf121677f53fb4030f758accbd948f4e0479864c9e8a0b9af9ea960fd",
+      "size_bytes": 858
     }
   ],
   "corpus_row_count": 2496,

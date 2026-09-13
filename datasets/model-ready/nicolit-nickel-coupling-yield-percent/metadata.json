@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/nicolit-nickel-coupling-yield-percent/dataset.csv",
+      "path": "datasets/model-ready/nicolit-nickel-coupling-yield-percent/nicolit-nickel-coupling-yield-percent-dataset.csv",
       "role": "dataset",
       "sha256": "51f705bdfc42ff0432cdb6288cda3ee9cbd6e2294c216fff13e5015e94b3deda",
       "size_bytes": 160767
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/nicolit-nickel-coupling-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "eb16c51903dda1c2d24e6c24169572ce376669977ee9ec8801f473873e0d256a",
-      "size_bytes": 812
+      "sha256": "ff1747cc5b4d3f9d2a2eb1901b0bc856897954e4c321b8d5a1c5b3c43cf9b920",
+      "size_bytes": 850
     }
   ],
   "corpus_row_count": 1762,

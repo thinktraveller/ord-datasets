@@ -1,5 +1,5 @@
 role,path,sha256,size_bytes
-dataset,dataset.csv,90c762cff7defe31e7e45d35406df595d094186a0b35b05b0f799cfe66411f72,238260
+dataset,chemrxiv-aniline-amidation-yield-percent-dataset.csv,90c762cff7defe31e7e45d35406df595d094186a0b35b05b0f799cfe66411f72,238260
 schema,schema.json,3df9ea65934570a4012966c9eb5bca742ea943bbcdf9fdc743e6b6e306b5af9e,1783
 yonod-config,yonod-config.json,6db195daa13f29476cd44ae176ed1a27bfb5d2fd6a1bb43d0d4257b4f6af967b,3463
 row-map,row-map.csv,be63107c0184d74c9f9a7ce94a96c4c7aafa3ee21e3ec37c9f73a10e6343a38b,191267

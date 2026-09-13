@@ -7,24 +7,24 @@
 | 发布 | 适合做什么 | 规模 | 下载 |
 |---|---|---|---|
 | **完整语料** `v0.2.0-corpus-preview-1` | 查阅完整 ORD 反应 JSON、重新提取字段、逐条溯源 | 41 个语料包；53 个固定 ORD 源；2,428,291 条反应；12.23 GiB | [Hugging Face 固定标签](https://huggingface.co/datasets/thinktraveller/ord-processed-reaction-corpus/tree/v0.2.0-corpus-preview-1)，commit `260cde0feb414c75b2bf971d6f3a4dbbee7b2e95` |
-| **模型就绪** `v0.1.0-model-ready-preview-1` | 直接分析产率、转化率、LC 响应或 ee | 15 个来源包中的 19 个目标；纳入 128,712 条、排除 499 条；`dataset.csv` 共 26.6 MiB，整包 201.2 MiB | [在 `main` 中逐个浏览](https://github.com/thinktraveller/ord-datasets/tree/main/datasets/model-ready)；[不可变发布版本](https://github.com/thinktraveller/ord-datasets/releases/tag/v0.1.0-model-ready-preview-1)，commit `7d52dd27071c5625008a14737a1a8e1252ae6217` |
+| **模型就绪** `v0.1.0-model-ready-preview-1` | 直接分析产率、转化率、LC 响应或 ee | 15 个来源包中的 19 个目标；纳入 128,712 条、排除 499 条；所有 `*-dataset.csv` 共 26.6 MiB，整包 201.2 MiB | [在 `main` 中逐个浏览](https://github.com/thinktraveller/ord-datasets/tree/main/datasets/model-ready)；[不可变发布版本](https://github.com/thinktraveller/ord-datasets/releases/tag/v0.1.0-model-ready-preview-1)，commit `7d52dd27071c5625008a14737a1a8e1252ae6217` |
 
-> **两种入口，同一份数据：** `main` 分支的 `datasets/model-ready/` 保存了已发布模型就绪数据的逐字节相同副本，便于逐个浏览和下载；需要在论文或报告中固定版本时，请引用不可变发布版本。体积大得多的完整语料仍放在 Hugging Face，不复制到 `main`。
+> **两种入口，主表内容相同：** `main` 分支的 `datasets/model-ready/` 保留了与发布版本逐字节相同的主数据表，但改用语义化的 `*-dataset.csv` 文件名，并为每个目标加入 README，方便逐个浏览和下载；若需要旧式目录布局的固定版本，请引用不可变发布版本。体积大得多的完整语料仍放在 Hugging Face，不复制到 `main`。
 
 ## 使用指南
 
 ### 我应该下载哪一个？
 
-- 如果您只想用 Excel、Origin、R 或 Python 分析“反应条件 → 产率/转化率”，先下载较小的**模型就绪版**。每个 `dataset.csv` 就是一张普通表格。
+- 如果您只想用 Excel、Origin、R 或 Python 分析“反应条件 → 产率/转化率”，先下载较小的**模型就绪版**。每个目标的 `<target-slug>-dataset.csv` 都是一张普通表格。
 - 如果您需要实验步骤、加料、装置、后处理、分析方法或 ORD 的完整嵌套记录，下载**完整语料版**中对应的一个包即可；不必一开始下载 12.23 GiB 全集。
 - 模型就绪版中同一条反应可以服务于多个目标，因此 19 个目标的行数不能相加后当成“独立反应总数”。完整语料的 2,428,291 才是本版本的全局反应数。
 
 如果只想下载一个模型就绪数据表，不需要安装任何软件：
 
 1. 在下方 [19 个模型就绪目标表](#19-个模型就绪目标)中点击所需的数据集名称。
-2. 在打开的目录中点击 `dataset.csv`。
+2. 在打开的目录中点击以 `<target-slug>-dataset.csv` 结尾的主数据文件。
 3. 点击文件页面右上角的 **Download raw file**（向下箭头）按钮，将文件保存到电脑。
-4. 建议同时下载 `schema.json` 和 `metadata.json`，它们分别说明字段、标签、单位和就绪状态；如果研究需要完整溯源和审计，请下载该目录的全部 10 个文件。
+4. 建议同时下载 `schema.json` 和 `metadata.json`，它们分别说明字段、标签、单位和就绪状态；如果研究需要完整溯源和审计，请保留全部 10 个数据/溯源文件及该目标的 README。
 
 如果会使用命令行，可以只检出一个完整的数据集目录，不把另外 18 个数据集写入工作目录。复制下面三行，并把最后一个目录名替换成所需目标：
 
@@ -66,20 +66,21 @@ git clone --depth 1 --branch v0.2.0-corpus-preview-1 https://huggingface.co/data
 | `row_index` | 反应在原始物理数据集中的位置；**从 0 开始计数**。 |
 | `reaction_json` | 完整反应内容，包括反应物、试剂、催化剂、溶剂、条件、产物、测量和来源等嵌套字段。 |
 
-每个模型就绪目标有 10 个文件：
+每个模型就绪目标有 10 个数据/溯源文件，另有一份针对该目标的 `README.md`：
 
 | 文件 | 化学用户通常用它做什么 |
 |---|---|
-| `dataset.csv` | 可以直接分析/建模的表；每行是一条纳入的反应。 |
+| `<target-slug>-dataset.csv` | 可以直接分析/建模的表；每行是一条纳入的反应。 |
 | `schema.json` | **先看这里**：列出该目标的完整字段、字段角色、标签定义和提取规则。 |
-| `row-map.csv` | 把 `dataset.csv` 的每一行连回 ORD 反应。 |
+| `row-map.csv` | 把主数据表的每一行连回 ORD 反应。 |
 | `audit.jsonl` | 逐条记录标签候选、最终选择、数值和选择理由；一行一个 JSON 对象。 |
-| `exclusions.csv` | 没有进入 `dataset.csv` 的记录及排除原因。即使为空也保留表头。 |
+| `exclusions.csv` | 没有进入主数据表的记录及排除原因。即使为空也保留表头。 |
 | `source-links.json` | 固定 ORD 原始文件链接、版本和哈希。 |
 | `metadata.json` | 标签单位、纳入/排除数、就绪状态等。 |
 | `yonod-config.json` | 建模字段角色与配置。 |
 | `target-build-provenance.json` | 本目标由哪些输入和转换生成。 |
-| `checksums.csv` | 所有上述文件的 SHA-256 与大小。 |
+| `checksums.csv` | 上述数据/溯源文件的 SHA-256 与大小（说明性 README 不在此校验集合中）。 |
+| `README.md` | 用通俗语言说明该目标的范围、标签、字段、筛选、来源、状态和溯源方法。 |
 
 ### 数据经过了哪些筛选？
 
@@ -89,10 +90,10 @@ git clone --depth 1 --branch v0.2.0-corpus-preview-1 https://huggingface.co/data
 
 ### 一步步溯源一条反应（真实示例）
 
-下面从 Ahneman C-N 交叉偶联目标的第一条数据开始。整个过程像“查快递单号”：`dataset.csv` 给结果，`row-map.csv` 给反应单号，`audit.jsonl` 解释标签怎么选，`source-links.json` 给原始文件地址和指纹，完整语料再给回整条反应记录。
+下面从 `main` 中 Ahneman C-N 交叉偶联目标的第一条数据开始。整个过程像“查快递单号”：语义化主数据表给结果，`row-map.csv` 给反应单号，`audit.jsonl` 解释标签怎么选，`source-links.json` 给原始文件地址和指纹，完整语料再给回整条反应记录。
 
-1. 打开 [`ahneman-c-n-cross-coupling-yield-percent/dataset.csv`](https://github.com/thinktraveller/ord-datasets/blob/v0.1.0-model-ready-preview-1/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/dataset.csv)。第 1 行是表头，所以第一条数据的 CSV 行号是 **2**。它的 `yield_percent` 是 `54.390403747558594`。
-2. 打开同一目录的 [`row-map.csv`](https://github.com/thinktraveller/ord-datasets/blob/v0.1.0-model-ready-preview-1/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/row-map.csv)，筛选 `csv_row_number = 2`，得到：
+1. 打开 [`ahneman-c-n-cross-coupling-yield-percent-dataset.csv`](https://github.com/thinktraveller/ord-datasets/blob/main/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/ahneman-c-n-cross-coupling-yield-percent-dataset.csv)。第 1 行是表头，所以第一条数据的 CSV 行号是 **2**。它的 `yield_percent` 是 `54.390403747558594`。
+2. 打开同一目录的 [`row-map.csv`](https://github.com/thinktraveller/ord-datasets/blob/main/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/row-map.csv)，筛选 `csv_row_number = 2`，得到：
 
    ```text
    reaction_key        = ord_dataset-46ff9a32d9e04016b9380b1b1ef949c3:ord-001c0b7f789d41b48e325967a9941ad6
@@ -102,8 +103,8 @@ git clone --depth 1 --branch v0.2.0-corpus-preview-1 https://huggingface.co/data
    ```
 
    注意：`csv_row_number` 把表头算作第 1 行；`source_row_index` 从 0 开始。这两个数字不是同一种编号。
-3. 打开 [`audit.jsonl`](https://github.com/thinktraveller/ord-datasets/blob/v0.1.0-model-ready-preview-1/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/audit.jsonl)，用文本搜索上面的 `label_decision_id`。这条审计记录显示：`status=included`、`reason=unique`、候选数为 1，选择的是 `UPLC` 的 `YIELD` 百分数，数值正是 `54.390403747558594`。这一步回答“为什么用这个标签”。
-4. 打开 [`source-links.json`](https://github.com/thinktraveller/ord-datasets/blob/v0.1.0-model-ready-preview-1/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/source-links.json)，按 `physical_dataset_id` 找到源文件：
+3. 打开 [`audit.jsonl`](https://github.com/thinktraveller/ord-datasets/blob/main/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/audit.jsonl)，用文本搜索上面的 `label_decision_id`。这条审计记录显示：`status=included`、`reason=unique`、候选数为 1，选择的是 `UPLC` 的 `YIELD` 百分数，数值正是 `54.390403747558594`。这一步回答“为什么用这个标签”。
+4. 打开 [`source-links.json`](https://github.com/thinktraveller/ord-datasets/blob/main/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/source-links.json)，按 `physical_dataset_id` 找到源文件：
 
    ```text
    upstream revision = 83f971f586f6ad18f358ae4ae99d045e94ed2066
@@ -126,7 +127,7 @@ target_dir = Path("这里改成/ahneman-c-n-cross-coupling-yield-percent")
 corpus_csv = Path("这里改成/ahneman-c-n-cross-coupling/reactions.csv")
 wanted_csv_row = "2"
 
-with (target_dir / "dataset.csv").open(encoding="utf-8", newline="") as f:
+with (target_dir / "ahneman-c-n-cross-coupling-yield-percent-dataset.csv").open(encoding="utf-8", newline="") as f:
     dataset_row = next(row for number, row in enumerate(csv.DictReader(f), start=2)
                        if str(number) == wanted_csv_row)
 
@@ -222,7 +223,7 @@ print(json.dumps(json.loads(corpus_row["reaction_json"]), ensure_ascii=False, in
 | E | `generated_with_source_caveat` | 源测量口径有限制；NiCOlit 中 GC 与分离产率未区分。 |
 | F | `generated_adapter_blocked` | 文件存在，但已声明的适配器/就绪门尚未通过。 |
 
-| 目标 | 论文与固定源 | 纳入 / 排除 | `dataset.csv` / 整包 | 标签 | 实际排除 | 状态 |
+| 目标 | 论文与固定源 | 纳入 / 排除 | `*-dataset.csv` / 整包 | 标签 | 实际排除 | 状态 |
 |---|---|---:|---:|---|---|:---:|
 | [Ahneman C-N 交叉偶联产率（%）](https://github.com/thinktraveller/ord-datasets/tree/main/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent) | [10.1126/science.aar5169](https://doi.org/10.1126/science.aar5169)<br>[固定 ORD 源 ×1](https://github.com/thinktraveller/ord-datasets/blob/v0.1.0-model-ready-preview-1/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/source-links.json) | 4,312 / 0 | 1.2 MiB / 5.8 MiB | `yield_percent`<br>源测量定义的百分比产率 | 无额外排除 | A |
 | [不对称烷基化 ee（S-R，%）](https://github.com/thinktraveller/ord-datasets/tree/main/datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent) | [10.1038/s41467-023-42446-5](https://doi.org/10.1038/s41467-023-42446-5)<br>[固定 ORD 源 ×1](https://github.com/thinktraveller/ord-datasets/blob/v0.1.0-model-ready-preview-1/datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/source-links.json) | 1,430 / 0 | 296.3 KiB / 4.3 MiB | `ee_s_minus_r_percent`<br>百分点，S-R | 无额外排除 | F |
@@ -259,7 +260,7 @@ print(json.dumps(json.loads(corpus_row["reaction_json"]), ensure_ascii=False, in
 | R7 | `signed_selectivity` | `signed_selectivity_v1:s_config_imms_percentage` | `asymmetric-alkylation-ee-s-minus-r-percent` | 从 S 构型 IMMS 百分数得到有符号 `S-R` ee；产物立体信息只用于标签判定，不作为特征。 |
 | R8 | `pfizer_lcms` | `unique_structured_scalar_no_aggregation` | `pfizer-hte-lc-area-percent` | 选择唯一 LC/UV 面积百分数；它不是分离产率或转化率。 |
 
-#### 每个目标的完整 `dataset.csv` 字段
+#### 每个目标的完整 `*-dataset.csv` 字段
 
 下表没有省略列。为便于阅读，仅按“结构/组成/辅助字段”“条件字段”“标签”分组；精确角色以每个包的 `schema.json` 为准。空值用 `—` 表示。字段名是数据表中的原始英文列名，在中英文说明中相同。
 

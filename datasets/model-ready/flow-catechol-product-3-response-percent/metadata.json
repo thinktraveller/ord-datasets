@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/flow-catechol-product-3-response-percent/dataset.csv",
+      "path": "datasets/model-ready/flow-catechol-product-3-response-percent/flow-catechol-product-3-response-percent-dataset.csv",
       "role": "dataset",
       "sha256": "5cc90e232268be1fc5e15330039927b90a13a4444df2347987d312612ea771d2",
       "size_bytes": 218760
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/flow-catechol-product-3-response-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "cb596191a36e3d2fa00d54f5a3b1521edcb642116a092c0919e6d04b16617ff0",
-      "size_bytes": 809
+      "sha256": "ad7eda113e43a4a8bb77aebe1b495d72ca816bd4861089933b7044f6835ff406",
+      "size_bytes": 850
     }
   ],
   "corpus_row_count": 1227,

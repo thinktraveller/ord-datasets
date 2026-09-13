@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/shields-arylation-yield-percent/dataset.csv",
+      "path": "datasets/model-ready/shields-arylation-yield-percent/shields-arylation-yield-percent-dataset.csv",
       "role": "dataset",
       "sha256": "35e1698ae9f8e57ea96ca351008f78770c7cba8343db0c68ac2bd44e1362e61d",
       "size_bytes": 379410
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/shields-arylation-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "3ecbde25762896c33993ea6719246dc635c7121eb31115aeb2bad0a637c6ebb4",
-      "size_bytes": 810
+      "sha256": "96e762a38e91eb7c81c7783a42702d56e88bbc375057cadf711dcc15eb1c7a33",
+      "size_bytes": 842
     }
   ],
   "corpus_row_count": 1984,

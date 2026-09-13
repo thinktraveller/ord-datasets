@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/chemrxiv-aniline-amidation-yield-percent/dataset.csv",
+      "path": "datasets/model-ready/chemrxiv-aniline-amidation-yield-percent/chemrxiv-aniline-amidation-yield-percent-dataset.csv",
       "role": "dataset",
       "sha256": "90c762cff7defe31e7e45d35406df595d094186a0b35b05b0f799cfe66411f72",
       "size_bytes": 238260
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/chemrxiv-aniline-amidation-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "65027c2200be4e827c885dd82a1fb488511986fa74b073c6a57357f94ae1b05d",
-      "size_bytes": 809
+      "sha256": "ad6a338a326d0e2f2f5fba47903710dd429fd6566a1f648401c05b61289f0e3b",
+      "size_bytes": 850
     }
   ],
   "corpus_row_count": 2496,

@@ -7,24 +7,24 @@ This is a provenance-preserving standardization and release workspace for the Op
 | Release | Intended use | Scope | Download |
 |---|---|---|---|
 | **Full corpus** `v0.2.0-corpus-preview-1` | Inspect complete ORD reaction JSON, re-extract fields, and trace individual rows | 41 packages; 53 pinned ORD sources; 2,428,291 reactions; 12.23 GiB | [Immutable Hugging Face tag](https://huggingface.co/datasets/thinktraveller/ord-processed-reaction-corpus/tree/v0.2.0-corpus-preview-1), commit `260cde0feb414c75b2bf971d6f3a4dbbee7b2e95` |
-| **Model-ready** `v0.1.0-model-ready-preview-1` | Directly analyze yield, conversion, LC response, or ee | 19 targets from 15 packages; 128,712 included and 499 excluded decisions; 26.6 MiB of `dataset.csv`, 201.2 MiB total | [Browse individual datasets on `main`](https://github.com/thinktraveller/ord-datasets/tree/main/datasets/model-ready); [immutable release](https://github.com/thinktraveller/ord-datasets/releases/tag/v0.1.0-model-ready-preview-1), commit `7d52dd27071c5625008a14737a1a8e1252ae6217` |
+| **Model-ready** `v0.1.0-model-ready-preview-1` | Directly analyze yield, conversion, LC response, or ee | 19 targets from 15 packages; 128,712 included and 499 excluded decisions; 26.6 MiB across the `*-dataset.csv` files, 201.2 MiB total | [Browse individual datasets on `main`](https://github.com/thinktraveller/ord-datasets/tree/main/datasets/model-ready); [immutable release](https://github.com/thinktraveller/ord-datasets/releases/tag/v0.1.0-model-ready-preview-1), commit `7d52dd27071c5625008a14737a1a8e1252ae6217` |
 
-> **Two access paths, one snapshot:** `datasets/model-ready/` on `main` contains a byte-for-byte copy of the published model-ready snapshot for convenient browsing and individual downloads. Cite the immutable release when reproducibility matters. The much larger full-corpus payload remains on Hugging Face rather than `main`.
+> **Two access paths, the same CSV content:** `datasets/model-ready/` on `main` keeps each main table byte-identical to the published model-ready snapshot, but gives it a semantic `*-dataset.csv` filename and adds a target README for convenient browsing. Cite the immutable release when its exact historical package layout matters. The much larger full-corpus payload remains on Hugging Face rather than `main`.
 
 ## Getting started
 
 ### Which release should I download?
 
-- Start with the smaller **model-ready release** if you want an ordinary table for analyzing conditions against yield, conversion, LC response, or ee. Each `dataset.csv` opens as a conventional CSV.
+- Start with the smaller **model-ready release** if you want an ordinary table for analyzing conditions against yield, conversion, LC response, or ee. Each target's `<target-slug>-dataset.csv` opens as a conventional CSV.
 - Download only the relevant package from the **full corpus release** if you need experimental setup, additions, workups, analytical details, or the complete nested ORD record. You do not need the entire 12.23 GiB corpus for one reaction family.
 - A reaction may be reused by multiple model-ready targets. Consequently, target row counts must not be added and reported as a count of independent reactions; 2,428,291 is the corpus-wide reaction count for this release.
 
 To download only one model-ready table in a browser:
 
 1. Select its name in the [19-target inventory](#19-model-ready-targets).
-2. Open `dataset.csv` in that directory.
+2. Open the semantic `<target-slug>-dataset.csv` file in that directory.
 3. Select **Download raw file** (the downward-arrow button at the upper right of the file view).
-4. Also download `schema.json` and `metadata.json` if you need to interpret the columns, label, units, or readiness status. Download all ten files in the directory when provenance and auditability matter.
+4. Also download `schema.json` and `metadata.json` if you need to interpret the columns, label, units, or readiness status. Keep the ten data/provenance files and the target README together when provenance and auditability matter.
 
 To check out one complete target directory without checking out every dataset, copy the commands below and replace the final directory name with the target you want:
 
@@ -66,20 +66,21 @@ All 41 corpus packages use the same fields:
 | `row_index` | Position in the original physical dataset, **counted from zero**. |
 | `reaction_json` | Complete nested reaction content, including inputs, reagents, catalysts, solvents, conditions, products, measurements, and provenance. |
 
-Every model-ready target contains ten files:
+Every model-ready target contains ten data/provenance files plus a target-specific `README.md`:
 
 | File | Purpose |
 |---|---|
-| `dataset.csv` | Analysis-ready table; every row is an included reaction. |
+| `<target-slug>-dataset.csv` | Analysis-ready table; every row is an included reaction. |
 | `schema.json` | **Read this first:** exact columns, field roles, label definition, and extraction rule. |
-| `row-map.csv` | Connects each `dataset.csv` row to its ORD reaction. |
+| `row-map.csv` | Connects each main-table row to its ORD reaction. |
 | `audit.jsonl` | One JSON object per label decision, including candidates, selected value, and reason. |
-| `exclusions.csv` | Rejected records and reasons. An empty file still retains its header. |
+| `exclusions.csv` | Records not included in the main table and their reasons. An empty file still retains its header. |
 | `source-links.json` | Revision-pinned original ORD files and hashes. |
 | `metadata.json` | Label unit, included/excluded counts, readiness status, and other metadata. |
 | `yonod-config.json` | Modeling field roles and configuration. |
 | `target-build-provenance.json` | Inputs and transformations used to build the target. |
-| `checksums.csv` | SHA-256 and size of every file above. |
+| `checksums.csv` | SHA-256 and size of the data/provenance files above (the explanatory README is not part of this checksum set). |
+| `README.md` | A plain-language guide to this target's scope, label, fields, filtering, sources, status, and reaction tracing. |
 
 Use `row-map.csv`, not row order or a molecule string, to recover source identity.
 
@@ -91,12 +92,12 @@ The model-ready layer processes only each target's declared physical subset. Mos
 
 ### Trace one reaction step by step (verified example)
 
-This example starts with the first data row of the Ahneman C-N model-ready target.
+This example starts with the first data row of the Ahneman C-N model-ready target on `main`.
 
-1. Open [`dataset.csv`](https://github.com/thinktraveller/ord-datasets/blob/v0.1.0-model-ready-preview-1/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/dataset.csv). The header is line 1, so the first data record has `csv_row_number = 2`; its `yield_percent` is `54.390403747558594`.
-2. In [`row-map.csv`](https://github.com/thinktraveller/ord-datasets/blob/v0.1.0-model-ready-preview-1/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/row-map.csv), find `csv_row_number = 2`. It resolves to physical dataset `ord_dataset-46ff9a32d9e04016b9380b1b1ef949c3`, zero-based source row `3239`, reaction `ord-001c0b7f789d41b48e325967a9941ad6`, and label-decision hash `d966e2c9e5acdd4ad6becd3c73ba17cc92c9c205913e86cff10c430a5395868f`.
-3. Search [`audit.jsonl`](https://github.com/thinktraveller/ord-datasets/blob/v0.1.0-model-ready-preview-1/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/audit.jsonl) for that label-decision hash. The record says the row was included because there was one unique candidate: a UPLC `YIELD` percentage with value `54.390403747558594`. This proves how the label was selected.
-4. Match the physical dataset ID in [`source-links.json`](https://github.com/thinktraveller/ord-datasets/blob/v0.1.0-model-ready-preview-1/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/source-links.json). It gives ORD revision `83f971f586f6ad18f358ae4ae99d045e94ed2066`, the immutable Parquet URL, and source SHA-256 `39440ea3e5442dddbb4daccbc48fb53940724085327c0e3b82909e1fd8cc661a`.
+1. Open [`ahneman-c-n-cross-coupling-yield-percent-dataset.csv`](https://github.com/thinktraveller/ord-datasets/blob/main/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/ahneman-c-n-cross-coupling-yield-percent-dataset.csv). The header is line 1, so the first data record has `csv_row_number = 2`; its `yield_percent` is `54.390403747558594`.
+2. In [`row-map.csv`](https://github.com/thinktraveller/ord-datasets/blob/main/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/row-map.csv), find `csv_row_number = 2`. It resolves to physical dataset `ord_dataset-46ff9a32d9e04016b9380b1b1ef949c3`, zero-based source row `3239`, reaction `ord-001c0b7f789d41b48e325967a9941ad6`, and label-decision hash `d966e2c9e5acdd4ad6becd3c73ba17cc92c9c205913e86cff10c430a5395868f`.
+3. Search [`audit.jsonl`](https://github.com/thinktraveller/ord-datasets/blob/main/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/audit.jsonl) for that label-decision hash. The record says the row was included because there was one unique candidate: a UPLC `YIELD` percentage with value `54.390403747558594`. This proves how the label was selected.
+4. Match the physical dataset ID in [`source-links.json`](https://github.com/thinktraveller/ord-datasets/blob/main/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/source-links.json). It gives ORD revision `83f971f586f6ad18f358ae4ae99d045e94ed2066`, the immutable Parquet URL, and source SHA-256 `39440ea3e5442dddbb4daccbc48fb53940724085327c0e3b82909e1fd8cc661a`.
 5. In the corpus package's [`reactions.csv`](https://huggingface.co/datasets/thinktraveller/ord-processed-reaction-corpus/blob/v0.2.0-corpus-preview-1/datasets/corpus/ahneman-c-n-cross-coupling/reactions.csv), match the physical dataset ID plus `row_index = 3239`. The recovered `reaction_id` is the same value found in step 2, and `reaction_json` is the full ORD record.
 6. Optionally download the source Parquet through `source_file_url` and compare its SHA-256. A match proves byte identity with the frozen input used by this release.
 
@@ -111,7 +112,7 @@ target_dir = Path("replace/with/path/to/ahneman-c-n-cross-coupling-yield-percent
 corpus_csv = Path("replace/with/path/to/ahneman-c-n-cross-coupling/reactions.csv")
 wanted_csv_row = "2"
 
-with (target_dir / "dataset.csv").open(encoding="utf-8", newline="") as f:
+with (target_dir / "ahneman-c-n-cross-coupling-yield-percent-dataset.csv").open(encoding="utf-8", newline="") as f:
     dataset_row = next(row for number, row in enumerate(csv.DictReader(f), start=2)
                        if str(number) == wanted_csv_row)
 
@@ -205,7 +206,7 @@ All packages share the five corpus fields and the same filtering rule: no label-
 | E | `generated_with_source_caveat` | Source-measurement caveat; NiCOlit does not distinguish GC from isolated yield. |
 | F | `generated_adapter_blocked` | Artifact exists, but its declared adapter/readiness gate remains blocked. |
 
-| Target | Publication and source | Included / excluded | `dataset.csv` / package | Label | Observed exclusion | Status |
+| Target | Publication and source | Included / excluded | `*-dataset.csv` / package | Label | Observed exclusion | Status |
 |---|---|---:|---:|---|---|:---:|
 | [Ahneman C-N Cross-Coupling Yield (%)](https://github.com/thinktraveller/ord-datasets/tree/main/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent) | [10.1126/science.aar5169](https://doi.org/10.1126/science.aar5169)<br>[pinned ORD source ×1](https://github.com/thinktraveller/ord-datasets/blob/v0.1.0-model-ready-preview-1/datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/source-links.json) | 4,312 / 0 | 1.2 MiB / 5.8 MiB | `yield_percent`<br>percent yield as defined by the source measurement | none | A |
 | [Asymmetric Alkylation ee (S-R, %)](https://github.com/thinktraveller/ord-datasets/tree/main/datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent) | [10.1038/s41467-023-42446-5](https://doi.org/10.1038/s41467-023-42446-5)<br>[pinned ORD source ×1](https://github.com/thinktraveller/ord-datasets/blob/v0.1.0-model-ready-preview-1/datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/source-links.json) | 1,430 / 0 | 296.3 KiB / 4.3 MiB | `ee_s_minus_r_percent`<br>percentage points, S minus R | none | F |
@@ -242,7 +243,7 @@ The table maps all 19 targets to their actual adapter and label policy. The adap
 | R7 | `signed_selectivity` | `signed_selectivity_v1:s_config_imms_percentage` | `asymmetric-alkylation-ee-s-minus-r-percent` | Convert the S-configured IMMS percentage to signed `S-R` ee; product stereochemistry determines the label but is not a feature. |
 | R8 | `pfizer_lcms` | `unique_structured_scalar_no_aggregation` | `pfizer-hte-lc-area-percent` | Select one LC/UV area percentage; it is neither isolated yield nor conversion. |
 
-#### Exact `dataset.csv` columns for every target
+#### Exact `*-dataset.csv` columns for every target
 
 No column is omitted below. Columns are grouped only for readability into structure/composition/auxiliary fields, condition fields, and label; each package's `schema.json` is authoritative for exact roles. `—` means none.
 
