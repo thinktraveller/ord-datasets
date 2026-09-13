@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/dataset.csv",
+      "path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/cernak-suzuki-coupling-conversion-percent-dataset.csv",
       "role": "dataset",
       "sha256": "df6c85864b54120438f2fa0163bb5da00d7cc80ca1082499640b4b1bcae96ca9",
       "size_bytes": 314179
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "be7a2fc8defa3f475a216699aae7b1fba0fbc011d70bfa4edea60874330b550d",
-      "size_bytes": 812
+      "sha256": "1110827afd43ebe9ffd4fe2969fe7d3192922fed79ff1aec46706911868b55a1",
+      "size_bytes": 854
     }
   ],
   "corpus_row_count": 2696,

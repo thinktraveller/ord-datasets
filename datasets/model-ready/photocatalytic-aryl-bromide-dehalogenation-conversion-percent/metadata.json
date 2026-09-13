@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/photocatalytic-aryl-bromide-dehalogenation-conversion-percent/dataset.csv",
+      "path": "datasets/model-ready/photocatalytic-aryl-bromide-dehalogenation-conversion-percent/photocatalytic-aryl-bromide-dehalogenation-conversion-percent-dataset.csv",
       "role": "dataset",
       "sha256": "427e149d84943bb82adcf3066be751edd2418696bb8b972177e510663a1a2ef3",
       "size_bytes": 238260
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/photocatalytic-aryl-bromide-dehalogenation-conversion-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "9d24750371bfdc7b10c3eff3c933db3aca02b6e5583febe21d393406b94d9827",
-      "size_bytes": 809
+      "sha256": "e3fc22a1c72aa00fc9fd6724d4ed9e1c19cff17f818c80fca0ae0442204effc0",
+      "size_bytes": 871
     }
   ],
   "corpus_row_count": 1152,

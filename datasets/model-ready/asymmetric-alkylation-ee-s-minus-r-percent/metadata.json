@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/dataset.csv",
+      "path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/asymmetric-alkylation-ee-s-minus-r-percent-dataset.csv",
       "role": "dataset",
       "sha256": "a589fdfe1f90e655bd9193983aa92264e0b86bfdb017c04836b5b933edc429c7",
       "size_bytes": 303418
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "fa1d524160e6504bdc7ae3c5f8ac8be0aafceeddcaba1f5cca39084c9a7d7626",
-      "size_bytes": 809
+      "sha256": "11f6a2a429a48da1d21673d80137a140cca71a8dc980119422b880e2f190a34c",
+      "size_bytes": 852
     }
   ],
   "corpus_row_count": 1430,

@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/nano-c-n-photochemistry-yield-percent/dataset.csv",
+      "path": "datasets/model-ready/nano-c-n-photochemistry-yield-percent/nano-c-n-photochemistry-yield-percent-dataset.csv",
       "role": "dataset",
       "sha256": "21b8072d3587bc8b1290124dafa6fdcdceee501980b6e6a3769aee6ead804d6d",
       "size_bytes": 370116
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/nano-c-n-photochemistry-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "d51c2bdec870ccbba1e4fc2fb15feb5ba396c92a1fefc68a1609281446adc904",
-      "size_bytes": 809
+      "sha256": "fd1ef34bed8e1fe8f008a736755c7b9b321de89e590db90672f503a20e240ef1",
+      "size_bytes": 847
     }
   ],
   "corpus_row_count": 1728,

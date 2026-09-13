@@ -1,5 +1,5 @@
 role,path,sha256,size_bytes
-dataset,dataset.csv,2d1bfd835869c7263d37d035131981fb4042f9c93671640ea983deb5f417e163,340725
+dataset,science-hte-relative-lc-area-ratio-dataset.csv,2d1bfd835869c7263d37d035131981fb4042f9c93671640ea983deb5f417e163,340725
 schema,schema.json,dfd7876422cde7d9278c54b9a537d36e8007a5853c769445e4cbf7acb99f6365,1796
 yonod-config,yonod-config.json,e7e2fb5e49d114e192498f4b7b038385f6be3cebce601e5a3a730f0c155bfe21,3168
 row-map,row-map.csv,5863de3a012bf0587a435d0487d58f59c50434c1ff45c38cea6ea6d9aedb7a07,359199

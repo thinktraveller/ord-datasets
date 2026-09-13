@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/roche-borylation-yield-percent/dataset.csv",
+      "path": "datasets/model-ready/roche-borylation-yield-percent/roche-borylation-yield-percent-dataset.csv",
       "role": "dataset",
       "sha256": "35b3444917708e5a19956e5f871fd9b83958ad3b2484874b0ba85d21f381e5e8",
       "size_bytes": 198095
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/roche-borylation-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "24aefeae000fa485b62875ed4e856caa595bca5942782e2e3f4fae8f1c87f7fa",
-      "size_bytes": 811
+      "sha256": "e5c2dd2431f8cab745708ad4ff6eef5154665308f2375ca85922b4aec5c38975",
+      "size_bytes": 842
     }
   ],
   "corpus_row_count": 1111,

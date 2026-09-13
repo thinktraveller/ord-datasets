@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/dataset.csv",
+      "path": "datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/ahneman-c-n-cross-coupling-yield-percent-dataset.csv",
       "role": "dataset",
       "sha256": "6a912585bb987ab698e2502585e1927403c372e10d8e3bcf8ce26f93c4021acf",
       "size_bytes": 1271230
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "de8629db08b050631733543f3759b5ca3f652eef8bacf64af7ccf91869a10fe8",
-      "size_bytes": 810
+      "sha256": "c640b1231ddc301a7ba50d792aac0d64836ec3145a8513f031365c768483c285",
+      "size_bytes": 851
     }
   ],
   "corpus_row_count": 4312,

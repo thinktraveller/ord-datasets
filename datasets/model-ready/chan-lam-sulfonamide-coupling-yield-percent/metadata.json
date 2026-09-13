@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/dataset.csv",
+      "path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/chan-lam-sulfonamide-coupling-yield-percent-dataset.csv",
       "role": "dataset",
       "sha256": "648de1e73169feca1cc221f1f53858c11918f91c4f959e206f1a8a66ff4b482b",
       "size_bytes": 1856612
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "a7798ee552aad338228d3252080ac6ecb792bdbf66a02f30d10694bdb99c7825",
-      "size_bytes": 813
+      "sha256": "99e4b60576d2e5f56b3411f332e68500f2c7e6bce4c44315149768d41bc735c6",
+      "size_bytes": 857
     }
   ],
   "corpus_row_count": 9632,

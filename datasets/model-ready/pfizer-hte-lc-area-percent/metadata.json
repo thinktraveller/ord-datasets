@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/pfizer-hte-lc-area-percent/dataset.csv",
+      "path": "datasets/model-ready/pfizer-hte-lc-area-percent/pfizer-hte-lc-area-percent-dataset.csv",
       "role": "dataset",
       "sha256": "acc5860363baddd0fc24e87bb66e37d550b4cb8e1accf301f5f2aadb6d25758d",
       "size_bytes": 7026314
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/pfizer-hte-lc-area-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "6cd4213495c63229e9595b89a5b8a966f426aab40e3823d01a34d64002ad5b23",
-      "size_bytes": 812
+      "sha256": "333955cf5cf2a13920eb2d3ab26b68b7ac02573f3bd701e3ed0d7b7997dbc0d7",
+      "size_bytes": 839
     }
   ],
   "corpus_row_count": 39347,

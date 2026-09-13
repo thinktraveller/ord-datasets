@@ -2,7 +2,7 @@
   "artifact_status": "staged",
   "content_artifacts": [
     {
-      "path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/dataset.csv",
+      "path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/cernak-reductive-amination-conversion-percent-dataset.csv",
       "role": "dataset",
       "sha256": "0d25125e1cf707c839b93106b8131f8a836938b8d416e37698610f5bf8ee965e",
       "size_bytes": 331171
@@ -40,8 +40,8 @@
     {
       "path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "518b4643a2eb7377f7117e4f60a9ee18f3e206284e319812f51cf98961961070",
-      "size_bytes": 809
+      "sha256": "601e44e7bf1a180a5f1eed896ae540d20aac5897813760ea6da79c4ffcde7885",
+      "size_bytes": 855
     }
   ],
   "corpus_row_count": 2696,
