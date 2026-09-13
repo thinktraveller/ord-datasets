@@ -600,3 +600,4 @@
 - `pipeline/scripts/prepare_model_ready_download_layout.py` 现原子生成并校验这两个说明文件，同时继续校验语义化主表名、checksums 和 metadata；主表 CSV 的内容未修改。
 - 根目录 `README.md`、`README-zh.md` 与 `datasets/README.md` 已更新目录树、下载提示和文件说明，明确区分英文 `README.md` 与中文 `README-zh.md`。
 - 已对 19 个目标运行生成器的 `--apply` 和 `--check`；每一组说明都包含互链、语义化主表链接及逐条溯源章节。19 个主表的 SHA-256 均与不可变 preview candidate 对应的 `dataset.csv` 一致，metadata schema 与 8 项 pipeline 测试均通过。
+- 根目录中英文简介改为面向化学用户的平实说明：明确区分“保留完整实验信息、用于查找和溯源”的语料与“可直接分析或建模”的反应表格。

@@ -2,7 +2,7 @@
 
 [中文](README-zh.md)
 
-This is a provenance-preserving standardization and release workspace for the Open Reaction Database (ORD). It deliberately separates the near-complete reaction corpus from task-specific, model-ready tables so that a modeling subset is never mistaken for the complete corpus.
+This project organizes reaction data from the Open Reaction Database (ORD) into two downloadable forms. One keeps as much of each reaction's original experimental information as possible, for finding and tracing complete records. The other organizes selected reaction types into ordinary tables that can be analyzed or modelled directly. They are published separately so that a small modelling dataset is not mistaken for the complete ORD reaction collection.
 
 | Release | Intended use | Scope | Download |
 |---|---|---|---|
