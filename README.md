@@ -1,6 +1,6 @@
-# ord-datasets
+# ORD Standardized Reaction Datasets: Traceable Complete Records and Model-Ready Reaction Tables
 
-[中文](README-zh.md)
+[中文版本](README-zh.md)
 
 This project organizes reaction data from the Open Reaction Database (ORD) into two downloadable forms. One keeps as much of each reaction's original experimental information as possible, for finding and tracing complete records. The other organizes selected reaction types into ordinary tables that can be analyzed or modelled directly. They are published separately so that a small modelling dataset is not mistaken for the complete ORD reaction collection.
 

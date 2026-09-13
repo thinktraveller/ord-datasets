@@ -1,6 +1,6 @@
-# ord-datasets
+# ORD 反应规范化数据集：可溯源完整与可直接建模的化学反应数据集
 
-[English](README.md)
+[English Version](README.md)
 
 这个项目把 Open Reaction Database（ORD）中的反应数据整理成两类可下载的数据集：一类尽可能保留每条反应的原始实验信息，适合查找和溯源完整记录；另一类把特定反应类型整理成可直接分析或建模的普通表格。两类数据分开发布，避免把一个用于建模的小数据集误认为 ORD 的完整反应集合。
 
