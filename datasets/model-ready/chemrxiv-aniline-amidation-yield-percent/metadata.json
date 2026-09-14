@@ -14,12 +14,6 @@
       "size_bytes": 1783
     },
     {
-      "path": "datasets/model-ready/chemrxiv-aniline-amidation-yield-percent/yonod-config.json",
-      "role": "yonod-config",
-      "sha256": "6db195daa13f29476cd44ae176ed1a27bfb5d2fd6a1bb43d0d4257b4f6af967b",
-      "size_bytes": 3463
-    },
-    {
       "path": "datasets/model-ready/chemrxiv-aniline-amidation-yield-percent/exclusions.csv",
       "role": "exclusions",
       "sha256": "2cf41e5f67c8f2932bd6acc9c33170f90a492213d26117ef9acb515c2e72528d",
@@ -40,8 +34,8 @@
     {
       "path": "datasets/model-ready/chemrxiv-aniline-amidation-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "ad6a338a326d0e2f2f5fba47903710dd429fd6566a1f648401c05b61289f0e3b",
-      "size_bytes": 850
+      "sha256": "3bfbec25f8b0854a80883f5afb1765c07a22cbebb683c4be9998688760af2901",
+      "size_bytes": 749
     }
   ],
   "corpus_row_count": 2496,

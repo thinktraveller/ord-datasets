@@ -31,7 +31,6 @@ ord-datasets/
 │           ├── exclusions.csv    # 排除记录及原因
 │           ├── source-links.json # 固定的 ORD 源文件
 │           ├── metadata.json     # 范围、许可证和就绪状态
-│           ├── yonod-config.json # 供 YONOD 使用的字段角色配置
 │           ├── target-build-provenance.json # 可复现构建记录
 │           └── checksums.csv     # 下载完整性指纹
 ├── pipeline/                     # 构建、验证、schema 和测试
@@ -53,7 +52,7 @@ ord-datasets/
 1. 在下方 [19 个模型就绪目标表](#19-个模型就绪目标)中点击所需的数据集名称。
 2. 在打开的目录中点击以 `<target-slug>-dataset.csv` 结尾的主数据文件。
 3. 点击文件页面右上角的 **Download raw file**（向下箭头）按钮，将文件保存到电脑。
-4. 建议同时下载 `schema.json` 和 `metadata.json`，它们分别说明字段、标签、单位和就绪状态；如果研究需要完整溯源和审计，请保留全部 10 个数据/溯源文件及该目标的 `README.md`（英文）或 `README-zh.md`（中文）。
+4. 建议同时下载 `schema.json` 和 `metadata.json`，它们分别说明字段、标签、单位和就绪状态；如果研究需要完整溯源和审计，请保留全部 9 个数据/溯源文件及该目标的 `README.md`（英文）或 `README-zh.md`（中文）。
 
 如果会使用命令行，可以只检出一个完整的数据集目录，不把另外 18 个数据集写入工作目录。复制下面三行，并把最后一个目录名替换成所需目标：
 
@@ -95,7 +94,7 @@ git clone --depth 1 --branch v0.2.0-corpus-preview-1 https://huggingface.co/data
 | `row_index` | 反应在原始物理数据集中的位置；**从 0 开始计数**。 |
 | `reaction_json` | 完整反应内容，包括反应物、试剂、催化剂、溶剂、条件、产物、测量和来源等嵌套字段。 |
 
-每个模型就绪目标有 10 个数据/溯源文件，另有分开的英文和中文说明：
+每个模型就绪目标有 9 个数据/溯源文件，另有分开的英文和中文说明：
 
 | 文件 | 化学用户通常用它做什么 |
 |---|---|
@@ -106,7 +105,6 @@ git clone --depth 1 --branch v0.2.0-corpus-preview-1 https://huggingface.co/data
 | `exclusions.csv` | 没有进入主数据表的记录及排除原因。即使为空也保留表头。 |
 | `source-links.json` | 固定 ORD 原始文件链接、版本和哈希。 |
 | `metadata.json` | 标签单位、纳入/排除数、就绪状态等。 |
-| `yonod-config.json` | [YONOD](https://github.com/thinktraveller/YONOD) 使用的配置：将表格字段映射到建模角色，并提供示例设置；人工分析时可不使用。 |
 | `target-build-provenance.json` | 构建本目标所用的输入文件、转换规则和哈希；用于复现或审计构建过程。 |
 | `checksums.csv` | 文件路径、SHA-256 指纹和大小，用于检查下载是否完整以及文件是否意外变动；说明性 README 不在此校验集合中。 |
 | `README.md` | 用英文通俗说明该目标的范围、标签、字段、筛选、来源、状态和溯源方法。 |

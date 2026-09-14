@@ -14,12 +14,6 @@
       "size_bytes": 1722
     },
     {
-      "path": "datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/yonod-config.json",
-      "role": "yonod-config",
-      "sha256": "21b996518299c2f494798f7bfd2f85b41f29b82432e300a09b094b95689cc84b",
-      "size_bytes": 3590
-    },
-    {
       "path": "datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/exclusions.csv",
       "role": "exclusions",
       "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
@@ -40,8 +34,8 @@
     {
       "path": "datasets/model-ready/ahneman-c-n-cross-coupling-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "c640b1231ddc301a7ba50d792aac0d64836ec3145a8513f031365c768483c285",
-      "size_bytes": 851
+      "sha256": "ebbb8ac411d10534e5c16b9579756fad3bd8795d130d144944cb055a88d00f8b",
+      "size_bytes": 750
     }
   ],
   "corpus_row_count": 4312,

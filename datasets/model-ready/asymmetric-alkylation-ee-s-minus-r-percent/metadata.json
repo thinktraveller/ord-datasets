@@ -14,12 +14,6 @@
       "size_bytes": 1635
     },
     {
-      "path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/yonod-config.json",
-      "role": "yonod-config",
-      "sha256": "1ee7a5b68495d6057e1dfc16ee1cbb9fcb4c32092966fa82970d250372569412",
-      "size_bytes": 3052
-    },
-    {
       "path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/exclusions.csv",
       "role": "exclusions",
       "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
@@ -40,8 +34,8 @@
     {
       "path": "datasets/model-ready/asymmetric-alkylation-ee-s-minus-r-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "11f6a2a429a48da1d21673d80137a140cca71a8dc980119422b880e2f190a34c",
-      "size_bytes": 852
+      "sha256": "a7c6910b1584259666d69723369113a71525138487b93971f4435b37fbf041d5",
+      "size_bytes": 751
     }
   ],
   "corpus_row_count": 1430,

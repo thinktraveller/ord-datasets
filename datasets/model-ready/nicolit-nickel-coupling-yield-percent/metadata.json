@@ -14,12 +14,6 @@
       "size_bytes": 1470
     },
     {
-      "path": "datasets/model-ready/nicolit-nickel-coupling-yield-percent/yonod-config.json",
-      "role": "yonod-config",
-      "sha256": "650f46818eb3a6829e50a00af076e681c22474a5117cd4c1588d3569235ca6c0",
-      "size_bytes": 2257
-    },
-    {
       "path": "datasets/model-ready/nicolit-nickel-coupling-yield-percent/exclusions.csv",
       "role": "exclusions",
       "sha256": "0476f714c7b4f83f797f954722bd7dfbf0c02ca8deb4c4e358abcd1ac4b116ff",
@@ -40,8 +34,8 @@
     {
       "path": "datasets/model-ready/nicolit-nickel-coupling-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "ff1747cc5b4d3f9d2a2eb1901b0bc856897954e4c321b8d5a1c5b3c43cf9b920",
-      "size_bytes": 850
+      "sha256": "c3521b5194cf8fc0421434ac0dabfc32eae76edbebe3ad6774a24543a5f62de3",
+      "size_bytes": 749
     }
   ],
   "corpus_row_count": 1762,

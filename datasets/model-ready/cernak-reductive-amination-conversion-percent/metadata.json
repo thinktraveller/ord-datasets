@@ -14,12 +14,6 @@
       "size_bytes": 1787
     },
     {
-      "path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/yonod-config.json",
-      "role": "yonod-config",
-      "sha256": "11008e2953693a252e362fee503f43e7c12afc3016253d79052c9ac454750b45",
-      "size_bytes": 3502
-    },
-    {
       "path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/exclusions.csv",
       "role": "exclusions",
       "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
@@ -40,8 +34,8 @@
     {
       "path": "datasets/model-ready/cernak-reductive-amination-conversion-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "601e44e7bf1a180a5f1eed896ae540d20aac5897813760ea6da79c4ffcde7885",
-      "size_bytes": 855
+      "sha256": "bb7c287a52c97df8d7477207dc5741e9c03a241322aad38331aae67ac0d4882e",
+      "size_bytes": 754
     }
   ],
   "corpus_row_count": 2696,

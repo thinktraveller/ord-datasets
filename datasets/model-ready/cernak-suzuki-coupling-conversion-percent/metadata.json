@@ -14,12 +14,6 @@
       "size_bytes": 1922
     },
     {
-      "path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/yonod-config.json",
-      "role": "yonod-config",
-      "sha256": "122d56918e8a3860692736370509031262ad5bee553e2a81433b4b597649b2d6",
-      "size_bytes": 3601
-    },
-    {
       "path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/exclusions.csv",
       "role": "exclusions",
       "sha256": "5ae11eca84432d9f83fff0aa5599c132241312bb3f0ee6b3044ada48b6ee28ba",
@@ -40,8 +34,8 @@
     {
       "path": "datasets/model-ready/cernak-suzuki-coupling-conversion-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "1110827afd43ebe9ffd4fe2969fe7d3192922fed79ff1aec46706911868b55a1",
-      "size_bytes": 854
+      "sha256": "65053aaf7435bade802d5faa42a1358851ed1166b85d33813e8e06275250cbc9",
+      "size_bytes": 753
     }
   ],
   "corpus_row_count": 2696,

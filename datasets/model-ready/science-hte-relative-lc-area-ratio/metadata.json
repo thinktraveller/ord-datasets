@@ -14,12 +14,6 @@
       "size_bytes": 1796
     },
     {
-      "path": "datasets/model-ready/science-hte-relative-lc-area-ratio/yonod-config.json",
-      "role": "yonod-config",
-      "sha256": "e7e2fb5e49d114e192498f4b7b038385f6be3cebce601e5a3a730f0c155bfe21",
-      "size_bytes": 3168
-    },
-    {
       "path": "datasets/model-ready/science-hte-relative-lc-area-ratio/exclusions.csv",
       "role": "exclusions",
       "sha256": "1cbc613a6828a169615d29e6f979431f4a44e2f27b3d3d443be0612a223d3893",
@@ -40,8 +34,8 @@
     {
       "path": "datasets/model-ready/science-hte-relative-lc-area-ratio/checksums.csv",
       "role": "checksums",
-      "sha256": "0c3edb2f2370c373cec7fca84eb7dcb155a03955668e46126b4c44a4d2fa38a1",
-      "size_bytes": 846
+      "sha256": "2c87a4d09c79f4bdcf60dfddcfbc4280d3402aea2b279b1a170c841f537a8e33",
+      "size_bytes": 745
     }
   ],
   "corpus_row_count": 1824,

@@ -14,12 +14,6 @@
       "size_bytes": 1769
     },
     {
-      "path": "datasets/model-ready/roche-borylation-yield-percent/yonod-config.json",
-      "role": "yonod-config",
-      "sha256": "d8f689b30192b89ace8a1a1cf2ba154329fa2fa4eb34e5d824b8d3dea18a16ee",
-      "size_bytes": 3613
-    },
-    {
       "path": "datasets/model-ready/roche-borylation-yield-percent/exclusions.csv",
       "role": "exclusions",
       "sha256": "b873947560cf6be312945177da380d57b56169359e225ed2dcae4e86cc2bc28f",
@@ -40,8 +34,8 @@
     {
       "path": "datasets/model-ready/roche-borylation-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "e5c2dd2431f8cab745708ad4ff6eef5154665308f2375ca85922b4aec5c38975",
-      "size_bytes": 842
+      "sha256": "1d27fbba8c33790ab358fc9e683806af3576aaf335b100d55831b085aaea792a",
+      "size_bytes": 741
     }
   ],
   "corpus_row_count": 1111,

@@ -14,12 +14,6 @@
       "size_bytes": 1732
     },
     {
-      "path": "datasets/model-ready/shields-arylation-yield-percent/yonod-config.json",
-      "role": "yonod-config",
-      "sha256": "9333501cc95a89e2594eabe61a444f5e7ae132ef9336104c0baa8d688f7dc5a4",
-      "size_bytes": 3045
-    },
-    {
       "path": "datasets/model-ready/shields-arylation-yield-percent/exclusions.csv",
       "role": "exclusions",
       "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
@@ -40,8 +34,8 @@
     {
       "path": "datasets/model-ready/shields-arylation-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "96e762a38e91eb7c81c7783a42702d56e88bbc375057cadf711dcc15eb1c7a33",
-      "size_bytes": 842
+      "sha256": "e83da6dc1f80bd2870312cb5f9a1ea24c24c92fd4cd94540505e049586c72e26",
+      "size_bytes": 741
     }
   ],
   "corpus_row_count": 1984,

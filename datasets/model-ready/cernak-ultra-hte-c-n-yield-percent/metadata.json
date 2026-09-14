@@ -14,12 +14,6 @@
       "size_bytes": 1897
     },
     {
-      "path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/yonod-config.json",
-      "role": "yonod-config",
-      "sha256": "fb3981a8de911ff01b8cbac32088fe3bd3d56228d3f4792317866ba494caa7ea",
-      "size_bytes": 4416
-    },
-    {
       "path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/exclusions.csv",
       "role": "exclusions",
       "sha256": "6aa89bbef99173f5b3b1297227ee2235236900613813655265771dbf3ce4fd33",
@@ -40,8 +34,8 @@
     {
       "path": "datasets/model-ready/cernak-ultra-hte-c-n-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "460abe335c46e4ef063101d5028a690dd3c44b98c15922fc8c7deab89290961a",
-      "size_bytes": 851
+      "sha256": "eec8d036cdb2ebd132cc02b92adf3527c120109a776ead6573596d68e25e108e",
+      "size_bytes": 750
     }
   ],
   "corpus_row_count": 50688,

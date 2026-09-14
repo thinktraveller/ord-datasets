@@ -54,7 +54,6 @@
 | [`exclusions.csv`](exclusions.csv) | 未纳入主表的记录及排除原因。 |
 | [`source-links.json`](source-links.json) | 固定到 ORD 提交版本的原始文件链接和 SHA-256。 |
 | [`metadata.json`](metadata.json) | 数据集名称、规模、标签单位、许可证和就绪状态。 |
-| [`yonod-config.json`](yonod-config.json) | 供 [YONOD](https://github.com/thinktraveller/YONOD) 使用的配置：将表格字段映射到建模角色，并提供示例设置；人工分析时可不使用。 |
 | [`target-build-provenance.json`](target-build-provenance.json) | 构建本目标所用的输入文件、转换规则和哈希；用于复现或审计构建过程。 |
 | [`checksums.csv`](checksums.csv) | 文件路径、SHA-256 指纹和大小；用于检查下载是否完整以及文件是否意外变动。 |
 

@@ -14,12 +14,6 @@
       "size_bytes": 1979
     },
     {
-      "path": "datasets/model-ready/suzuki-miyaura-nanoscale-yield-percent/yonod-config.json",
-      "role": "yonod-config",
-      "sha256": "6cde9da49886861767c7dd5526ec4bb61752c07bc1a4dbee955baa4262c1ebb2",
-      "size_bytes": 4058
-    },
-    {
       "path": "datasets/model-ready/suzuki-miyaura-nanoscale-yield-percent/exclusions.csv",
       "role": "exclusions",
       "sha256": "4db87054e05506fd5de5d774c6c8838094902ffa774d224d92780299eeee63a7",
@@ -40,8 +34,8 @@
     {
       "path": "datasets/model-ready/suzuki-miyaura-nanoscale-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "64a2d6dd0855be5c02db75a75934e5f70ad7f8a58554b6d0fd1ebf202fbd3bcd",
-      "size_bytes": 850
+      "sha256": "0973803f0210ca57024fd800a9eee0977aceba8cd24b6c23ac5a5e069c473e50",
+      "size_bytes": 749
     }
   ],
   "corpus_row_count": 5760,

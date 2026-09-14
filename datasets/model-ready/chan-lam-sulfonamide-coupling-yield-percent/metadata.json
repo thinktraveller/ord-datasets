@@ -14,12 +14,6 @@
       "size_bytes": 1552
     },
     {
-      "path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/yonod-config.json",
-      "role": "yonod-config",
-      "sha256": "b401147034c6c4d560d8f68a6e6bf46b0b8d23c5457c3a584728698adb48efd1",
-      "size_bytes": 2884
-    },
-    {
       "path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/exclusions.csv",
       "role": "exclusions",
       "sha256": "df62a4deb8d003ef572dafdd1e33705ba6db1e12f3f381516d263d4232ed3548",
@@ -40,8 +34,8 @@
     {
       "path": "datasets/model-ready/chan-lam-sulfonamide-coupling-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "99e4b60576d2e5f56b3411f332e68500f2c7e6bce4c44315149768d41bc735c6",
-      "size_bytes": 857
+      "sha256": "8482ad26906b99ee1aaae014c22c1215067d287dc4da66c10f9f53ed2e041180",
+      "size_bytes": 756
     }
   ],
   "corpus_row_count": 9632,

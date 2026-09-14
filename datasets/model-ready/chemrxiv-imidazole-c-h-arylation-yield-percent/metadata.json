@@ -14,12 +14,6 @@
       "size_bytes": 1810
     },
     {
-      "path": "datasets/model-ready/chemrxiv-imidazole-c-h-arylation-yield-percent/yonod-config.json",
-      "role": "yonod-config",
-      "sha256": "fe20a135bbf43e59124b195d58b74780ec6797cbce732393f8338b0777337cad",
-      "size_bytes": 3483
-    },
-    {
       "path": "datasets/model-ready/chemrxiv-imidazole-c-h-arylation-yield-percent/exclusions.csv",
       "role": "exclusions",
       "sha256": "8f47e75aea68776f95629257185ead1b25f8088098e25f2aa75b73edd8ec4db6",
@@ -40,8 +34,8 @@
     {
       "path": "datasets/model-ready/chemrxiv-imidazole-c-h-arylation-yield-percent/checksums.csv",
       "role": "checksums",
-      "sha256": "21d6bfcaf121677f53fb4030f758accbd948f4e0479864c9e8a0b9af9ea960fd",
-      "size_bytes": 858
+      "sha256": "ed2afa56e7cf73cb9c8bfd19fa1212876e44b6b732521f4d7415d6ab08555d04",
+      "size_bytes": 757
     }
   ],
   "corpus_row_count": 2496,

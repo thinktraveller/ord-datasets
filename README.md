@@ -31,7 +31,6 @@ ord-datasets/
 │           ├── exclusions.csv    # Excluded records and reasons
 │           ├── source-links.json # Pinned ORD source files
 │           ├── metadata.json     # Scope, licence, and readiness state
-│           ├── yonod-config.json # Field-role configuration for YONOD
 │           ├── target-build-provenance.json # Reproducible-build record
 │           └── checksums.csv     # Download-integrity fingerprints
 ├── pipeline/                     # Build, validation, schemas, and tests
@@ -53,7 +52,7 @@ To download only one model-ready table in a browser:
 1. Select its name in the [19-target inventory](#19-model-ready-targets).
 2. Open the semantic `<target-slug>-dataset.csv` file in that directory.
 3. Select **Download raw file** (the downward-arrow button at the upper right of the file view).
-4. Also download `schema.json` and `metadata.json` if you need to interpret the columns, label, units, or readiness status. Keep the ten data/provenance files and the target's `README.md` or `README-zh.md` together when provenance and auditability matter.
+4. Also download `schema.json` and `metadata.json` if you need to interpret the columns, label, units, or readiness status. Keep the nine data/provenance files and the target's `README.md` or `README-zh.md` together when provenance and auditability matter.
 
 To check out one complete target directory without checking out every dataset, copy the commands below and replace the final directory name with the target you want:
 
@@ -95,7 +94,7 @@ All 41 corpus packages use the same fields:
 | `row_index` | Position in the original physical dataset, **counted from zero**. |
 | `reaction_json` | Complete nested reaction content, including inputs, reagents, catalysts, solvents, conditions, products, measurements, and provenance. |
 
-Every model-ready target contains ten data/provenance files plus separate English and Chinese guides:
+Every model-ready target contains nine data/provenance files plus separate English and Chinese guides:
 
 | File | Purpose |
 |---|---|
@@ -106,7 +105,6 @@ Every model-ready target contains ten data/provenance files plus separate Englis
 | `exclusions.csv` | Records not included in the main table and their reasons. An empty file still retains its header. |
 | `source-links.json` | Revision-pinned original ORD files and hashes. |
 | `metadata.json` | Label unit, included/excluded counts, readiness status, and other metadata. |
-| `yonod-config.json` | Configuration used by [YONOD](https://github.com/thinktraveller/YONOD): maps table columns to model roles and includes an example setup. It is optional for manual analysis. |
 | `target-build-provenance.json` | Input files, transformation rules, and hashes used to build the target; use it to reproduce or audit the build. |
 | `checksums.csv` | File paths, SHA-256 fingerprints, and sizes for checking download integrity or unexpected changes. The explanatory READMEs are not part of this checksum set. |
 | `README.md` | English plain-language guide to this target's scope, label, fields, filtering, sources, status, and reaction tracing. |
